@@ -2,8 +2,12 @@
 
 int main() {
   Board board{};
-  Bitboard wP = board.getBitboard(0);
+  Bitboard wK = board.getBitboard(WHITE_KING);
+  printBitBoard(wK);
 
-  board.printBitBoard(wP);
+  set_bit(wK, e2);
+  clear_bit(wK, e1);
+  printBitBoard(wK);
+
   return 0;
 }

@@ -1,5 +1,6 @@
+#pragma once
 #include <cstdint>
-#include <cstdio>
+
 #include <iostream>
 #include <ostream>
 
@@ -11,7 +12,93 @@ using u32 = int32_t;
 // Bit Ops
 #define get_bit(board, square) (board & (1ULL << square))
 #define set_bit(board, square) (board |= (1ULL << square))
-#define clear_bit(board, square) (board &= (0ULL << square))
+#define clear_bit(board, square) (board = (0ULL << square))
+
+// Pieces
+enum Piece {
+  WHITE_PAWN,
+  WHITE_KNIGHT,
+  WHITE_BISHOP,
+  WHITE_ROOK,
+  WHITE_QUEEN,
+  WHITE_KING,
+
+  BLACK_PAWN,
+  BLACK_KNIGHT,
+  BLACK_BISHOP,
+  BLACK_ROOK,
+  BLACK_QUEEN,
+  BLACK_KING
+};
+
+enum Square {
+  a1,
+  b1,
+  c1,
+  d1,
+  e1,
+  f1,
+  g1,
+  h1,
+  a2,
+  b2,
+  c2,
+  d2,
+  e2,
+  f2,
+  g2,
+  h2,
+  a3,
+  b3,
+  c3,
+  d3,
+  e3,
+  f3,
+  g3,
+  h3,
+  a4,
+  b4,
+  c4,
+  d4,
+  e4,
+  f4,
+  g4,
+  h4,
+  a5,
+  b5,
+  c5,
+  d5,
+  e5,
+  f5,
+  g5,
+  h5,
+  a6,
+  b6,
+  c6,
+  d6,
+  e6,
+  f6,
+  g6,
+  h6,
+  a7,
+  b7,
+  c7,
+  d7,
+  e7,
+  f7,
+  g7,
+  h7,
+  a8,
+  b8,
+  c8,
+  d8,
+  e8,
+  f8,
+  g8,
+  h8,
+
+  NO_SQUARE
+};
 
 // Masks
 
@@ -45,6 +132,20 @@ constexpr Bitboard north_east(Bitboard b) { return (b & ~FILE_H) << 9; }
 constexpr Bitboard south_west(Bitboard b) { return (b & ~FILE_A) << 9; }
 constexpr Bitboard south_east(Bitboard b) { return (b & ~FILE_H) >> 7; }
 
+// I/O
+inline void printBitBoard(Bitboard b) {
+  std::cout << "\n";
+  for (int rank{7}; rank >= 0; rank--) {
+    std::cout << " " << (rank + 1) << " ";
+    for (int file{}; file < 8; file++) {
+      int square = rank * 8 + file;
+      std::cout << " " << (get_bit(b, square) ? 1 : 0);
+    }
+    std::cout << "\n";
+  }
+  std::cout << "\n    a b c d e f g h \n\n";
+}
+
 class Board {
 private:
   Bitboard pieces[12];
@@ -52,22 +153,7 @@ private:
   u32 moveCounter;
 
 public:
-  Board() { pieces[0] = 0x000000000000FF00ULL; }
-
-  void printBitBoard(Bitboard &b) {
-    std::cout << "\n";
-    for (int rank{7}; rank >= 0; rank--) {
-      std::cout << " " << (rank + 1) << " ";
-      for (int file{}; file < 8; file++) {
-        int square = rank * 8 + file;
-        std::cout << " " << (get_bit(b, square) ? 1 : 0);
-      }
-      std::cout << "\n";
-    }
-    std::cout << "\n    a b c d e f g h \n\n";
-  }
-
-  void printBoard() {}
+  Board() { pieces[WHITE_KING] = 0x0000000000000010ULL; }
 
   Bitboard getBitboard(int p) { return pieces[p]; }
 };
