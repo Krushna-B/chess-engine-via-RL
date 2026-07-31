@@ -1,8 +1,10 @@
 #pragma once
+#include <array>
 #include <cstdint>
 
 #include <iostream>
 #include <ostream>
+#include <unordered_map>
 
 // Aliaes
 using Bitboard = uint64_t;
@@ -122,6 +124,8 @@ constexpr Bitboard FILE_F = 0x2020202020202020ULL;
 constexpr Bitboard FILE_G = 0x4040404040404040ULL;
 constexpr Bitboard FILE_H = 0x8080808080808080ULL;
 
+constexpr Bitboard FILE_GH = FILE_G | FILE_H;
+constexpr Bitboard FILE_AB = FILE_A | FILE_B;
 // Movement Ops
 constexpr Bitboard west(Bitboard b) { return (b & ~FILE_A) >> 1; }
 constexpr Bitboard east(Bitboard b) { return (b & ~FILE_H) << 1; }
@@ -145,6 +149,25 @@ inline void printBitBoard(Bitboard b) {
   }
   std::cout << "\n    a b c d e f g h \n\n";
 }
+
+/**
+-----------------------
+Attacks
+------------------------
+ */
+// Knight LUT
+consteval std::array<Bitboard, 64> generateKnightLUT() {
+  std::array<Bitboard, 64> lut{};
+  for (auto i{0ULL}; i < 64; i++) {
+    const Bitboard knight = 1ULL << i;
+    lut[i] = ((knight & ~FILE_GH) << 10) | ((knight & ~FILE_AB) << 6) |
+             ((knight & ~FILE_H) << 17) | ((knight & ~FILE_A) << 15) |
+             ((knight & ~FILE_GH) >> 6) | ((knight & ~FILE_AB) >> 10) |
+             ((knight & ~FILE_H) >> 15) | ((knight & ~FILE_A) >> 17);
+  }
+  return lut;
+}
+inline constexpr auto KNIGHT_LUT = generateKnightLUT();
 
 class Board {
 private:
