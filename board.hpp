@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <ostream>
-#include <unordered_map>
 
 // Aliaes
 using Bitboard = uint64_t;
@@ -33,6 +32,7 @@ enum Piece {
   BLACK_KING
 };
 
+enum Color { WHITE, BLACK };
 enum Square {
   a1,
   b1,
@@ -167,7 +167,41 @@ consteval std::array<Bitboard, 64> generateKnightLUT() {
   }
   return lut;
 }
-inline constexpr auto KNIGHT_LUT = generateKnightLUT();
+inline constexpr auto KNIGHT_LUT = generateKnightLUT(); // KNIGHT LUT
+
+// King LUT
+consteval std::array<Bitboard, 64> generateKingLUT() {
+  std::array<Bitboard, 64> lut{};
+  for (auto i{0ULL}; i < 64; i++) {
+    const Bitboard king = 1ULL << i;
+    lut[i] = north(king) | south(king) | east(king) | west(king) |
+             north_east(king) | north_west(king) | south_east(king) |
+             south_west(king);
+  }
+  return lut;
+}
+inline constexpr auto KING_LUT = generateKingLUT();
+
+// Pawn LUT
+consteval std::array<std::array<Bitboard, 64>, 2> generatePawnLUT() {
+  std::array<std::array<Bitboard, 64>, 2> lut{};
+  // Iterate thought white and black , white is i=1, black is i=1
+  for (int i{}; i < 2; i++) {
+    for (auto square{0ULL}; square < 64; square++) {
+      const Bitboard pawn = 1ULL << square;
+      // White Pieces
+      if (i == static_cast<int>(WHITE)) {
+        lut[WHITE][square] = north_west(pawn) | north_east(pawn);
+      }
+      // Black Pieces
+      else {
+        lut[BLACK][square] = south_west(pawn) | south_east(pawn);
+      }
+    }
+  }
+  return lut;
+}
+inline constexpr auto PAWN_ATTACKS = generatePawnLUT();
 
 class Board {
 private:
