@@ -1,5 +1,6 @@
 #pragma once
 #include <array>
+#include <bit>
 #include <cstdint>
 
 #include <iostream>
@@ -13,7 +14,7 @@ using u32 = int32_t;
 // Bit Ops
 #define get_bit(board, square) (board & (1ULL << square))
 #define set_bit(board, square) (board |= (1ULL << square))
-#define clear_bit(board, square) (board = (0ULL << square))
+#define pop_bit(board, square) (board &= ~(1ULL << square))
 
 // Pieces
 enum Piece {
@@ -196,6 +197,146 @@ consteval std::array<std::array<Bitboard, 64>, 2> generatePawnLUT() {
   return lut;
 }
 inline constexpr auto PAWN_ATTACKS = generatePawnLUT();
+
+/**
+---------------------------
+Magic Bitboards
+---------------------------
+ */
+
+// Set occupany builder
+constexpr Bitboard set_occupancy(int idx, int bits_in_mask,
+                                 Bitboard attack_mask) {
+  Bitboard occupancy{0ULL};
+
+  // loop over range of bits within the attack mask
+  for (int i{}; i < bits_in_mask; i++) {
+    const int square = std::countr_zero(attack_mask);
+    pop_bit(attack_mask, square);
+
+    // make sure on the baord
+    if (idx & (1 << i)) {
+      occupancy |= 1ULL << square;
+    }
+  }
+  return occupancy;
+}
+
+/***
+Bishop LUT
+*/
+constexpr int MAX_BISHOP_OCCUPANCIES = 1 << 9;
+
+/**
+Helper mask for bishop at each position
+ */
+constexpr Bitboard mask_bishop_attcks(int square) {
+  Bitboard attacks{};
+  // Init rows and targets
+  int r, f;
+  const int tr = square / 8;
+  const int tf = square % 8;
+
+  // North-east
+  for (r = tr + 1, f = tf + 1; r <= 6 && f <= 6; r++, f++) {
+    attacks |= (1ULL << (r * 8 + f));
+  }
+
+  // South-east
+  for (r = tr - 1, f = tf + 1; r >= 1 && f <= 6; r--, f++) {
+    attacks |= (1ULL << (r * 8 + f));
+  }
+
+  // North-west
+  for (r = tr + 1, f = tf - 1; r <= 6 && f >= 1; r++, f--) {
+    attacks |= (1ULL << (r * 8 + f));
+  }
+
+  // South-west
+  for (r = tr - 1, f = tf - 1; r >= 1 && f >= 1; r--, f--) {
+    attacks |= (1ULL << (r * 8 + f));
+  }
+
+  return attacks;
+}
+
+// On the fly genration
+constexpr Bitboard bishop_attacks_on_the_fly(int square, Bitboard blockers) {
+  Bitboard attacks = 0ULL;
+  // Init rows and targets
+  int r, f;
+  const int tr = square / 8;
+  const int tf = square % 8;
+
+  // North-east
+  for (r = tr + 1, f = tf + 1; r <= 7 && f <= 7; r++, f++) {
+    const Bitboard target = 1ULL << ((r * 8 + f));
+    attacks |= target;
+    if (blockers & target) {
+      break;
+    }
+  }
+
+  // South-east
+  for (r = tr - 1, f = tf + 1; r >= 0 && f <= 7; r--, f++) {
+    const Bitboard target = 1ULL << ((r * 8 + f));
+    attacks |= target;
+    if (blockers & target) {
+      break;
+    }
+  }
+
+  // North-west
+  for (r = tr + 1, f = tf - 1; r <= 7 && f >= 0; r++, f--) {
+    const Bitboard target = 1ULL << ((r * 8 + f));
+    attacks |= target;
+    if (blockers & target) {
+      break;
+    }
+  }
+
+  // South-west
+  for (r = tr - 1, f = tf - 1; r >= 0 && f >= 0; r--, f--) {
+    const Bitboard target = 1ULL << ((r * 8 + f));
+    attacks |= target;
+    if (blockers & target) {
+      break;
+    }
+  }
+  return attacks;
+}
+
+/**
+Magic index generation
+ */
+constexpr std::size_t magic_index(Bitboard occupancy, Bitboard magic,
+                                  int relevant_bits) {
+  return static_cast<std::size_t>((occupancy * magic) >> (64 - relevant_bits));
+}
+
+consteval std::array<Bitboard, 64> generateBishopLUT() {
+  std::array<Bitboard, 64> lut{};
+  for (int square{}; square < 64; square++) {
+    const Bitboard attack_mask = mask_bishop_attcks(square);
+    const int relevant_bits = std::popcount(attack_mask);
+    const int occupancy_count = 1 << relevant_bits;
+
+    std::array<Bitboard, MAX_BISHOP_OCCUPANCIES> occupancies{};
+    std::array<Bitboard, MAX_BISHOP_OCCUPANCIES> attacks{};
+
+    for (int idx{}; idx < occupancy_count; idx++) {
+      occupancies[idx] = set_occupancy(idx, relevant_bits, attack_mask);
+      attacks[idx] = bishop_attacks_on_the_fly(square, occupancies[idx]);
+    }
+  }
+
+  return lut;
+}
+
+/**
+Generate Rook LUT
+Helper mask for rook at each position
+*/
 
 class Board {
 private:
