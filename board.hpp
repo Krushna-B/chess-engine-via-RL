@@ -185,19 +185,13 @@ inline constexpr auto KING_LUT = generateKingLUT();
 // Pawn LUT
 consteval std::array<std::array<Bitboard, 64>, 2> generatePawnLUT() {
   std::array<std::array<Bitboard, 64>, 2> lut{};
-  // Iterate thought white and black , white is i=1, black is i=1
-  for (int i{}; i < 2; i++) {
-    for (auto square{0ULL}; square < 64; square++) {
-      const Bitboard pawn = 1ULL << square;
-      // White Pieces
-      if (i == static_cast<int>(WHITE)) {
-        lut[WHITE][square] = north_west(pawn) | north_east(pawn);
-      }
-      // Black Pieces
-      else {
-        lut[BLACK][square] = south_west(pawn) | south_east(pawn);
-      }
-    }
+  for (auto square{0ULL}; square < 64; square++) {
+    const Bitboard pawn = 1ULL << square;
+    // White Pieces
+    lut[WHITE][square] = north_west(pawn) | north_east(pawn);
+
+    // Black Pieces
+    lut[BLACK][square] = south_west(pawn) | south_east(pawn);
   }
   return lut;
 }
