@@ -28,6 +28,6 @@ inline constexpr std::array<Bitboard, 64> BISHOP_MAGICS = {
     9371993026400223297ULL,
 };
 
-// inline constexpr std::array<Bitboard, 64> ROOK_MAGICS = {
+inline constexpr std::array<Bitboard, 64> ROOK_MAGICS = {
 
-// };
+};

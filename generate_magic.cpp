@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-  const auto bishop_magics = generate_all_bishop_magics();
+  const auto [bishop_magics, rook_magics] = generate_all_magics();
   //   const auto rook_magics = generate_all_rook_magics();
 
   std::ofstream bishop_output("magic_bishop_nums.txt");
@@ -26,5 +26,9 @@ int main() {
   }
   bishop_output.close();
 
+  for (auto &magic : rook_magics) {
+    rook_output << "    " << magic << "ULL,\n";
+  }
+  rook_output.close();
   return 0;
 }

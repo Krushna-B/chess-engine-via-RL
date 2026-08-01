@@ -1,12 +1,14 @@
 #pragma once
 #include <array>
 #include <bit>
+#include <cstddef>
 #include <cstdint>
 
 #include "magic_nums.hpp"
 #include <iostream>
 #include <ostream>
 #include <random>
+#include <tuple>
 
 // Aliaes
 using Bitboard = uint64_t;
@@ -241,6 +243,81 @@ inline Bitboard random_u64() {
   return engine();
 }
 
+/**
+Magic Number genreation template
+*/
+template <std::size_t MAX_OCCUPANCIES, typename MaskFunction,
+          typename AttackFunction>
+inline Bitboard find_magic(int square, MaskFunction mask_function,
+                           AttackFunction attack_function) {
+  const Bitboard attack_mask = mask_function(square);
+  const int relevant_bits = std::popcount(attack_mask);
+  const int occupancy_count = 1 << relevant_bits;
+
+  // Store all occupancies and all attacks
+  std::array<Bitboard, MAX_OCCUPANCIES> occupancies{};
+  std::array<Bitboard, MAX_OCCUPANCIES> attacks{};
+
+  // For each occupancy generate that occupany and it's attack
+  for (int idx{}; idx < occupancy_count; idx++) {
+    occupancies[idx] = set_occupancy(idx, relevant_bits, attack_mask);
+    attacks[idx] = attack_function(square, occupancies[idx]);
+  }
+
+  // Find magic number candidate via trial and error
+  while (true) {
+    // Create a spare magic_num
+    const Bitboard magic_num = random_u64() & random_u64() & random_u64();
+
+    // Early-rejection heuristic
+    if (std::popcount((attack_mask * magic_num) & 0xFF00000000000000ULL) < 6) {
+      continue;
+    }
+
+    std::cout << "Trying magic num: " << magic_num << " for square " << square
+              << std::endl;
+    std::array<Bitboard, MAX_OCCUPANCIES> used_attacks{};
+    std::array<bool, MAX_OCCUPANCIES> filled_occupanies{};
+    bool failed = false;
+
+    for (int idx{}; idx < occupancy_count; idx++) {
+      auto hash_index = magic_index(occupancies[idx], magic_num, relevant_bits);
+      if (!filled_occupanies[hash_index]) {
+        filled_occupanies[hash_index] = true;
+        used_attacks[hash_index] = attacks[idx];
+      } else if (used_attacks[hash_index] != attacks[idx]) {
+        failed = true;
+        break;
+      }
+    }
+    if (!failed) {
+      return magic_num;
+    }
+  }
+}
+constexpr Bitboard mask_bishop_attcks(int square);
+
+constexpr Bitboard bishop_attacks_on_the_fly(int square, Bitboard blockers);
+
+constexpr Bitboard mask_rook_attacks(int square);
+
+constexpr Bitboard rook_attacks_on_the_fly(int square, Bitboard blockers);
+
+// Magic number's for every single square a1,......h8
+// For both bishop and rook
+inline std::pair<std::array<Bitboard, 64>, std::array<Bitboard, 64>>
+generate_all_magics() {
+  std::array<Bitboard, 64> bishop_magics{};
+  std::array<Bitboard, 64> rook_magics{};
+  for (int square{}; square < 64; square++) {
+    bishop_magics[square] = find_magic<MAX_BISHOP_OCCUPANCIES>(
+        square, mask_bishop_attcks, bishop_attacks_on_the_fly);
+    rook_magics[square] = find_magic<MAX_ROOK_OCCUPANCIES>(
+        square, mask_rook_attacks, rook_attacks_on_the_fly);
+  }
+  return {bishop_magics, rook_magics};
+}
+
 /***
 Bishop LUT
 */
@@ -322,60 +399,6 @@ constexpr Bitboard bishop_attacks_on_the_fly(int square, Bitboard blockers) {
   }
   return attacks;
 }
-inline Bitboard find_bishop_magic(int square) {
-  const Bitboard attack_mask = mask_bishop_attcks(square);
-  const int relevant_bits = std::popcount(attack_mask);
-  const int occupancy_count = 1 << relevant_bits;
-
-  // Store all occupancies and all attacks
-  std::array<Bitboard, MAX_BISHOP_OCCUPANCIES> occupancies{};
-  std::array<Bitboard, MAX_BISHOP_OCCUPANCIES> attacks{};
-
-  // For each occupancy generate that occupany and it's attack
-  for (int idx{}; idx < occupancy_count; idx++) {
-    occupancies[idx] = set_occupancy(idx, relevant_bits, attack_mask);
-    attacks[idx] = bishop_attacks_on_the_fly(square, occupancies[idx]);
-  }
-
-  // Find magic number candidate via trial and error
-  while (true) {
-    // Create a spare magic_num
-    const Bitboard magic_num = random_u64() & random_u64() & random_u64();
-
-    // Early-rejection heuristic
-    if (std::popcount((attack_mask * magic_num) & 0xFF00000000000000ULL) < 6) {
-      continue;
-    }
-
-    std::cout << "Trying magic num: " << magic_num << " for square " << square
-              << std::endl;
-    std::array<Bitboard, MAX_BISHOP_OCCUPANCIES> used_attacks{};
-    std::array<bool, MAX_BISHOP_OCCUPANCIES> filled_occupanies{};
-    bool failed = false;
-
-    for (int idx{}; idx < occupancy_count; idx++) {
-      auto hash_index = magic_index(occupancies[idx], magic_num, relevant_bits);
-      if (!filled_occupanies[hash_index]) {
-        filled_occupanies[hash_index] = true;
-        used_attacks[hash_index] = attacks[idx];
-      } else if (used_attacks[hash_index] != attacks[idx]) {
-        failed = true;
-        break;
-      }
-    }
-    if (!failed) {
-      return magic_num;
-    }
-  }
-}
-// Magic number's for every single square a1,......h8
-inline std::array<Bitboard, 64> generate_all_bishop_magics() {
-  std::array<Bitboard, 64> magics{};
-  for (int square{}; square < 64; square++) {
-    magics[square] = find_bishop_magic(square);
-  }
-  return magics;
-}
 
 /***
 Build the Bishop LUT
@@ -415,6 +438,124 @@ consteval BISHOP_TABLE generateBishopLUT() {
 inline constexpr BISHOP_TABLE BISHOP_TABLES = generateBishopLUT();
 
 /**
+------------------
 Generate Rook LUT
+-----------------
 Helper mask for rook at each position
 */
+constexpr Bitboard mask_rook_attacks(int square) {
+  Bitboard mask = 0ULL;
+
+  const int tr = square / 8;
+  const int tf = square % 8;
+
+  // North
+  for (int r = tr + 1; r <= 6; ++r) {
+    mask |= 1ULL << (r * 8 + tf);
+  }
+
+  // South
+  for (int r = tr - 1; r >= 1; --r) {
+    mask |= 1ULL << (r * 8 + tf);
+  }
+
+  // East
+  for (int f = tf + 1; f <= 6; ++f) {
+    mask |= 1ULL << (tr * 8 + f);
+  }
+
+  // West
+  for (int f = tf - 1; f >= 1; --f) {
+    mask |= 1ULL << (tr * 8 + f);
+  }
+
+  return mask;
+}
+
+// On the fly gerneation for rook attacks
+constexpr Bitboard rook_attacks_on_the_fly(int square, Bitboard blockers) {
+  Bitboard attacks = 0ULL;
+
+  const int tr = square / 8;
+  const int tf = square % 8;
+
+  // North
+  for (int r = tr + 1; r <= 7; ++r) {
+    const Bitboard target = 1ULL << (r * 8 + tf);
+
+    attacks |= target;
+
+    if (blockers & target) {
+      break;
+    }
+  }
+
+  // South
+  for (int r = tr - 1; r >= 0; --r) {
+    const Bitboard target = 1ULL << (r * 8 + tf);
+
+    attacks |= target;
+
+    if (blockers & target) {
+      break;
+    }
+  }
+
+  // East
+  for (int f = tf + 1; f <= 7; ++f) {
+    const Bitboard target = 1ULL << (tr * 8 + f);
+
+    attacks |= target;
+
+    if (blockers & target) {
+      break;
+    }
+  }
+
+  // West
+  for (int f = tf - 1; f >= 0; --f) {
+    const Bitboard target = 1ULL << (tr * 8 + f);
+
+    attacks |= target;
+
+    if (blockers & target) {
+      break;
+    }
+  }
+
+  return attacks;
+}
+
+// struct ROOK_TABLE {
+//   std::array<Bitboard, 64> ROOK_MASKS{};
+//   std::array<int, 64> ROOK_RELEVANT_BITS{};
+//   std::array<std::array<Bitboard, MAX_ROOK_OCCUPANCIES>, 64>
+//       ROOK_LUT{}; // LUT[square][hash_idx]
+// };
+
+// consteval ROOK_TABLE generateRookLUT() {
+//   ROOK_TABLE rook_table{};
+
+//   for (int square{}; square < 64; square++) {
+//     const Bitboard mask = mask_rook_attacks(square);
+//     const int relevant_bits = std::popcount(mask);
+//     const int occupancy_count = 1 << relevant_bits;
+
+//     rook_table.ROOK_MASKS[square] = mask;
+//     rook_table.ROOK_RELEVANT_BITS[square] = relevant_bits;
+
+//     for (int occupancy_index = 0; occupancy_index < occupancy_count;
+//          ++occupancy_index) {
+//       const Bitboard occupancy =
+//           set_occupancy(occupancy_index, relevant_bits, mask);
+
+//       const std::size_t hashed_index =
+//           magic_index(occupancy, ROOK_MAGICS[square], relevant_bits);
+
+//       rook_table.ROOK_RELEVANT_BITS[square][hashed_index] =
+//           rook_attacks_on_the_fly(square, occupancy);
+//     }
+//   }
+//   return rook_table;
+// }
+// inline constexpr ROOK_TABLE ROOK_TABLES = generateRookLUT();
