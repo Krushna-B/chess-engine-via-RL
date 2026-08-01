@@ -135,7 +135,7 @@ constexpr Bitboard north(Bitboard b) { return (b & ~RANK_8) << 8; }
 constexpr Bitboard south(Bitboard b) { return (b & ~RANK_1) >> 8; }
 constexpr Bitboard north_west(Bitboard b) { return (b & ~FILE_A) << 7; }
 constexpr Bitboard north_east(Bitboard b) { return (b & ~FILE_H) << 9; }
-constexpr Bitboard south_west(Bitboard b) { return (b & ~FILE_A) << 9; }
+constexpr Bitboard south_west(Bitboard b) { return (b & ~FILE_A) >> 9; }
 constexpr Bitboard south_east(Bitboard b) { return (b & ~FILE_H) >> 7; }
 
 // I/O
@@ -234,9 +234,9 @@ constexpr std::size_t magic_index(Bitboard occupancy, Bitboard magic,
   return static_cast<std::size_t>((occupancy * magic) >> (64 - relevant_bits));
 }
 // Not crytographically secure, psuedo RNG
-Bitboard random_u64() {
+inline Bitboard random_u64() {
   // Seeded via hardware entropy
-  std::mt19937 engine{std::random_device{}()};
+  std::mt19937_64 engine{std::random_device{}()};
   return engine();
 }
 
@@ -321,7 +321,7 @@ constexpr Bitboard bishop_attacks_on_the_fly(int square, Bitboard blockers) {
   }
   return attacks;
 }
-constexpr Bitboard find_bishop_magic(int square) {
+inline Bitboard find_bishop_magic(int square) {
   const Bitboard attack_mask = mask_bishop_attcks(square);
   const int relevant_bits = std::popcount(attack_mask);
   const int occupancy_count = 1 << relevant_bits;
@@ -338,8 +338,16 @@ constexpr Bitboard find_bishop_magic(int square) {
 
   // Find magic number candidate via trial and error
   while (true) {
-    const Bitboard magic_num = random_u64();
+    // Create a spare magic_num
+    const Bitboard magic_num = random_u64() & random_u64() & random_u64();
 
+    // Early-rejection heuristic
+    if (std::popcount((attack_mask * magic_num) & 0xFF00000000000000ULL) < 6) {
+      continue;
+    }
+
+    std::cout << "Trying magic num: " << magic_num << " for square " << square
+              << std::endl;
     std::array<Bitboard, MAX_BISHOP_OCCUPANCIES> used_attacks{};
     std::array<bool, MAX_BISHOP_OCCUPANCIES> filled_occupanies{};
     bool failed = false;
@@ -348,7 +356,7 @@ constexpr Bitboard find_bishop_magic(int square) {
       auto hash_index = magic_index(occupancies[idx], magic_num, relevant_bits);
       if (!filled_occupanies[hash_index]) {
         filled_occupanies[hash_index] = true;
-        used_attacks[hash_index] = attacks[index];
+        used_attacks[hash_index] = attacks[idx];
       } else if (used_attacks[hash_index] != attacks[idx]) {
         failed = true;
         break;
@@ -360,35 +368,41 @@ constexpr Bitboard find_bishop_magic(int square) {
   }
 }
 // Magic number's for every single square a1,......h8
-constexpr std::array<Bitboard, 64> generate_all_bishop_magics() {
+inline std::array<Bitboard, 64> generate_all_bishop_magics() {
   std::array<Bitboard, 64> magics{};
   for (int square{}; square < 64; square++) {
     magics[square] = find_bishop_magic(square);
   }
-  return magics
+  return magics;
 }
 
-consteval std::array<Bitboard, 64> generateBishopLUT() {
-  std::array<Bitboard, 64> lut{};
-  for (int square{}; square < 64; square++) {
-  }
+/***
+Build the Bishop LUT
+ */
+// std::array<Bitboard, 64> BISHOP_MASKS{};
+// std::array<int, 64> BISHOP_RELEVANT_BITS{};
+// std::array<std::array<Bitboard, MAX_BISHOP_OCCUPANCIES>, 64>
+//     BISHOP_LUT{}; // LUT[square][hash_idx]
 
-  return lut;
-}
+// consteval void generateBishopLUT() {
+//   for (int square{}; square < 64; square++) {
+//     const Bitboard mask = mask_bishop_attcks(square);
+//     const int relevant_bits = std::popcount(mask);
+//     const int occupancy_count = 1 << relevant_bits;
+
+//     BISHOP_MASKS[square] = mask;
+//     BISHOP_RELEVANT_BITS[square] = relevant_bits;
+//     const Bitboard occupancy = set_occupancy(square, relevant_bits, mask);
+
+//     const std::size_t hashed_index =
+//         magic_index(occupancy, BISHOP_MAGICS[square], relevant_bits);
+
+//     BISHOP_LUT[square][hashed_index] =
+//         bishop_attacks_on_the_fly(square, occupancy);
+//   }
+// }
 
 /**
 Generate Rook LUT
 Helper mask for rook at each position
 */
-
-class Board {
-private:
-  Bitboard pieces[12];
-  bool turn;
-  u32 moveCounter;
-
-public:
-  Board() { pieces[WHITE_KING] = 0x0000000000000010ULL; }
-
-  Bitboard getBitboard(int p) { return pieces[p]; }
-};
