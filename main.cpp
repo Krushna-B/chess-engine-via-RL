@@ -1,4 +1,5 @@
-#include "board.hpp"
+#include "attacks.hpp"
+
 int main() {
 
   for (auto square : BISHOP_TABLES.BISHOP_LUT) {

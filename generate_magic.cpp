@@ -1,4 +1,4 @@
-#include "board.hpp"
+#include "attacks.hpp"
 #include <fstream>
 
 using namespace std;
@@ -13,22 +13,23 @@ int main() {
   if (!bishop_output.is_open()) {
     std::cerr << "Could not open bishop output file";
     return 1;
-  }
+    // }
 
-  //   if (!rook_output.is_open()) {
-  //     std::cerr << "Could not open rook output file";
-  //     return 1;
-  //   }
+    if (!rook_output.is_open()) {
+      std::cerr << "Could not open rook output file";
+      return 1;
+    }
 
-  for (auto &magic : bishop_magics) {
-    bishop_output << "    " << magic << "ULL,\n";
-    // rook_output << "    " << magic << "ULL,\n";
-  }
-  bishop_output.close();
+    for (auto &magic : bishop_magics) {
+      bishop_output << "    " << magic << "ULL,\n";
+      // rook_output << "    " << magic << "ULL,\n";
+    }
+    bishop_output.close();
 
-  for (auto &magic : rook_magics) {
-    rook_output << "    " << magic << "ULL,\n";
+    for (auto &magic : rook_magics) {
+      rook_output << "    " << magic << "ULL,\n";
+    }
+    rook_output.close();
+    return 0;
   }
-  rook_output.close();
-  return 0;
 }

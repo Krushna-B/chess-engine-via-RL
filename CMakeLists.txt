@@ -12,6 +12,15 @@ add_executable(generate_magic generate_magic.cpp)
 
 
 #Compiler Flags
-target_compile_options(main PRIVATE
-    -Wall -Wextra -Wpedantic -Wconversion -Wshadow)
 
+set(COMMON_COMPILE_OPTIONS
+    -Wall
+    -Wextra
+    -Wpedantic
+    -Wconversion
+    -Wshadow
+    -fconstexpr-steps=100000000
+)
+
+target_compile_options(main PRIVATE ${COMMON_COMPILE_OPTIONS})
+target_compile_options(generate_magic PRIVATE ${COMMON_COMPILE_OPTIONS})
