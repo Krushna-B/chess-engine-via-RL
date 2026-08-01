@@ -3,24 +3,21 @@
 
 using namespace std;
 
-void generate_all_bishop_magics();
-
 int main() {
-  generate_all_bishop_magics();
-  return 0;
-}
+  const auto bishop_magics = generate_all_bishop_magics();
 
-// Magic number's for every single square a1,......h8, and write to file
-void generate_all_bishop_magics() {
   std::ofstream bishop_output("magic_bishop_nums.txt");
-  for (int square{}; square < 64; square++) {
-    auto magic = find_bishop_magic(square);
-    std::cout << "Magic number for " << square << "is " << magic << std::endl;
-    if (!bishop_output.is_open()) {
-      std::cerr << "File could not be opened";
-      return;
-    }
-    bishop_output << magic << std::endl;
-    bishop_output.close();
+  std::ofstream rook_output("magic_rook_nums.txt");
+
+  if (!bishop_output.is_open()) {
+    std::cerr << "Could not open file";
+    return 1;
   }
+
+  for (auto &magic : bishop_magics) {
+    bishop_output << "    " << magic << "ULL,\n";
+  }
+  bishop_output.close();
+
+  return 0;
 }
