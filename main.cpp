@@ -1,3 +1,11 @@
+#include "board.hpp"
+int main() {
 
+  for (auto square : BISHOP_TABLES.BISHOP_LUT) {
+    for (auto &occupancy : square) {
+      printBitBoard(occupancy);
+    }
+  }
 
-int main() { return 0; }
+  return 0;
+}

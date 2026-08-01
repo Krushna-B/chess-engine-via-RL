@@ -3,6 +3,7 @@
 #include <bit>
 #include <cstdint>
 
+#include "magic_nums.hpp"
 #include <iostream>
 #include <ostream>
 #include <random>
@@ -379,28 +380,39 @@ inline std::array<Bitboard, 64> generate_all_bishop_magics() {
 /***
 Build the Bishop LUT
  */
-// std::array<Bitboard, 64> BISHOP_MASKS{};
-// std::array<int, 64> BISHOP_RELEVANT_BITS{};
-// std::array<std::array<Bitboard, MAX_BISHOP_OCCUPANCIES>, 64>
-//     BISHOP_LUT{}; // LUT[square][hash_idx]
+struct BISHOP_TABLE {
+  std::array<Bitboard, 64> BISHOP_MASKS{};
+  std::array<int, 64> BISHOP_RELEVANT_BITS{};
+  std::array<std::array<Bitboard, MAX_BISHOP_OCCUPANCIES>, 64>
+      BISHOP_LUT{}; // LUT[square][hash_idx]
+};
 
-// consteval void generateBishopLUT() {
-//   for (int square{}; square < 64; square++) {
-//     const Bitboard mask = mask_bishop_attcks(square);
-//     const int relevant_bits = std::popcount(mask);
-//     const int occupancy_count = 1 << relevant_bits;
+consteval BISHOP_TABLE generateBishopLUT() {
+  BISHOP_TABLE bishop_table{};
 
-//     BISHOP_MASKS[square] = mask;
-//     BISHOP_RELEVANT_BITS[square] = relevant_bits;
-//     const Bitboard occupancy = set_occupancy(square, relevant_bits, mask);
+  for (int square{}; square < 64; square++) {
+    const Bitboard mask = mask_bishop_attcks(square);
+    const int relevant_bits = std::popcount(mask);
+    const int occupancy_count = 1 << relevant_bits;
 
-//     const std::size_t hashed_index =
-//         magic_index(occupancy, BISHOP_MAGICS[square], relevant_bits);
+    bishop_table.BISHOP_MASKS[square] = mask;
+    bishop_table.BISHOP_RELEVANT_BITS[square] = relevant_bits;
 
-//     BISHOP_LUT[square][hashed_index] =
-//         bishop_attacks_on_the_fly(square, occupancy);
-//   }
-// }
+    for (int occupancy_index = 0; occupancy_index < occupancy_count;
+         ++occupancy_index) {
+      const Bitboard occupancy =
+          set_occupancy(occupancy_index, relevant_bits, mask);
+
+      const std::size_t hashed_index =
+          magic_index(occupancy, BISHOP_MAGICS[square], relevant_bits);
+
+      bishop_table.BISHOP_LUT[square][hashed_index] =
+          bishop_attacks_on_the_fly(square, occupancy);
+    }
+  }
+  return bishop_table;
+}
+inline constexpr BISHOP_TABLE BISHOP_TABLES = generateBishopLUT();
 
 /**
 Generate Rook LUT
