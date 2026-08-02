@@ -56,7 +56,7 @@ consteval std::array<std::array<Bitboard, 64>, 2> generatePawnLUT() {
   }
   return lut;
 }
-inline constexpr auto PAWN_ATTACKS = generatePawnLUT();
+inline constexpr auto PAWN_LUT = generatePawnLUT(); // [Color][Square]
 
 /**
 ---------------------------
@@ -408,3 +408,55 @@ consteval ROOK_TABLE generateRookLUT() {
   return rook_table;
 }
 inline constexpr ROOK_TABLE ROOK_TABLES = generateRookLUT();
+
+/***
+---------------------------
+API's to get attacks from look up tables
+*/
+constexpr Bitboard get_bishop_attacks(int square, Bitboard occupancy) {
+  const Bitboard mask = BISHOP_TABLES.BISHOP_MASKS[square];
+  const int relevant_bits = BISHOP_TABLES.BISHOP_RELEVANT_BITS[square];
+  // Remove squares that are not in the bishop's attack mask
+  occupancy &= mask;
+
+  const std::size_t hash_idx =
+      magic_index(occupancy, BISHOP_MAGICS[square], relevant_bits);
+
+  return BISHOP_TABLES.BISHOP_LUT[square][hash_idx];
+}
+
+constexpr Bitboard get_rook_attacks(int square, Bitboard occupancy) {
+  const Bitboard mask = ROOK_TABLES.ROOK_MASKS[square];
+
+  const int relevant_bits = ROOK_TABLES.ROOK_RELEVANT_BITS[square];
+
+  occupancy &= mask;
+
+  const std::size_t hash_idx =
+      magic_index(occupancy, ROOK_MAGICS[square], relevant_bits);
+
+  return ROOK_TABLES.ROOK_LUT[square][hash_idx];
+}
+
+constexpr Bitboard get_queen_attacks(int square, Bitboard occupancy) {
+  return (get_bishop_attacks(square, occupancy) |
+          get_rook_attacks(square, occupancy));
+}
+
+constexpr Bitboard get_knight_attakcs(int square) { return KNIGHT_LUT[square]; }
+
+constexpr Bitboard get_king_attacks(int square) { return KING_LUT[square]; }
+
+constexpr Bitboard get_pawn_attacks(int square, Color color) {
+  return PAWN_LUT[color][square];
+}
+
+/***
+Checking if a square is attacked by the current given side
+*/
+inline bool is_square_attacked(int square, Color color) {
+  // White Pawns
+  if (color == Color::WHITE && get_pawn_attacks[Color::BLACK][square])
+
+    return false;
+}

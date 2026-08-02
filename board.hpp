@@ -1,5 +1,6 @@
 #pragma once
 
+#include <array>
 #include <cstddef>
 #include <cstdint>
 
@@ -150,3 +151,17 @@ inline void printBitBoard(Bitboard b) {
   }
   std::cout << "\n    a b c d e f g h \n\n";
 }
+
+/**
+Board Class
+*/
+class Position {
+private:
+  std::array<std::array<Bitboard, 6>, 2> pieces{};
+  Bitboard white_occupancy{};
+  Bitboard black_occupancy{};
+  Bitboard all_occupancy{};
+
+public:
+  Bitboard get_pieces(Color color, Piece piece) { return pieces[color][piece]; }
+};

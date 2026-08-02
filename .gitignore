@@ -1,2 +1,6 @@
 #Build Directories
 build
+
+
+#Caches
+.cache
