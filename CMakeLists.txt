@@ -6,13 +6,21 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(main main.cpp)
+find_package(raylib CONFIG REQUIRED)
+
+add_executable(main 
+   move_generator.cpp
+    gui.cpp 
+    main.cpp
+    move_list.cpp)
+    
 add_executable(generate_magic generate_magic.cpp)
 
 
+#Linked Libraries
+target_link_libraries(main PRIVATE raylib)
 
 #Compiler Flags
-
 set(COMMON_COMPILE_OPTIONS
     -Wall
     -Wextra

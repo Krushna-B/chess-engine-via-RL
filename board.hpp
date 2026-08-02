@@ -28,7 +28,7 @@ enum Piece {
   KING,
 };
 
-enum Color { WHITE, BLACK };
+enum Side { WHITE, BLACK };
 enum Square {
   a1,
   b1,
@@ -155,13 +155,13 @@ private:
   Bitboard white_occupancy{};
   Bitboard black_occupancy{};
   Bitboard all_occupancy{};
-  Color side_to_move{WHITE};
+  Side side_to_move{WHITE};
 
 public:
-  Bitboard get_piece(Color color, Piece piece) const {
+  Bitboard get_piece(Side color, Piece piece) const {
     return pieces[color][piece];
   }
-  Bitboard get_occupancy(Color color) const {
+  Bitboard get_occupancy(Side color) const {
     if (color == WHITE) {
       return white_occupancy;
     } else {
@@ -169,8 +169,49 @@ public:
     }
   }
   Bitboard get_all_occupancy() const { return all_occupancy; }
-  Color get_side_to_move() const { return side_to_move; }
-  Bitboard get_enimies(Color color) const {
+  Side get_side_to_move() const { return side_to_move; }
+  Bitboard get_enimies(Side color) const {
     return color == WHITE ? black_occupancy : white_occupancy;
+  }
+  void set_starting_position() {
+    pieces = {};
+    // White Pieces
+
+    pieces[WHITE][PAWN] = 0x000000000000FF00ULL;
+
+    pieces[WHITE][KNIGHT] = 0x0000000000000042ULL;
+
+    pieces[WHITE][BISHOP] = 0x0000000000000024ULL;
+
+    pieces[WHITE][ROOK] = 0x0000000000000081ULL;
+
+    pieces[WHITE][QUEEN] = 0x0000000000000008ULL;
+
+    pieces[WHITE][KING] = 0x0000000000000010ULL;
+
+    /*
+     * Black pieces
+     *
+     * Rank 7:
+     * p p p p p p p p
+     *
+     * Rank 8:
+     * r n b q k b n r
+     */
+    pieces[BLACK][PAWN] = 0x00FF000000000000ULL;
+
+    pieces[BLACK][KNIGHT] = 0x4200000000000000ULL;
+
+    pieces[BLACK][BISHOP] = 0x2400000000000000ULL;
+
+    pieces[BLACK][ROOK] = 0x8100000000000000ULL;
+
+    pieces[BLACK][QUEEN] = 0x0800000000000000ULL;
+
+    pieces[BLACK][KING] = 0x1000000000000000ULL;
+
+    side_to_move = Side::WHITE;
+
+    // en_passant_square_ = -1;
   }
 };

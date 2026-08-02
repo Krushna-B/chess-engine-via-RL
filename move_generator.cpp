@@ -1,4 +1,3 @@
-#include "Bitboard.hpp"
 #include "attacks.hpp"
 #include "board.hpp"
 #include "move_list.hpp"
@@ -16,11 +15,13 @@ void generate_queen_moves(MoveList &moves, const Position &position);
 
 void generate_king_moves(MoveList &moves, const Position &position);
 
-void add_promotions(MoveList &moves, int from, int to, MoveType type)
+void add_promotions(MoveList &moves, int from, int to, MoveType type);
 
-    // Helper function to pop the position of first 1 bit (Whihc is position of
-    // piece)
-    int pop_lsb(Bitboard &bitboard) {
+void generate_castling_moves(MoveList &moves, const Position &position);
+
+// Helper function to pop the position of first 1 bit (Whihc is position of
+// piece)
+int pop_lsb(Bitboard &bitboard) {
   const int square = static_cast<int>(std::countr_zero(bitboard));
 
   bitboard &= bitboard - 1;
@@ -44,7 +45,7 @@ void generate_all_psuedo_moves(MoveList &moves, Position &position) {
 }
 
 void generate_pawn_moves(MoveList &moves, const Position &position) {
-  const Color side = position.get_side_to_move();
+  const Side side = position.get_side_to_move();
   Bitboard pawns = position.get_piece(side, PAWN);
   Bitboard enimies = position.get_enimies(side);
   Bitboard all_occupancy = position.get_all_occupancy();
@@ -93,21 +94,21 @@ void generate_pawn_moves(MoveList &moves, const Position &position) {
       }
     }
 
-    // Generate en passant
-    const int en_passant_square = position.get_en_passant_square();
+    // // Generate en passant
+    // const int en_passant_square = position.get_en_passant_square();
 
-    if (en_passant_square != -1) {
-      const Bitboard en_passant_bit = 1ULL << en_passant_square;
+    // if (en_passant_square != -1) {
+    //   const Bitboard en_passant_bit = 1ULL << en_passant_square;
 
-      if ((get_pawn_attacks(from, side) & en_passant_bit) != 0ULL) {
-        moves.add(Move{from, en_passant_square, MoveType::EN_PASSANT});
-      }
-    }
+    //   if ((get_pawn_attacks(from, side) & en_passant_bit) != 0ULL) {
+    //     moves.add(Move{from, en_passant_square, MoveType::EN_PASSANT});
+    //   }
+    // }
   }
 }
 
 void generate_knight_moves(MoveList &moves, const Position &position) {
-  const Color side = position.get_side_to_move();
+  const Side side = position.get_side_to_move();
   Bitboard knights = position.get_piece(side, KNIGHT);
   Bitboard friendlies = position.get_occupancy(side);
 
@@ -117,7 +118,6 @@ void generate_knight_moves(MoveList &moves, const Position &position) {
 
     while (knight_attacks != 0ULL) {
       auto to = pop_lsb(knight_attacks);
-      const Bitboard target_square = 1ULL << to;
       moves.add(Move{from, to});
     }
   }
@@ -125,7 +125,7 @@ void generate_knight_moves(MoveList &moves, const Position &position) {
 
 void generate_bishop_moves(MoveList &moves, const Position &position) {
   // TODO:
-  const Color side = position.get_side_to_move();
+  const Side side = position.get_side_to_move();
   Bitboard bishops = position.get_piece(side, BISHOP);
   Bitboard friendlies = position.get_occupancy(side);
   Bitboard all_occupancy = position.get_all_occupancy();
@@ -136,7 +136,6 @@ void generate_bishop_moves(MoveList &moves, const Position &position) {
 
     while (bishop_attacks != 0ULL) {
       auto to = pop_lsb(bishop_attacks);
-      const Bitboard target_square = 1ULL << to;
       moves.add(Move{from, to});
     }
   }
@@ -144,7 +143,7 @@ void generate_bishop_moves(MoveList &moves, const Position &position) {
 
 void generate_rook_moves(MoveList &moves, const Position &position) {
 
-  const Color side = position.get_side_to_move();
+  const Side side = position.get_side_to_move();
   Bitboard rooks = position.get_piece(side, ROOK);
   Bitboard friendlies = position.get_occupancy(side);
   Bitboard all_occupancy = position.get_all_occupancy();
@@ -155,7 +154,6 @@ void generate_rook_moves(MoveList &moves, const Position &position) {
 
     while (rook_attacks != 0ULL) {
       auto to = pop_lsb(rook_attacks);
-      const Bitboard target_square = 1ULL << to;
       moves.add(Move{from, to});
     }
   }
@@ -163,7 +161,7 @@ void generate_rook_moves(MoveList &moves, const Position &position) {
 
 void generate_queen_moves(MoveList &moves, const Position &position) {
 
-  const Color side = position.get_side_to_move();
+  const Side side = position.get_side_to_move();
   Bitboard queen = position.get_piece(side, QUEEN);
   Bitboard friendlies = position.get_occupancy(side);
   Bitboard all_occupancy = position.get_all_occupancy();
@@ -174,14 +172,13 @@ void generate_queen_moves(MoveList &moves, const Position &position) {
 
     while (queen_attacks != 0ULL) {
       auto to = pop_lsb(queen_attacks);
-      const Bitboard target_square = 1ULL << to;
       moves.add(Move{from, to});
     }
   }
 }
 
 void generate_king_moves(MoveList &moves, const Position &position) {
-  const Color side = position.get_side_to_move();
+  const Side side = position.get_side_to_move();
   Bitboard king = position.get_piece(side, KING);
   Bitboard friendlies = position.get_occupancy(side);
 
@@ -191,13 +188,13 @@ void generate_king_moves(MoveList &moves, const Position &position) {
 
     while (king_attacks != 0ULL) {
       auto to = pop_lsb(king_attacks);
-      const Bitboard target_square = 1ULL << to;
       moves.add(Move{from, to});
     }
   }
 
-  // TODO: Generate castling moves
+  //   generate_castling_moves(moves, position);
 }
+// generate_castling_moves(moves, position) {}
 
 void add_promotions(MoveList &moves, int from, int to, MoveType type) {
   moves.add(Move{from, to, type, QUEEN});

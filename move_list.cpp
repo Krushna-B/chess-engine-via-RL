@@ -1,30 +1,19 @@
+#include "move_list.hpp"
 #include <array>
+#include <cassert>
 #include <cstddef>
 #include <cstdint>
+
 #include <sys/types.h>
 
-struct Move {
-  uint8_t from{};
-  uint8_t to{};
+void MoveList::add(Move move) {
+  assert(count < MAX_MOVES);
 
-  Move() = default;
+  moves[count] = move;
+  ++count;
+}
 
-  Move(int from_square, int to_square)
-      : from{static_cast<uint8_t>(from_square)}, to {
-    static_cast<uint8_t>(to_square)
-  }
-};
-
-class MoveList {
-private:
-  static constexpr std::size_t MAX_MOVES = 256;
-  std::array<Move, MAX_MOVES> moves{};
-  size_t count{};
-
-public:
-  void add(Move move) {
-    moves[count] = move;
-    count++;
-  };
-  void clear() { moves.fill(Move{}); }
-};
+void MoveList::clear() {
+  moves.fill(Move{});
+  count = 0;
+}

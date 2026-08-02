@@ -447,16 +447,6 @@ constexpr Bitboard get_knight_attakcs(int square) { return KNIGHT_LUT[square]; }
 
 constexpr Bitboard get_king_attacks(int square) { return KING_LUT[square]; }
 
-constexpr Bitboard get_pawn_attacks(int square, Color color) {
+constexpr Bitboard get_pawn_attacks(int square, Side color) {
   return PAWN_LUT[color][square];
-}
-
-/***
-Checking if a square is attacked by the current given side
-*/
-inline bool is_square_attacked(int square, Color color) {
-  // White Pawns
-  if (color == Color::WHITE && get_pawn_attacks[Color::BLACK][square])
-
-    return false;
 }
