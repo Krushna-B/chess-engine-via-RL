@@ -19,19 +19,13 @@ using u32 = int32_t;
 
 // Pieces
 enum Piece {
-  WHITE_PAWN,
-  WHITE_KNIGHT,
-  WHITE_BISHOP,
-  WHITE_ROOK,
-  WHITE_QUEEN,
-  WHITE_KING,
-
-  BLACK_PAWN,
-  BLACK_KNIGHT,
-  BLACK_BISHOP,
-  BLACK_ROOK,
-  BLACK_QUEEN,
-  BLACK_KING
+  NO_PIECE,
+  PAWN,
+  KNIGHT,
+  BISHOP,
+  ROOK,
+  QUEEN,
+  KING,
 };
 
 enum Color { WHITE, BLACK };
@@ -161,7 +155,22 @@ private:
   Bitboard white_occupancy{};
   Bitboard black_occupancy{};
   Bitboard all_occupancy{};
+  Color side_to_move{WHITE};
 
 public:
-  Bitboard get_pieces(Color color, Piece piece) { return pieces[color][piece]; }
+  Bitboard get_piece(Color color, Piece piece) const {
+    return pieces[color][piece];
+  }
+  Bitboard get_occupancy(Color color) const {
+    if (color == WHITE) {
+      return white_occupancy;
+    } else {
+      return black_occupancy;
+    }
+  }
+  Bitboard get_all_occupancy() const { return all_occupancy; }
+  Color get_side_to_move() const { return side_to_move; }
+  Bitboard get_enimies(Color color) const {
+    return color == WHITE ? black_occupancy : white_occupancy;
+  }
 };

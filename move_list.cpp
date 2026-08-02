@@ -22,4 +22,9 @@ private:
   size_t count{};
 
 public:
+  void add(Move move) {
+    moves[count] = move;
+    count++;
+  };
+  void clear() { moves.fill(Move{}); }
 };
