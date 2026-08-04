@@ -28,7 +28,7 @@ int pop_lsb(Bitboard &bitboard) {
   return square;
 }
 
-void generate_all_psuedo_moves(MoveList &moves, Position &position) {
+void generate_all_pseudo_moves(MoveList &moves, Position &position) {
   moves.clear();
   // Generate pawn moves
   generate_pawn_moves(moves, position);

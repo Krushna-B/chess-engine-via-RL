@@ -14,18 +14,19 @@ namespace gui {
 
 namespace {
 
-constexpr int SQUARE_SIZE = 80;
-constexpr int BOARD_X = 40;
-constexpr int BOARD_Y = 40;
+constexpr int SQUARE_SIZE = 90;
+constexpr int BOARD_X = 0;
+constexpr int BOARD_Y = 0;
 
 constexpr std::array<Piece, 6> PIECES{PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING};
 
 constexpr std::array<Side, 2> SIDES{Side::WHITE, Side::BLACK};
 
 // Custom raylib drawing colors.
-constexpr ::Color LIGHT_SQUARE_COLOR{235, 215, 185, 255};
+constexpr ::Color LIGHT_SQUARE_COLOR{253, 254, 223, 255};
+;
 
-constexpr ::Color DARK_SQUARE_COLOR{165, 115, 85, 255};
+constexpr ::Color DARK_SQUARE_COLOR{139, 164, 108, 255};
 
 constexpr ::Color WHITE_PIECE_COLOR{245, 245, 245, 255};
 
@@ -131,7 +132,8 @@ void draw_pieces(const Position &position) {
       Bitboard pieces = position.get_piece(side, piece);
 
       while (pieces != 0ULL) {
-        const int square = static_cast<int>(std::countr_zero(pieces));
+        const int square = static_cast<int>(
+            std::countr_zero(pieces)); // Pop LSB to get every piece position
 
         pieces &= pieces - 1;
 

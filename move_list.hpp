@@ -46,4 +46,6 @@ private:
 public:
   void add(Move move);
   void clear();
+  std::array<Move, MAX_MOVES> get_moves() { return moves; }
+  size_t get_count() { return count; }
 };

@@ -10,7 +10,7 @@
  * Pseudo-legal moves follow piece movement rules but may leave
  * the moving side's king in check
  */
-void generate_all_pseudo_moves(MoveList &moves, const Position &position);
+void generate_all_pseudo_moves(MoveList &moves, Position &position);
 
 /**
  * Generates pawn moves, including:
