@@ -443,7 +443,7 @@ constexpr Bitboard get_queen_attacks(int square, Bitboard occupancy) {
           get_rook_attacks(square, occupancy));
 }
 
-constexpr Bitboard get_knight_attakcs(int square) { return KNIGHT_LUT[square]; }
+constexpr Bitboard get_knight_attacks(int square) { return KNIGHT_LUT[square]; }
 
 constexpr Bitboard get_king_attacks(int square) { return KING_LUT[square]; }
 

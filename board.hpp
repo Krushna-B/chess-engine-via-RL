@@ -98,6 +98,13 @@ enum Square {
 
   NO_SQUARE
 };
+// Stores whether each type of castling is possible
+enum CastlingRight : std::uint8_t {
+  WHITE_KINGSIDE = 1 << 0,
+  WHITE_QUEENSIDE = 1 << 1,
+  BLACK_KINGSIDE = 1 << 2,
+  BLACK_QUEENSIDE = 1 << 3
+};
 
 // Masks
 
@@ -175,6 +182,9 @@ private:
   Bitboard black_occupancy{};
   Bitboard all_occupancy{};
   Side side_to_move{WHITE};
+  Square en_passant_square{NO_SQUARE};
+  std::uint8_t castling_rights{WHITE_KINGSIDE | WHITE_QUEENSIDE |
+                               BLACK_KINGSIDE | BLACK_QUEENSIDE};
 
 public:
   Bitboard get_piece(Side side, Piece piece) const {
@@ -187,11 +197,27 @@ public:
       return black_occupancy;
     }
   }
+
   Bitboard get_all_occupancy() const { return all_occupancy; }
   Side get_side_to_move() const { return side_to_move; }
   Bitboard get_enimies(Side color) const {
     return color == WHITE ? black_occupancy : white_occupancy;
   }
+  // En Passant APIs
+  Square get_en_passant_square() const { return en_passant_square; }
+
+  void set_en_passant_square(Square square) { en_passant_square = square; }
+  // Castling APIs
+  bool has_castling_rights(CastlingRight right) {
+    return (castling_rights & right) != 0;
+  }
+  void remove_castling_rights(CastlingRight right) {
+    castling_rights &= ~(1 << right);
+  }
+  void clear_castling_rights() { castling_rights = 0; }
+
+  //--------------
+  // Starting Postion
   void set_starting_position() {
     pieces = {};
     // White Pieces
@@ -230,9 +256,9 @@ public:
     pieces[BLACK][KING] = 0x1000000000000000ULL;
 
     side_to_move = Side::WHITE;
+    clear_castling_rights();
     update_occupancies();
-
-    // en_passant_square_ = -1;
+    set_en_passant_square(NO_SQUARE);
   }
   void update_occupancies() {
     white_occupancy = 0;
