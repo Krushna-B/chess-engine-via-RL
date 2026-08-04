@@ -5,6 +5,12 @@
 #include "move_list.hpp"
 
 /**
+Generates all of the legal moves for the current moving side
+
+
+*/
+
+/**
  * Generates all pseudo-legal moves for the side currently
 
  * Pseudo-legal moves follow piece movement rules but may leave
@@ -36,3 +42,8 @@ void generate_queen_moves(MoveList &moves, const Position &position);
  * These are pseudo-legal king moves
  */
 void generate_king_moves(MoveList &moves, const Position &position);
+
+/***
+Checks whether the given square is under attack
+*/
+bool is_square_attacked(Position &position, Square square, Side attacking_side);

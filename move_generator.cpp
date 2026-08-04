@@ -3,6 +3,10 @@
 #include "move_list.hpp"
 #include <bit>
 
+void generate_legal_moves(MoveList &moves, Position &position);
+
+void generate_all_pseudo_moves(MoveList &moves, Position &position);
+
 void generate_pawn_moves(MoveList &moves, const Position &position);
 
 void generate_knight_moves(MoveList &moves, const Position &position);
@@ -32,6 +36,29 @@ int pop_lsb(Bitboard &bitboard) {
 //  Helper to get opposite side
 constexpr Side opposite_side(Side side) {
   return side == WHITE ? BLACK : WHITE;
+}
+
+// The top line function that generates all the legal moves in the position
+void generate_legal_moves(MoveList &legal_moves, Position &position) {
+  MoveList pseudo_moves{};
+  generate_all_pseudo_moves(pseudo_moves,
+                            position); // Genrate all of our pseudo moves
+
+  // Empty legal move
+  legal_moves.clear();
+
+  const Side side = position.get_side_to_move();
+
+  for (auto &move : pseudo_moves.get_moves()) {
+    Position test_position = position;
+    if (!test_position.make_move(move)) {
+      continue;
+    }
+    if (!test_position.is_in_check(side)) {
+      pseudo_moves.add(move);
+    }
+  }
+  return;
 }
 
 void generate_all_pseudo_moves(MoveList &moves, Position &position) {

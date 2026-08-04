@@ -1,5 +1,7 @@
 #pragma once
 
+#include "move_generator.hpp"
+#include "move_list.hpp"
 #include <array>
 #include <cstddef>
 #include <cstdint>
@@ -186,6 +188,18 @@ private:
   std::uint8_t castling_rights{WHITE_KINGSIDE | WHITE_QUEENSIDE |
                                BLACK_KINGSIDE | BLACK_QUEENSIDE};
 
+  void update_occupancies() {
+    white_occupancy = 0;
+    black_occupancy = 0;
+
+    for (Piece piece : {PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING}) {
+      white_occupancy |= pieces[WHITE][piece];
+      black_occupancy |= pieces[BLACK][piece];
+    }
+
+    all_occupancy = white_occupancy | black_occupancy;
+  }
+
 public:
   Bitboard get_piece(Side side, Piece piece) const {
     return pieces[side][piece];
@@ -260,17 +274,7 @@ public:
     update_occupancies();
     set_en_passant_square(NO_SQUARE);
   }
-  void update_occupancies() {
-    white_occupancy = 0;
-    black_occupancy = 0;
 
-    for (Piece piece : {PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING}) {
-      white_occupancy |= pieces[WHITE][piece];
-      black_occupancy |= pieces[BLACK][piece];
-    }
-
-    all_occupancy = white_occupancy | black_occupancy;
-  }
   void print_position() const {
     constexpr char piece_symbols[2][6] = {{'P', 'N', 'B', 'R', 'Q', 'K'},
                                           {'p', 'n', 'b', 'r', 'q', 'k'}};
@@ -300,4 +304,16 @@ public:
 
     std::cout << "\n   a b c d e f g h\n\n";
   }
+
+  //-------------
+  bool is_in_check(Side side) {
+    const auto king = get_piece(side, KING);
+    const Square king_square = static_cast<Square>(std::countr_zero(king));
+    const Side enemy = side == WHITE ? BLACK : WHITE;
+
+    return is_square_attacked(*this, king_square, enemy);
+  }
+
+  // Designing the Make move function to make moves on the board
+  bool make_move(Move &move) {}
 };
