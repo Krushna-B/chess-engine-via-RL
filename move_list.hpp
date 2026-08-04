@@ -16,25 +16,22 @@ enum class MoveType : std::uint8_t {
 };
 
 struct Move {
-  uint8_t from{};
-  uint8_t to{};
+  Square from{NO_SQUARE};
+  Square to{NO_SQUARE};
   MoveType type{MoveType::QUIET};
   Piece promotion_piece{NO_PIECE};
 
   Move() = default;
 
-  Move(int from_square, int to_square)
-      : from{static_cast<uint8_t>(from_square)},
-        to{static_cast<uint8_t>(to_square)} {}
+  Move(Square from_square, Square to_square)
+      : from{(from_square)}, to{(to_square)} {}
 
-  Move(int from_square, int to_square, MoveType type)
-      : from{static_cast<uint8_t>(from_square)},
-        to{static_cast<uint8_t>(to_square)}, type{type} {}
+  Move(Square from_square, Square to_square, MoveType type)
+      : from{(from_square)}, to{(to_square)}, type{type} {}
 
-  Move(int from_square, int to_square, MoveType type, Piece piece)
-      : from{static_cast<uint8_t>(from_square)},
-        to{static_cast<uint8_t>(to_square)}, type{type},
-        promotion_piece{piece} {}
+  Move(Square from_square, Square to_square, MoveType type, Piece piece)
+      : from(from_square), to{(to_square)}, type{type}, promotion_piece{piece} {
+  }
 };
 
 class MoveList {
@@ -48,4 +45,5 @@ public:
   void clear();
   std::array<Move, MAX_MOVES> get_moves() { return moves; }
   size_t get_count() { return count; }
+  void print() const;
 };

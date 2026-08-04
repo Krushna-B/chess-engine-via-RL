@@ -67,8 +67,8 @@ void generate_pawn_moves(MoveList &moves, const Position &position) {
       if (rank == promotion_rank) {
         add_promotions(moves, from, one_step, MoveType::PROMOTION);
       } else {
-        moves.add(Move{from, one_step, MoveType::QUIET});
-        moves.add(Move{from, one_step});
+        moves.add(Move{static_cast<Square>(from), static_cast<Square>(one_step),
+                       MoveType::QUIET});
       }
 
       // If square infront is empty and starting then possible to do double
@@ -77,7 +77,8 @@ void generate_pawn_moves(MoveList &moves, const Position &position) {
         const int two_steps = from + (2 * direction);
         const Bitboard two_steps_bit = 1ULL << two_steps;
         if ((all_occupancy & two_steps_bit) == 0ULL) {
-          moves.add(Move{from, two_steps});
+          moves.add(
+              Move{static_cast<Square>(from), static_cast<Square>(two_steps)});
         }
       }
     }
@@ -90,7 +91,8 @@ void generate_pawn_moves(MoveList &moves, const Position &position) {
       if (rank == promotion_rank) {
         add_promotions(moves, from, to, MoveType::PROMOTION_CAPTURE);
       } else {
-        moves.add(Move{from, to, MoveType::CAPTURE});
+        moves.add(Move{static_cast<Square>(from), static_cast<Square>(to),
+                       MoveType::CAPTURE});
       }
     }
 
@@ -118,7 +120,7 @@ void generate_knight_moves(MoveList &moves, const Position &position) {
 
     while (knight_attacks != 0ULL) {
       auto to = pop_lsb(knight_attacks);
-      moves.add(Move{from, to});
+      moves.add(Move{static_cast<Square>(from), static_cast<Square>(to)});
     }
   }
 }
@@ -136,7 +138,7 @@ void generate_bishop_moves(MoveList &moves, const Position &position) {
 
     while (bishop_attacks != 0ULL) {
       auto to = pop_lsb(bishop_attacks);
-      moves.add(Move{from, to});
+      moves.add(Move{static_cast<Square>(from), static_cast<Square>(to)});
     }
   }
 }
@@ -154,7 +156,7 @@ void generate_rook_moves(MoveList &moves, const Position &position) {
 
     while (rook_attacks != 0ULL) {
       auto to = pop_lsb(rook_attacks);
-      moves.add(Move{from, to});
+      moves.add(Move{static_cast<Square>(from), static_cast<Square>(to)});
     }
   }
 }
@@ -172,7 +174,7 @@ void generate_queen_moves(MoveList &moves, const Position &position) {
 
     while (queen_attacks != 0ULL) {
       auto to = pop_lsb(queen_attacks);
-      moves.add(Move{from, to});
+      moves.add(Move{static_cast<Square>(from), static_cast<Square>(to)});
     }
   }
 }
@@ -188,7 +190,7 @@ void generate_king_moves(MoveList &moves, const Position &position) {
 
     while (king_attacks != 0ULL) {
       auto to = pop_lsb(king_attacks);
-      moves.add(Move{from, to});
+      moves.add(Move{static_cast<Square>(from), static_cast<Square>(to)});
     }
   }
 
@@ -197,8 +199,12 @@ void generate_king_moves(MoveList &moves, const Position &position) {
 // generate_castling_moves(moves, position) {}
 
 void add_promotions(MoveList &moves, int from, int to, MoveType type) {
-  moves.add(Move{from, to, type, QUEEN});
-  moves.add(Move{from, to, type, ROOK});
-  moves.add(Move{from, to, type, BISHOP});
-  moves.add(Move{from, to, type, KNIGHT});
+  moves.add(
+      Move{static_cast<Square>(from), static_cast<Square>(to), type, QUEEN});
+  moves.add(
+      Move{static_cast<Square>(from), static_cast<Square>(to), type, ROOK});
+  moves.add(
+      Move{static_cast<Square>(from), static_cast<Square>(to), type, BISHOP});
+  moves.add(
+      Move{static_cast<Square>(from), static_cast<Square>(to), type, KNIGHT});
 }

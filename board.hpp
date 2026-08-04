@@ -18,14 +18,15 @@ using u32 = int32_t;
 #define pop_bit(board, square) (board &= ~(1ULL << square))
 
 // Pieces
-enum Piece {
-  NO_PIECE,
+enum Piece : std::uint8_t {
   PAWN,
   KNIGHT,
   BISHOP,
   ROOK,
   QUEEN,
   KING,
+
+  NO_PIECE
 };
 
 enum Side { WHITE, BLACK };
@@ -146,23 +147,41 @@ inline void printBitBoard(Bitboard b) {
   std::cout << "\n    a b c d e f g h \n\n";
 }
 
+// Overloaded operator for printing square enum types
+inline std::ostream &operator<<(std::ostream &out, Square square) {
+  if (square == NO_SQUARE) {
+    return out << "NO_SQUARE";
+  }
+
+  const int value = static_cast<int>(square);
+
+  if (value < 0 || value >= 64) {
+    return out << "INVALID_SQUARE";
+  }
+
+  const char file = static_cast<char>('a' + value % 8);
+  const char rank = static_cast<char>('1' + value / 8);
+
+  return out << file << rank;
+}
+
 /**
 Board Class
 */
 class Position {
 private:
-  std::array<std::array<Bitboard, 6>, 2> pieces{};
+  std::array<std::array<Bitboard, 7>, 2> pieces{};
   Bitboard white_occupancy{};
   Bitboard black_occupancy{};
   Bitboard all_occupancy{};
   Side side_to_move{WHITE};
 
 public:
-  Bitboard get_piece(Side color, Piece piece) const {
-    return pieces[color][piece];
+  Bitboard get_piece(Side side, Piece piece) const {
+    return pieces[side][piece];
   }
-  Bitboard get_occupancy(Side color) const {
-    if (color == WHITE) {
+  Bitboard get_occupancy(Side side) const {
+    if (side == WHITE) {
       return white_occupancy;
     } else {
       return black_occupancy;
@@ -211,7 +230,48 @@ public:
     pieces[BLACK][KING] = 0x1000000000000000ULL;
 
     side_to_move = Side::WHITE;
+    update_occupancies();
 
     // en_passant_square_ = -1;
+  }
+  void update_occupancies() {
+    white_occupancy = 0;
+    black_occupancy = 0;
+
+    for (Piece piece : {PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING}) {
+      white_occupancy |= pieces[WHITE][piece];
+      black_occupancy |= pieces[BLACK][piece];
+    }
+
+    all_occupancy = white_occupancy | black_occupancy;
+  }
+  void print_position() const {
+    constexpr char piece_symbols[2][6] = {{'P', 'N', 'B', 'R', 'Q', 'K'},
+                                          {'p', 'n', 'b', 'r', 'q', 'k'}};
+
+    std::cout << '\n';
+
+    for (int rank = 7; rank >= 0; --rank) {
+      std::cout << rank + 1 << "  ";
+
+      for (int file = 0; file < 8; ++file) {
+        const int square = rank * 8 + file;
+        char symbol = '.';
+
+        for (int side = WHITE; side <= BLACK; ++side) {
+          for (int piece = PAWN; piece <= KING; ++piece) {
+            if (get_bit(pieces[side][piece], square)) {
+              symbol = piece_symbols[side][piece];
+            }
+          }
+        }
+
+        std::cout << symbol << ' ';
+      }
+
+      std::cout << '\n';
+    }
+
+    std::cout << "\n   a b c d e f g h\n\n";
   }
 };

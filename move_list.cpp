@@ -16,3 +16,9 @@ void MoveList::clear() {
   moves.fill(Move{});
   count = 0;
 }
+
+void MoveList::print() const {
+  for (std::size_t i = 0; i < count; ++i) {
+    std::cout << moves[i].from << " to " << moves[i].to << '\n';
+  }
+}
