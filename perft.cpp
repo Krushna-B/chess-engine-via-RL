@@ -17,7 +17,12 @@ std::uint64_t nodes = 0;
 
 int main() {
   Position position{};
-  position.set_starting_position();
+  if (!position.set_from_fen("r3k2r/p1ppqpb1/bn2pnp1/3PN3/"
+                             "1p2P3/2N2Q1p/PPPBBPPP/R3K2R "
+                             "w KQkq - 0 1")) {
+    std::cout << "Could not parse Kiwipete FEN\n";
+    return 1;
+  }
 
   nodes = 0;
 

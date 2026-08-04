@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <ostream>
+#include <string.h>
 
 // Aliaes
 using Bitboard = uint64_t;
@@ -191,6 +192,8 @@ private:
   Bitboard all_occupancy{};
   Side side_to_move{WHITE};
   Square en_passant_square{NO_SQUARE};
+  std::uint16_t halfmove_clock{0};
+  std::uint16_t fullmove_number{1};
   std::uint8_t castling_rights{WHITE_KINGSIDE | WHITE_QUEENSIDE |
                                BLACK_KINGSIDE | BLACK_QUEENSIDE};
 
@@ -206,6 +209,8 @@ public:
   Bitboard get_all_occupancy() const;
   Side get_side_to_move() const;
   Bitboard get_enimies(Side color) const;
+  std::uint16_t get_halfmove_clock() const;
+  std::uint16_t get_fullmove_number() const;
   // En Passant APIs
   Square get_en_passant_square() const;
   void set_en_passant_square(Square square);
@@ -219,4 +224,6 @@ public:
   bool is_in_check(Side side);
   // Designing the Make move function to make moves on the board
   bool make_move(const Move &move);
+  // FEN input
+  bool set_from_fen(const std::string &fen);
 };

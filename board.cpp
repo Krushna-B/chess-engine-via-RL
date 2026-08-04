@@ -2,6 +2,8 @@
 #include "move_generator.hpp"
 #include "move_list.hpp"
 #include <bit>
+#include <sstream>
+#include <string>
 
 void Position::update_occupancies() {
   white_occupancy = 0;
@@ -102,6 +104,10 @@ void Position::remove_castling_rights(CastlingRight right) {
 
 void Position::clear_castling_rights() { castling_rights = 0; }
 
+std::uint16_t Position::get_halfmove_clock() const { return halfmove_clock; }
+
+std::uint16_t Position::get_fullmove_number() const { return fullmove_number; }
+
 void Position::set_starting_position() {
   pieces = {};
   // White Pieces
@@ -138,6 +144,9 @@ void Position::set_starting_position() {
   pieces[BLACK][QUEEN] = 0x0800000000000000ULL;
 
   pieces[BLACK][KING] = 0x1000000000000000ULL;
+
+  halfmove_clock = 0;
+  fullmove_number = 1;
 
   side_to_move = Side::WHITE;
   clear_castling_rights();
@@ -352,7 +361,262 @@ bool Position::make_move(const Move &move) {
 
   // Update board occupanices
   update_occupancies();
+
+  if (moving_piece == PAWN || capturing_piece != NO_PIECE) {
+    halfmove_clock = 0;
+  } else {
+    ++halfmove_clock;
+  }
+
+  if (moving_side == BLACK) {
+    ++fullmove_number;
+  }
+
   // Change turn
   side_to_move = enemy_side;
+  return true;
+}
+
+// Add this in for testing
+bool Position::set_from_fen(const std::string &fen) {
+  std::istringstream stream{fen};
+
+  std::string board_field;
+  std::string side_field;
+  std::string castling_field;
+  std::string en_passant_field;
+
+  int parsed_halfmove_clock = 0;
+  int parsed_fullmove_number = 1;
+
+  // A complete FEN contains six fields.
+  if (!(stream >> board_field >> side_field >> castling_field >>
+        en_passant_field >> parsed_halfmove_clock >> parsed_fullmove_number)) {
+    return false;
+  }
+
+  // Reject additional unexpected fields.
+  std::string extra_field;
+  if (stream >> extra_field) {
+    return false;
+  }
+
+  if (parsed_halfmove_clock < 0 || parsed_fullmove_number < 1) {
+    return false;
+  }
+
+  // Parse into a temporary Position so a failed parse does not corrupt
+  // the current position.
+  Position parsed{};
+
+  parsed.pieces = {};
+  parsed.white_occupancy = 0ULL;
+  parsed.black_occupancy = 0ULL;
+  parsed.all_occupancy = 0ULL;
+
+  parsed.side_to_move = WHITE;
+  parsed.en_passant_square = NO_SQUARE;
+  parsed.castling_rights = 0;
+
+  /*
+   * Parse the board.
+   *
+   * FEN begins at rank 8 and moves toward rank 1.
+   */
+  int rank = 7;
+  int file = 0;
+
+  for (const char symbol : board_field) {
+    if (symbol == '/') {
+      // Every completed rank must contain exactly eight squares.
+      if (file != 8 || rank == 0) {
+        return false;
+      }
+
+      --rank;
+      file = 0;
+      continue;
+    }
+
+    // Digits represent consecutive empty squares.
+    if (symbol >= '1' && symbol <= '8') {
+      file += symbol - '0';
+
+      if (file > 8) {
+        return false;
+      }
+
+      continue;
+    }
+
+    if (file >= 8) {
+      return false;
+    }
+
+    Side piece_side;
+    Piece piece;
+
+    switch (symbol) {
+    case 'P':
+      piece_side = WHITE;
+      piece = PAWN;
+      break;
+
+    case 'N':
+      piece_side = WHITE;
+      piece = KNIGHT;
+      break;
+
+    case 'B':
+      piece_side = WHITE;
+      piece = BISHOP;
+      break;
+
+    case 'R':
+      piece_side = WHITE;
+      piece = ROOK;
+      break;
+
+    case 'Q':
+      piece_side = WHITE;
+      piece = QUEEN;
+      break;
+
+    case 'K':
+      piece_side = WHITE;
+      piece = KING;
+      break;
+
+    case 'p':
+      piece_side = BLACK;
+      piece = PAWN;
+      break;
+
+    case 'n':
+      piece_side = BLACK;
+      piece = KNIGHT;
+      break;
+
+    case 'b':
+      piece_side = BLACK;
+      piece = BISHOP;
+      break;
+
+    case 'r':
+      piece_side = BLACK;
+      piece = ROOK;
+      break;
+
+    case 'q':
+      piece_side = BLACK;
+      piece = QUEEN;
+      break;
+
+    case 'k':
+      piece_side = BLACK;
+      piece = KING;
+      break;
+
+    default:
+      return false;
+    }
+
+    const int square = rank * 8 + file;
+
+    set_bit(parsed.pieces[piece_side][piece], square);
+
+    ++file;
+  }
+
+  // The parser must finish at the end of rank 1.
+  if (rank != 0 || file != 8) {
+    return false;
+  }
+
+  /*
+   * Parse side to move.
+   */
+  if (side_field == "w") {
+    parsed.side_to_move = WHITE;
+  } else if (side_field == "b") {
+    parsed.side_to_move = BLACK;
+  } else {
+    return false;
+  }
+
+  /*
+   * Parse castling rights.
+   */
+  if (castling_field != "-") {
+    for (const char right : castling_field) {
+      switch (right) {
+      case 'K':
+        parsed.castling_rights |= static_cast<std::uint8_t>(WHITE_KINGSIDE);
+        break;
+
+      case 'Q':
+        parsed.castling_rights |= static_cast<std::uint8_t>(WHITE_QUEENSIDE);
+        break;
+
+      case 'k':
+        parsed.castling_rights |= static_cast<std::uint8_t>(BLACK_KINGSIDE);
+        break;
+
+      case 'q':
+        parsed.castling_rights |= static_cast<std::uint8_t>(BLACK_QUEENSIDE);
+        break;
+
+      default:
+        return false;
+      }
+    }
+  }
+
+  /*
+   * Parse en passant target square.
+   */
+  if (en_passant_field != "-") {
+    if (en_passant_field.size() != 2) {
+      return false;
+    }
+
+    const char ep_file = en_passant_field[0];
+    const char ep_rank = en_passant_field[1];
+
+    if (ep_file < 'a' || ep_file > 'h') {
+      return false;
+    }
+
+    // A FEN en passant target can only be on rank 3 or rank 6.
+    if (ep_rank != '3' && ep_rank != '6') {
+      return false;
+    }
+
+    const int file_index = ep_file - 'a';
+    const int rank_index = ep_rank - '1';
+    const int square_index = rank_index * 8 + file_index;
+
+    parsed.en_passant_square = static_cast<Square>(square_index);
+  }
+
+  /*
+   * Store these if Position has the corresponding members.
+   */
+  parsed.halfmove_clock = parsed_halfmove_clock;
+  parsed.fullmove_number = parsed_fullmove_number;
+
+  parsed.update_occupancies();
+
+  /*
+   * Ensure each side has exactly one king.
+   */
+  if (std::popcount(parsed.pieces[WHITE][KING]) != 1 ||
+      std::popcount(parsed.pieces[BLACK][KING]) != 1) {
+    return false;
+  }
+
+  // Parsing succeeded, so replace the current position
+  *this = parsed;
+
   return true;
 }
