@@ -49,14 +49,18 @@ void generate_legal_moves(MoveList &legal_moves, Position &position) {
   legal_moves.clear();
 
   const Side side = position.get_side_to_move();
+  const auto &move_array = pseudo_moves.get_moves();
 
-  for (auto &move : pseudo_moves.get_moves()) {
+  for (std::size_t i = 0; i < pseudo_moves.get_count(); ++i) {
+    const Move &move = move_array[i];
+
     Position test_position = position;
+
     if (!test_position.make_move(move)) {
       continue;
     }
     if (!test_position.is_in_check(side)) {
-      pseudo_moves.add(move);
+      legal_moves.add(move);
     }
   }
   return;

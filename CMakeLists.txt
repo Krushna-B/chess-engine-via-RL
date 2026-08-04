@@ -16,6 +16,8 @@ add_executable(main
     move_list.cpp)
     
 add_executable(generate_magic generate_magic.cpp)
+add_executable(perft perft.cpp board.cpp
+    move_generator.cpp  move_list.cpp)
 
 
 #Linked Libraries
@@ -33,3 +35,4 @@ set(COMMON_COMPILE_OPTIONS
 
 target_compile_options(main PRIVATE ${COMMON_COMPILE_OPTIONS})
 target_compile_options(generate_magic PRIVATE ${COMMON_COMPILE_OPTIONS})
+target_compile_options(perft PRIVATE ${COMMON_COMPILE_OPTIONS})
