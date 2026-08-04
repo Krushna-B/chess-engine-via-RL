@@ -3,6 +3,9 @@
 #include "move_list.hpp"
 #include <chrono>
 #include <functional>
+#include <iostream>
+
+std::string DEPTH;
 
 void perft_driver(int depth, Position &position);
 
@@ -16,10 +19,11 @@ int main() {
   Position position{};
   position.set_starting_position();
 
-  const int depth = 6;
   nodes = 0;
 
-  profile([&]() { perft_driver(depth, position); });
+  std::cin >> DEPTH;
+
+  profile([&]() { perft_driver(std::stoi(DEPTH), position); });
 
   std::cout << "Total Nodes: " << nodes << '\n';
 
@@ -35,7 +39,7 @@ void perft_driver(int depth, Position &position) {
     return;
   }
   MoveList moves{};
-  generate_all_pseudo_moves(moves, position);
+  generate_legal_moves(moves, position);
   // std::cout << "Depth " << depth << " legal moves: " << moves.get_count()
   //           << '\n';
 

@@ -348,15 +348,14 @@ bool is_square_attacked(const Position &position, Square square,
   if (get_bishop_attacks(square_idx, occupancy) &
       position.get_piece(attacking_side, BISHOP)) {
     return true;
-
-    if (get_rook_attacks(square_idx, occupancy) &
-        position.get_piece(attacking_side, ROOK)) {
-      return true;
-    }
-    if (get_queen_attacks(square_idx, occupancy) &
-        position.get_piece(attacking_side, QUEEN)) {
-      return true;
-    }
-    return false;
   }
+  if (get_rook_attacks(square_idx, occupancy) &
+      position.get_piece(attacking_side, ROOK)) {
+    return true;
+  }
+  if (get_queen_attacks(square_idx, occupancy) &
+      position.get_piece(attacking_side, QUEEN)) {
+    return true;
+  }
+  return false;
 }
