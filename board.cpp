@@ -1,0 +1,358 @@
+#include "board.hpp"
+#include "move_generator.hpp"
+#include "move_list.hpp"
+#include <bit>
+
+void Position::update_occupancies() {
+  white_occupancy = 0;
+  black_occupancy = 0;
+
+  for (Piece piece : {PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING}) {
+    white_occupancy |= pieces[WHITE][piece];
+    black_occupancy |= pieces[BLACK][piece];
+  }
+
+  all_occupancy = white_occupancy | black_occupancy;
+}
+
+Piece Position::get_piece_on_square(Square square, Side side) {
+  for (Piece piece : {PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING}) {
+    if (get_bit(pieces[side][piece], square)) {
+      return piece;
+    }
+  }
+  return NO_PIECE;
+}
+
+void Position::update_castling_rights_for_move(Piece moving_piece,
+                                               Side moving_side, Square from,
+                                               Piece captured_piece,
+                                               Square captured_square) {
+  // King moved from its position
+  if (moving_piece == KING) {
+    if (moving_side == WHITE) {
+      remove_castling_rights(WHITE_KINGSIDE);
+      remove_castling_rights(WHITE_QUEENSIDE);
+    } else {
+      remove_castling_rights(BLACK_KINGSIDE);
+      remove_castling_rights(BLACK_QUEENSIDE);
+    }
+  }
+
+  // Rook moved from its position
+  if (moving_piece == ROOK) {
+    if (from == h1) {
+      remove_castling_rights(WHITE_KINGSIDE);
+    } else if (from == a1) {
+      remove_castling_rights(WHITE_QUEENSIDE);
+    } else if (from == h8) {
+      remove_castling_rights(BLACK_KINGSIDE);
+    } else if (from == a8) {
+      remove_castling_rights(BLACK_QUEENSIDE);
+    }
+  }
+
+  // Rook was captured on the position
+  if (captured_piece == ROOK) {
+    if (captured_square == h1) {
+      remove_castling_rights(WHITE_KINGSIDE);
+    } else if (captured_square == a1) {
+      remove_castling_rights(WHITE_QUEENSIDE);
+    } else if (captured_square == h8) {
+      remove_castling_rights(BLACK_KINGSIDE);
+    } else if (captured_square == a8) {
+      remove_castling_rights(BLACK_QUEENSIDE);
+    }
+  }
+}
+
+Bitboard Position::get_piece(Side side, Piece piece) const {
+  return pieces[side][piece];
+}
+
+Bitboard Position::get_occupancy(Side side) const {
+  if (side == WHITE) {
+    return white_occupancy;
+  } else {
+    return black_occupancy;
+  }
+}
+
+Bitboard Position::get_all_occupancy() const { return all_occupancy; }
+
+Side Position::get_side_to_move() const { return side_to_move; }
+
+Bitboard Position::get_enimies(Side color) const {
+  return color == WHITE ? black_occupancy : white_occupancy;
+}
+
+Square Position::get_en_passant_square() const { return en_passant_square; }
+
+void Position::set_en_passant_square(Square square) {
+  en_passant_square = square;
+}
+
+bool Position::has_castling_rights(CastlingRight right) const {
+  return (castling_rights & right) != 0;
+}
+
+void Position::remove_castling_rights(CastlingRight right) {
+  castling_rights &= ~(1 << right);
+}
+
+void Position::clear_castling_rights() { castling_rights = 0; }
+
+void Position::set_starting_position() {
+  pieces = {};
+  // White Pieces
+
+  pieces[WHITE][PAWN] = 0x000000000000FF00ULL;
+
+  pieces[WHITE][KNIGHT] = 0x0000000000000042ULL;
+
+  pieces[WHITE][BISHOP] = 0x0000000000000024ULL;
+
+  pieces[WHITE][ROOK] = 0x0000000000000081ULL;
+
+  pieces[WHITE][QUEEN] = 0x0000000000000008ULL;
+
+  pieces[WHITE][KING] = 0x0000000000000010ULL;
+
+  /*
+   * Black pieces
+   *
+   * Rank 7:
+   * p p p p p p p p
+   *
+   * Rank 8:
+   * r n b q k b n r
+   */
+  pieces[BLACK][PAWN] = 0x00FF000000000000ULL;
+
+  pieces[BLACK][KNIGHT] = 0x4200000000000000ULL;
+
+  pieces[BLACK][BISHOP] = 0x2400000000000000ULL;
+
+  pieces[BLACK][ROOK] = 0x8100000000000000ULL;
+
+  pieces[BLACK][QUEEN] = 0x0800000000000000ULL;
+
+  pieces[BLACK][KING] = 0x1000000000000000ULL;
+
+  side_to_move = Side::WHITE;
+  clear_castling_rights();
+  update_occupancies();
+  set_en_passant_square(NO_SQUARE);
+}
+
+void Position::print_position() const {
+  constexpr char piece_symbols[2][6] = {{'P', 'N', 'B', 'R', 'Q', 'K'},
+                                        {'p', 'n', 'b', 'r', 'q', 'k'}};
+
+  std::cout << '\n';
+
+  for (int rank = 7; rank >= 0; --rank) {
+    std::cout << rank + 1 << "  ";
+
+    for (int file = 0; file < 8; ++file) {
+      const int square = rank * 8 + file;
+      char symbol = '.';
+
+      for (int side = WHITE; side <= BLACK; ++side) {
+        for (int piece = PAWN; piece <= KING; ++piece) {
+          if (get_bit(pieces[side][piece], square)) {
+            symbol = piece_symbols[side][piece];
+          }
+        }
+      }
+
+      std::cout << symbol << ' ';
+    }
+
+    std::cout << '\n';
+  }
+
+  std::cout << "\n   a b c d e f g h\n\n";
+}
+
+bool Position::is_in_check(Side side) {
+  const auto king = get_piece(side, KING);
+  const Square king_square = static_cast<Square>(std::countr_zero(king));
+  const Side enemy = side == WHITE ? BLACK : WHITE;
+
+  return is_square_attacked(*this, king_square, enemy);
+}
+
+// Designing the Make move function to make moves on the board
+bool Position::make_move(const Move &move) {
+  const int from = static_cast<int>(move.from);
+  const int to = static_cast<int>(move.to);
+
+  // Validation
+  if (from > 63 or from < 0 or to > 63 || to < 0) {
+    return false;
+  }
+
+  const Side moving_side = get_side_to_move();
+  const Side enemy_side = opposite_side(moving_side);
+  Piece moving_piece = get_piece_on_square(move.from, moving_side); // Get Piece
+
+  if (moving_piece == NO_PIECE) {
+    return false;
+  }
+  // Check if square is a friendly peice
+  if (get_bit(get_occupancy(moving_side), to)) {
+    return false;
+  }
+  Piece capturing_piece = NO_PIECE;
+  Square captured_square = NO_SQUARE;
+
+  // Get the type of move it is for special move cases
+  const bool normal_capture = move.type == MoveType::CAPTURE ||
+                              move.type == MoveType::PROMOTION_CAPTURE;
+
+  const bool promotion = move.type == MoveType::PROMOTION ||
+                         move.type == MoveType::PROMOTION_CAPTURE;
+
+  const bool en_passant = move.type == MoveType::EN_PASSANT;
+
+  const bool kingside_castle = move.type == MoveType::KING_CASTLE;
+
+  const bool queenside_castle = move.type == MoveType::QUEEN_CASTLE;
+
+  // Getting the capturing piece if its a capture
+  if (normal_capture) {
+    capturing_piece = get_piece_on_square(move.to, enemy_side);
+    if (capturing_piece == NO_PIECE) {
+      return false;
+    }
+
+    captured_square = move.to;
+  }
+  // En Passant Case
+  if (en_passant) {
+    if (moving_piece != PAWN) {
+      return false;
+    }
+
+    if (move.to != en_passant_square) {
+      return false;
+    }
+
+    // En passant destination must be empty
+    if (get_bit(all_occupancy, to)) {
+      return false;
+    }
+
+    const int captured_index = moving_side == WHITE ? to - 8 : to + 8;
+
+    if (captured_index < 0 || captured_index >= 64) {
+      return false;
+    }
+
+    captured_square = static_cast<Square>(captured_index);
+
+    capturing_piece = get_piece_on_square(captured_square, enemy_side);
+
+    if (capturing_piece != PAWN) {
+      return false;
+    }
+  }
+
+  // Validation on promotion type move
+  if (promotion) {
+    if (moving_piece != PAWN) {
+      return false;
+    }
+
+    if (move.promotion_piece != QUEEN && move.promotion_piece != ROOK &&
+        move.promotion_piece != BISHOP && move.promotion_piece != KNIGHT) {
+      return false;
+    }
+  }
+
+  // Handling Castling Validation and setting rook movement squares
+  Square rook_from = NO_SQUARE;
+  Square rook_to = NO_SQUARE;
+  if (kingside_castle) {
+    if (moving_piece != KING) {
+      return false;
+    }
+    if (moving_side == WHITE) {
+      if (move.from != e1 || move.to != g1 ||
+          !has_castling_rights(WHITE_KINGSIDE)) {
+        return false;
+      }
+
+      rook_from = h1;
+      rook_to = f1;
+    } else {
+      if (move.from != e8 || move.to != g8 ||
+          !has_castling_rights(BLACK_KINGSIDE)) {
+        return false;
+      }
+
+      rook_from = h8;
+      rook_to = f8;
+    }
+  }
+
+  if (queenside_castle) {
+    if (moving_piece != KING) {
+      return false;
+    }
+
+    if (moving_side == WHITE) {
+      if (move.from != e1 || move.to != c1 ||
+          !has_castling_rights(WHITE_QUEENSIDE)) {
+        return false;
+      }
+
+      rook_from = a1;
+      rook_to = d1;
+    } else {
+      if (move.from != e8 || move.to != c8 ||
+          !has_castling_rights(BLACK_QUEENSIDE)) {
+        return false;
+      }
+
+      rook_from = a8;
+      rook_to = d8;
+    }
+  }
+  // Update castling rights
+  update_castling_rights_for_move(moving_piece, moving_side, move.from,
+                                  capturing_piece, captured_square);
+
+  // Remove piece from that position
+  pop_bit(pieces[moving_side][moving_piece], move.from);
+
+  if (capturing_piece != NO_PIECE) {
+    pop_bit(pieces[enemy_side][capturing_piece], captured_square);
+  }
+  // If it is a promotion caputre have to set to new promotion piece
+  if (promotion) {
+    set_bit(pieces[moving_side][move.promotion_piece], to);
+  } else {
+    set_bit(pieces[moving_side][moving_piece], to);
+  }
+
+  // Movment of the rook on castling
+  if (kingside_castle || queenside_castle) {
+    pop_bit(pieces[moving_side][ROOK], static_cast<int>(rook_from));
+
+    set_bit(pieces[moving_side][ROOK], static_cast<int>(rook_to));
+  }
+  // Update en passant square
+  en_passant_square = NO_SQUARE;
+  // If the double push then possible square for en passant
+  if (move.type == MoveType::DOUBLE_PAWN_PUSH) {
+    en_passant_square = static_cast<Square>((from + to) / 2);
+  }
+
+  // Update board occupanices
+  update_occupancies();
+  // Change turn
+  side_to_move = enemy_side;
+  return true;
+}

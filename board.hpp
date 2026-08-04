@@ -1,7 +1,5 @@
 #pragma once
 
-#include "move_generator.hpp"
-#include "move_list.hpp"
 #include <array>
 #include <cstddef>
 #include <cstdint>
@@ -174,6 +172,14 @@ inline std::ostream &operator<<(std::ostream &out, Square square) {
   return out << file << rank;
 }
 
+// Forward declarations break the include cycle with move_list.hpp /
+// move_generator.hpp: Position only uses Move by reference and calls
+// is_square_attacked, so it needs the names, not the full definitions.
+struct Move;
+class Position;
+bool is_square_attacked(const Position &position, Square square,
+                        Side attacking_side);
+
 /**
 Board Class
 */
@@ -188,132 +194,29 @@ private:
   std::uint8_t castling_rights{WHITE_KINGSIDE | WHITE_QUEENSIDE |
                                BLACK_KINGSIDE | BLACK_QUEENSIDE};
 
-  void update_occupancies() {
-    white_occupancy = 0;
-    black_occupancy = 0;
-
-    for (Piece piece : {PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING}) {
-      white_occupancy |= pieces[WHITE][piece];
-      black_occupancy |= pieces[BLACK][piece];
-    }
-
-    all_occupancy = white_occupancy | black_occupancy;
-  }
+  void update_occupancies();
+  Piece get_piece_on_square(Square square, Side side);
+  void update_castling_rights_for_move(Piece moving_piece, Side moving_side,
+                                       Square from, Piece captured_piece,
+                                       Square captured_square);
 
 public:
-  Bitboard get_piece(Side side, Piece piece) const {
-    return pieces[side][piece];
-  }
-  Bitboard get_occupancy(Side side) const {
-    if (side == WHITE) {
-      return white_occupancy;
-    } else {
-      return black_occupancy;
-    }
-  }
-
-  Bitboard get_all_occupancy() const { return all_occupancy; }
-  Side get_side_to_move() const { return side_to_move; }
-  Bitboard get_enimies(Side color) const {
-    return color == WHITE ? black_occupancy : white_occupancy;
-  }
+  Bitboard get_piece(Side side, Piece piece) const;
+  Bitboard get_occupancy(Side side) const;
+  Bitboard get_all_occupancy() const;
+  Side get_side_to_move() const;
+  Bitboard get_enimies(Side color) const;
   // En Passant APIs
-  Square get_en_passant_square() const { return en_passant_square; }
-
-  void set_en_passant_square(Square square) { en_passant_square = square; }
+  Square get_en_passant_square() const;
+  void set_en_passant_square(Square square);
   // Castling APIs
-  bool has_castling_rights(CastlingRight right) {
-    return (castling_rights & right) != 0;
-  }
-  void remove_castling_rights(CastlingRight right) {
-    castling_rights &= ~(1 << right);
-  }
-  void clear_castling_rights() { castling_rights = 0; }
-
-  //--------------
+  bool has_castling_rights(CastlingRight right) const;
+  void remove_castling_rights(CastlingRight right);
+  void clear_castling_rights();
   // Starting Postion
-  void set_starting_position() {
-    pieces = {};
-    // White Pieces
-
-    pieces[WHITE][PAWN] = 0x000000000000FF00ULL;
-
-    pieces[WHITE][KNIGHT] = 0x0000000000000042ULL;
-
-    pieces[WHITE][BISHOP] = 0x0000000000000024ULL;
-
-    pieces[WHITE][ROOK] = 0x0000000000000081ULL;
-
-    pieces[WHITE][QUEEN] = 0x0000000000000008ULL;
-
-    pieces[WHITE][KING] = 0x0000000000000010ULL;
-
-    /*
-     * Black pieces
-     *
-     * Rank 7:
-     * p p p p p p p p
-     *
-     * Rank 8:
-     * r n b q k b n r
-     */
-    pieces[BLACK][PAWN] = 0x00FF000000000000ULL;
-
-    pieces[BLACK][KNIGHT] = 0x4200000000000000ULL;
-
-    pieces[BLACK][BISHOP] = 0x2400000000000000ULL;
-
-    pieces[BLACK][ROOK] = 0x8100000000000000ULL;
-
-    pieces[BLACK][QUEEN] = 0x0800000000000000ULL;
-
-    pieces[BLACK][KING] = 0x1000000000000000ULL;
-
-    side_to_move = Side::WHITE;
-    clear_castling_rights();
-    update_occupancies();
-    set_en_passant_square(NO_SQUARE);
-  }
-
-  void print_position() const {
-    constexpr char piece_symbols[2][6] = {{'P', 'N', 'B', 'R', 'Q', 'K'},
-                                          {'p', 'n', 'b', 'r', 'q', 'k'}};
-
-    std::cout << '\n';
-
-    for (int rank = 7; rank >= 0; --rank) {
-      std::cout << rank + 1 << "  ";
-
-      for (int file = 0; file < 8; ++file) {
-        const int square = rank * 8 + file;
-        char symbol = '.';
-
-        for (int side = WHITE; side <= BLACK; ++side) {
-          for (int piece = PAWN; piece <= KING; ++piece) {
-            if (get_bit(pieces[side][piece], square)) {
-              symbol = piece_symbols[side][piece];
-            }
-          }
-        }
-
-        std::cout << symbol << ' ';
-      }
-
-      std::cout << '\n';
-    }
-
-    std::cout << "\n   a b c d e f g h\n\n";
-  }
-
-  //-------------
-  bool is_in_check(Side side) {
-    const auto king = get_piece(side, KING);
-    const Square king_square = static_cast<Square>(std::countr_zero(king));
-    const Side enemy = side == WHITE ? BLACK : WHITE;
-
-    return is_square_attacked(*this, king_square, enemy);
-  }
-
+  void set_starting_position();
+  void print_position() const;
+  bool is_in_check(Side side);
   // Designing the Make move function to make moves on the board
-  bool make_move(Move &move) {}
+  bool make_move(const Move &move);
 };

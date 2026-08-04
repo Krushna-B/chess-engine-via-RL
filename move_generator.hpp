@@ -6,10 +6,9 @@
 
 /**
 Generates all of the legal moves for the current moving side
-
-
 */
 
+void generate_legal_moves(MoveList &moves, Position &position);
 /**
  * Generates all pseudo-legal moves for the side currently
 
@@ -46,4 +45,8 @@ void generate_king_moves(MoveList &moves, const Position &position);
 /***
 Checks whether the given square is under attack
 */
-bool is_square_attacked(Position &position, Square square, Side attacking_side);
+bool is_square_attacked(const Position &position, Square square,
+                        Side attacking_side);
+
+// Return the opposit eside
+constexpr Side opposite_side(Side side);

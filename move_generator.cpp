@@ -23,7 +23,8 @@ void add_promotions(MoveList &moves, int from, int to, MoveType type);
 
 void generate_castling_moves(MoveList &moves, const Position &position);
 
-bool is_square_attacked(Position &position, Square square, Side attacking_side);
+bool is_square_attacked(const Position &position, Square square,
+                        Side attacking_side);
 
 // Helper function to pop the position of first 1 bit (Whihc is position of
 // piece)
@@ -130,16 +131,18 @@ void generate_pawn_moves(MoveList &moves, const Position &position) {
       }
     }
 
-    // // Generate en passant
-    // const int en_passant_square = position.get_en_passant_square();
+    // Generate en passant
+    const int en_passant_square = position.get_en_passant_square();
 
-    // if (en_passant_square != -1) {
-    //   const Bitboard en_passant_bit = 1ULL << en_passant_square;
+    if (en_passant_square != -1) {
+      const Bitboard en_passant_bit = 1ULL << en_passant_square;
 
-    //   if ((get_pawn_attacks(from, side) & en_passant_bit) != 0ULL) {
-    //     moves.add(Move{from, en_passant_square, MoveType::EN_PASSANT});
-    //   }
-    // }
+      if ((get_pawn_attacks(from, side) & en_passant_bit) != 0ULL) {
+        moves.add(Move{static_cast<Square>(from),
+                       static_cast<Square>(en_passant_square),
+                       MoveType::EN_PASSANT});
+      }
+    }
   }
 }
 
@@ -242,7 +245,7 @@ void generate_king_moves(MoveList &moves, const Position &position) {
   generate_castling_moves(moves, position);
 }
 
-void generate_castling_moves(MoveList &moves, Position &position) {
+void generate_castling_moves(MoveList &moves, const Position &position) {
   const Side side = position.get_side_to_move();
   const Side enemy_side = opposite_side(side);
 
@@ -321,7 +324,7 @@ void add_promotions(MoveList &moves, int from, int to, MoveType type) {
 // Castling Helpers
 
 // See if a square is under attack
-bool is_square_attacked(Position &position, Square square,
+bool is_square_attacked(const Position &position, Square square,
                         Side attacking_side) {
   const int square_idx = static_cast<int>(square);
   const Bitboard occupancy = position.get_all_occupancy();

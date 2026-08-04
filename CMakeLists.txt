@@ -8,9 +8,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(raylib CONFIG REQUIRED)
 
-add_executable(main 
+add_executable(main
+    board.cpp
     move_generator.cpp
-    gui.cpp 
+    gui.cpp
     main.cpp
     move_list.cpp)
     
