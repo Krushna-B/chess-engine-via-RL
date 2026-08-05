@@ -99,7 +99,8 @@ bool Position::has_castling_rights(CastlingRight right) const {
 }
 
 void Position::remove_castling_rights(CastlingRight right) {
-  castling_rights &= ~(1 << right);
+  castling_rights &=
+      static_cast<std::uint8_t>(~static_cast<std::uint8_t>(right));
 }
 
 void Position::clear_castling_rights() { castling_rights = 0; }

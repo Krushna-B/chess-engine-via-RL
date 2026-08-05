@@ -136,14 +136,15 @@ void generate_pawn_moves(MoveList &moves, const Position &position) {
     }
 
     // Generate en passant
-    const int en_passant_square = position.get_en_passant_square();
+    const Square en_passant_square = position.get_en_passant_square();
 
-    if (en_passant_square != -1) {
-      const Bitboard en_passant_bit = 1ULL << en_passant_square;
+    if (en_passant_square != NO_SQUARE) {
+      const int ep_index = static_cast<int>(en_passant_square);
 
-      if ((get_pawn_attacks(from, side) & en_passant_bit) != 0ULL) {
-        moves.add(Move{static_cast<Square>(from),
-                       static_cast<Square>(en_passant_square),
+      const Bitboard en_passant_bit = 1ULL << ep_index;
+
+      if (get_pawn_attacks(from, side) & en_passant_bit) {
+        moves.add(Move{static_cast<Square>(from), en_passant_square,
                        MoveType::EN_PASSANT});
       }
     }
@@ -276,8 +277,7 @@ void generate_castling_moves(MoveList &moves, const Position &position) {
                            !get_bit(position.get_all_occupancy(), b1);
       bool squares_safe = !is_square_attacked(position, e1, enemy_side) &&
                           !is_square_attacked(position, d1, enemy_side) &&
-                          !is_square_attacked(position, c1, enemy_side) &&
-                          !is_square_attacked(position, b1, enemy_side);
+                          !is_square_attacked(position, c1, enemy_side);
       if (king_pos && rook_pos && squares_empty && squares_safe) {
         moves.add(Move{e1, c1, MoveType::QUEEN_CASTLE});
       }
@@ -305,8 +305,7 @@ void generate_castling_moves(MoveList &moves, const Position &position) {
                            !get_bit(position.get_all_occupancy(), b8);
       bool squares_safe = !is_square_attacked(position, e8, enemy_side) &&
                           !is_square_attacked(position, d8, enemy_side) &&
-                          !is_square_attacked(position, c8, enemy_side) &&
-                          !is_square_attacked(position, b8, enemy_side);
+                          !is_square_attacked(position, c8, enemy_side);
       if (king_pos && rook_pos && squares_empty && squares_safe) {
         moves.add(Move{e8, c8, MoveType::QUEEN_CASTLE});
       }
