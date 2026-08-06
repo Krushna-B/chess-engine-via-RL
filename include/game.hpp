@@ -9,7 +9,13 @@ enum class GameStatus {
   ONGOING,
   BLACK_WINS,
   WHITE_WINS,
-  DRAW,
+  DRAW_AGREEMENT,
+
+  BLACK_RESIGNS,
+  WHITE_RESIGNS,
+
+  WHITE_RAN_OUT_OF_TIME,
+  BLACK_RAN_OUT_OF_TIME,
 
   STALEMATE,
   DRAW_FIFTY_MOVE,
@@ -28,8 +34,8 @@ inline std::ostream &operator<<(std::ostream &os, GameStatus s) {
   case GameStatus::WHITE_WINS:
     return os << "White Wins";
 
-  case GameStatus::DRAW:
-    return os << "Draw";
+  case GameStatus::DRAW_AGREEMENT:
+    return os << "Draw by Agreement";
   case GameStatus::STALEMATE:
     return os << "Draw due to Stalement";
 
@@ -60,7 +66,9 @@ public:
 
   MoveList get_legal_moves();
 
-  bool play_move(Move &move);
+  bool play_move(const Move &move);
+
+  void reset();
 
   std::vector<Move> get_move_history() const;
 };

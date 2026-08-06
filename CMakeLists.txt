@@ -15,6 +15,7 @@ add_executable(main
     src/main.cpp
     src/move_list.cpp
     src/game.cpp
+    src/game_controller.cpp
     src/random_engine.cpp)
 
 add_executable(generate_magic src/generate_magic.cpp)

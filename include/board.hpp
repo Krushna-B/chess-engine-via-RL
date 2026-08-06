@@ -6,7 +6,6 @@
 
 #include <iostream>
 #include <ostream>
-#include <string.h>
 
 // Aliaes
 using Bitboard = uint64_t;

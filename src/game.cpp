@@ -47,7 +47,14 @@ MoveList Game::get_legal_moves() {
   return all_moves;
 }
 
-bool Game::play_move(Move &move) {
+void Game::reset() {
+  position.set_starting_position();
+  moves_history.clear();
+  status = GameStatus::ONGOING;
+  update_result();
+}
+
+bool Game::play_move(const Move &move) {
   if (status != GameStatus::ONGOING) {
     return false;
   }

@@ -1,9 +1,9 @@
 #include "board.hpp"
 #include "game.hpp"
-#include "gui.hpp"
+#include "game_controller.hpp"
+
 #include "move_list.hpp"
 #include "random_engine.hpp"
-#include "raylib.h"
 #include <ostream>
 
 // raylib defines WHITE/BLACK as Color macros, which collide with
@@ -11,9 +11,18 @@
 #undef WHITE
 #undef BLACK
 
-void run_chess_app(Position position);
+const Side USER_SIDE = Side::WHITE;
+int run_chess_app(Side users_side);
 
-int main() {
+int main() { return run_chess_app(USER_SIDE); }
+
+int run_chess_app(Side users_side) {
+  GameController game_controller(users_side);
+  game_controller.run();
+  return 0;
+}
+
+int engines_play_against_each_other() {
   Game game{};
   int move_count{};
   constexpr auto max_moves = 500;
@@ -46,22 +55,4 @@ int main() {
 
   std::cout << "Game finished after " << move_count
             << " moves: " << "result is " << game.get_status() << std::endl;
-  return 0;
-}
-
-void run_chess_app(Position position) {
-  constexpr int window_width = 720;
-  constexpr int window_height = 720;
-
-  InitWindow(window_width, window_height, "Chess Engine");
-  SetTargetFPS(60);
-  while (!WindowShouldClose()) {
-    BeginDrawing();
-
-    gui::draw(position);
-
-    EndDrawing();
-  }
-
-  CloseWindow();
 }
