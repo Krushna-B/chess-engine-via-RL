@@ -17,6 +17,7 @@ void Game::update_result() {
     } else {
       status = GameStatus::STALEMATE;
     }
+    return;
   }
 
   // 50 Move Rule

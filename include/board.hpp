@@ -203,6 +203,7 @@ private:
                                        Square captured_square);
 
 public:
+  u64 hash() const;
   Bitboard get_piece(Side side, Piece piece) const;
   Bitboard get_occupancy(Side side) const;
   Bitboard get_all_occupancy() const;

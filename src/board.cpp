@@ -3,8 +3,60 @@
 #include "move_list.hpp"
 #include <bit>
 #include <cmath>
+#include <random>
 #include <sstream>
 #include <string>
+
+const u64 ZOBRIST_HASH_SEED = 0x1234ABCDULL;
+
+// Zobrist struct
+struct Zobrist {
+  u64 pieces[2][6][64];
+  u64 castling[16];
+  u64 en_passant_file[8];
+  u64 side;
+
+  Zobrist() {
+    std::mt19937_64 rng(ZOBRIST_HASH_SEED);
+    // Random init
+    for (auto &s : pieces)
+      for (auto &p : s)
+        for (auto &k : p)
+          k = rng();
+    for (auto &k : castling)
+      k = rng();
+    for (auto &k : en_passant_file)
+      k = rng();
+    side = rng();
+  }
+};
+const Zobrist ZOBRIST;
+
+/**
+Zobrist Hashing
+*/
+u64 Position::hash() const {
+  u64 hash = 0;
+
+  for (int s{}; s < 2; s++) {
+    for (int p{}; p < 6; p++) {
+      Bitboard b = pieces[s][p];
+      while (b) {
+        // For every piece
+        int sq = std::countr_zero(b);
+        b &= b - 1;
+        hash ^= ZOBRIST.pieces[s][p][sq];
+      }
+    }
+  }
+  hash ^= ZOBRIST.castling[castling_rights & 0xF];
+  if (en_passant_square != NO_SQUARE)
+    hash ^= ZOBRIST.en_passant_file[en_passant_square % 8];
+  if (side_to_move == BLACK)
+    hash ^= ZOBRIST.side;
+
+  return hash;
+}
 
 void Position::update_occupancies() {
   white_occupancy = 0;

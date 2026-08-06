@@ -15,7 +15,6 @@ const Side USER_SIDE = Side::WHITE;
 int run_chess_app(Side users_side);
 
 int main() { return run_chess_app(USER_SIDE); }
-
 int run_chess_app(Side users_side) {
   GameController game_controller(users_side);
   game_controller.run();
