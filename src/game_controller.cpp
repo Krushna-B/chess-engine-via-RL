@@ -3,6 +3,15 @@
 #include "gui.hpp"
 
 #include <iostream>
+#include <string>
+
+#ifndef ASSETS_DIR
+#define ASSETS_DIR "assets"
+#endif
+
+namespace {
+constexpr int UI_FONT_SIZE = 22; // base glyph size the font is rasterized at
+}
 
 GameController::GameController(Side starting_human_side)
     : human_side{starting_human_side},
@@ -15,6 +24,9 @@ void GameController::run() {
 
   SetTargetFPS(60);
 
+  gui::load_assets();
+  load_font();
+
   while (!WindowShouldClose()) {
     update();
 
@@ -23,6 +35,8 @@ void GameController::run() {
     EndDrawing();
   }
 
+  UnloadFont(ui_font);
+  gui::unload_assets();
   CloseWindow();
 }
 
@@ -372,36 +386,63 @@ void GameController::draw_move_highlights() const {
   }
 }
 
+void GameController::load_font() {
+  const std::string bundled = std::string(ASSETS_DIR) + "/fonts/Roboto-Regular.ttf";
+
+  // Prefer the bundled font, fall back to a macOS system font, then raylib's
+  // built-in default so the app always has something to draw with.
+  const char *macos_font = "/System/Library/Fonts/Supplemental/Arial.ttf";
+
+  if (FileExists(bundled.c_str())) {
+    ui_font = LoadFontEx(bundled.c_str(), UI_FONT_SIZE, nullptr, 0);
+  } else if (FileExists(macos_font)) {
+    ui_font = LoadFontEx(macos_font, UI_FONT_SIZE, nullptr, 0);
+  } else {
+    ui_font = GetFontDefault();
+  }
+
+  SetTextureFilter(ui_font.texture, TEXTURE_FILTER_BILINEAR);
+}
+
 void GameController::draw_status_overlay() const {
-  constexpr Color panel_color{10, 10, 10, 190};
+  constexpr Color bar_color{20, 20, 20, 255};
+  constexpr Color text_color{235, 235, 235, 255};
+  constexpr Color error_color{225, 90, 90, 255};
 
-  constexpr Color text_color{245, 245, 245, 255};
-
-  constexpr Color error_color{220, 70, 70, 255};
-
-  DrawRectangle(8, 8, 270, 72, panel_color);
+  // Bars above and below the board (the board occupies the middle strip).
+  DrawRectangle(0, 0, gui::WINDOW_WIDTH, gui::TOP_BAR, bar_color);
+  DrawRectangle(0, gui::TOP_BAR + gui::BOARD_SIZE, gui::WINDOW_WIDTH,
+                gui::BOTTOM_BAR, bar_color);
 
   const Side current_side = game.get_position().get_side_to_move();
 
-  DrawText(TextFormat("Human: %s | Engine: %s", side_name(human_side),
-                      side_name(engine_side)),
-           18, 15, 18, text_color);
+  // Top bar: matchup on the left, state on the right.
+  DrawTextEx(ui_font,
+             TextFormat("Human: %s   Engine: %s", side_name(human_side),
+                        side_name(engine_side)),
+             Vector2{16.0F, 17.0F}, UI_FONT_SIZE, 1.0F, text_color);
 
+  const char *state = nullptr;
+  Color state_color = text_color;
   if (controller_error) {
-    DrawText("Controller error - check terminal", 18, 42, 18, error_color);
-
-    return;
-  }
-
-  if (game.get_status() == GameStatus::ONGOING) {
-    DrawText(TextFormat("%s to move", side_name(current_side)), 18, 42, 18,
-             text_color);
+    state = "Controller error - check terminal";
+    state_color = error_color;
+  } else if (game.get_status() == GameStatus::ONGOING) {
+    state = TextFormat("%s to move", side_name(current_side));
   } else {
-    DrawText("Game over - press R to restart", 18, 42, 18, text_color);
+    state = "Game over";
   }
 
-  DrawText("W: play White   B: play Black   R: restart", 8, WINDOW_HEIGHT - 22,
-           16, text_color);
+  const Vector2 state_size =
+      MeasureTextEx(ui_font, state, UI_FONT_SIZE, 1.0F);
+  DrawTextEx(ui_font, state,
+             Vector2{gui::WINDOW_WIDTH - state_size.x - 16.0F, 17.0F},
+             UI_FONT_SIZE, 1.0F, state_color);
+
+  // Bottom bar: controls hint.
+  DrawTextEx(ui_font, "W: play White    B: play Black    R: restart",
+             Vector2{16.0F, gui::TOP_BAR + gui::BOARD_SIZE + 11.0F},
+             UI_FONT_SIZE, 1.0F, text_color);
 }
 
 Side GameController::opposite_side(Side side) {

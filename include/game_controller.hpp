@@ -1,6 +1,7 @@
 #pragma once
 
 #include "game.hpp"
+#include "gui.hpp"
 #include "move_list.hpp"
 #include "random_engine.hpp"
 
@@ -20,19 +21,21 @@ public:
   void run();
 
 private:
-  static constexpr int WINDOW_WIDTH = 720;
-  static constexpr int WINDOW_HEIGHT = 720;
+  static constexpr int WINDOW_WIDTH = gui::WINDOW_WIDTH;
+  static constexpr int WINDOW_HEIGHT = gui::WINDOW_HEIGHT;
 
   static constexpr double ENGINE_MOVE_DELAY = 0.35;
 
   Game game{};
   RandomEngine engine{};
+  Font ui_font{};
 
   Side human_side;
   Side engine_side;
 
-  Rectangle board_bounds{0.0F, 0.0F, static_cast<float>(WINDOW_WIDTH),
-                         static_cast<float>(WINDOW_HEIGHT)};
+  Rectangle board_bounds{
+      static_cast<float>(gui::BOARD_X), static_cast<float>(gui::BOARD_Y),
+      static_cast<float>(gui::BOARD_SIZE), static_cast<float>(gui::BOARD_SIZE)};
 
   MoveList legal_moves{};
 
@@ -64,6 +67,7 @@ private:
 
   bool square_contains_human_piece(Square square);
 
+  void load_font();
   void draw_move_highlights() const;
   void draw_status_overlay() const;
 

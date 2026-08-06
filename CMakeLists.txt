@@ -31,6 +31,9 @@ target_include_directories(perft PRIVATE include)
 #Linked Libraries
 target_link_libraries(main PRIVATE raylib)
 
+#Asset path (pieces/fonts) baked in so it resolves regardless of cwd
+target_compile_definitions(main PRIVATE ASSETS_DIR="${CMAKE_SOURCE_DIR}/assets")
+
 #Compiler Flags
 set(COMMON_COMPILE_OPTIONS
     -Wall

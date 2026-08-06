@@ -36,6 +36,17 @@ inline std::ostream &operator<<(std::ostream &os, GameStatus s) {
 
   case GameStatus::DRAW_AGREEMENT:
     return os << "Draw by Agreement";
+
+  case GameStatus::BLACK_RESIGNS:
+    return os << "White Wins (Black Resigned)";
+  case GameStatus::WHITE_RESIGNS:
+    return os << "Black Wins (White Resigned)";
+
+  case GameStatus::WHITE_RAN_OUT_OF_TIME:
+    return os << "Black Wins (White Timeout)";
+  case GameStatus::BLACK_RAN_OUT_OF_TIME:
+    return os << "White Wins (Black Timeout)";
+
   case GameStatus::STALEMATE:
     return os << "Draw due to Stalement";
 

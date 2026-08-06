@@ -4,3 +4,6 @@ build
 
 #Caches
 .cache
+
+#Data Aqusition Scripts
+scripts
