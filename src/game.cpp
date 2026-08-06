@@ -17,11 +17,12 @@ void Game::update_result() {
     } else {
       status = GameStatus::STALEMATE;
     }
+  }
 
-    if (position.get_halfmove_clock() >= 100) {
-      status = GameStatus::DRAW_FIFTY_MOVE;
-      return;
-    }
+  // 50 Move Rule
+  if (position.get_halfmove_clock() >= 100) {
+    status = GameStatus::DRAW_FIFTY_MOVE;
+    return;
   }
 
   // Check for insufficent material

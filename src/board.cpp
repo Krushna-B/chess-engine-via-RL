@@ -240,7 +240,7 @@ bool Position::has_insufficent_material() {
       const int rank = square_idx / 8;
 
       // Light squares vs dark
-      const bool is_light_square = ((file + rank) % 2) + 1;
+      const bool is_light_square = ((file + rank) % 2);
       if (is_light_square) {
         has_light_square_bishop = true;
       } else {
