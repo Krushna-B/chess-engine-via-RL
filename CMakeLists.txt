@@ -13,7 +13,9 @@ add_executable(main
     move_generator.cpp
     gui.cpp
     main.cpp
-    move_list.cpp)
+    move_list.cpp
+    game.cpp
+    random_engine.cpp)
     
 add_executable(generate_magic generate_magic.cpp)
 add_executable(perft perft.cpp board.cpp

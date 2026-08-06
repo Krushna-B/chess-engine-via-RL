@@ -1,7 +1,9 @@
 #include "board.hpp"
+#include "game.hpp"
 #include "gui.hpp"
 #include "move_generator.hpp"
 #include "move_list.hpp"
+#include "random_engine.hpp"
 #include "raylib.h"
 
 // raylib defines WHITE/BLACK as Color macros, which collide with
@@ -12,18 +14,36 @@
 void run_chess_app(Position position);
 
 int main() {
-  Position position{};
-  position.set_starting_position();
-  position.print_position();
+  Game game{};
+  int move_count{};
+  constexpr auto max_moves = 500;
 
-  MoveList moves{};
+  // Create engines
+  RandomEngine white_engine{};
+  RandomEngine black_engine{};
 
-  generate_all_pseudo_moves(moves, position);
-  moves.print();
-  std::cout << "Number of possible moves is: " << moves.get_count();
+  while (game.get_status() == GameStatus::ONGOING && move_count < max_moves) {
+    const Position &position = game.get_position();
 
-  // run_chess_app(position);
+    RandomEngine &engine = position.get_side_to_move() == Side::WHITE
+                               ? white_engine
+                               : black_engine;
 
+    // Engine chooses a move
+
+    std::optional<Move> move = engine.choose_move(position);
+
+    if (!game.play_move(*move)) {
+      std::cerr << "Engine produced an illegal move\n";
+      return 1;
+    }
+    ++move_count;
+
+    game.get_position().print_position();
+    std::cout << '\n';
+  }
+
+  std::cout << "Game finished after " << move_count << " moves.\n";
   return 0;
 }
 

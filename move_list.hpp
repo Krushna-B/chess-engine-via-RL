@@ -3,6 +3,7 @@
 #include <array>
 #include <cstddef>
 #include <sys/types.h>
+#include <vector>
 
 enum class MoveType : std::uint8_t {
   QUIET,
@@ -32,6 +33,10 @@ struct Move {
   Move(Square from_square, Square to_square, MoveType type, Piece piece)
       : from(from_square), to{(to_square)}, type{type}, promotion_piece{piece} {
   }
+  bool operator==(const Move &other) const {
+    return from == other.from && to == other.to && type == other.type &&
+           promotion_piece == other.promotion_piece;
+  }
 };
 
 class MoveList {
@@ -43,7 +48,9 @@ private:
 public:
   void add(Move move);
   void clear();
-  std::array<Move, MAX_MOVES> get_moves() { return moves; }
+  std::vector<Move> get_moves() {
+    return std::vector<Move>(moves.begin(), moves.begin() + count);
+  }
   size_t get_count() { return count; }
   void print() const;
 };
