@@ -2,6 +2,7 @@
 
 #include "board.hpp"
 #include "move_list.hpp"
+#include <ostream>
 #include <vector>
 
 enum class GameStatus {
@@ -16,6 +17,31 @@ enum class GameStatus {
 
   DRAW_THREE_FOLD_REPITITION,
 };
+
+// Print enum's as strings
+inline std::ostream &operator<<(std::ostream &os, GameStatus s) {
+  switch (s) {
+  case GameStatus::ONGOING:
+    return os << "Game in progress";
+  case GameStatus::BLACK_WINS:
+    return os << "Black Wins";
+  case GameStatus::WHITE_WINS:
+    return os << "White Wins";
+
+  case GameStatus::DRAW:
+    return os << "Draw";
+  case GameStatus::STALEMATE:
+    return os << "Draw due to Stalement";
+
+  case GameStatus::DRAW_FIFTY_MOVE:
+    return os << "Draw due to 50 Move Rule";
+  case GameStatus::DRAW_INSUFFICENT_MATERIAL:
+    return os << "Draw due to Insufficient Material";
+  case GameStatus::DRAW_THREE_FOLD_REPITITION:
+    return os << "Draw due to 3 Fold Repitition";
+  };
+  return os << "Unknown Status";
+}
 
 class Game {
 private:

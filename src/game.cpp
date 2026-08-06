@@ -25,8 +25,11 @@ void Game::update_result() {
   }
 
   // Check for insufficent material
+  if (position.has_insufficent_material()) {
+    status = GameStatus::DRAW_INSUFFICENT_MATERIAL;
+  }
 
-  status = GameStatus::ONGOING;
+  return;
 }
 
 Game::Game() {

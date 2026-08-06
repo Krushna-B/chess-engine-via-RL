@@ -5,6 +5,7 @@
 #include "move_list.hpp"
 #include "random_engine.hpp"
 #include "raylib.h"
+#include <ostream>
 
 // raylib defines WHITE/BLACK as Color macros, which collide with
 // Side::WHITE/BLACK.
@@ -40,10 +41,12 @@ int main() {
     ++move_count;
 
     game.get_position().print_position();
+    std::cout << game.get_status() << std::endl;
     std::cout << '\n';
   }
 
-  std::cout << "Game finished after " << move_count << " moves.\n";
+  std::cout << "Game finished after " << move_count
+            << " moves: " << "result is " << game.get_status() << std::endl;
   return 0;
 }
 
