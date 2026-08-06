@@ -1,0 +1,3 @@
+[submodule "external/cutechess"]
+	path = external/cutechess
+	url = https://github.com/cutechess/cutechess.git
