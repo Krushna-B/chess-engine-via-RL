@@ -9,18 +9,23 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 find_package(raylib CONFIG REQUIRED)
 
 add_executable(main
-    board.cpp
-    move_generator.cpp
-    gui.cpp
-    main.cpp
-    move_list.cpp
-    game.cpp
-    random_engine.cpp)
-    
-add_executable(generate_magic generate_magic.cpp)
-add_executable(perft perft.cpp board.cpp
-    move_generator.cpp  move_list.cpp)
+    src/board.cpp
+    src/move_generator.cpp
+    src/gui.cpp
+    src/main.cpp
+    src/move_list.cpp
+    src/game.cpp
+    src/random_engine.cpp)
 
+add_executable(generate_magic src/generate_magic.cpp)
+add_executable(perft src/perft.cpp src/board.cpp
+    src/move_generator.cpp  src/move_list.cpp)
+
+
+#Header search path
+target_include_directories(main PRIVATE include)
+target_include_directories(generate_magic PRIVATE include)
+target_include_directories(perft PRIVATE include)
 
 #Linked Libraries
 target_link_libraries(main PRIVATE raylib)
