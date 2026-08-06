@@ -8,6 +8,7 @@
 void Game::update_result() {
   MoveList moves = get_legal_moves();
 
+  // Check for checmkate and stalemate
   if (moves.get_moves().size() == 0) {
     Side side = position.get_side_to_move();
 
@@ -21,9 +22,11 @@ void Game::update_result() {
       status = GameStatus::DRAW_FIFTY_MOVE;
       return;
     }
-
-    status = GameStatus::ONGOING;
   }
+
+  // Check for insufficent material
+
+  status = GameStatus::ONGOING;
 }
 
 Game::Game() {

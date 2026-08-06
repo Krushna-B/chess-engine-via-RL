@@ -2,6 +2,7 @@
 #include "move_generator.hpp"
 #include "move_list.hpp"
 #include <bit>
+#include <cmath>
 #include <sstream>
 #include <string>
 
@@ -191,6 +192,66 @@ bool Position::is_in_check(Side side) {
   const Side enemy = side == WHITE ? BLACK : WHITE;
 
   return is_square_attacked(*this, king_square, enemy);
+}
+
+/***
+Check if position has insufficent material
+ */
+
+bool Position::has_insufficent_material() {
+  // If there is a pawn, rook, or queen then not possible
+  const Bitboard pawns = pieces[WHITE][PAWN] | pieces[BLACK][PAWN];
+  const Bitboard rooks = pieces[WHITE][ROOK] | pieces[BLACK][ROOK];
+  const Bitboard queens = pieces[WHITE][QUEEN] | pieces[BLACK][QUEEN];
+
+  if (pawns != 0 || rooks != 0 || queens != 0) {
+    return false;
+  }
+
+  // Now count number of each of the other pieces left
+  const int white_knights = std::popcount(pieces[WHITE][KNIGHT]);
+  const int black_knights = std::popcount(pieces[BLACK][KNIGHT]);
+  const int white_bishops = std::popcount(pieces[WHITE][BISHOP]);
+  const int black_bishops = std::popcount(pieces[BLACK][BISHOP]);
+
+  const int total_knights = white_knights + black_knights;
+
+  const int total_minor_pieces =
+      white_knights + black_knights + white_bishops + black_bishops;
+
+  // Only kings left, or king + 1 knight, king + 1 bishop
+
+  if (total_minor_pieces == 0 || total_minor_pieces == 1) {
+    return true;
+  }
+  // Case when only bishops of oppostie colors remain
+  if (total_knights == 0) {
+    Bitboard bishops = pieces[WHITE][BISHOP] | pieces[BLACK][BISHOP];
+    bool has_light_square_bishop = false;
+    bool has_dark_square_bishop = false;
+
+    while (bishops != 0) {
+      const int square_idx = std::countr_zero(bishops);
+      // Remove lsb bishop
+      bishops &= bishops - 1;
+
+      // Get board position from square
+      const int file = square_idx % 8;
+      const int rank = square_idx / 8;
+
+      // Light squares vs dark
+      const int is_light_square = ((file + rank) % 2) + 1;
+      if (is_light_square) {
+        has_light_square_bishop = true;
+      } else {
+        has_dark_square_bishop = true;
+      }
+    }
+
+    return !(has_light_square_bishop && has_dark_square_bishop);
+  }
+
+  return false;
 }
 
 // Designing the Make move function to make moves on the board

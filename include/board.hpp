@@ -211,6 +211,9 @@ public:
   Bitboard get_enimies(Side color) const;
   std::uint16_t get_halfmove_clock() const;
   std::uint16_t get_fullmove_number() const;
+
+  // Insufficent material
+  bool has_insufficent_material();
   // En Passant APIs
   Square get_en_passant_square() const;
   void set_en_passant_square(Square square);
