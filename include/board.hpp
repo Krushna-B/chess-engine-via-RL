@@ -225,6 +225,10 @@ public:
   void set_starting_position();
   void print_position() const;
   bool is_in_check(Side side);
+  // Terminal state checks (side to move has no legal moves / drawn material)
+  bool is_checkmate();
+  bool is_stalemate();
+  bool is_draw();
   // Designing the Make move function to make moves on the board
   bool make_move(const Move &move);
   // FEN input

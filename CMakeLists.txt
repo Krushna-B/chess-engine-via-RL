@@ -23,12 +23,19 @@ add_executable(perft src/perft.cpp src/board.cpp
     src/move_generator.cpp  src/move_list.cpp)
 add_executable(engine src/uci.cpp src/board.cpp
     src/move_generator.cpp src/move_list.cpp src/random_engine.cpp)
+add_executable(monte_carlo_tree_search
+    src/mcts.cpp
+    src/board.cpp
+    src/move_generator.cpp
+    src/move_list.cpp)
 
 #Header search path
 target_include_directories(main PRIVATE include)
 target_include_directories(generate_magic PRIVATE include)
 target_include_directories(perft PRIVATE include)
 target_include_directories(engine PRIVATE include)
+target_include_directories(monte_carlo_tree_search  PRIVATE include)
+
 
 #Linked Libraries
 target_link_libraries(main PRIVATE raylib)
@@ -51,3 +58,4 @@ target_compile_options(main PRIVATE ${COMMON_COMPILE_OPTIONS})
 target_compile_options(generate_magic PRIVATE ${COMMON_COMPILE_OPTIONS})
 target_compile_options(perft PRIVATE ${COMMON_COMPILE_OPTIONS})
 target_compile_options(engine PRIVATE ${COMMON_COMPILE_OPTIONS})
+target_compile_options(monte_carlo_tree_search PRIVATE ${COMMON_COMPILE_OPTIONS})

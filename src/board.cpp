@@ -203,7 +203,8 @@ void Position::set_starting_position() {
   fullmove_number = 1;
 
   side_to_move = Side::WHITE;
-  castling_rights = WHITE_KINGSIDE | WHITE_QUEENSIDE | BLACK_KINGSIDE | BLACK_QUEENSIDE;
+  castling_rights =
+      WHITE_KINGSIDE | WHITE_QUEENSIDE | BLACK_KINGSIDE | BLACK_QUEENSIDE;
   update_occupancies();
   set_en_passant_square(NO_SQUARE);
 }
@@ -244,6 +245,32 @@ bool Position::is_in_check(Side side) {
   const Side enemy = side == WHITE ? BLACK : WHITE;
 
   return is_square_attacked(*this, king_square, enemy);
+}
+
+/***
+True when the side to move has no legal moves and its king is in check.
+ */
+bool Position::is_checkmate() {
+  MoveList moves{};
+  generate_legal_moves(moves, *this);
+  return moves.get_moves().size() == 0 && is_in_check(side_to_move);
+}
+
+/***
+True when the side to move has no legal moves but its king is not in check.
+ */
+bool Position::is_stalemate() {
+  MoveList moves{};
+  generate_legal_moves(moves, *this);
+  return moves.get_moves().size() == 0 && !is_in_check(side_to_move);
+}
+
+/***
+Draw by the 50 move rule or insufficient material. Threefold repetition needs
+position history and so is handled at the Game level, not here.
+ */
+bool Position::is_draw() {
+  return halfmove_clock >= 100 || has_insufficent_material();
 }
 
 /***
