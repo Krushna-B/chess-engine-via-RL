@@ -6,4 +6,10 @@ build
 .cache
 
 #Data Aqusition Scripts
-scripts
+scripts/fetch_assets.sh
+
+
+# macOS
+.DS_Store
+
+

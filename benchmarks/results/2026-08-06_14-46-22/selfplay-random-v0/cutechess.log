@@ -1,0 +1,3271 @@
+Warning: 2 opening repetitions vs 1 games per encounter
+Started game 1 of 1000 (RandomA vs RandomB)
+Started game 2 of 1000 (RandomB vs RandomA)
+Started game 3 of 1000 (RandomA vs RandomB)
+Started game 4 of 1000 (RandomB vs RandomA)
+Finished game 3 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 0 - 0 - 1  [0.500] 1
+Started game 5 of 1000 (RandomA vs RandomB)
+Finished game 1 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 0 - 0 - 2  [0.500] 2
+Started game 6 of 1000 (RandomB vs RandomA)
+Finished game 4 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 0 - 0 - 3  [0.500] 3
+Started game 7 of 1000 (RandomA vs RandomB)
+Finished game 7 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 1 - 0 - 3  [0.625] 4
+Started game 8 of 1000 (RandomB vs RandomA)
+Finished game 2 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 1 - 0 - 4  [0.600] 5
+Started game 9 of 1000 (RandomA vs RandomB)
+Finished game 5 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 1 - 0 - 5  [0.583] 6
+Started game 10 of 1000 (RandomB vs RandomA)
+Finished game 8 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 1 - 0 - 6  [0.571] 7
+Started game 11 of 1000 (RandomA vs RandomB)
+Finished game 6 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 1 - 0 - 7  [0.563] 8
+Started game 12 of 1000 (RandomB vs RandomA)
+Finished game 9 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 1 - 0 - 8  [0.556] 9
+Started game 13 of 1000 (RandomA vs RandomB)
+Finished game 13 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 1 - 0 - 9  [0.550] 10
+Started game 14 of 1000 (RandomB vs RandomA)
+Finished game 10 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 1 - 0 - 10  [0.545] 11
+Started game 15 of 1000 (RandomA vs RandomB)
+Finished game 15 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 1 - 1 - 10  [0.500] 12
+Started game 16 of 1000 (RandomB vs RandomA)
+Finished game 11 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 1 - 1 - 11  [0.500] 13
+Started game 17 of 1000 (RandomA vs RandomB)
+Finished game 16 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 1 - 1 - 12  [0.500] 14
+Started game 18 of 1000 (RandomB vs RandomA)
+Finished game 12 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 1 - 1 - 13  [0.500] 15
+Started game 19 of 1000 (RandomA vs RandomB)
+Finished game 17 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 1 - 1 - 14  [0.500] 16
+Started game 20 of 1000 (RandomB vs RandomA)
+Finished game 14 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 1 - 1 - 15  [0.500] 17
+Started game 21 of 1000 (RandomA vs RandomB)
+Finished game 20 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 1 - 2 - 15  [0.472] 18
+Started game 22 of 1000 (RandomB vs RandomA)
+Finished game 21 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 1 - 2 - 16  [0.474] 19
+Started game 23 of 1000 (RandomA vs RandomB)
+Finished game 23 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 1 - 3 - 16  [0.450] 20
+...      RandomA playing White: 1 - 2 - 8  [0.455] 11
+...      RandomA playing Black: 0 - 1 - 8  [0.444] 9
+...      White vs Black: 2 - 2 - 16  [0.500] 20
+Elo difference: -34.9 +/- 67.8, LOS: 15.9 %, DrawRatio: 80.0 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 24 of 1000 (RandomB vs RandomA)
+Finished game 18 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 1 - 3 - 17  [0.452] 21
+Started game 25 of 1000 (RandomA vs RandomB)
+Finished game 24 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 1 - 3 - 18  [0.455] 22
+Started game 26 of 1000 (RandomB vs RandomA)
+Finished game 19 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 1 - 3 - 19  [0.457] 23
+Started game 27 of 1000 (RandomA vs RandomB)
+Finished game 27 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 1 - 3 - 20  [0.458] 24
+Started game 28 of 1000 (RandomB vs RandomA)
+Finished game 25 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 1 - 3 - 21  [0.460] 25
+Started game 29 of 1000 (RandomA vs RandomB)
+Finished game 26 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 1 - 3 - 22  [0.462] 26
+Started game 30 of 1000 (RandomB vs RandomA)
+Finished game 22 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 1 - 3 - 23  [0.463] 27
+Started game 31 of 1000 (RandomA vs RandomB)
+Finished game 29 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 1 - 3 - 24  [0.464] 28
+Started game 32 of 1000 (RandomB vs RandomA)
+Finished game 31 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 1 - 3 - 25  [0.466] 29
+Started game 33 of 1000 (RandomA vs RandomB)
+Finished game 33 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 1 - 4 - 25  [0.450] 30
+Started game 34 of 1000 (RandomB vs RandomA)
+Finished game 30 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 1 - 4 - 26  [0.452] 31
+Started game 35 of 1000 (RandomA vs RandomB)
+Finished game 28 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 1 - 4 - 27  [0.453] 32
+Started game 36 of 1000 (RandomB vs RandomA)
+Finished game 32 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 1 - 4 - 28  [0.455] 33
+Started game 37 of 1000 (RandomA vs RandomB)
+Finished game 36 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 1 - 5 - 28  [0.441] 34
+Started game 38 of 1000 (RandomB vs RandomA)
+Finished game 34 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 1 - 6 - 28  [0.429] 35
+Started game 39 of 1000 (RandomA vs RandomB)
+Finished game 38 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 1 - 6 - 29  [0.431] 36
+Started game 40 of 1000 (RandomB vs RandomA)
+Finished game 35 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 1 - 6 - 30  [0.432] 37
+Started game 41 of 1000 (RandomA vs RandomB)
+Finished game 37 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 1 - 6 - 31  [0.434] 38
+Started game 42 of 1000 (RandomB vs RandomA)
+Finished game 40 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 2 - 6 - 31  [0.449] 39
+Started game 43 of 1000 (RandomA vs RandomB)
+Finished game 39 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 2 - 6 - 32  [0.450] 40
+...      RandomA playing White: 1 - 3 - 16  [0.450] 20
+...      RandomA playing Black: 1 - 3 - 16  [0.450] 20
+...      White vs Black: 4 - 4 - 32  [0.500] 40
+Elo difference: -34.9 +/- 47.6, LOS: 7.9 %, DrawRatio: 80.0 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 44 of 1000 (RandomB vs RandomA)
+Finished game 43 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 2 - 6 - 33  [0.451] 41
+Started game 45 of 1000 (RandomA vs RandomB)
+Finished game 44 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 2 - 6 - 34  [0.452] 42
+Started game 46 of 1000 (RandomB vs RandomA)
+Finished game 45 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 2 - 7 - 34  [0.442] 43
+Started game 47 of 1000 (RandomA vs RandomB)
+Finished game 42 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 2 - 7 - 35  [0.443] 44
+Started game 48 of 1000 (RandomB vs RandomA)
+Finished game 41 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 2 - 7 - 36  [0.444] 45
+Started game 49 of 1000 (RandomA vs RandomB)
+Finished game 47 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 2 - 7 - 37  [0.446] 46
+Started game 50 of 1000 (RandomB vs RandomA)
+Finished game 48 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 2 - 7 - 38  [0.447] 47
+Started game 51 of 1000 (RandomA vs RandomB)
+Finished game 46 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 2 - 7 - 39  [0.448] 48
+Started game 52 of 1000 (RandomB vs RandomA)
+Finished game 52 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 3 - 7 - 39  [0.459] 49
+Started game 53 of 1000 (RandomA vs RandomB)
+Finished game 49 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 3 - 7 - 40  [0.460] 50
+Started game 54 of 1000 (RandomB vs RandomA)
+Finished game 50 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 3 - 7 - 41  [0.461] 51
+Started game 55 of 1000 (RandomA vs RandomB)
+Finished game 54 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 3 - 7 - 42  [0.462] 52
+Started game 56 of 1000 (RandomB vs RandomA)
+Finished game 51 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 3 - 7 - 43  [0.462] 53
+Started game 57 of 1000 (RandomA vs RandomB)
+Finished game 53 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 3 - 7 - 44  [0.463] 54
+Started game 58 of 1000 (RandomB vs RandomA)
+Finished game 55 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 3 - 7 - 45  [0.464] 55
+Started game 59 of 1000 (RandomA vs RandomB)
+Finished game 58 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 3 - 7 - 46  [0.464] 56
+Started game 60 of 1000 (RandomB vs RandomA)
+Finished game 56 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 3 - 7 - 47  [0.465] 57
+Started game 61 of 1000 (RandomA vs RandomB)
+Finished game 59 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 3 - 8 - 47  [0.457] 58
+Started game 62 of 1000 (RandomB vs RandomA)
+Finished game 60 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 3 - 8 - 48  [0.458] 59
+Started game 63 of 1000 (RandomA vs RandomB)
+Finished game 61 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 3 - 8 - 49  [0.458] 60
+...      RandomA playing White: 1 - 5 - 24  [0.433] 30
+...      RandomA playing Black: 2 - 3 - 25  [0.483] 30
+...      White vs Black: 4 - 7 - 49  [0.475] 60
+Elo difference: -29.0 +/- 37.3, LOS: 6.6 %, DrawRatio: 81.7 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 64 of 1000 (RandomB vs RandomA)
+Finished game 64 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 4 - 8 - 49  [0.467] 61
+Started game 65 of 1000 (RandomA vs RandomB)
+Finished game 57 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 4 - 8 - 50  [0.468] 62
+Started game 66 of 1000 (RandomB vs RandomA)
+Finished game 62 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 4 - 8 - 51  [0.468] 63
+Started game 67 of 1000 (RandomA vs RandomB)
+Finished game 65 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 5 - 8 - 51  [0.477] 64
+Started game 68 of 1000 (RandomB vs RandomA)
+Finished game 68 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 5 - 8 - 52  [0.477] 65
+Started game 69 of 1000 (RandomA vs RandomB)
+Finished game 63 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 5 - 8 - 53  [0.477] 66
+Started game 70 of 1000 (RandomB vs RandomA)
+Finished game 70 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 6 - 8 - 53  [0.485] 67
+Started game 71 of 1000 (RandomA vs RandomB)
+Finished game 67 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 6 - 8 - 54  [0.485] 68
+Started game 72 of 1000 (RandomB vs RandomA)
+Finished game 72 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 6 - 9 - 54  [0.478] 69
+Started game 73 of 1000 (RandomA vs RandomB)
+Finished game 71 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 7 - 9 - 54  [0.486] 70
+Started game 74 of 1000 (RandomB vs RandomA)
+Finished game 69 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 7 - 9 - 55  [0.486] 71
+Started game 75 of 1000 (RandomA vs RandomB)
+Finished game 73 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 7 - 9 - 56  [0.486] 72
+Started game 76 of 1000 (RandomB vs RandomA)
+Finished game 66 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 7 - 9 - 57  [0.486] 73
+Started game 77 of 1000 (RandomA vs RandomB)
+Finished game 75 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 7 - 9 - 58  [0.486] 74
+Started game 78 of 1000 (RandomB vs RandomA)
+Finished game 74 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 7 - 9 - 59  [0.487] 75
+Started game 79 of 1000 (RandomA vs RandomB)
+Finished game 77 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 7 - 9 - 60  [0.487] 76
+Started game 80 of 1000 (RandomB vs RandomA)
+Finished game 78 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 7 - 9 - 61  [0.487] 77
+Started game 81 of 1000 (RandomA vs RandomB)
+Finished game 81 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 7 - 9 - 62  [0.487] 78
+Started game 82 of 1000 (RandomB vs RandomA)
+Finished game 76 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 7 - 9 - 63  [0.487] 79
+Started game 83 of 1000 (RandomA vs RandomB)
+Finished game 82 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 7 - 9 - 64  [0.487] 80
+...      RandomA playing White: 3 - 5 - 32  [0.475] 40
+...      RandomA playing Black: 4 - 4 - 32  [0.500] 40
+...      White vs Black: 7 - 9 - 64  [0.487] 80
+Elo difference: -8.7 +/- 34.1, LOS: 30.9 %, DrawRatio: 80.0 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 84 of 1000 (RandomB vs RandomA)
+Finished game 80 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 7 - 9 - 65  [0.488] 81
+Started game 85 of 1000 (RandomA vs RandomB)
+Finished game 79 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 7 - 9 - 66  [0.488] 82
+Started game 86 of 1000 (RandomB vs RandomA)
+Finished game 85 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 7 - 9 - 67  [0.488] 83
+Started game 87 of 1000 (RandomA vs RandomB)
+Finished game 84 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 7 - 9 - 68  [0.488] 84
+Started game 88 of 1000 (RandomB vs RandomA)
+Finished game 86 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 7 - 9 - 69  [0.488] 85
+Started game 89 of 1000 (RandomA vs RandomB)
+Finished game 87 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 7 - 9 - 70  [0.488] 86
+Started game 90 of 1000 (RandomB vs RandomA)
+Finished game 89 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 7 - 9 - 71  [0.489] 87
+Started game 91 of 1000 (RandomA vs RandomB)
+Finished game 88 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 8 - 9 - 71  [0.494] 88
+Started game 92 of 1000 (RandomB vs RandomA)
+Finished game 83 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 8 - 9 - 72  [0.494] 89
+Started game 93 of 1000 (RandomA vs RandomB)
+Finished game 92 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 8 - 9 - 73  [0.494] 90
+Started game 94 of 1000 (RandomB vs RandomA)
+Finished game 91 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 8 - 9 - 74  [0.495] 91
+Started game 95 of 1000 (RandomA vs RandomB)
+Finished game 90 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 9 - 75  [0.495] 92
+Started game 96 of 1000 (RandomB vs RandomA)
+Finished game 95 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 9 - 76  [0.495] 93
+Started game 97 of 1000 (RandomA vs RandomB)
+Finished game 93 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 8 - 9 - 77  [0.495] 94
+Started game 98 of 1000 (RandomB vs RandomA)
+Finished game 94 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 9 - 78  [0.495] 95
+Started game 99 of 1000 (RandomA vs RandomB)
+Finished game 96 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 8 - 9 - 79  [0.495] 96
+Started game 100 of 1000 (RandomB vs RandomA)
+Finished game 97 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 8 - 9 - 80  [0.495] 97
+Started game 101 of 1000 (RandomA vs RandomB)
+Finished game 98 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 9 - 81  [0.495] 98
+Started game 102 of 1000 (RandomB vs RandomA)
+Finished game 99 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 9 - 82  [0.495] 99
+Started game 103 of 1000 (RandomA vs RandomB)
+Finished game 100 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 8 - 9 - 83  [0.495] 100
+...      RandomA playing White: 3 - 5 - 42  [0.480] 50
+...      RandomA playing Black: 5 - 4 - 41  [0.510] 50
+...      White vs Black: 7 - 10 - 83  [0.485] 100
+Elo difference: -3.5 +/- 28.1, LOS: 40.4 %, DrawRatio: 83.0 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 104 of 1000 (RandomB vs RandomA)
+Finished game 103 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 8 - 10 - 83  [0.490] 101
+Started game 105 of 1000 (RandomA vs RandomB)
+Finished game 104 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 8 - 11 - 83  [0.485] 102
+Started game 106 of 1000 (RandomB vs RandomA)
+Finished game 102 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 8 - 11 - 84  [0.485] 103
+Started game 107 of 1000 (RandomA vs RandomB)
+Finished game 101 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 8 - 11 - 85  [0.486] 104
+Started game 108 of 1000 (RandomB vs RandomA)
+Finished game 106 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 8 - 11 - 86  [0.486] 105
+Started game 109 of 1000 (RandomA vs RandomB)
+Finished game 105 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 11 - 87  [0.486] 106
+Started game 110 of 1000 (RandomB vs RandomA)
+Finished game 107 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 11 - 88  [0.486] 107
+Started game 111 of 1000 (RandomA vs RandomB)
+Finished game 111 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 8 - 12 - 88  [0.481] 108
+Started game 112 of 1000 (RandomB vs RandomA)
+Finished game 108 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 12 - 89  [0.482] 109
+Started game 113 of 1000 (RandomA vs RandomB)
+Finished game 110 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 12 - 90  [0.482] 110
+Started game 114 of 1000 (RandomB vs RandomA)
+Finished game 109 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 8 - 12 - 91  [0.482] 111
+Started game 115 of 1000 (RandomA vs RandomB)
+Finished game 112 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 12 - 92  [0.482] 112
+Started game 116 of 1000 (RandomB vs RandomA)
+Finished game 114 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 12 - 93  [0.482] 113
+Started game 117 of 1000 (RandomA vs RandomB)
+Finished game 113 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 12 - 94  [0.482] 114
+Started game 118 of 1000 (RandomB vs RandomA)
+Finished game 115 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 8 - 12 - 95  [0.483] 115
+Started game 119 of 1000 (RandomA vs RandomB)
+Finished game 117 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 12 - 96  [0.483] 116
+Started game 120 of 1000 (RandomB vs RandomA)
+Finished game 118 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 8 - 12 - 97  [0.483] 117
+Started game 121 of 1000 (RandomA vs RandomB)
+Finished game 119 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 12 - 98  [0.483] 118
+Started game 122 of 1000 (RandomB vs RandomA)
+Finished game 116 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 8 - 12 - 99  [0.483] 119
+Started game 123 of 1000 (RandomA vs RandomB)
+Finished game 120 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 8 - 12 - 100  [0.483] 120
+...      RandomA playing White: 3 - 7 - 50  [0.467] 60
+...      RandomA playing Black: 5 - 5 - 50  [0.500] 60
+...      White vs Black: 8 - 12 - 100  [0.483] 120
+Elo difference: -11.6 +/- 25.3, LOS: 18.6 %, DrawRatio: 83.3 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 124 of 1000 (RandomB vs RandomA)
+Finished game 122 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 8 - 12 - 101  [0.483] 121
+Started game 125 of 1000 (RandomA vs RandomB)
+Finished game 121 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 12 - 102  [0.484] 122
+Started game 126 of 1000 (RandomB vs RandomA)
+Finished game 123 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 12 - 103  [0.484] 123
+Started game 127 of 1000 (RandomA vs RandomB)
+Finished game 126 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 12 - 104  [0.484] 124
+Started game 128 of 1000 (RandomB vs RandomA)
+Finished game 124 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 8 - 12 - 105  [0.484] 125
+Started game 129 of 1000 (RandomA vs RandomB)
+Finished game 125 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 12 - 106  [0.484] 126
+Started game 130 of 1000 (RandomB vs RandomA)
+Finished game 127 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 12 - 107  [0.484] 127
+Started game 131 of 1000 (RandomA vs RandomB)
+Finished game 129 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 8 - 12 - 108  [0.484] 128
+Started game 132 of 1000 (RandomB vs RandomA)
+Finished game 130 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 8 - 12 - 109  [0.484] 129
+Started game 133 of 1000 (RandomA vs RandomB)
+Finished game 132 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 8 - 13 - 109  [0.481] 130
+Started game 134 of 1000 (RandomB vs RandomA)
+Finished game 133 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 9 - 13 - 109  [0.485] 131
+Started game 135 of 1000 (RandomA vs RandomB)
+Finished game 128 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 9 - 13 - 110  [0.485] 132
+Started game 136 of 1000 (RandomB vs RandomA)
+Finished game 135 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 10 - 13 - 110  [0.489] 133
+Started game 137 of 1000 (RandomA vs RandomB)
+Finished game 131 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 10 - 13 - 111  [0.489] 134
+Started game 138 of 1000 (RandomB vs RandomA)
+Finished game 134 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 10 - 13 - 112  [0.489] 135
+Started game 139 of 1000 (RandomA vs RandomB)
+Finished game 136 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 10 - 13 - 113  [0.489] 136
+Started game 140 of 1000 (RandomB vs RandomA)
+Finished game 137 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 10 - 13 - 114  [0.489] 137
+Started game 141 of 1000 (RandomA vs RandomB)
+Finished game 141 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 10 - 14 - 114  [0.486] 138
+Started game 142 of 1000 (RandomB vs RandomA)
+Finished game 140 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 10 - 14 - 115  [0.486] 139
+Started game 143 of 1000 (RandomA vs RandomB)
+Finished game 138 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 10 - 14 - 116  [0.486] 140
+...      RandomA playing White: 5 - 8 - 57  [0.479] 70
+...      RandomA playing Black: 5 - 6 - 59  [0.493] 70
+...      White vs Black: 11 - 13 - 116  [0.493] 140
+Elo difference: -9.9 +/- 23.8, LOS: 20.7 %, DrawRatio: 82.9 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 144 of 1000 (RandomB vs RandomA)
+Finished game 139 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 10 - 14 - 117  [0.486] 141
+Started game 145 of 1000 (RandomA vs RandomB)
+Finished game 144 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 10 - 14 - 118  [0.486] 142
+Started game 146 of 1000 (RandomB vs RandomA)
+Finished game 143 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 10 - 14 - 119  [0.486] 143
+Started game 147 of 1000 (RandomA vs RandomB)
+Finished game 142 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 10 - 14 - 120  [0.486] 144
+Started game 148 of 1000 (RandomB vs RandomA)
+Finished game 145 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 10 - 14 - 121  [0.486] 145
+Started game 149 of 1000 (RandomA vs RandomB)
+Finished game 147 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 10 - 14 - 122  [0.486] 146
+Started game 150 of 1000 (RandomB vs RandomA)
+Finished game 146 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 10 - 14 - 123  [0.486] 147
+Started game 151 of 1000 (RandomA vs RandomB)
+Finished game 148 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 10 - 14 - 124  [0.486] 148
+Started game 152 of 1000 (RandomB vs RandomA)
+Finished game 151 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 10 - 14 - 125  [0.487] 149
+Started game 153 of 1000 (RandomA vs RandomB)
+Finished game 149 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 10 - 14 - 126  [0.487] 150
+Started game 154 of 1000 (RandomB vs RandomA)
+Finished game 150 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 10 - 14 - 127  [0.487] 151
+Started game 155 of 1000 (RandomA vs RandomB)
+Finished game 152 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 10 - 14 - 128  [0.487] 152
+Started game 156 of 1000 (RandomB vs RandomA)
+Finished game 156 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 10 - 15 - 128  [0.484] 153
+Started game 157 of 1000 (RandomA vs RandomB)
+Finished game 153 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 10 - 15 - 129  [0.484] 154
+Started game 158 of 1000 (RandomB vs RandomA)
+Finished game 155 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 10 - 15 - 130  [0.484] 155
+Started game 159 of 1000 (RandomA vs RandomB)
+Finished game 154 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 10 - 15 - 131  [0.484] 156
+Started game 160 of 1000 (RandomB vs RandomA)
+Finished game 157 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 10 - 15 - 132  [0.484] 157
+Started game 161 of 1000 (RandomA vs RandomB)
+Finished game 161 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 11 - 15 - 132  [0.487] 158
+Started game 162 of 1000 (RandomB vs RandomA)
+Finished game 158 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 11 - 15 - 133  [0.487] 159
+Started game 163 of 1000 (RandomA vs RandomB)
+Finished game 159 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 11 - 15 - 134  [0.487] 160
+...      RandomA playing White: 6 - 8 - 67  [0.488] 81
+...      RandomA playing Black: 5 - 7 - 67  [0.487] 79
+...      White vs Black: 13 - 13 - 134  [0.500] 160
+Elo difference: -8.7 +/- 21.7, LOS: 21.6 %, DrawRatio: 83.8 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 164 of 1000 (RandomB vs RandomA)
+Finished game 162 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 11 - 15 - 135  [0.488] 161
+Started game 165 of 1000 (RandomA vs RandomB)
+Finished game 160 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 11 - 15 - 136  [0.488] 162
+Started game 166 of 1000 (RandomB vs RandomA)
+Finished game 163 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 11 - 15 - 137  [0.488] 163
+Started game 167 of 1000 (RandomA vs RandomB)
+Finished game 164 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 11 - 15 - 138  [0.488] 164
+Started game 168 of 1000 (RandomB vs RandomA)
+Finished game 165 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 11 - 15 - 139  [0.488] 165
+Started game 169 of 1000 (RandomA vs RandomB)
+Finished game 166 (RandomB vs RandomA): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 11 - 15 - 140  [0.488] 166
+Started game 170 of 1000 (RandomB vs RandomA)
+Finished game 167 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 11 - 15 - 141  [0.488] 167
+Started game 171 of 1000 (RandomA vs RandomB)
+Finished game 168 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 11 - 15 - 142  [0.488] 168
+Started game 172 of 1000 (RandomB vs RandomA)
+Finished game 170 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 11 - 15 - 143  [0.488] 169
+Started game 173 of 1000 (RandomA vs RandomB)
+Finished game 169 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 11 - 15 - 144  [0.488] 170
+Started game 174 of 1000 (RandomB vs RandomA)
+Finished game 172 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 11 - 16 - 144  [0.485] 171
+Started game 175 of 1000 (RandomA vs RandomB)
+Finished game 175 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 11 - 17 - 144  [0.483] 172
+Started game 176 of 1000 (RandomB vs RandomA)
+Finished game 174 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 11 - 17 - 145  [0.483] 173
+Started game 177 of 1000 (RandomA vs RandomB)
+Finished game 173 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 11 - 17 - 146  [0.483] 174
+Started game 178 of 1000 (RandomB vs RandomA)
+Finished game 171 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 11 - 17 - 147  [0.483] 175
+Started game 179 of 1000 (RandomA vs RandomB)
+Finished game 178 (RandomB vs RandomA): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 11 - 17 - 148  [0.483] 176
+Started game 180 of 1000 (RandomB vs RandomA)
+Finished game 177 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 11 - 17 - 149  [0.483] 177
+Started game 181 of 1000 (RandomA vs RandomB)
+Finished game 181 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 12 - 17 - 149  [0.486] 178
+Started game 182 of 1000 (RandomB vs RandomA)
+Finished game 176 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 12 - 17 - 150  [0.486] 179
+Started game 183 of 1000 (RandomA vs RandomB)
+Finished game 179 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 12 - 17 - 151  [0.486] 180
+...      RandomA playing White: 7 - 9 - 75  [0.489] 91
+...      RandomA playing Black: 5 - 8 - 76  [0.483] 89
+...      White vs Black: 15 - 14 - 151  [0.503] 180
+Elo difference: -9.7 +/- 20.3, LOS: 17.7 %, DrawRatio: 83.9 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 184 of 1000 (RandomB vs RandomA)
+Finished game 183 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 12 - 17 - 152  [0.486] 181
+Started game 185 of 1000 (RandomA vs RandomB)
+Finished game 182 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 12 - 17 - 153  [0.486] 182
+Started game 186 of 1000 (RandomB vs RandomA)
+Finished game 184 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 13 - 17 - 153  [0.489] 183
+Started game 187 of 1000 (RandomA vs RandomB)
+Finished game 185 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 13 - 17 - 154  [0.489] 184
+Started game 188 of 1000 (RandomB vs RandomA)
+Finished game 180 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 13 - 17 - 155  [0.489] 185
+Started game 189 of 1000 (RandomA vs RandomB)
+Finished game 186 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 13 - 17 - 156  [0.489] 186
+Started game 190 of 1000 (RandomB vs RandomA)
+Finished game 187 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 13 - 17 - 157  [0.489] 187
+Started game 191 of 1000 (RandomA vs RandomB)
+Finished game 188 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 13 - 17 - 158  [0.489] 188
+Started game 192 of 1000 (RandomB vs RandomA)
+Finished game 192 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 14 - 17 - 158  [0.492] 189
+Started game 193 of 1000 (RandomA vs RandomB)
+Finished game 191 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 14 - 17 - 159  [0.492] 190
+Started game 194 of 1000 (RandomB vs RandomA)
+Finished game 189 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 14 - 17 - 160  [0.492] 191
+Started game 195 of 1000 (RandomA vs RandomB)
+Finished game 193 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 14 - 17 - 161  [0.492] 192
+Started game 196 of 1000 (RandomB vs RandomA)
+Finished game 196 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 14 - 18 - 161  [0.490] 193
+Started game 197 of 1000 (RandomA vs RandomB)
+Finished game 190 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 14 - 18 - 162  [0.490] 194
+Started game 198 of 1000 (RandomB vs RandomA)
+Finished game 195 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 14 - 19 - 162  [0.487] 195
+Started game 199 of 1000 (RandomA vs RandomB)
+Finished game 199 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 15 - 19 - 162  [0.490] 196
+Started game 200 of 1000 (RandomB vs RandomA)
+Finished game 194 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 15 - 19 - 163  [0.490] 197
+Started game 201 of 1000 (RandomA vs RandomB)
+Finished game 201 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 16 - 19 - 163  [0.492] 198
+Started game 202 of 1000 (RandomB vs RandomA)
+Finished game 197 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 16 - 19 - 164  [0.492] 199
+Started game 203 of 1000 (RandomA vs RandomB)
+Finished game 200 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 16 - 19 - 165  [0.492] 200
+...      RandomA playing White: 9 - 10 - 82  [0.495] 101
+...      RandomA playing Black: 7 - 9 - 83  [0.490] 99
+...      White vs Black: 18 - 17 - 165  [0.502] 200
+Elo difference: -5.2 +/- 20.1, LOS: 30.6 %, DrawRatio: 82.5 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 204 of 1000 (RandomB vs RandomA)
+Finished game 202 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 16 - 19 - 166  [0.493] 201
+Started game 205 of 1000 (RandomA vs RandomB)
+Finished game 198 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 16 - 19 - 167  [0.493] 202
+Started game 206 of 1000 (RandomB vs RandomA)
+Finished game 204 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 16 - 19 - 168  [0.493] 203
+Started game 207 of 1000 (RandomA vs RandomB)
+Finished game 205 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 16 - 19 - 169  [0.493] 204
+Started game 208 of 1000 (RandomB vs RandomA)
+Finished game 206 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 16 - 19 - 170  [0.493] 205
+Started game 209 of 1000 (RandomA vs RandomB)
+Finished game 203 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 16 - 19 - 171  [0.493] 206
+Started game 210 of 1000 (RandomB vs RandomA)
+Finished game 207 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 16 - 19 - 172  [0.493] 207
+Started game 211 of 1000 (RandomA vs RandomB)
+Finished game 208 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 16 - 19 - 173  [0.493] 208
+Started game 212 of 1000 (RandomB vs RandomA)
+Finished game 210 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 16 - 19 - 174  [0.493] 209
+Started game 213 of 1000 (RandomA vs RandomB)
+Finished game 211 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 16 - 19 - 175  [0.493] 210
+Started game 214 of 1000 (RandomB vs RandomA)
+Finished game 209 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 16 - 19 - 176  [0.493] 211
+Started game 215 of 1000 (RandomA vs RandomB)
+Finished game 214 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 16 - 19 - 177  [0.493] 212
+Started game 216 of 1000 (RandomB vs RandomA)
+Finished game 215 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 16 - 19 - 178  [0.493] 213
+Started game 217 of 1000 (RandomA vs RandomB)
+Finished game 212 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 16 - 19 - 179  [0.493] 214
+Started game 218 of 1000 (RandomB vs RandomA)
+Finished game 213 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 16 - 19 - 180  [0.493] 215
+Started game 219 of 1000 (RandomA vs RandomB)
+Finished game 217 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 16 - 19 - 181  [0.493] 216
+Started game 220 of 1000 (RandomB vs RandomA)
+Finished game 216 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 17 - 19 - 181  [0.495] 217
+Started game 221 of 1000 (RandomA vs RandomB)
+Finished game 219 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 17 - 19 - 182  [0.495] 218
+Started game 222 of 1000 (RandomB vs RandomA)
+Finished game 218 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 17 - 19 - 183  [0.495] 219
+Started game 223 of 1000 (RandomA vs RandomB)
+Finished game 223 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 18 - 19 - 183  [0.498] 220
+...      RandomA playing White: 10 - 10 - 91  [0.500] 111
+...      RandomA playing Black: 8 - 9 - 92  [0.495] 109
+...      White vs Black: 19 - 18 - 183  [0.502] 220
+Elo difference: -1.6 +/- 18.8, LOS: 43.5 %, DrawRatio: 83.2 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 224 of 1000 (RandomB vs RandomA)
+Finished game 221 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 18 - 19 - 184  [0.498] 221
+Started game 225 of 1000 (RandomA vs RandomB)
+Finished game 220 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 18 - 19 - 185  [0.498] 222
+Started game 226 of 1000 (RandomB vs RandomA)
+Finished game 222 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 18 - 19 - 186  [0.498] 223
+Started game 227 of 1000 (RandomA vs RandomB)
+Finished game 224 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 18 - 19 - 187  [0.498] 224
+Started game 228 of 1000 (RandomB vs RandomA)
+Finished game 226 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 19 - 19 - 187  [0.500] 225
+Started game 229 of 1000 (RandomA vs RandomB)
+Finished game 228 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 19 - 19 - 188  [0.500] 226
+Started game 230 of 1000 (RandomB vs RandomA)
+Finished game 227 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 19 - 19 - 189  [0.500] 227
+Started game 231 of 1000 (RandomA vs RandomB)
+Finished game 225 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 19 - 19 - 190  [0.500] 228
+Started game 232 of 1000 (RandomB vs RandomA)
+Finished game 230 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 19 - 19 - 191  [0.500] 229
+Started game 233 of 1000 (RandomA vs RandomB)
+Finished game 231 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 19 - 19 - 192  [0.500] 230
+Started game 234 of 1000 (RandomB vs RandomA)
+Finished game 229 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 19 - 19 - 193  [0.500] 231
+Started game 235 of 1000 (RandomA vs RandomB)
+Finished game 233 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 19 - 19 - 194  [0.500] 232
+Started game 236 of 1000 (RandomB vs RandomA)
+Finished game 235 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 19 - 20 - 194  [0.498] 233
+Started game 237 of 1000 (RandomA vs RandomB)
+Finished game 232 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 19 - 20 - 195  [0.498] 234
+Started game 238 of 1000 (RandomB vs RandomA)
+Finished game 238 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 19 - 20 - 196  [0.498] 235
+Started game 239 of 1000 (RandomA vs RandomB)
+Finished game 237 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 19 - 20 - 197  [0.498] 236
+Started game 240 of 1000 (RandomB vs RandomA)
+Finished game 234 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 19 - 20 - 198  [0.498] 237
+Started game 241 of 1000 (RandomA vs RandomB)
+Finished game 240 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 19 - 21 - 198  [0.496] 238
+Started game 242 of 1000 (RandomB vs RandomA)
+Finished game 236 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 19 - 21 - 199  [0.496] 239
+Started game 243 of 1000 (RandomA vs RandomB)
+Finished game 242 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 19 - 21 - 200  [0.496] 240
+...      RandomA playing White: 10 - 11 - 98  [0.496] 119
+...      RandomA playing Black: 9 - 10 - 102  [0.496] 121
+...      White vs Black: 20 - 20 - 200  [0.500] 240
+Elo difference: -2.9 +/- 17.9, LOS: 37.6 %, DrawRatio: 83.3 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 244 of 1000 (RandomB vs RandomA)
+Finished game 241 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 19 - 21 - 201  [0.496] 241
+Started game 245 of 1000 (RandomA vs RandomB)
+Finished game 243 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 19 - 21 - 202  [0.496] 242
+Started game 246 of 1000 (RandomB vs RandomA)
+Finished game 239 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 19 - 21 - 203  [0.496] 243
+Started game 247 of 1000 (RandomA vs RandomB)
+Finished game 244 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 19 - 21 - 204  [0.496] 244
+Started game 248 of 1000 (RandomB vs RandomA)
+Finished game 246 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 20 - 21 - 204  [0.498] 245
+Started game 249 of 1000 (RandomA vs RandomB)
+Finished game 248 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 205  [0.498] 246
+Started game 250 of 1000 (RandomB vs RandomA)
+Finished game 247 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 206  [0.498] 247
+Started game 251 of 1000 (RandomA vs RandomB)
+Finished game 245 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 20 - 21 - 207  [0.498] 248
+Started game 252 of 1000 (RandomB vs RandomA)
+Finished game 249 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 208  [0.498] 249
+Started game 253 of 1000 (RandomA vs RandomB)
+Finished game 253 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 20 - 21 - 209  [0.498] 250
+Started game 254 of 1000 (RandomB vs RandomA)
+Finished game 251 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 210  [0.498] 251
+Started game 255 of 1000 (RandomA vs RandomB)
+Finished game 250 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 211  [0.498] 252
+Started game 256 of 1000 (RandomB vs RandomA)
+Finished game 252 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 212  [0.498] 253
+Started game 257 of 1000 (RandomA vs RandomB)
+Finished game 255 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 213  [0.498] 254
+Started game 258 of 1000 (RandomB vs RandomA)
+Finished game 257 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 214  [0.498] 255
+Started game 259 of 1000 (RandomA vs RandomB)
+Finished game 254 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 215  [0.498] 256
+Started game 260 of 1000 (RandomB vs RandomA)
+Finished game 256 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 216  [0.498] 257
+Started game 261 of 1000 (RandomA vs RandomB)
+Finished game 258 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 217  [0.498] 258
+Started game 262 of 1000 (RandomB vs RandomA)
+Finished game 259 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 218  [0.498] 259
+Started game 263 of 1000 (RandomA vs RandomB)
+Finished game 262 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 219  [0.498] 260
+...      RandomA playing White: 10 - 11 - 109  [0.496] 130
+...      RandomA playing Black: 10 - 10 - 110  [0.500] 130
+...      White vs Black: 20 - 21 - 219  [0.498] 260
+Elo difference: -1.3 +/- 16.8, LOS: 43.8 %, DrawRatio: 84.2 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 264 of 1000 (RandomB vs RandomA)
+Finished game 260 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 20 - 21 - 220  [0.498] 261
+Started game 265 of 1000 (RandomA vs RandomB)
+Finished game 263 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 221  [0.498] 262
+Started game 266 of 1000 (RandomB vs RandomA)
+Finished game 261 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 20 - 21 - 222  [0.498] 263
+Started game 267 of 1000 (RandomA vs RandomB)
+Finished game 265 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 223  [0.498] 264
+Started game 268 of 1000 (RandomB vs RandomA)
+Finished game 266 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 224  [0.498] 265
+Started game 269 of 1000 (RandomA vs RandomB)
+Finished game 264 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 20 - 21 - 225  [0.498] 266
+Started game 270 of 1000 (RandomB vs RandomA)
+Finished game 269 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 226  [0.498] 267
+Started game 271 of 1000 (RandomA vs RandomB)
+Finished game 268 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 20 - 21 - 227  [0.498] 268
+Started game 272 of 1000 (RandomB vs RandomA)
+Finished game 267 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 20 - 21 - 228  [0.498] 269
+Started game 273 of 1000 (RandomA vs RandomB)
+Finished game 271 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 229  [0.498] 270
+Started game 274 of 1000 (RandomB vs RandomA)
+Finished game 270 (RandomB vs RandomA): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 20 - 21 - 230  [0.498] 271
+Started game 275 of 1000 (RandomA vs RandomB)
+Finished game 272 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 231  [0.498] 272
+Started game 276 of 1000 (RandomB vs RandomA)
+Finished game 274 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 232  [0.498] 273
+Started game 277 of 1000 (RandomA vs RandomB)
+Finished game 273 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 20 - 21 - 233  [0.498] 274
+Started game 278 of 1000 (RandomB vs RandomA)
+Finished game 275 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 20 - 21 - 234  [0.498] 275
+Started game 279 of 1000 (RandomA vs RandomB)
+Finished game 276 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 235  [0.498] 276
+Started game 280 of 1000 (RandomB vs RandomA)
+Finished game 277 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 20 - 21 - 236  [0.498] 277
+Started game 281 of 1000 (RandomA vs RandomB)
+Finished game 278 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 20 - 21 - 237  [0.498] 278
+Started game 282 of 1000 (RandomB vs RandomA)
+Finished game 281 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 21 - 21 - 237  [0.500] 279
+Started game 283 of 1000 (RandomA vs RandomB)
+Finished game 279 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 238  [0.500] 280
+...      RandomA playing White: 11 - 11 - 119  [0.500] 141
+...      RandomA playing Black: 10 - 10 - 119  [0.500] 139
+...      White vs Black: 21 - 21 - 238  [0.500] 280
+Elo difference: 0.0 +/- 15.7, LOS: 50.0 %, DrawRatio: 85.0 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 284 of 1000 (RandomB vs RandomA)
+Finished game 282 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 239  [0.500] 281
+Started game 285 of 1000 (RandomA vs RandomB)
+Finished game 280 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 240  [0.500] 282
+Started game 286 of 1000 (RandomB vs RandomA)
+Finished game 283 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 241  [0.500] 283
+Started game 287 of 1000 (RandomA vs RandomB)
+Finished game 285 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 21 - 21 - 242  [0.500] 284
+Started game 288 of 1000 (RandomB vs RandomA)
+Finished game 287 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 243  [0.500] 285
+Started game 289 of 1000 (RandomA vs RandomB)
+Finished game 286 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 244  [0.500] 286
+Started game 290 of 1000 (RandomB vs RandomA)
+Finished game 284 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 21 - 21 - 245  [0.500] 287
+Started game 291 of 1000 (RandomA vs RandomB)
+Finished game 291 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 246  [0.500] 288
+Started game 292 of 1000 (RandomB vs RandomA)
+Finished game 288 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 21 - 21 - 247  [0.500] 289
+Started game 293 of 1000 (RandomA vs RandomB)
+Finished game 289 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 248  [0.500] 290
+Started game 294 of 1000 (RandomB vs RandomA)
+Finished game 290 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 249  [0.500] 291
+Started game 295 of 1000 (RandomA vs RandomB)
+Finished game 292 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 250  [0.500] 292
+Started game 296 of 1000 (RandomB vs RandomA)
+Finished game 294 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 251  [0.500] 293
+Started game 297 of 1000 (RandomA vs RandomB)
+Finished game 295 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 252  [0.500] 294
+Started game 298 of 1000 (RandomB vs RandomA)
+Finished game 296 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 253  [0.500] 295
+Started game 299 of 1000 (RandomA vs RandomB)
+Finished game 297 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 254  [0.500] 296
+Started game 300 of 1000 (RandomB vs RandomA)
+Finished game 298 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 255  [0.500] 297
+Started game 301 of 1000 (RandomA vs RandomB)
+Finished game 293 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 256  [0.500] 298
+Started game 302 of 1000 (RandomB vs RandomA)
+Finished game 301 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 257  [0.500] 299
+Started game 303 of 1000 (RandomA vs RandomB)
+Finished game 300 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 258  [0.500] 300
+...      RandomA playing White: 11 - 11 - 128  [0.500] 150
+...      RandomA playing Black: 10 - 10 - 130  [0.500] 150
+...      White vs Black: 21 - 21 - 258  [0.500] 300
+Elo difference: 0.0 +/- 14.7, LOS: 50.0 %, DrawRatio: 86.0 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 304 of 1000 (RandomB vs RandomA)
+Finished game 302 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 259  [0.500] 301
+Started game 305 of 1000 (RandomA vs RandomB)
+Finished game 299 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 260  [0.500] 302
+Started game 306 of 1000 (RandomB vs RandomA)
+Finished game 303 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 21 - 261  [0.500] 303
+Started game 307 of 1000 (RandomA vs RandomB)
+Finished game 306 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 21 - 22 - 261  [0.498] 304
+Started game 308 of 1000 (RandomB vs RandomA)
+Finished game 304 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 22 - 262  [0.498] 305
+Started game 309 of 1000 (RandomA vs RandomB)
+Finished game 305 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 22 - 263  [0.498] 306
+Started game 310 of 1000 (RandomB vs RandomA)
+Finished game 308 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 22 - 264  [0.498] 307
+Started game 311 of 1000 (RandomA vs RandomB)
+Finished game 307 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 21 - 22 - 265  [0.498] 308
+Started game 312 of 1000 (RandomB vs RandomA)
+Finished game 310 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 21 - 22 - 266  [0.498] 309
+Started game 313 of 1000 (RandomA vs RandomB)
+Finished game 309 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 22 - 267  [0.498] 310
+Started game 314 of 1000 (RandomB vs RandomA)
+Finished game 311 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 21 - 22 - 268  [0.498] 311
+Started game 315 of 1000 (RandomA vs RandomB)
+Finished game 312 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 22 - 269  [0.498] 312
+Started game 316 of 1000 (RandomB vs RandomA)
+Finished game 313 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 22 - 270  [0.498] 313
+Started game 317 of 1000 (RandomA vs RandomB)
+Finished game 314 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 21 - 22 - 271  [0.498] 314
+Started game 318 of 1000 (RandomB vs RandomA)
+Finished game 316 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 21 - 23 - 271  [0.497] 315
+Started game 319 of 1000 (RandomA vs RandomB)
+Finished game 315 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 21 - 23 - 272  [0.497] 316
+Started game 320 of 1000 (RandomB vs RandomA)
+Finished game 319 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 21 - 23 - 273  [0.497] 317
+Started game 321 of 1000 (RandomA vs RandomB)
+Finished game 317 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 23 - 274  [0.497] 318
+Started game 322 of 1000 (RandomB vs RandomA)
+Finished game 318 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 21 - 23 - 275  [0.497] 319
+Started game 323 of 1000 (RandomA vs RandomB)
+Finished game 320 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 23 - 276  [0.497] 320
+...      RandomA playing White: 11 - 11 - 138  [0.500] 160
+...      RandomA playing Black: 10 - 12 - 138  [0.494] 160
+...      White vs Black: 23 - 21 - 276  [0.503] 320
+Elo difference: -2.2 +/- 14.1, LOS: 38.2 %, DrawRatio: 86.3 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 324 of 1000 (RandomB vs RandomA)
+Finished game 322 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 23 - 277  [0.497] 321
+Started game 325 of 1000 (RandomA vs RandomB)
+Finished game 324 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 21 - 23 - 278  [0.497] 322
+Started game 326 of 1000 (RandomB vs RandomA)
+Finished game 326 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 21 - 24 - 278  [0.495] 323
+Started game 327 of 1000 (RandomA vs RandomB)
+Finished game 321 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 21 - 24 - 279  [0.495] 324
+Started game 328 of 1000 (RandomB vs RandomA)
+Finished game 325 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 21 - 24 - 280  [0.495] 325
+Started game 329 of 1000 (RandomA vs RandomB)
+Finished game 329 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 21 - 24 - 281  [0.495] 326
+Started game 330 of 1000 (RandomB vs RandomA)
+Finished game 323 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 21 - 24 - 282  [0.495] 327
+Started game 331 of 1000 (RandomA vs RandomB)
+Finished game 328 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 21 - 24 - 283  [0.495] 328
+Started game 332 of 1000 (RandomB vs RandomA)
+Finished game 327 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 24 - 284  [0.495] 329
+Started game 333 of 1000 (RandomA vs RandomB)
+Finished game 330 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 21 - 24 - 285  [0.495] 330
+Started game 334 of 1000 (RandomB vs RandomA)
+Finished game 333 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 22 - 24 - 285  [0.497] 331
+Started game 335 of 1000 (RandomA vs RandomB)
+Finished game 331 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 24 - 286  [0.497] 332
+Started game 336 of 1000 (RandomB vs RandomA)
+Finished game 336 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 22 - 25 - 286  [0.495] 333
+Started game 337 of 1000 (RandomA vs RandomB)
+Finished game 337 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 22 - 26 - 286  [0.494] 334
+Started game 338 of 1000 (RandomB vs RandomA)
+Finished game 332 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 26 - 287  [0.494] 335
+Started game 339 of 1000 (RandomA vs RandomB)
+Finished game 334 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 26 - 288  [0.494] 336
+Started game 340 of 1000 (RandomB vs RandomA)
+Finished game 339 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 26 - 289  [0.494] 337
+Started game 341 of 1000 (RandomA vs RandomB)
+Finished game 338 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 26 - 290  [0.494] 338
+Started game 342 of 1000 (RandomB vs RandomA)
+Finished game 340 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 26 - 291  [0.494] 339
+Started game 343 of 1000 (RandomA vs RandomB)
+Finished game 335 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 26 - 292  [0.494] 340
+...      RandomA playing White: 12 - 12 - 146  [0.500] 170
+...      RandomA playing Black: 10 - 14 - 146  [0.488] 170
+...      White vs Black: 26 - 22 - 292  [0.506] 340
+Elo difference: -4.1 +/- 13.9, LOS: 28.2 %, DrawRatio: 85.9 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 344 of 1000 (RandomB vs RandomA)
+Finished game 341 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 26 - 293  [0.494] 341
+Started game 345 of 1000 (RandomA vs RandomB)
+Finished game 343 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 26 - 294  [0.494] 342
+Started game 346 of 1000 (RandomB vs RandomA)
+Finished game 342 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 26 - 295  [0.494] 343
+Started game 347 of 1000 (RandomA vs RandomB)
+Finished game 347 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 22 - 27 - 295  [0.493] 344
+Started game 348 of 1000 (RandomB vs RandomA)
+Finished game 346 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 27 - 296  [0.493] 345
+Started game 349 of 1000 (RandomA vs RandomB)
+Finished game 345 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 27 - 297  [0.493] 346
+Started game 350 of 1000 (RandomB vs RandomA)
+Finished game 344 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 27 - 298  [0.493] 347
+Started game 351 of 1000 (RandomA vs RandomB)
+Finished game 348 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 27 - 299  [0.493] 348
+Started game 352 of 1000 (RandomB vs RandomA)
+Finished game 351 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 27 - 300  [0.493] 349
+Started game 353 of 1000 (RandomA vs RandomB)
+Finished game 352 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 27 - 301  [0.493] 350
+Started game 354 of 1000 (RandomB vs RandomA)
+Finished game 349 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 27 - 302  [0.493] 351
+Started game 355 of 1000 (RandomA vs RandomB)
+Finished game 350 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 27 - 303  [0.493] 352
+Started game 356 of 1000 (RandomB vs RandomA)
+Finished game 353 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 27 - 304  [0.493] 353
+Started game 357 of 1000 (RandomA vs RandomB)
+Finished game 356 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 27 - 305  [0.493] 354
+Started game 358 of 1000 (RandomB vs RandomA)
+Finished game 354 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 27 - 306  [0.493] 355
+Started game 359 of 1000 (RandomA vs RandomB)
+Finished game 355 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 27 - 307  [0.493] 356
+Started game 360 of 1000 (RandomB vs RandomA)
+Finished game 357 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 27 - 308  [0.493] 357
+Started game 361 of 1000 (RandomA vs RandomB)
+Finished game 358 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 27 - 309  [0.493] 358
+Started game 362 of 1000 (RandomB vs RandomA)
+Finished game 359 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 27 - 310  [0.493] 359
+Started game 363 of 1000 (RandomA vs RandomB)
+Finished game 360 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 27 - 311  [0.493] 360
+...      RandomA playing White: 12 - 13 - 155  [0.497] 180
+...      RandomA playing Black: 10 - 14 - 156  [0.489] 180
+...      White vs Black: 26 - 23 - 311  [0.504] 360
+Elo difference: -4.8 +/- 13.2, LOS: 23.8 %, DrawRatio: 86.4 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 364 of 1000 (RandomB vs RandomA)
+Finished game 361 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 27 - 312  [0.493] 361
+Started game 365 of 1000 (RandomA vs RandomB)
+Finished game 362 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 27 - 313  [0.493] 362
+Started game 366 of 1000 (RandomB vs RandomA)
+Finished game 364 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 27 - 314  [0.493] 363
+Started game 367 of 1000 (RandomA vs RandomB)
+Finished game 367 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 22 - 28 - 314  [0.492] 364
+Started game 368 of 1000 (RandomB vs RandomA)
+Finished game 365 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 28 - 315  [0.492] 365
+Started game 369 of 1000 (RandomA vs RandomB)
+Finished game 363 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 28 - 316  [0.492] 366
+Started game 370 of 1000 (RandomB vs RandomA)
+Finished game 368 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 28 - 317  [0.492] 367
+Started game 371 of 1000 (RandomA vs RandomB)
+Finished game 366 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 28 - 318  [0.492] 368
+Started game 372 of 1000 (RandomB vs RandomA)
+Finished game 369 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 28 - 319  [0.492] 369
+Started game 373 of 1000 (RandomA vs RandomB)
+Finished game 370 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 28 - 320  [0.492] 370
+Started game 374 of 1000 (RandomB vs RandomA)
+Finished game 374 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 28 - 321  [0.492] 371
+Started game 375 of 1000 (RandomA vs RandomB)
+Finished game 371 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 28 - 322  [0.492] 372
+Started game 376 of 1000 (RandomB vs RandomA)
+Finished game 373 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 28 - 323  [0.492] 373
+Started game 377 of 1000 (RandomA vs RandomB)
+Finished game 372 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 28 - 324  [0.492] 374
+Started game 378 of 1000 (RandomB vs RandomA)
+Finished game 376 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 28 - 325  [0.492] 375
+Started game 379 of 1000 (RandomA vs RandomB)
+Finished game 375 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 28 - 326  [0.492] 376
+Started game 380 of 1000 (RandomB vs RandomA)
+Finished game 377 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 28 - 327  [0.492] 377
+Started game 381 of 1000 (RandomA vs RandomB)
+Finished game 380 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 22 - 29 - 327  [0.491] 378
+Started game 382 of 1000 (RandomB vs RandomA)
+Finished game 378 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 29 - 328  [0.491] 379
+Started game 383 of 1000 (RandomA vs RandomB)
+Finished game 382 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 22 - 29 - 329  [0.491] 380
+...      RandomA playing White: 12 - 14 - 163  [0.495] 189
+...      RandomA playing Black: 10 - 15 - 166  [0.487] 191
+...      White vs Black: 27 - 24 - 329  [0.504] 380
+Elo difference: -6.4 +/- 12.8, LOS: 16.3 %, DrawRatio: 86.6 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 384 of 1000 (RandomB vs RandomA)
+Finished game 379 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 29 - 330  [0.491] 381
+Started game 385 of 1000 (RandomA vs RandomB)
+Finished game 381 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 22 - 29 - 331  [0.491] 382
+Started game 386 of 1000 (RandomB vs RandomA)
+Finished game 386 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 23 - 29 - 331  [0.492] 383
+Started game 387 of 1000 (RandomA vs RandomB)
+Finished game 384 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 23 - 29 - 332  [0.492] 384
+Started game 388 of 1000 (RandomB vs RandomA)
+Finished game 383 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 23 - 29 - 333  [0.492] 385
+Started game 389 of 1000 (RandomA vs RandomB)
+Finished game 385 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 23 - 29 - 334  [0.492] 386
+Started game 390 of 1000 (RandomB vs RandomA)
+Finished game 387 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 23 - 29 - 335  [0.492] 387
+Started game 391 of 1000 (RandomA vs RandomB)
+Finished game 390 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 23 - 29 - 336  [0.492] 388
+Started game 392 of 1000 (RandomB vs RandomA)
+Finished game 388 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 23 - 29 - 337  [0.492] 389
+Started game 393 of 1000 (RandomA vs RandomB)
+Finished game 389 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 23 - 29 - 338  [0.492] 390
+Started game 394 of 1000 (RandomB vs RandomA)
+Finished game 391 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 23 - 29 - 339  [0.492] 391
+Started game 395 of 1000 (RandomA vs RandomB)
+Finished game 395 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 24 - 29 - 339  [0.494] 392
+Started game 396 of 1000 (RandomB vs RandomA)
+Finished game 393 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 24 - 29 - 340  [0.494] 393
+Started game 397 of 1000 (RandomA vs RandomB)
+Finished game 396 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 24 - 29 - 341  [0.494] 394
+Started game 398 of 1000 (RandomB vs RandomA)
+Finished game 397 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 25 - 29 - 341  [0.495] 395
+Started game 399 of 1000 (RandomA vs RandomB)
+Finished game 394 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 25 - 29 - 342  [0.495] 396
+Started game 400 of 1000 (RandomB vs RandomA)
+Finished game 398 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 25 - 29 - 343  [0.495] 397
+Started game 401 of 1000 (RandomA vs RandomB)
+Finished game 392 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 25 - 29 - 344  [0.495] 398
+Started game 402 of 1000 (RandomB vs RandomA)
+Finished game 401 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 25 - 29 - 345  [0.495] 399
+Started game 403 of 1000 (RandomA vs RandomB)
+Finished game 400 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 25 - 29 - 346  [0.495] 400
+...      RandomA playing White: 14 - 14 - 172  [0.500] 200
+...      RandomA playing Black: 11 - 15 - 174  [0.490] 200
+...      White vs Black: 29 - 25 - 346  [0.505] 400
+Elo difference: -3.5 +/- 12.5, LOS: 29.3 %, DrawRatio: 86.5 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 404 of 1000 (RandomB vs RandomA)
+Finished game 399 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 25 - 29 - 347  [0.495] 401
+Started game 405 of 1000 (RandomA vs RandomB)
+Finished game 404 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 25 - 29 - 348  [0.495] 402
+Started game 406 of 1000 (RandomB vs RandomA)
+Finished game 403 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 25 - 29 - 349  [0.495] 403
+Started game 407 of 1000 (RandomA vs RandomB)
+Finished game 402 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 25 - 29 - 350  [0.495] 404
+Started game 408 of 1000 (RandomB vs RandomA)
+Finished game 405 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 25 - 29 - 351  [0.495] 405
+Started game 409 of 1000 (RandomA vs RandomB)
+Finished game 406 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 25 - 29 - 352  [0.495] 406
+Started game 410 of 1000 (RandomB vs RandomA)
+Finished game 407 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 25 - 29 - 353  [0.495] 407
+Started game 411 of 1000 (RandomA vs RandomB)
+Finished game 409 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 25 - 29 - 354  [0.495] 408
+Started game 412 of 1000 (RandomB vs RandomA)
+Finished game 410 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 25 - 29 - 355  [0.495] 409
+Started game 413 of 1000 (RandomA vs RandomB)
+Finished game 413 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 26 - 29 - 355  [0.496] 410
+Started game 414 of 1000 (RandomB vs RandomA)
+Finished game 408 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 26 - 29 - 356  [0.496] 411
+Started game 415 of 1000 (RandomA vs RandomB)
+Finished game 411 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 26 - 29 - 357  [0.496] 412
+Started game 416 of 1000 (RandomB vs RandomA)
+Finished game 415 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 27 - 29 - 357  [0.498] 413
+Started game 417 of 1000 (RandomA vs RandomB)
+Finished game 414 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 27 - 29 - 358  [0.498] 414
+Started game 418 of 1000 (RandomB vs RandomA)
+Finished game 416 (RandomB vs RandomA): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 27 - 29 - 359  [0.498] 415
+Started game 419 of 1000 (RandomA vs RandomB)
+Finished game 412 (RandomB vs RandomA): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 27 - 29 - 360  [0.498] 416
+Started game 420 of 1000 (RandomB vs RandomA)
+Finished game 417 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 27 - 29 - 361  [0.498] 417
+Started game 421 of 1000 (RandomA vs RandomB)
+Finished game 418 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 27 - 29 - 362  [0.498] 418
+Started game 422 of 1000 (RandomB vs RandomA)
+Finished game 420 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 27 - 29 - 363  [0.498] 419
+Started game 423 of 1000 (RandomA vs RandomB)
+Finished game 419 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 27 - 29 - 364  [0.498] 420
+...      RandomA playing White: 16 - 14 - 180  [0.505] 210
+...      RandomA playing Black: 11 - 15 - 184  [0.490] 210
+...      White vs Black: 31 - 25 - 364  [0.507] 420
+Elo difference: -1.7 +/- 12.1, LOS: 39.5 %, DrawRatio: 86.7 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 424 of 1000 (RandomB vs RandomA)
+Finished game 424 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 27 - 30 - 364  [0.496] 421
+Started game 425 of 1000 (RandomA vs RandomB)
+Finished game 423 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 27 - 30 - 365  [0.496] 422
+Started game 426 of 1000 (RandomB vs RandomA)
+Finished game 422 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 27 - 30 - 366  [0.496] 423
+Started game 427 of 1000 (RandomA vs RandomB)
+Finished game 421 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 27 - 30 - 367  [0.496] 424
+Started game 428 of 1000 (RandomB vs RandomA)
+Finished game 425 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 27 - 30 - 368  [0.496] 425
+Started game 429 of 1000 (RandomA vs RandomB)
+Finished game 426 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 27 - 30 - 369  [0.496] 426
+Started game 430 of 1000 (RandomB vs RandomA)
+Finished game 428 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 27 - 30 - 370  [0.496] 427
+Started game 431 of 1000 (RandomA vs RandomB)
+Finished game 430 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 27 - 30 - 371  [0.496] 428
+Started game 432 of 1000 (RandomB vs RandomA)
+Finished game 429 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 27 - 30 - 372  [0.497] 429
+Started game 433 of 1000 (RandomA vs RandomB)
+Finished game 427 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 27 - 30 - 373  [0.497] 430
+Started game 434 of 1000 (RandomB vs RandomA)
+Finished game 431 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 27 - 30 - 374  [0.497] 431
+Started game 435 of 1000 (RandomA vs RandomB)
+Finished game 435 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 27 - 31 - 374  [0.495] 432
+Started game 436 of 1000 (RandomB vs RandomA)
+Finished game 434 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 28 - 31 - 374  [0.497] 433
+Started game 437 of 1000 (RandomA vs RandomB)
+Finished game 433 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 28 - 31 - 375  [0.497] 434
+Started game 438 of 1000 (RandomB vs RandomA)
+Finished game 432 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 28 - 31 - 376  [0.497] 435
+Started game 439 of 1000 (RandomA vs RandomB)
+Finished game 437 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 28 - 31 - 377  [0.497] 436
+Started game 440 of 1000 (RandomB vs RandomA)
+Finished game 436 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 28 - 31 - 378  [0.497] 437
+Started game 441 of 1000 (RandomA vs RandomB)
+Finished game 440 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 28 - 31 - 379  [0.497] 438
+Started game 442 of 1000 (RandomB vs RandomA)
+Finished game 439 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 28 - 31 - 380  [0.497] 439
+Started game 443 of 1000 (RandomA vs RandomB)
+Finished game 441 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 28 - 31 - 381  [0.497] 440
+...      RandomA playing White: 16 - 15 - 190  [0.502] 221
+...      RandomA playing Black: 12 - 16 - 191  [0.491] 219
+...      White vs Black: 32 - 27 - 381  [0.506] 440
+Elo difference: -2.4 +/- 11.9, LOS: 34.8 %, DrawRatio: 86.6 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 444 of 1000 (RandomB vs RandomA)
+Finished game 442 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 28 - 31 - 382  [0.497] 441
+Started game 445 of 1000 (RandomA vs RandomB)
+Finished game 445 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 28 - 32 - 382  [0.495] 442
+Started game 446 of 1000 (RandomB vs RandomA)
+Finished game 438 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 28 - 32 - 383  [0.495] 443
+Started game 447 of 1000 (RandomA vs RandomB)
+Finished game 444 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 29 - 32 - 383  [0.497] 444
+Started game 448 of 1000 (RandomB vs RandomA)
+Finished game 446 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 29 - 32 - 384  [0.497] 445
+Started game 449 of 1000 (RandomA vs RandomB)
+Finished game 443 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 29 - 32 - 385  [0.497] 446
+Started game 450 of 1000 (RandomB vs RandomA)
+Finished game 447 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 29 - 32 - 386  [0.497] 447
+Started game 451 of 1000 (RandomA vs RandomB)
+Finished game 448 (RandomB vs RandomA): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 29 - 32 - 387  [0.497] 448
+Started game 452 of 1000 (RandomB vs RandomA)
+Finished game 450 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 29 - 32 - 388  [0.497] 449
+Started game 453 of 1000 (RandomA vs RandomB)
+Finished game 452 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 29 - 32 - 389  [0.497] 450
+Started game 454 of 1000 (RandomB vs RandomA)
+Finished game 449 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 29 - 32 - 390  [0.497] 451
+Started game 455 of 1000 (RandomA vs RandomB)
+Finished game 455 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 30 - 32 - 390  [0.498] 452
+Started game 456 of 1000 (RandomB vs RandomA)
+Finished game 456 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 30 - 33 - 390  [0.497] 453
+Started game 457 of 1000 (RandomA vs RandomB)
+Finished game 451 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 30 - 33 - 391  [0.497] 454
+Started game 458 of 1000 (RandomB vs RandomA)
+Finished game 453 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 30 - 33 - 392  [0.497] 455
+Started game 459 of 1000 (RandomA vs RandomB)
+Finished game 454 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 30 - 33 - 393  [0.497] 456
+Started game 460 of 1000 (RandomB vs RandomA)
+Finished game 459 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 30 - 33 - 394  [0.497] 457
+Started game 461 of 1000 (RandomA vs RandomB)
+Finished game 458 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 30 - 33 - 395  [0.497] 458
+Started game 462 of 1000 (RandomB vs RandomA)
+Finished game 457 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 30 - 33 - 396  [0.497] 459
+Started game 463 of 1000 (RandomA vs RandomB)
+Finished game 460 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 30 - 33 - 397  [0.497] 460
+...      RandomA playing White: 17 - 16 - 197  [0.502] 230
+...      RandomA playing Black: 13 - 17 - 200  [0.491] 230
+...      White vs Black: 34 - 29 - 397  [0.505] 460
+Elo difference: -2.3 +/- 11.7, LOS: 35.3 %, DrawRatio: 86.3 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 464 of 1000 (RandomB vs RandomA)
+Finished game 462 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 30 - 33 - 398  [0.497] 461
+Started game 465 of 1000 (RandomA vs RandomB)
+Finished game 461 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 30 - 33 - 399  [0.497] 462
+Started game 466 of 1000 (RandomB vs RandomA)
+Finished game 464 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 30 - 33 - 400  [0.497] 463
+Started game 467 of 1000 (RandomA vs RandomB)
+Finished game 466 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 30 - 34 - 400  [0.496] 464
+Started game 468 of 1000 (RandomB vs RandomA)
+Finished game 463 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 30 - 34 - 401  [0.496] 465
+Started game 469 of 1000 (RandomA vs RandomB)
+Finished game 467 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 31 - 34 - 401  [0.497] 466
+Started game 470 of 1000 (RandomB vs RandomA)
+Finished game 465 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 31 - 34 - 402  [0.497] 467
+Started game 471 of 1000 (RandomA vs RandomB)
+Finished game 468 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 31 - 34 - 403  [0.497] 468
+Started game 472 of 1000 (RandomB vs RandomA)
+Finished game 472 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 32 - 34 - 403  [0.498] 469
+Started game 473 of 1000 (RandomA vs RandomB)
+Finished game 469 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 32 - 34 - 404  [0.498] 470
+Started game 474 of 1000 (RandomB vs RandomA)
+Finished game 470 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 32 - 34 - 405  [0.498] 471
+Started game 475 of 1000 (RandomA vs RandomB)
+Finished game 471 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 32 - 34 - 406  [0.498] 472
+Started game 476 of 1000 (RandomB vs RandomA)
+Finished game 474 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 32 - 34 - 407  [0.498] 473
+Started game 477 of 1000 (RandomA vs RandomB)
+Finished game 473 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 32 - 34 - 408  [0.498] 474
+Started game 478 of 1000 (RandomB vs RandomA)
+Finished game 478 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 32 - 34 - 409  [0.498] 475
+Started game 479 of 1000 (RandomA vs RandomB)
+Finished game 475 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 32 - 34 - 410  [0.498] 476
+Started game 480 of 1000 (RandomB vs RandomA)
+Finished game 476 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 32 - 34 - 411  [0.498] 477
+Started game 481 of 1000 (RandomA vs RandomB)
+Finished game 481 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 32 - 35 - 411  [0.497] 478
+Started game 482 of 1000 (RandomB vs RandomA)
+Finished game 477 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 32 - 35 - 412  [0.497] 479
+Started game 483 of 1000 (RandomA vs RandomB)
+Finished game 480 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 32 - 35 - 413  [0.497] 480
+...      RandomA playing White: 18 - 17 - 205  [0.502] 240
+...      RandomA playing Black: 14 - 18 - 208  [0.492] 240
+...      White vs Black: 36 - 31 - 413  [0.505] 480
+Elo difference: -2.2 +/- 11.6, LOS: 35.7 %, DrawRatio: 86.0 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 484 of 1000 (RandomB vs RandomA)
+Finished game 479 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 32 - 35 - 414  [0.497] 481
+Started game 485 of 1000 (RandomA vs RandomB)
+Finished game 483 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 32 - 36 - 414  [0.496] 482
+Started game 486 of 1000 (RandomB vs RandomA)
+Finished game 482 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 32 - 36 - 415  [0.496] 483
+Started game 487 of 1000 (RandomA vs RandomB)
+Finished game 487 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 32 - 36 - 416  [0.496] 484
+Started game 488 of 1000 (RandomB vs RandomA)
+Finished game 488 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 32 - 37 - 416  [0.495] 485
+Started game 489 of 1000 (RandomA vs RandomB)
+Finished game 484 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 32 - 37 - 417  [0.495] 486
+Started game 490 of 1000 (RandomB vs RandomA)
+Finished game 486 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 32 - 37 - 418  [0.495] 487
+Started game 491 of 1000 (RandomA vs RandomB)
+Finished game 490 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 33 - 37 - 418  [0.496] 488
+Started game 492 of 1000 (RandomB vs RandomA)
+Finished game 485 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 33 - 37 - 419  [0.496] 489
+Started game 493 of 1000 (RandomA vs RandomB)
+Finished game 489 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 33 - 37 - 420  [0.496] 490
+Started game 494 of 1000 (RandomB vs RandomA)
+Finished game 491 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 33 - 37 - 421  [0.496] 491
+Started game 495 of 1000 (RandomA vs RandomB)
+Finished game 492 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 33 - 37 - 422  [0.496] 492
+Started game 496 of 1000 (RandomB vs RandomA)
+Finished game 495 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 34 - 37 - 422  [0.497] 493
+Started game 497 of 1000 (RandomA vs RandomB)
+Finished game 497 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 34 - 38 - 422  [0.496] 494
+Started game 498 of 1000 (RandomB vs RandomA)
+Finished game 494 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 34 - 38 - 423  [0.496] 495
+Started game 499 of 1000 (RandomA vs RandomB)
+Finished game 493 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 34 - 38 - 424  [0.496] 496
+Started game 500 of 1000 (RandomB vs RandomA)
+Finished game 496 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 34 - 38 - 425  [0.496] 497
+Started game 501 of 1000 (RandomA vs RandomB)
+Finished game 501 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 34 - 39 - 425  [0.495] 498
+Started game 502 of 1000 (RandomB vs RandomA)
+Finished game 499 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 34 - 39 - 426  [0.495] 499
+Started game 503 of 1000 (RandomA vs RandomB)
+Finished game 498 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 34 - 39 - 427  [0.495] 500
+...      RandomA playing White: 19 - 20 - 212  [0.498] 251
+...      RandomA playing Black: 15 - 19 - 215  [0.492] 249
+...      White vs Black: 38 - 35 - 427  [0.503] 500
+Elo difference: -3.5 +/- 11.6, LOS: 27.9 %, DrawRatio: 85.4 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 504 of 1000 (RandomB vs RandomA)
+Finished game 503 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 34 - 39 - 428  [0.495] 501
+Started game 505 of 1000 (RandomA vs RandomB)
+Finished game 500 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 34 - 39 - 429  [0.495] 502
+Started game 506 of 1000 (RandomB vs RandomA)
+Finished game 504 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 34 - 39 - 430  [0.495] 503
+Started game 507 of 1000 (RandomA vs RandomB)
+Finished game 502 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 34 - 39 - 431  [0.495] 504
+Started game 508 of 1000 (RandomB vs RandomA)
+Finished game 507 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 34 - 39 - 432  [0.495] 505
+Started game 509 of 1000 (RandomA vs RandomB)
+Finished game 506 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 34 - 39 - 433  [0.495] 506
+Started game 510 of 1000 (RandomB vs RandomA)
+Finished game 505 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 34 - 40 - 433  [0.494] 507
+Started game 511 of 1000 (RandomA vs RandomB)
+Finished game 508 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 34 - 40 - 434  [0.494] 508
+Started game 512 of 1000 (RandomB vs RandomA)
+Finished game 509 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 34 - 40 - 435  [0.494] 509
+Started game 513 of 1000 (RandomA vs RandomB)
+Finished game 510 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 34 - 40 - 436  [0.494] 510
+Started game 514 of 1000 (RandomB vs RandomA)
+Finished game 511 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 34 - 40 - 437  [0.494] 511
+Started game 515 of 1000 (RandomA vs RandomB)
+Finished game 514 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 34 - 40 - 438  [0.494] 512
+Started game 516 of 1000 (RandomB vs RandomA)
+Finished game 512 (RandomB vs RandomA): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 34 - 40 - 439  [0.494] 513
+Started game 517 of 1000 (RandomA vs RandomB)
+Finished game 515 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 34 - 40 - 440  [0.494] 514
+Started game 518 of 1000 (RandomB vs RandomA)
+Finished game 513 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 34 - 40 - 441  [0.494] 515
+Started game 519 of 1000 (RandomA vs RandomB)
+Finished game 517 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 34 - 40 - 442  [0.494] 516
+Started game 520 of 1000 (RandomB vs RandomA)
+Finished game 516 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 35 - 40 - 442  [0.495] 517
+Started game 521 of 1000 (RandomA vs RandomB)
+Finished game 518 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 35 - 40 - 443  [0.495] 518
+Started game 522 of 1000 (RandomB vs RandomA)
+Finished game 520 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 35 - 40 - 444  [0.495] 519
+Started game 523 of 1000 (RandomA vs RandomB)
+Finished game 521 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 35 - 40 - 445  [0.495] 520
+...      RandomA playing White: 19 - 21 - 220  [0.496] 260
+...      RandomA playing Black: 16 - 19 - 225  [0.494] 260
+...      White vs Black: 38 - 37 - 445  [0.501] 520
+Elo difference: -3.3 +/- 11.3, LOS: 28.2 %, DrawRatio: 85.6 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 524 of 1000 (RandomB vs RandomA)
+Finished game 519 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 35 - 40 - 446  [0.495] 521
+Started game 525 of 1000 (RandomA vs RandomB)
+Finished game 524 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 35 - 40 - 447  [0.495] 522
+Started game 526 of 1000 (RandomB vs RandomA)
+Finished game 523 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 35 - 40 - 448  [0.495] 523
+Started game 527 of 1000 (RandomA vs RandomB)
+Finished game 526 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 35 - 40 - 449  [0.495] 524
+Started game 528 of 1000 (RandomB vs RandomA)
+Finished game 525 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 35 - 40 - 450  [0.495] 525
+Started game 529 of 1000 (RandomA vs RandomB)
+Finished game 527 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 35 - 40 - 451  [0.495] 526
+Started game 530 of 1000 (RandomB vs RandomA)
+Finished game 529 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 35 - 40 - 452  [0.495] 527
+Started game 531 of 1000 (RandomA vs RandomB)
+Finished game 522 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 35 - 40 - 453  [0.495] 528
+Started game 532 of 1000 (RandomB vs RandomA)
+Finished game 530 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 35 - 40 - 454  [0.495] 529
+Started game 533 of 1000 (RandomA vs RandomB)
+Finished game 528 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 35 - 40 - 455  [0.495] 530
+Started game 534 of 1000 (RandomB vs RandomA)
+Finished game 531 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 35 - 40 - 456  [0.495] 531
+Started game 535 of 1000 (RandomA vs RandomB)
+Finished game 533 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 35 - 40 - 457  [0.495] 532
+Started game 536 of 1000 (RandomB vs RandomA)
+Finished game 534 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 35 - 40 - 458  [0.495] 533
+Started game 537 of 1000 (RandomA vs RandomB)
+Finished game 535 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 35 - 40 - 459  [0.495] 534
+Started game 538 of 1000 (RandomB vs RandomA)
+Finished game 537 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 35 - 41 - 459  [0.494] 535
+Started game 539 of 1000 (RandomA vs RandomB)
+Finished game 532 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 35 - 41 - 460  [0.494] 536
+Started game 540 of 1000 (RandomB vs RandomA)
+Finished game 536 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 35 - 41 - 461  [0.494] 537
+Started game 541 of 1000 (RandomA vs RandomB)
+Finished game 540 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 35 - 41 - 462  [0.494] 538
+Started game 542 of 1000 (RandomB vs RandomA)
+Finished game 539 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 35 - 41 - 463  [0.494] 539
+Started game 543 of 1000 (RandomA vs RandomB)
+Finished game 538 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 35 - 41 - 464  [0.494] 540
+...      RandomA playing White: 19 - 22 - 229  [0.494] 270
+...      RandomA playing Black: 16 - 19 - 235  [0.494] 270
+...      White vs Black: 38 - 38 - 464  [0.500] 540
+Elo difference: -3.9 +/- 11.0, LOS: 24.6 %, DrawRatio: 85.9 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 544 of 1000 (RandomB vs RandomA)
+Finished game 541 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 35 - 41 - 465  [0.494] 541
+Started game 545 of 1000 (RandomA vs RandomB)
+Finished game 545 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 36 - 41 - 465  [0.495] 542
+Started game 546 of 1000 (RandomB vs RandomA)
+Finished game 543 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 36 - 41 - 466  [0.495] 543
+Started game 547 of 1000 (RandomA vs RandomB)
+Finished game 546 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 36 - 41 - 467  [0.495] 544
+Started game 548 of 1000 (RandomB vs RandomA)
+Finished game 544 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 36 - 41 - 468  [0.495] 545
+Started game 549 of 1000 (RandomA vs RandomB)
+Finished game 549 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 37 - 41 - 468  [0.496] 546
+Started game 550 of 1000 (RandomB vs RandomA)
+Finished game 547 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 37 - 41 - 469  [0.496] 547
+Started game 551 of 1000 (RandomA vs RandomB)
+Finished game 551 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 38 - 41 - 469  [0.497] 548
+Started game 552 of 1000 (RandomB vs RandomA)
+Finished game 542 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 38 - 41 - 470  [0.497] 549
+Started game 553 of 1000 (RandomA vs RandomB)
+Finished game 552 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 38 - 41 - 471  [0.497] 550
+Started game 554 of 1000 (RandomB vs RandomA)
+Finished game 550 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 38 - 41 - 472  [0.497] 551
+Started game 555 of 1000 (RandomA vs RandomB)
+Finished game 548 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 38 - 41 - 473  [0.497] 552
+Started game 556 of 1000 (RandomB vs RandomA)
+Finished game 553 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 38 - 41 - 474  [0.497] 553
+Started game 557 of 1000 (RandomA vs RandomB)
+Finished game 557 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 39 - 41 - 474  [0.498] 554
+Started game 558 of 1000 (RandomB vs RandomA)
+Finished game 555 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 39 - 41 - 475  [0.498] 555
+Started game 559 of 1000 (RandomA vs RandomB)
+Finished game 556 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 39 - 41 - 476  [0.498] 556
+Started game 560 of 1000 (RandomB vs RandomA)
+Finished game 554 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 39 - 41 - 477  [0.498] 557
+Started game 561 of 1000 (RandomA vs RandomB)
+Finished game 559 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 39 - 41 - 478  [0.498] 558
+Started game 562 of 1000 (RandomB vs RandomA)
+Finished game 558 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 39 - 41 - 479  [0.498] 559
+Started game 563 of 1000 (RandomA vs RandomB)
+Finished game 562 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 39 - 41 - 480  [0.498] 560
+...      RandomA playing White: 23 - 22 - 235  [0.502] 280
+...      RandomA playing Black: 16 - 19 - 245  [0.495] 280
+...      White vs Black: 42 - 38 - 480  [0.504] 560
+Elo difference: -1.2 +/- 10.9, LOS: 41.2 %, DrawRatio: 85.7 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 564 of 1000 (RandomB vs RandomA)
+Finished game 560 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 39 - 41 - 481  [0.498] 561
+Started game 565 of 1000 (RandomA vs RandomB)
+Finished game 561 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 39 - 41 - 482  [0.498] 562
+Started game 566 of 1000 (RandomB vs RandomA)
+Finished game 566 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 39 - 42 - 482  [0.497] 563
+Started game 567 of 1000 (RandomA vs RandomB)
+Finished game 563 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 39 - 42 - 483  [0.497] 564
+Started game 568 of 1000 (RandomB vs RandomA)
+Finished game 564 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 39 - 42 - 484  [0.497] 565
+Started game 569 of 1000 (RandomA vs RandomB)
+Finished game 568 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 39 - 42 - 485  [0.497] 566
+Started game 570 of 1000 (RandomB vs RandomA)
+Finished game 570 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 40 - 42 - 485  [0.498] 567
+Started game 571 of 1000 (RandomA vs RandomB)
+Finished game 567 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 40 - 42 - 486  [0.498] 568
+Started game 572 of 1000 (RandomB vs RandomA)
+Finished game 569 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 40 - 42 - 487  [0.498] 569
+Started game 573 of 1000 (RandomA vs RandomB)
+Finished game 565 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 40 - 42 - 488  [0.498] 570
+Started game 574 of 1000 (RandomB vs RandomA)
+Finished game 573 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 40 - 42 - 489  [0.498] 571
+Started game 575 of 1000 (RandomA vs RandomB)
+Finished game 571 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 40 - 42 - 490  [0.498] 572
+Started game 576 of 1000 (RandomB vs RandomA)
+Finished game 572 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 40 - 42 - 491  [0.498] 573
+Started game 577 of 1000 (RandomA vs RandomB)
+Finished game 575 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 40 - 42 - 492  [0.498] 574
+Started game 578 of 1000 (RandomB vs RandomA)
+Finished game 577 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 41 - 42 - 492  [0.499] 575
+Started game 579 of 1000 (RandomA vs RandomB)
+Finished game 579 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 41 - 43 - 492  [0.498] 576
+Started game 580 of 1000 (RandomB vs RandomA)
+Finished game 574 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 41 - 43 - 493  [0.498] 577
+Started game 581 of 1000 (RandomA vs RandomB)
+Finished game 576 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 41 - 43 - 494  [0.498] 578
+Started game 582 of 1000 (RandomB vs RandomA)
+Finished game 582 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 42 - 43 - 494  [0.499] 579
+Started game 583 of 1000 (RandomA vs RandomB)
+Finished game 581 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 42 - 43 - 495  [0.499] 580
+...      RandomA playing White: 24 - 23 - 244  [0.502] 291
+...      RandomA playing Black: 18 - 20 - 251  [0.497] 289
+...      White vs Black: 44 - 41 - 495  [0.503] 580
+Elo difference: -0.6 +/- 10.8, LOS: 45.7 %, DrawRatio: 85.3 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 584 of 1000 (RandomB vs RandomA)
+Finished game 580 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 42 - 43 - 496  [0.499] 581
+Started game 585 of 1000 (RandomA vs RandomB)
+Finished game 578 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 42 - 43 - 497  [0.499] 582
+Started game 586 of 1000 (RandomB vs RandomA)
+Finished game 583 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 43 - 43 - 497  [0.500] 583
+Started game 587 of 1000 (RandomA vs RandomB)
+Finished game 586 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 43 - 43 - 498  [0.500] 584
+Started game 588 of 1000 (RandomB vs RandomA)
+Finished game 584 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 43 - 43 - 499  [0.500] 585
+Started game 589 of 1000 (RandomA vs RandomB)
+Finished game 585 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 43 - 43 - 500  [0.500] 586
+Started game 590 of 1000 (RandomB vs RandomA)
+Finished game 588 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 43 - 43 - 501  [0.500] 587
+Started game 591 of 1000 (RandomA vs RandomB)
+Finished game 590 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 43 - 43 - 502  [0.500] 588
+Started game 592 of 1000 (RandomB vs RandomA)
+Finished game 587 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 43 - 43 - 503  [0.500] 589
+Started game 593 of 1000 (RandomA vs RandomB)
+Finished game 589 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 43 - 43 - 504  [0.500] 590
+Started game 594 of 1000 (RandomB vs RandomA)
+Finished game 592 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 43 - 43 - 505  [0.500] 591
+Started game 595 of 1000 (RandomA vs RandomB)
+Finished game 595 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 44 - 43 - 505  [0.501] 592
+Started game 596 of 1000 (RandomB vs RandomA)
+Finished game 596 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 44 - 44 - 505  [0.500] 593
+Started game 597 of 1000 (RandomA vs RandomB)
+Finished game 594 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 44 - 44 - 506  [0.500] 594
+Started game 598 of 1000 (RandomB vs RandomA)
+Finished game 597 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 45 - 44 - 506  [0.501] 595
+Started game 599 of 1000 (RandomA vs RandomB)
+Finished game 593 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 45 - 44 - 507  [0.501] 596
+Started game 600 of 1000 (RandomB vs RandomA)
+Finished game 598 (RandomB vs RandomA): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 45 - 44 - 508  [0.501] 597
+Started game 601 of 1000 (RandomA vs RandomB)
+Finished game 591 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 45 - 44 - 509  [0.501] 598
+Started game 602 of 1000 (RandomB vs RandomA)
+Finished game 599 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 45 - 44 - 510  [0.501] 599
+Started game 603 of 1000 (RandomA vs RandomB)
+Finished game 600 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 45 - 44 - 511  [0.501] 600
+...      RandomA playing White: 27 - 23 - 250  [0.507] 300
+...      RandomA playing Black: 18 - 21 - 261  [0.495] 300
+...      White vs Black: 48 - 41 - 511  [0.506] 600
+Elo difference: 0.6 +/- 10.7, LOS: 54.2 %, DrawRatio: 85.2 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 604 of 1000 (RandomB vs RandomA)
+Finished game 602 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 45 - 44 - 512  [0.501] 601
+Started game 605 of 1000 (RandomA vs RandomB)
+Finished game 601 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 45 - 44 - 513  [0.501] 602
+Started game 606 of 1000 (RandomB vs RandomA)
+Finished game 603 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 45 - 44 - 514  [0.501] 603
+Started game 607 of 1000 (RandomA vs RandomB)
+Finished game 606 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 46 - 44 - 514  [0.502] 604
+Started game 608 of 1000 (RandomB vs RandomA)
+Finished game 607 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 46 - 45 - 514  [0.501] 605
+Started game 609 of 1000 (RandomA vs RandomB)
+Finished game 604 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 46 - 46 - 514  [0.500] 606
+Started game 610 of 1000 (RandomB vs RandomA)
+Finished game 605 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 46 - 46 - 515  [0.500] 607
+Started game 611 of 1000 (RandomA vs RandomB)
+Finished game 608 (RandomB vs RandomA): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 46 - 46 - 516  [0.500] 608
+Started game 612 of 1000 (RandomB vs RandomA)
+Finished game 609 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 46 - 46 - 517  [0.500] 609
+Started game 613 of 1000 (RandomA vs RandomB)
+Finished game 610 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 46 - 46 - 518  [0.500] 610
+Started game 614 of 1000 (RandomB vs RandomA)
+Finished game 614 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 47 - 46 - 518  [0.501] 611
+Started game 615 of 1000 (RandomA vs RandomB)
+Finished game 612 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 47 - 46 - 519  [0.501] 612
+Started game 616 of 1000 (RandomB vs RandomA)
+Finished game 613 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 47 - 46 - 520  [0.501] 613
+Started game 617 of 1000 (RandomA vs RandomB)
+Finished game 611 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 47 - 46 - 521  [0.501] 614
+Started game 618 of 1000 (RandomB vs RandomA)
+Finished game 615 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 47 - 46 - 522  [0.501] 615
+Started game 619 of 1000 (RandomA vs RandomB)
+Finished game 618 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 47 - 46 - 523  [0.501] 616
+Started game 620 of 1000 (RandomB vs RandomA)
+Finished game 620 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 48 - 46 - 523  [0.502] 617
+Started game 621 of 1000 (RandomA vs RandomB)
+Finished game 617 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 48 - 46 - 524  [0.502] 618
+Started game 622 of 1000 (RandomB vs RandomA)
+Finished game 621 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 48 - 46 - 525  [0.502] 619
+Started game 623 of 1000 (RandomA vs RandomB)
+Finished game 616 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 48 - 46 - 526  [0.502] 620
+...      RandomA playing White: 27 - 24 - 259  [0.505] 310
+...      RandomA playing Black: 21 - 22 - 267  [0.498] 310
+...      White vs Black: 49 - 45 - 526  [0.503] 620
+Elo difference: 1.1 +/- 10.6, LOS: 58.2 %, DrawRatio: 84.8 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 624 of 1000 (RandomB vs RandomA)
+Finished game 619 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 48 - 46 - 527  [0.502] 621
+Started game 625 of 1000 (RandomA vs RandomB)
+Finished game 622 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 48 - 46 - 528  [0.502] 622
+Started game 626 of 1000 (RandomB vs RandomA)
+Finished game 624 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 48 - 46 - 529  [0.502] 623
+Started game 627 of 1000 (RandomA vs RandomB)
+Finished game 625 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 48 - 46 - 530  [0.502] 624
+Started game 628 of 1000 (RandomB vs RandomA)
+Finished game 623 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 48 - 46 - 531  [0.502] 625
+Started game 629 of 1000 (RandomA vs RandomB)
+Finished game 626 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 48 - 46 - 532  [0.502] 626
+Started game 630 of 1000 (RandomB vs RandomA)
+Finished game 630 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 49 - 46 - 532  [0.502] 627
+Started game 631 of 1000 (RandomA vs RandomB)
+Finished game 628 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 49 - 46 - 533  [0.502] 628
+Started game 632 of 1000 (RandomB vs RandomA)
+Finished game 627 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 49 - 46 - 534  [0.502] 629
+Started game 633 of 1000 (RandomA vs RandomB)
+Finished game 633 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 50 - 46 - 534  [0.503] 630
+Started game 634 of 1000 (RandomB vs RandomA)
+Finished game 632 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 50 - 46 - 535  [0.503] 631
+Started game 635 of 1000 (RandomA vs RandomB)
+Finished game 631 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 50 - 46 - 536  [0.503] 632
+Started game 636 of 1000 (RandomB vs RandomA)
+Finished game 629 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 50 - 46 - 537  [0.503] 633
+Started game 637 of 1000 (RandomA vs RandomB)
+Finished game 634 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 50 - 46 - 538  [0.503] 634
+Started game 638 of 1000 (RandomB vs RandomA)
+Finished game 636 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 50 - 46 - 539  [0.503] 635
+Started game 639 of 1000 (RandomA vs RandomB)
+Finished game 638 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 50 - 46 - 540  [0.503] 636
+Started game 640 of 1000 (RandomB vs RandomA)
+Finished game 635 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 50 - 46 - 541  [0.503] 637
+Started game 641 of 1000 (RandomA vs RandomB)
+Finished game 639 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 50 - 46 - 542  [0.503] 638
+Started game 642 of 1000 (RandomB vs RandomA)
+Finished game 640 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 50 - 46 - 543  [0.503] 639
+Started game 643 of 1000 (RandomA vs RandomB)
+Finished game 641 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 50 - 46 - 544  [0.503] 640
+...      RandomA playing White: 28 - 24 - 268  [0.506] 320
+...      RandomA playing Black: 22 - 22 - 276  [0.500] 320
+...      White vs Black: 50 - 46 - 544  [0.503] 640
+Elo difference: 2.2 +/- 10.4, LOS: 65.8 %, DrawRatio: 85.0 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 644 of 1000 (RandomB vs RandomA)
+Finished game 637 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 50 - 46 - 545  [0.503] 641
+Started game 645 of 1000 (RandomA vs RandomB)
+Finished game 642 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 50 - 46 - 546  [0.503] 642
+Started game 646 of 1000 (RandomB vs RandomA)
+Finished game 644 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 50 - 46 - 547  [0.503] 643
+Started game 647 of 1000 (RandomA vs RandomB)
+Finished game 645 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 50 - 46 - 548  [0.503] 644
+Started game 648 of 1000 (RandomB vs RandomA)
+Finished game 643 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 50 - 46 - 549  [0.503] 645
+Started game 649 of 1000 (RandomA vs RandomB)
+Finished game 647 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 50 - 47 - 549  [0.502] 646
+Started game 650 of 1000 (RandomB vs RandomA)
+Finished game 646 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 51 - 47 - 549  [0.503] 647
+Started game 651 of 1000 (RandomA vs RandomB)
+Finished game 651 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 51 - 48 - 549  [0.502] 648
+Started game 652 of 1000 (RandomB vs RandomA)
+Finished game 650 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 52 - 48 - 549  [0.503] 649
+Started game 653 of 1000 (RandomA vs RandomB)
+Finished game 653 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 53 - 48 - 549  [0.504] 650
+Started game 654 of 1000 (RandomB vs RandomA)
+Finished game 648 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 53 - 48 - 550  [0.504] 651
+Started game 655 of 1000 (RandomA vs RandomB)
+Finished game 655 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 53 - 48 - 551  [0.504] 652
+Started game 656 of 1000 (RandomB vs RandomA)
+Finished game 652 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 53 - 48 - 552  [0.504] 653
+Started game 657 of 1000 (RandomA vs RandomB)
+Finished game 654 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 53 - 48 - 553  [0.504] 654
+Started game 658 of 1000 (RandomB vs RandomA)
+Finished game 649 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 53 - 48 - 554  [0.504] 655
+Started game 659 of 1000 (RandomA vs RandomB)
+Finished game 659 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 53 - 48 - 555  [0.504] 656
+Started game 660 of 1000 (RandomB vs RandomA)
+Finished game 658 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 53 - 48 - 556  [0.504] 657
+Started game 661 of 1000 (RandomA vs RandomB)
+Finished game 656 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 53 - 48 - 557  [0.504] 658
+Started game 662 of 1000 (RandomB vs RandomA)
+Finished game 657 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 53 - 48 - 558  [0.504] 659
+Started game 663 of 1000 (RandomA vs RandomB)
+Finished game 663 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 54 - 48 - 558  [0.505] 660
+...      RandomA playing White: 30 - 26 - 275  [0.506] 331
+...      RandomA playing Black: 24 - 22 - 283  [0.503] 329
+...      White vs Black: 52 - 50 - 558  [0.502] 660
+Elo difference: 3.2 +/- 10.4, LOS: 72.4 %, DrawRatio: 84.5 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 664 of 1000 (RandomB vs RandomA)
+Finished game 660 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 54 - 48 - 559  [0.505] 661
+Started game 665 of 1000 (RandomA vs RandomB)
+Finished game 661 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 54 - 48 - 560  [0.505] 662
+Started game 666 of 1000 (RandomB vs RandomA)
+Finished game 662 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 54 - 48 - 561  [0.505] 663
+Started game 667 of 1000 (RandomA vs RandomB)
+Finished game 665 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 54 - 48 - 562  [0.505] 664
+Started game 668 of 1000 (RandomB vs RandomA)
+Finished game 664 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 54 - 48 - 563  [0.505] 665
+Started game 669 of 1000 (RandomA vs RandomB)
+Finished game 666 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 54 - 48 - 564  [0.505] 666
+Started game 670 of 1000 (RandomB vs RandomA)
+Finished game 670 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 54 - 49 - 564  [0.504] 667
+Started game 671 of 1000 (RandomA vs RandomB)
+Finished game 667 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 54 - 49 - 565  [0.504] 668
+Started game 672 of 1000 (RandomB vs RandomA)
+Finished game 669 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 54 - 49 - 566  [0.504] 669
+Started game 673 of 1000 (RandomA vs RandomB)
+Finished game 672 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 55 - 49 - 566  [0.504] 670
+Started game 674 of 1000 (RandomB vs RandomA)
+Finished game 671 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 55 - 49 - 567  [0.504] 671
+Started game 675 of 1000 (RandomA vs RandomB)
+Finished game 668 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 55 - 49 - 568  [0.504] 672
+Started game 676 of 1000 (RandomB vs RandomA)
+Finished game 673 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 55 - 49 - 569  [0.504] 673
+Started game 677 of 1000 (RandomA vs RandomB)
+Finished game 674 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 55 - 49 - 570  [0.504] 674
+Started game 678 of 1000 (RandomB vs RandomA)
+Finished game 676 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 55 - 49 - 571  [0.504] 675
+Started game 679 of 1000 (RandomA vs RandomB)
+Finished game 675 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 55 - 49 - 572  [0.504] 676
+Started game 680 of 1000 (RandomB vs RandomA)
+Finished game 678 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 55 - 49 - 573  [0.504] 677
+Started game 681 of 1000 (RandomA vs RandomB)
+Finished game 679 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 55 - 49 - 574  [0.504] 678
+Started game 682 of 1000 (RandomB vs RandomA)
+Finished game 682 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 56 - 49 - 574  [0.505] 679
+Started game 683 of 1000 (RandomA vs RandomB)
+Finished game 677 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 56 - 49 - 575  [0.505] 680
+...      RandomA playing White: 30 - 26 - 284  [0.506] 340
+...      RandomA playing Black: 26 - 23 - 291  [0.504] 340
+...      White vs Black: 53 - 52 - 575  [0.501] 680
+Elo difference: 3.6 +/- 10.2, LOS: 75.3 %, DrawRatio: 84.6 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 684 of 1000 (RandomB vs RandomA)
+Finished game 684 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 57 - 49 - 575  [0.506] 681
+Started game 685 of 1000 (RandomA vs RandomB)
+Finished game 681 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 57 - 49 - 576  [0.506] 682
+Started game 686 of 1000 (RandomB vs RandomA)
+Finished game 686 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 57 - 50 - 576  [0.505] 683
+Started game 687 of 1000 (RandomA vs RandomB)
+Finished game 685 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 57 - 50 - 577  [0.505] 684
+Started game 688 of 1000 (RandomB vs RandomA)
+Finished game 687 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 57 - 50 - 578  [0.505] 685
+Started game 689 of 1000 (RandomA vs RandomB)
+Finished game 680 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 57 - 50 - 579  [0.505] 686
+Started game 690 of 1000 (RandomB vs RandomA)
+Finished game 683 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 57 - 50 - 580  [0.505] 687
+Started game 691 of 1000 (RandomA vs RandomB)
+Finished game 689 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 57 - 50 - 581  [0.505] 688
+Started game 692 of 1000 (RandomB vs RandomA)
+Finished game 690 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 57 - 51 - 581  [0.504] 689
+Started game 693 of 1000 (RandomA vs RandomB)
+Finished game 693 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 57 - 51 - 582  [0.504] 690
+Started game 694 of 1000 (RandomB vs RandomA)
+Finished game 688 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 57 - 51 - 583  [0.504] 691
+Started game 695 of 1000 (RandomA vs RandomB)
+Finished game 694 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 58 - 51 - 583  [0.505] 692
+Started game 696 of 1000 (RandomB vs RandomA)
+Finished game 696 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 59 - 51 - 583  [0.506] 693
+Started game 697 of 1000 (RandomA vs RandomB)
+Finished game 691 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 59 - 51 - 584  [0.506] 694
+Started game 698 of 1000 (RandomB vs RandomA)
+Finished game 695 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 59 - 51 - 585  [0.506] 695
+Started game 699 of 1000 (RandomA vs RandomB)
+Finished game 692 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 59 - 51 - 586  [0.506] 696
+Started game 700 of 1000 (RandomB vs RandomA)
+Finished game 699 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 60 - 51 - 586  [0.506] 697
+Started game 701 of 1000 (RandomA vs RandomB)
+Finished game 698 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 51 - 587  [0.506] 698
+Started game 702 of 1000 (RandomB vs RandomA)
+Finished game 701 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 51 - 588  [0.506] 699
+Started game 703 of 1000 (RandomA vs RandomB)
+Finished game 700 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 60 - 51 - 589  [0.506] 700
+...      RandomA playing White: 31 - 26 - 293  [0.507] 350
+...      RandomA playing Black: 29 - 25 - 296  [0.506] 350
+...      White vs Black: 56 - 55 - 589  [0.501] 700
+Elo difference: 4.5 +/- 10.2, LOS: 80.4 %, DrawRatio: 84.1 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 704 of 1000 (RandomB vs RandomA)
+Finished game 697 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 60 - 51 - 590  [0.506] 701
+Started game 705 of 1000 (RandomA vs RandomB)
+Finished game 703 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 51 - 591  [0.506] 702
+Started game 706 of 1000 (RandomB vs RandomA)
+Finished game 705 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 51 - 592  [0.506] 703
+Started game 707 of 1000 (RandomA vs RandomB)
+Finished game 704 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 51 - 593  [0.506] 704
+Started game 708 of 1000 (RandomB vs RandomA)
+Finished game 707 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 51 - 594  [0.506] 705
+Started game 709 of 1000 (RandomA vs RandomB)
+Finished game 706 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 60 - 51 - 595  [0.506] 706
+Started game 710 of 1000 (RandomB vs RandomA)
+Finished game 708 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 51 - 596  [0.506] 707
+Started game 711 of 1000 (RandomA vs RandomB)
+Finished game 709 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 60 - 52 - 596  [0.506] 708
+Started game 712 of 1000 (RandomB vs RandomA)
+Finished game 702 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 52 - 597  [0.506] 709
+Started game 713 of 1000 (RandomA vs RandomB)
+Finished game 712 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 60 - 52 - 598  [0.506] 710
+Started game 714 of 1000 (RandomB vs RandomA)
+Finished game 710 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 52 - 599  [0.506] 711
+Started game 715 of 1000 (RandomA vs RandomB)
+Finished game 713 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 52 - 600  [0.506] 712
+Started game 716 of 1000 (RandomB vs RandomA)
+Finished game 711 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 60 - 52 - 601  [0.506] 713
+Started game 717 of 1000 (RandomA vs RandomB)
+Finished game 714 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 52 - 602  [0.506] 714
+Started game 718 of 1000 (RandomB vs RandomA)
+Finished game 715 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 52 - 603  [0.506] 715
+Started game 719 of 1000 (RandomA vs RandomB)
+Finished game 719 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 60 - 53 - 603  [0.505] 716
+Started game 720 of 1000 (RandomB vs RandomA)
+Finished game 716 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 53 - 604  [0.505] 717
+Started game 721 of 1000 (RandomA vs RandomB)
+Finished game 717 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 53 - 605  [0.505] 718
+Started game 722 of 1000 (RandomB vs RandomA)
+Finished game 718 (RandomB vs RandomA): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 60 - 53 - 606  [0.505] 719
+Started game 723 of 1000 (RandomA vs RandomB)
+Finished game 723 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 60 - 54 - 606  [0.504] 720
+...      RandomA playing White: 31 - 29 - 301  [0.503] 361
+...      RandomA playing Black: 29 - 25 - 305  [0.506] 359
+...      White vs Black: 56 - 58 - 606  [0.499] 720
+Elo difference: 2.9 +/- 10.1, LOS: 71.3 %, DrawRatio: 84.2 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 724 of 1000 (RandomB vs RandomA)
+Finished game 721 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 60 - 54 - 607  [0.504] 721
+Started game 725 of 1000 (RandomA vs RandomB)
+Finished game 724 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 60 - 55 - 607  [0.503] 722
+Started game 726 of 1000 (RandomB vs RandomA)
+Finished game 720 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 55 - 608  [0.503] 723
+Started game 727 of 1000 (RandomA vs RandomB)
+Finished game 722 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 55 - 609  [0.503] 724
+Started game 728 of 1000 (RandomB vs RandomA)
+Finished game 725 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 55 - 610  [0.503] 725
+Started game 729 of 1000 (RandomA vs RandomB)
+Finished game 726 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 55 - 611  [0.503] 726
+Started game 730 of 1000 (RandomB vs RandomA)
+Finished game 730 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 60 - 56 - 611  [0.503] 727
+Started game 731 of 1000 (RandomA vs RandomB)
+Finished game 727 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 56 - 612  [0.503] 728
+Started game 732 of 1000 (RandomB vs RandomA)
+Finished game 728 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 56 - 613  [0.503] 729
+Started game 733 of 1000 (RandomA vs RandomB)
+Finished game 729 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 56 - 614  [0.503] 730
+Started game 734 of 1000 (RandomB vs RandomA)
+Finished game 733 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 56 - 615  [0.503] 731
+Started game 735 of 1000 (RandomA vs RandomB)
+Finished game 731 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 56 - 616  [0.503] 732
+Started game 736 of 1000 (RandomB vs RandomA)
+Finished game 732 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 60 - 56 - 617  [0.503] 733
+Started game 737 of 1000 (RandomA vs RandomB)
+Finished game 735 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 60 - 56 - 618  [0.503] 734
+Started game 738 of 1000 (RandomB vs RandomA)
+Finished game 736 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 56 - 619  [0.503] 735
+Started game 739 of 1000 (RandomA vs RandomB)
+Finished game 739 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 60 - 57 - 619  [0.502] 736
+Started game 740 of 1000 (RandomB vs RandomA)
+Finished game 738 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 57 - 620  [0.502] 737
+Started game 741 of 1000 (RandomA vs RandomB)
+Finished game 734 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 60 - 57 - 621  [0.502] 738
+Started game 742 of 1000 (RandomB vs RandomA)
+Finished game 737 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 60 - 57 - 622  [0.502] 739
+Started game 743 of 1000 (RandomA vs RandomB)
+Finished game 742 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 57 - 623  [0.502] 740
+...      RandomA playing White: 31 - 30 - 309  [0.501] 370
+...      RandomA playing Black: 29 - 27 - 314  [0.503] 370
+...      White vs Black: 58 - 59 - 623  [0.499] 740
+Elo difference: 1.4 +/- 9.9, LOS: 60.9 %, DrawRatio: 84.2 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 744 of 1000 (RandomB vs RandomA)
+Finished game 740 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 60 - 57 - 624  [0.502] 741
+Started game 745 of 1000 (RandomA vs RandomB)
+Finished game 743 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 61 - 57 - 624  [0.503] 742
+Started game 746 of 1000 (RandomB vs RandomA)
+Finished game 744 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 61 - 57 - 625  [0.503] 743
+Started game 747 of 1000 (RandomA vs RandomB)
+Finished game 745 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 61 - 57 - 626  [0.503] 744
+Started game 748 of 1000 (RandomB vs RandomA)
+Finished game 741 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 61 - 57 - 627  [0.503] 745
+Started game 749 of 1000 (RandomA vs RandomB)
+Finished game 746 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 61 - 57 - 628  [0.503] 746
+Started game 750 of 1000 (RandomB vs RandomA)
+Finished game 749 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 61 - 58 - 628  [0.502] 747
+Started game 751 of 1000 (RandomA vs RandomB)
+Finished game 747 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 61 - 58 - 629  [0.502] 748
+Started game 752 of 1000 (RandomB vs RandomA)
+Finished game 748 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 61 - 58 - 630  [0.502] 749
+Started game 753 of 1000 (RandomA vs RandomB)
+Finished game 750 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 61 - 58 - 631  [0.502] 750
+Started game 754 of 1000 (RandomB vs RandomA)
+Finished game 751 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 61 - 58 - 632  [0.502] 751
+Started game 755 of 1000 (RandomA vs RandomB)
+Finished game 753 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 61 - 58 - 633  [0.502] 752
+Started game 756 of 1000 (RandomB vs RandomA)
+Finished game 755 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 61 - 58 - 634  [0.502] 753
+Started game 757 of 1000 (RandomA vs RandomB)
+Finished game 752 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 61 - 58 - 635  [0.502] 754
+Started game 758 of 1000 (RandomB vs RandomA)
+Finished game 754 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 61 - 58 - 636  [0.502] 755
+Started game 759 of 1000 (RandomA vs RandomB)
+Finished game 756 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 61 - 58 - 637  [0.502] 756
+Started game 760 of 1000 (RandomB vs RandomA)
+Finished game 757 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 61 - 58 - 638  [0.502] 757
+Started game 761 of 1000 (RandomA vs RandomB)
+Finished game 759 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 61 - 58 - 639  [0.502] 758
+Started game 762 of 1000 (RandomB vs RandomA)
+Finished game 758 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 61 - 58 - 640  [0.502] 759
+Started game 763 of 1000 (RandomA vs RandomB)
+Finished game 760 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 61 - 58 - 641  [0.502] 760
+...      RandomA playing White: 32 - 31 - 317  [0.501] 380
+...      RandomA playing Black: 29 - 27 - 324  [0.503] 380
+...      White vs Black: 59 - 60 - 641  [0.499] 760
+Elo difference: 1.4 +/- 9.8, LOS: 60.8 %, DrawRatio: 84.3 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 764 of 1000 (RandomB vs RandomA)
+Finished game 762 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 61 - 58 - 642  [0.502] 761
+Started game 765 of 1000 (RandomA vs RandomB)
+Finished game 761 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 61 - 58 - 643  [0.502] 762
+Started game 766 of 1000 (RandomB vs RandomA)
+Finished game 764 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 61 - 58 - 644  [0.502] 763
+Started game 767 of 1000 (RandomA vs RandomB)
+Finished game 763 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 61 - 58 - 645  [0.502] 764
+Started game 768 of 1000 (RandomB vs RandomA)
+Finished game 766 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 61 - 58 - 646  [0.502] 765
+Started game 769 of 1000 (RandomA vs RandomB)
+Finished game 765 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 61 - 58 - 647  [0.502] 766
+Started game 770 of 1000 (RandomB vs RandomA)
+Finished game 769 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 61 - 59 - 647  [0.501] 767
+Started game 771 of 1000 (RandomA vs RandomB)
+Finished game 767 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 61 - 59 - 648  [0.501] 768
+Started game 772 of 1000 (RandomB vs RandomA)
+Finished game 768 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 61 - 59 - 649  [0.501] 769
+Started game 773 of 1000 (RandomA vs RandomB)
+Finished game 770 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 61 - 59 - 650  [0.501] 770
+Started game 774 of 1000 (RandomB vs RandomA)
+Finished game 774 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 61 - 60 - 650  [0.501] 771
+Started game 775 of 1000 (RandomA vs RandomB)
+Finished game 773 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 61 - 60 - 651  [0.501] 772
+Started game 776 of 1000 (RandomB vs RandomA)
+Finished game 772 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 61 - 60 - 652  [0.501] 773
+Started game 777 of 1000 (RandomA vs RandomB)
+Finished game 771 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 61 - 60 - 653  [0.501] 774
+Started game 778 of 1000 (RandomB vs RandomA)
+Finished game 778 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 61 - 60 - 654  [0.501] 775
+Started game 779 of 1000 (RandomA vs RandomB)
+Finished game 776 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 61 - 60 - 655  [0.501] 776
+Started game 780 of 1000 (RandomB vs RandomA)
+Finished game 779 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 62 - 60 - 655  [0.501] 777
+Started game 781 of 1000 (RandomA vs RandomB)
+Finished game 775 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 62 - 60 - 656  [0.501] 778
+Started game 782 of 1000 (RandomB vs RandomA)
+Finished game 777 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 62 - 60 - 657  [0.501] 779
+Started game 783 of 1000 (RandomA vs RandomB)
+Finished game 783 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 63 - 60 - 657  [0.502] 780
+...      RandomA playing White: 34 - 32 - 325  [0.503] 391
+...      RandomA playing Black: 29 - 28 - 332  [0.501] 389
+...      White vs Black: 62 - 61 - 657  [0.501] 780
+Elo difference: 1.3 +/- 9.7, LOS: 60.7 %, DrawRatio: 84.2 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 784 of 1000 (RandomB vs RandomA)
+Finished game 780 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 63 - 60 - 658  [0.502] 781
+Started game 785 of 1000 (RandomA vs RandomB)
+Finished game 782 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 63 - 60 - 659  [0.502] 782
+Started game 786 of 1000 (RandomB vs RandomA)
+Finished game 785 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 63 - 60 - 660  [0.502] 783
+Started game 787 of 1000 (RandomA vs RandomB)
+Finished game 786 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 63 - 60 - 661  [0.502] 784
+Started game 788 of 1000 (RandomB vs RandomA)
+Finished game 781 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 63 - 60 - 662  [0.502] 785
+Started game 789 of 1000 (RandomA vs RandomB)
+Finished game 784 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 63 - 60 - 663  [0.502] 786
+Started game 790 of 1000 (RandomB vs RandomA)
+Finished game 789 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 63 - 60 - 664  [0.502] 787
+Started game 791 of 1000 (RandomA vs RandomB)
+Finished game 787 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 63 - 60 - 665  [0.502] 788
+Started game 792 of 1000 (RandomB vs RandomA)
+Finished game 791 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 63 - 60 - 666  [0.502] 789
+Started game 793 of 1000 (RandomA vs RandomB)
+Finished game 788 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 63 - 60 - 667  [0.502] 790
+Started game 794 of 1000 (RandomB vs RandomA)
+Finished game 790 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 63 - 60 - 668  [0.502] 791
+Started game 795 of 1000 (RandomA vs RandomB)
+Finished game 795 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 63 - 61 - 668  [0.501] 792
+Started game 796 of 1000 (RandomB vs RandomA)
+Finished game 792 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 63 - 61 - 669  [0.501] 793
+Started game 797 of 1000 (RandomA vs RandomB)
+Finished game 794 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 63 - 61 - 670  [0.501] 794
+Started game 798 of 1000 (RandomB vs RandomA)
+Finished game 796 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 63 - 61 - 671  [0.501] 795
+Started game 799 of 1000 (RandomA vs RandomB)
+Finished game 793 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 63 - 61 - 672  [0.501] 796
+Started game 800 of 1000 (RandomB vs RandomA)
+Finished game 797 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 63 - 61 - 673  [0.501] 797
+Started game 801 of 1000 (RandomA vs RandomB)
+Finished game 800 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 64 - 61 - 673  [0.502] 798
+Started game 802 of 1000 (RandomB vs RandomA)
+Finished game 798 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 64 - 61 - 674  [0.502] 799
+Started game 803 of 1000 (RandomA vs RandomB)
+Finished game 802 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 65 - 61 - 674  [0.502] 800
+...      RandomA playing White: 34 - 33 - 332  [0.501] 399
+...      RandomA playing Black: 31 - 28 - 342  [0.504] 401
+...      White vs Black: 62 - 64 - 674  [0.499] 800
+Elo difference: 1.7 +/- 9.5, LOS: 63.9 %, DrawRatio: 84.3 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 804 of 1000 (RandomB vs RandomA)
+Finished game 799 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 65 - 61 - 675  [0.502] 801
+Started game 805 of 1000 (RandomA vs RandomB)
+Finished game 801 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 65 - 61 - 676  [0.502] 802
+Started game 806 of 1000 (RandomB vs RandomA)
+Finished game 803 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 65 - 61 - 677  [0.502] 803
+Started game 807 of 1000 (RandomA vs RandomB)
+Finished game 804 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 65 - 61 - 678  [0.502] 804
+Started game 808 of 1000 (RandomB vs RandomA)
+Finished game 806 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 65 - 61 - 679  [0.502] 805
+Started game 809 of 1000 (RandomA vs RandomB)
+Finished game 805 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 65 - 61 - 680  [0.502] 806
+Started game 810 of 1000 (RandomB vs RandomA)
+Finished game 808 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 65 - 62 - 680  [0.502] 807
+Started game 811 of 1000 (RandomA vs RandomB)
+Finished game 807 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 65 - 62 - 681  [0.502] 808
+Started game 812 of 1000 (RandomB vs RandomA)
+Finished game 809 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 65 - 62 - 682  [0.502] 809
+Started game 813 of 1000 (RandomA vs RandomB)
+Finished game 810 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 65 - 62 - 683  [0.502] 810
+Started game 814 of 1000 (RandomB vs RandomA)
+Finished game 811 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 65 - 62 - 684  [0.502] 811
+Started game 815 of 1000 (RandomA vs RandomB)
+Finished game 812 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 65 - 62 - 685  [0.502] 812
+Started game 816 of 1000 (RandomB vs RandomA)
+Finished game 813 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 65 - 62 - 686  [0.502] 813
+Started game 817 of 1000 (RandomA vs RandomB)
+Finished game 814 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 65 - 62 - 687  [0.502] 814
+Started game 818 of 1000 (RandomB vs RandomA)
+Finished game 816 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 65 - 62 - 688  [0.502] 815
+Started game 819 of 1000 (RandomA vs RandomB)
+Finished game 818 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 65 - 63 - 688  [0.501] 816
+Started game 820 of 1000 (RandomB vs RandomA)
+Finished game 815 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 65 - 63 - 689  [0.501] 817
+Started game 821 of 1000 (RandomA vs RandomB)
+Finished game 819 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 65 - 64 - 689  [0.501] 818
+Started game 822 of 1000 (RandomB vs RandomA)
+Finished game 821 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 66 - 64 - 689  [0.501] 819
+Started game 823 of 1000 (RandomA vs RandomB)
+Finished game 823 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 66 - 65 - 689  [0.501] 820
+...      RandomA playing White: 35 - 35 - 341  [0.500] 411
+...      RandomA playing Black: 31 - 30 - 348  [0.501] 409
+...      White vs Black: 65 - 66 - 689  [0.499] 820
+Elo difference: 0.4 +/- 9.5, LOS: 53.5 %, DrawRatio: 84.0 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 824 of 1000 (RandomB vs RandomA)
+Finished game 822 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 66 - 65 - 690  [0.501] 821
+Started game 825 of 1000 (RandomA vs RandomB)
+Finished game 820 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 66 - 65 - 691  [0.501] 822
+Started game 826 of 1000 (RandomB vs RandomA)
+Finished game 817 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 66 - 65 - 692  [0.501] 823
+Started game 827 of 1000 (RandomA vs RandomB)
+Finished game 825 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 66 - 65 - 693  [0.501] 824
+Started game 828 of 1000 (RandomB vs RandomA)
+Finished game 827 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 66 - 65 - 694  [0.501] 825
+Started game 829 of 1000 (RandomA vs RandomB)
+Finished game 824 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 66 - 65 - 695  [0.501] 826
+Started game 830 of 1000 (RandomB vs RandomA)
+Finished game 830 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 66 - 65 - 696  [0.501] 827
+Started game 831 of 1000 (RandomA vs RandomB)
+Finished game 829 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 66 - 65 - 697  [0.501] 828
+Started game 832 of 1000 (RandomB vs RandomA)
+Finished game 828 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 66 - 65 - 698  [0.501] 829
+Started game 833 of 1000 (RandomA vs RandomB)
+Finished game 826 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 66 - 65 - 699  [0.501] 830
+Started game 834 of 1000 (RandomB vs RandomA)
+Finished game 831 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 66 - 65 - 700  [0.501] 831
+Started game 835 of 1000 (RandomA vs RandomB)
+Finished game 832 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 66 - 65 - 701  [0.501] 832
+Started game 836 of 1000 (RandomB vs RandomA)
+Finished game 833 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 66 - 65 - 702  [0.501] 833
+Started game 837 of 1000 (RandomA vs RandomB)
+Finished game 835 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 66 - 65 - 703  [0.501] 834
+Started game 838 of 1000 (RandomB vs RandomA)
+Finished game 834 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 66 - 65 - 704  [0.501] 835
+Started game 839 of 1000 (RandomA vs RandomB)
+Finished game 836 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 66 - 65 - 705  [0.501] 836
+Started game 840 of 1000 (RandomB vs RandomA)
+Finished game 837 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 66 - 65 - 706  [0.501] 837
+Started game 841 of 1000 (RandomA vs RandomB)
+Finished game 839 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 67 - 65 - 706  [0.501] 838
+Started game 842 of 1000 (RandomB vs RandomA)
+Finished game 840 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 67 - 65 - 707  [0.501] 839
+Started game 843 of 1000 (RandomA vs RandomB)
+Finished game 838 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 67 - 65 - 708  [0.501] 840
+...      RandomA playing White: 36 - 35 - 349  [0.501] 420
+...      RandomA playing Black: 31 - 30 - 359  [0.501] 420
+...      White vs Black: 66 - 66 - 708  [0.500] 840
+Elo difference: 0.8 +/- 9.3, LOS: 56.9 %, DrawRatio: 84.3 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 844 of 1000 (RandomB vs RandomA)
+Finished game 841 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 67 - 65 - 709  [0.501] 841
+Started game 845 of 1000 (RandomA vs RandomB)
+Finished game 842 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 67 - 65 - 710  [0.501] 842
+Started game 846 of 1000 (RandomB vs RandomA)
+Finished game 844 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 67 - 65 - 711  [0.501] 843
+Started game 847 of 1000 (RandomA vs RandomB)
+Finished game 845 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 67 - 65 - 712  [0.501] 844
+Started game 848 of 1000 (RandomB vs RandomA)
+Finished game 843 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 67 - 65 - 713  [0.501] 845
+Started game 849 of 1000 (RandomA vs RandomB)
+Finished game 846 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 67 - 65 - 714  [0.501] 846
+Started game 850 of 1000 (RandomB vs RandomA)
+Finished game 847 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 67 - 65 - 715  [0.501] 847
+Started game 851 of 1000 (RandomA vs RandomB)
+Finished game 850 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 67 - 65 - 716  [0.501] 848
+Started game 852 of 1000 (RandomB vs RandomA)
+Finished game 851 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 67 - 66 - 716  [0.501] 849
+Started game 853 of 1000 (RandomA vs RandomB)
+Finished game 852 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 67 - 67 - 716  [0.500] 850
+Started game 854 of 1000 (RandomB vs RandomA)
+Finished game 848 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 67 - 67 - 717  [0.500] 851
+Started game 855 of 1000 (RandomA vs RandomB)
+Finished game 849 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 67 - 67 - 718  [0.500] 852
+Started game 856 of 1000 (RandomB vs RandomA)
+Finished game 853 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 67 - 67 - 719  [0.500] 853
+Started game 857 of 1000 (RandomA vs RandomB)
+Finished game 854 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 67 - 67 - 720  [0.500] 854
+Started game 858 of 1000 (RandomB vs RandomA)
+Finished game 856 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 67 - 67 - 721  [0.500] 855
+Started game 859 of 1000 (RandomA vs RandomB)
+Finished game 859 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 67 - 67 - 722  [0.500] 856
+Started game 860 of 1000 (RandomB vs RandomA)
+Finished game 855 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 67 - 67 - 723  [0.500] 857
+Started game 861 of 1000 (RandomA vs RandomB)
+Finished game 857 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 67 - 67 - 724  [0.500] 858
+Started game 862 of 1000 (RandomB vs RandomA)
+Finished game 858 (RandomB vs RandomA): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 67 - 67 - 725  [0.500] 859
+Started game 863 of 1000 (RandomA vs RandomB)
+Finished game 860 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 67 - 67 - 726  [0.500] 860
+...      RandomA playing White: 36 - 36 - 358  [0.500] 430
+...      RandomA playing Black: 31 - 31 - 368  [0.500] 430
+...      White vs Black: 67 - 67 - 726  [0.500] 860
+Elo difference: 0.0 +/- 9.2, LOS: 50.0 %, DrawRatio: 84.4 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 864 of 1000 (RandomB vs RandomA)
+Finished game 864 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 67 - 68 - 726  [0.499] 861
+Started game 865 of 1000 (RandomA vs RandomB)
+Finished game 865 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 68 - 68 - 726  [0.500] 862
+Started game 866 of 1000 (RandomB vs RandomA)
+Finished game 866 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 68 - 68 - 727  [0.500] 863
+Started game 867 of 1000 (RandomA vs RandomB)
+Finished game 861 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 68 - 68 - 728  [0.500] 864
+Started game 868 of 1000 (RandomB vs RandomA)
+Finished game 862 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 68 - 68 - 729  [0.500] 865
+Started game 869 of 1000 (RandomA vs RandomB)
+Finished game 863 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 68 - 68 - 730  [0.500] 866
+Started game 870 of 1000 (RandomB vs RandomA)
+Finished game 867 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 68 - 68 - 731  [0.500] 867
+Started game 871 of 1000 (RandomA vs RandomB)
+Finished game 868 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 68 - 68 - 732  [0.500] 868
+Started game 872 of 1000 (RandomB vs RandomA)
+Finished game 870 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 68 - 68 - 733  [0.500] 869
+Started game 873 of 1000 (RandomA vs RandomB)
+Finished game 871 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 68 - 68 - 734  [0.500] 870
+Started game 874 of 1000 (RandomB vs RandomA)
+Finished game 872 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 68 - 68 - 735  [0.500] 871
+Started game 875 of 1000 (RandomA vs RandomB)
+Finished game 869 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 68 - 68 - 736  [0.500] 872
+Started game 876 of 1000 (RandomB vs RandomA)
+Finished game 873 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 68 - 68 - 737  [0.500] 873
+Started game 877 of 1000 (RandomA vs RandomB)
+Finished game 874 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 68 - 68 - 738  [0.500] 874
+Started game 878 of 1000 (RandomB vs RandomA)
+Finished game 875 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 68 - 68 - 739  [0.500] 875
+Started game 879 of 1000 (RandomA vs RandomB)
+Finished game 877 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 68 - 68 - 740  [0.500] 876
+Started game 880 of 1000 (RandomB vs RandomA)
+Finished game 879 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 68 - 68 - 741  [0.500] 877
+Started game 881 of 1000 (RandomA vs RandomB)
+Finished game 880 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 69 - 68 - 741  [0.501] 878
+Started game 882 of 1000 (RandomB vs RandomA)
+Finished game 876 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 69 - 68 - 742  [0.501] 879
+Started game 883 of 1000 (RandomA vs RandomB)
+Finished game 878 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 69 - 68 - 743  [0.501] 880
+...      RandomA playing White: 37 - 36 - 367  [0.501] 440
+...      RandomA playing Black: 32 - 32 - 376  [0.500] 440
+...      White vs Black: 69 - 68 - 743  [0.501] 880
+Elo difference: 0.4 +/- 9.0, LOS: 53.4 %, DrawRatio: 84.4 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 884 of 1000 (RandomB vs RandomA)
+Finished game 883 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 69 - 69 - 743  [0.500] 881
+Started game 885 of 1000 (RandomA vs RandomB)
+Finished game 881 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 69 - 69 - 744  [0.500] 882
+Started game 886 of 1000 (RandomB vs RandomA)
+Finished game 882 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 69 - 69 - 745  [0.500] 883
+Started game 887 of 1000 (RandomA vs RandomB)
+Finished game 885 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 69 - 69 - 746  [0.500] 884
+Started game 888 of 1000 (RandomB vs RandomA)
+Finished game 884 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 69 - 69 - 747  [0.500] 885
+Started game 889 of 1000 (RandomA vs RandomB)
+Finished game 888 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 69 - 69 - 748  [0.500] 886
+Started game 890 of 1000 (RandomB vs RandomA)
+Finished game 886 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 69 - 69 - 749  [0.500] 887
+Started game 891 of 1000 (RandomA vs RandomB)
+Finished game 887 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 69 - 69 - 750  [0.500] 888
+Started game 892 of 1000 (RandomB vs RandomA)
+Finished game 891 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 69 - 69 - 751  [0.500] 889
+Started game 893 of 1000 (RandomA vs RandomB)
+Finished game 892 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 69 - 69 - 752  [0.500] 890
+Started game 894 of 1000 (RandomB vs RandomA)
+Finished game 889 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 69 - 69 - 753  [0.500] 891
+Started game 895 of 1000 (RandomA vs RandomB)
+Finished game 893 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 69 - 69 - 754  [0.500] 892
+Started game 896 of 1000 (RandomB vs RandomA)
+Finished game 895 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 70 - 69 - 754  [0.501] 893
+Started game 897 of 1000 (RandomA vs RandomB)
+Finished game 890 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 70 - 69 - 755  [0.501] 894
+Started game 898 of 1000 (RandomB vs RandomA)
+Finished game 896 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 71 - 69 - 755  [0.501] 895
+Started game 899 of 1000 (RandomA vs RandomB)
+Finished game 897 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 71 - 70 - 755  [0.501] 896
+Started game 900 of 1000 (RandomB vs RandomA)
+Finished game 900 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 71 - 71 - 755  [0.500] 897
+Started game 901 of 1000 (RandomA vs RandomB)
+Finished game 898 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 71 - 71 - 756  [0.500] 898
+Started game 902 of 1000 (RandomB vs RandomA)
+Finished game 894 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 71 - 71 - 757  [0.500] 899
+Started game 903 of 1000 (RandomA vs RandomB)
+Finished game 902 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 71 - 71 - 758  [0.500] 900
+...      RandomA playing White: 38 - 38 - 373  [0.500] 449
+...      RandomA playing Black: 33 - 33 - 385  [0.500] 451
+...      White vs Black: 71 - 71 - 758  [0.500] 900
+Elo difference: 0.0 +/- 9.0, LOS: 50.0 %, DrawRatio: 84.2 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 904 of 1000 (RandomB vs RandomA)
+Finished game 904 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 71 - 72 - 758  [0.499] 901
+Started game 905 of 1000 (RandomA vs RandomB)
+Finished game 901 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 71 - 72 - 759  [0.499] 902
+Started game 906 of 1000 (RandomB vs RandomA)
+Finished game 903 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 71 - 72 - 760  [0.499] 903
+Started game 907 of 1000 (RandomA vs RandomB)
+Finished game 899 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 71 - 72 - 761  [0.499] 904
+Started game 908 of 1000 (RandomB vs RandomA)
+Finished game 906 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 71 - 72 - 762  [0.499] 905
+Started game 909 of 1000 (RandomA vs RandomB)
+Finished game 905 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 71 - 72 - 763  [0.499] 906
+Started game 910 of 1000 (RandomB vs RandomA)
+Finished game 907 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 71 - 72 - 764  [0.499] 907
+Started game 911 of 1000 (RandomA vs RandomB)
+Finished game 908 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 71 - 72 - 765  [0.499] 908
+Started game 912 of 1000 (RandomB vs RandomA)
+Finished game 909 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 71 - 72 - 766  [0.499] 909
+Started game 913 of 1000 (RandomA vs RandomB)
+Finished game 910 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 71 - 72 - 767  [0.499] 910
+Started game 914 of 1000 (RandomB vs RandomA)
+Finished game 912 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 71 - 72 - 768  [0.499] 911
+Started game 915 of 1000 (RandomA vs RandomB)
+Finished game 911 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 71 - 72 - 769  [0.499] 912
+Started game 916 of 1000 (RandomB vs RandomA)
+Finished game 914 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 71 - 72 - 770  [0.499] 913
+Started game 917 of 1000 (RandomA vs RandomB)
+Finished game 916 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 72 - 72 - 770  [0.500] 914
+Started game 918 of 1000 (RandomB vs RandomA)
+Finished game 913 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 72 - 72 - 771  [0.500] 915
+Started game 919 of 1000 (RandomA vs RandomB)
+Finished game 915 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 72 - 72 - 772  [0.500] 916
+Started game 920 of 1000 (RandomB vs RandomA)
+Finished game 917 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 72 - 72 - 773  [0.500] 917
+Started game 921 of 1000 (RandomA vs RandomB)
+Finished game 918 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 72 - 72 - 774  [0.500] 918
+Started game 922 of 1000 (RandomB vs RandomA)
+Finished game 921 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 72 - 72 - 775  [0.500] 919
+Started game 923 of 1000 (RandomA vs RandomB)
+Finished game 923 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 72 - 72 - 776  [0.500] 920
+...      RandomA playing White: 38 - 38 - 385  [0.500] 461
+...      RandomA playing Black: 34 - 34 - 391  [0.500] 459
+...      White vs Black: 72 - 72 - 776  [0.500] 920
+Elo difference: 0.0 +/- 8.9, LOS: 50.0 %, DrawRatio: 84.3 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 924 of 1000 (RandomB vs RandomA)
+Finished game 920 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 72 - 72 - 777  [0.500] 921
+Started game 925 of 1000 (RandomA vs RandomB)
+Finished game 922 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 72 - 72 - 778  [0.500] 922
+Started game 926 of 1000 (RandomB vs RandomA)
+Finished game 919 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 72 - 72 - 779  [0.500] 923
+Started game 927 of 1000 (RandomA vs RandomB)
+Finished game 924 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 72 - 72 - 780  [0.500] 924
+Started game 928 of 1000 (RandomB vs RandomA)
+Finished game 926 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 72 - 72 - 781  [0.500] 925
+Started game 929 of 1000 (RandomA vs RandomB)
+Finished game 925 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 72 - 72 - 782  [0.500] 926
+Started game 930 of 1000 (RandomB vs RandomA)
+Finished game 927 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 72 - 72 - 783  [0.500] 927
+Started game 931 of 1000 (RandomA vs RandomB)
+Finished game 929 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 72 - 72 - 784  [0.500] 928
+Started game 932 of 1000 (RandomB vs RandomA)
+Finished game 928 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 72 - 72 - 785  [0.500] 929
+Started game 933 of 1000 (RandomA vs RandomB)
+Finished game 930 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 72 - 72 - 786  [0.500] 930
+Started game 934 of 1000 (RandomB vs RandomA)
+Finished game 932 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 72 - 72 - 787  [0.500] 931
+Started game 935 of 1000 (RandomA vs RandomB)
+Finished game 934 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 72 - 72 - 788  [0.500] 932
+Started game 936 of 1000 (RandomB vs RandomA)
+Finished game 935 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 72 - 72 - 789  [0.500] 933
+Started game 937 of 1000 (RandomA vs RandomB)
+Finished game 931 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 72 - 72 - 790  [0.500] 934
+Started game 938 of 1000 (RandomB vs RandomA)
+Finished game 933 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 72 - 72 - 791  [0.500] 935
+Started game 939 of 1000 (RandomA vs RandomB)
+Finished game 936 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 72 - 72 - 792  [0.500] 936
+Started game 940 of 1000 (RandomB vs RandomA)
+Finished game 938 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 72 - 72 - 793  [0.500] 937
+Started game 941 of 1000 (RandomA vs RandomB)
+Finished game 937 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 72 - 72 - 794  [0.500] 938
+Started game 942 of 1000 (RandomB vs RandomA)
+Finished game 939 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 72 - 72 - 795  [0.500] 939
+Started game 943 of 1000 (RandomA vs RandomB)
+Finished game 943 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 73 - 72 - 795  [0.501] 940
+...      RandomA playing White: 39 - 38 - 394  [0.501] 471
+...      RandomA playing Black: 34 - 34 - 401  [0.500] 469
+...      White vs Black: 73 - 72 - 795  [0.501] 940
+Elo difference: 0.4 +/- 8.7, LOS: 53.3 %, DrawRatio: 84.6 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 944 of 1000 (RandomB vs RandomA)
+Finished game 944 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 73 - 72 - 796  [0.501] 941
+Started game 945 of 1000 (RandomA vs RandomB)
+Finished game 940 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 73 - 72 - 797  [0.501] 942
+Started game 946 of 1000 (RandomB vs RandomA)
+Finished game 942 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 73 - 72 - 798  [0.501] 943
+Started game 947 of 1000 (RandomA vs RandomB)
+Finished game 946 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 74 - 72 - 798  [0.501] 944
+Started game 948 of 1000 (RandomB vs RandomA)
+Finished game 941 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 74 - 72 - 799  [0.501] 945
+Started game 949 of 1000 (RandomA vs RandomB)
+Finished game 948 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 74 - 72 - 800  [0.501] 946
+Started game 950 of 1000 (RandomB vs RandomA)
+Finished game 945 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 74 - 72 - 801  [0.501] 947
+Started game 951 of 1000 (RandomA vs RandomB)
+Finished game 947 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 74 - 72 - 802  [0.501] 948
+Started game 952 of 1000 (RandomB vs RandomA)
+Finished game 949 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 74 - 72 - 803  [0.501] 949
+Started game 953 of 1000 (RandomA vs RandomB)
+Finished game 952 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 75 - 72 - 803  [0.502] 950
+Started game 954 of 1000 (RandomB vs RandomA)
+Finished game 951 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 75 - 72 - 804  [0.502] 951
+Started game 955 of 1000 (RandomA vs RandomB)
+Finished game 950 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 72 - 805  [0.502] 952
+Started game 956 of 1000 (RandomB vs RandomA)
+Finished game 953 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 72 - 806  [0.502] 953
+Started game 957 of 1000 (RandomA vs RandomB)
+Finished game 955 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 72 - 807  [0.502] 954
+Started game 958 of 1000 (RandomB vs RandomA)
+Finished game 954 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 75 - 72 - 808  [0.502] 955
+Started game 959 of 1000 (RandomA vs RandomB)
+Finished game 956 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 72 - 809  [0.502] 956
+Started game 960 of 1000 (RandomB vs RandomA)
+Finished game 958 (RandomB vs RandomA): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 75 - 72 - 810  [0.502] 957
+Started game 961 of 1000 (RandomA vs RandomB)
+Finished game 960 (RandomB vs RandomA): 1-0 {White mates}
+Score of RandomA vs RandomB: 75 - 73 - 810  [0.501] 958
+Started game 962 of 1000 (RandomB vs RandomA)
+Finished game 957 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 75 - 73 - 811  [0.501] 959
+Started game 963 of 1000 (RandomA vs RandomB)
+Finished game 962 (RandomB vs RandomA): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 75 - 73 - 812  [0.501] 960
+...      RandomA playing White: 39 - 38 - 402  [0.501] 479
+...      RandomA playing Black: 36 - 35 - 410  [0.501] 481
+...      White vs Black: 74 - 74 - 812  [0.500] 960
+Elo difference: 0.7 +/- 8.6, LOS: 56.5 %, DrawRatio: 84.6 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 964 of 1000 (RandomB vs RandomA)
+Finished game 959 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 73 - 813  [0.501] 961
+Started game 965 of 1000 (RandomA vs RandomB)
+Finished game 961 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 75 - 73 - 814  [0.501] 962
+Started game 966 of 1000 (RandomB vs RandomA)
+Finished game 963 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 73 - 815  [0.501] 963
+Started game 967 of 1000 (RandomA vs RandomB)
+Finished game 965 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 75 - 74 - 815  [0.501] 964
+Started game 968 of 1000 (RandomB vs RandomA)
+Finished game 964 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 74 - 816  [0.501] 965
+Started game 969 of 1000 (RandomA vs RandomB)
+Finished game 968 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 74 - 817  [0.501] 966
+Started game 970 of 1000 (RandomB vs RandomA)
+Finished game 967 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 74 - 818  [0.501] 967
+Started game 971 of 1000 (RandomA vs RandomB)
+Finished game 966 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 74 - 819  [0.501] 968
+Started game 972 of 1000 (RandomB vs RandomA)
+Finished game 969 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 75 - 74 - 820  [0.501] 969
+Started game 973 of 1000 (RandomA vs RandomB)
+Finished game 970 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 74 - 821  [0.501] 970
+Started game 974 of 1000 (RandomB vs RandomA)
+Finished game 971 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 74 - 822  [0.501] 971
+Started game 975 of 1000 (RandomA vs RandomB)
+Finished game 975 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 75 - 75 - 822  [0.500] 972
+Started game 976 of 1000 (RandomB vs RandomA)
+Finished game 973 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 75 - 823  [0.500] 973
+Started game 977 of 1000 (RandomA vs RandomB)
+Finished game 976 (RandomB vs RandomA): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 75 - 75 - 824  [0.500] 974
+Started game 978 of 1000 (RandomB vs RandomA)
+Finished game 972 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 75 - 75 - 825  [0.500] 975
+Started game 979 of 1000 (RandomA vs RandomB)
+Finished game 979 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 75 - 76 - 825  [0.499] 976
+Started game 980 of 1000 (RandomB vs RandomA)
+Finished game 978 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 75 - 76 - 826  [0.499] 977
+Started game 981 of 1000 (RandomA vs RandomB)
+Finished game 977 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 76 - 827  [0.499] 978
+Started game 982 of 1000 (RandomB vs RandomA)
+Finished game 980 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 76 - 828  [0.499] 979
+Started game 983 of 1000 (RandomA vs RandomB)
+Finished game 974 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 75 - 76 - 829  [0.499] 980
+...      RandomA playing White: 39 - 41 - 410  [0.498] 490
+...      RandomA playing Black: 36 - 35 - 419  [0.501] 490
+...      White vs Black: 74 - 77 - 829  [0.498] 980
+Elo difference: -0.4 +/- 8.5, LOS: 46.8 %, DrawRatio: 84.6 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+Started game 984 of 1000 (RandomB vs RandomA)
+Finished game 983 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 75 - 76 - 830  [0.499] 981
+Started game 985 of 1000 (RandomA vs RandomB)
+Finished game 984 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 76 - 831  [0.499] 982
+Started game 986 of 1000 (RandomB vs RandomA)
+Finished game 982 (RandomB vs RandomA): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 75 - 76 - 832  [0.499] 983
+Started game 987 of 1000 (RandomA vs RandomB)
+Finished game 981 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 76 - 833  [0.499] 984
+Started game 988 of 1000 (RandomB vs RandomA)
+Finished game 986 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 76 - 834  [0.499] 985
+Started game 989 of 1000 (RandomA vs RandomB)
+Finished game 985 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 75 - 76 - 835  [0.499] 986
+Started game 990 of 1000 (RandomB vs RandomA)
+Finished game 987 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 76 - 836  [0.499] 987
+Started game 991 of 1000 (RandomA vs RandomB)
+Finished game 989 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 76 - 837  [0.499] 988
+Started game 992 of 1000 (RandomB vs RandomA)
+Finished game 990 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 75 - 76 - 838  [0.499] 989
+Started game 993 of 1000 (RandomA vs RandomB)
+Finished game 991 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 75 - 76 - 839  [0.499] 990
+Started game 994 of 1000 (RandomB vs RandomA)
+Finished game 992 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 76 - 840  [0.499] 991
+Started game 995 of 1000 (RandomA vs RandomB)
+Finished game 988 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 75 - 76 - 841  [0.499] 992
+Started game 996 of 1000 (RandomB vs RandomA)
+Finished game 993 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 76 - 842  [0.499] 993
+Started game 997 of 1000 (RandomA vs RandomB)
+Finished game 995 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 75 - 77 - 842  [0.499] 994
+Started game 998 of 1000 (RandomB vs RandomA)
+Finished game 994 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 77 - 843  [0.499] 995
+Started game 999 of 1000 (RandomA vs RandomB)
+Finished game 997 (RandomA vs RandomB): 1/2-1/2 {Draw by 3-fold repetition}
+Score of RandomA vs RandomB: 75 - 77 - 844  [0.499] 996
+Started game 1000 of 1000 (RandomB vs RandomA)
+Finished game 998 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 77 - 845  [0.499] 997
+Finished game 996 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 77 - 846  [0.499] 998
+Finished game 999 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 75 - 77 - 847  [0.499] 999
+Finished game 1000 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 75 - 77 - 848  [0.499] 1000
+...      RandomA playing White: 39 - 42 - 419  [0.497] 500
+...      RandomA playing Black: 36 - 35 - 429  [0.501] 500
+...      White vs Black: 74 - 78 - 848  [0.498] 1000
+Elo difference: -0.7 +/- 8.4, LOS: 43.6 %, DrawRatio: 84.8 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+
+Player: RandomA
+   "Draw by 3-fold repetition": 32
+   "Draw by fifty moves rule": 225
+   "Draw by insufficient mating material": 530
+   "Draw by stalemate": 61
+   "Loss: Black mates": 42
+   "Loss: White mates": 35
+   "Win: Black mates": 36
+   "Win: White mates": 39
+Player: RandomB
+   "Draw by 3-fold repetition": 32
+   "Draw by fifty moves rule": 225
+   "Draw by insufficient mating material": 530
+   "Draw by stalemate": 61
+   "Loss: Black mates": 36
+   "Loss: White mates": 39
+   "Win: Black mates": 42
+   "Win: White mates": 35
+Finished match

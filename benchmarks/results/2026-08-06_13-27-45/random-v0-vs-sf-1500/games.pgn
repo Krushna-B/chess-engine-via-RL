@@ -1,0 +1,494 @@
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "1"]
+[White "RandomV0"]
+[Black "Stockfish-1500"]
+[Result "0-1"]
+[ECO "A00"]
+[GameDuration "00:00:02"]
+[GameEndTime "2026-08-06T13:28:09.405 EDT"]
+[GameStartTime "2026-08-06T13:28:06.839 EDT"]
+[Opening "Anti-Borg (Desprez) Opening"]
+[PlyCount "40"]
+[TimeControl "1+0.1"]
+
+1. h4 c6 {+0.58/12 0.26s} 2. c4 e5 {+0.27/11 0.11s} 3. f4 exf4 {+1.79/9 0.074s}
+4. Qa4 Bd6 {+2.41/14 0.22s} 5. Qb4 Bxb4 {+7.45/13 0.037s} 6. Nf3
+Nf6 {+7.49/15 0.13s} 7. Rh3 Qe7 {+8.41/15 0.10s} 8. Ne5 a5 {+8.82/15 0.18s}
+9. a4 c5 {+9.15/17 0.27s} 10. Rb3 Ne4 {+8.80/16 0.19s} 11. Raa3
+f6 {+8.53/16 0.24s} 12. Rd3 Rg8 {+9.43/14 0.032s} 13. Ra2 fxe5 {+9.93/14 0.044s}
+14. e3 b6 {+10.64/15 0.057s} 15. Rb3 fxe3 {+10.48/16 0.31s} 16. Rba3
+Qxh4+ {+11.18/17 0.17s} 17. Ke2 Bb7 {+12.11/14 0.055s} 18. Kf3
+Ng3+ {+M3/26 0.011s} 19. Kxe3 Qf4+ {+M1/16 0.026s} 20. Kd3
+Be4# {+M1/42 0.026s, Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "2"]
+[White "Stockfish-1500"]
+[Black "RandomV0"]
+[Result "1-0"]
+[ECO "A47"]
+[GameDuration "00:00:03"]
+[GameEndTime "2026-08-06T13:28:10.115 EDT"]
+[GameStartTime "2026-08-06T13:28:06.853 EDT"]
+[Opening "Queen's Indian defense"]
+[PlyCount "57"]
+[TimeControl "1+0.1"]
+
+1. d4 {+0.48/13 0.24s} Nf6 2. Nf3 {+0.32/11 0.22s} b6 3. c4 {+0.39/11 0.22s} g6
+4. Bf4 {+0.72/11 0.065s} Na6 5. Nc3 {+0.81/12 0.20s} Rb8 6. e4 {+1.25/10 0.041s}
+Nxe4 7. Nxe4 {+4.19/14 0.12s} e5 8. Bxe5 {+5.26/15 0.25s} f6
+9. Bxf6 {+6.54/14 0.068s} Qxf6 10. Nxf6+ {+7.68/15 0.092s} Kd8
+11. Be2 {+7.82/14 0.066s} Nb4 12. Kf1 {+8.30/15 0.075s} Bh6
+13. h4 {+7.83/17 0.31s} Nd3 14. Bxd3 {+8.86/15 0.034s} Ke7
+15. a3 {+10.30/15 0.19s} Kd8 16. Qe1 {+9.37/16 0.22s} Bg5
+17. Ne4 {+10.56/15 0.078s} Bb7 18. Nfxg5 {+9.98/16 0.12s} Rc8
+19. Ke2 {+12.56/14 0.075s} Rf8 20. f3 {+10.48/16 0.19s} Rh8
+21. Rd1 {+11.01/14 0.053s} Ra8 22. d5 {+10.99/13 0.036s} d6
+23. Ne6+ {+12.14/15 0.11s} Kc8 24. Qc3 {+11.56/13 0.029s} c6
+25. Qxh8+ {+M3/29 0.016s} Kd7 26. Qxh7+ {+M3/109 0.029s} Kc8
+27. Qh8+ {+M1/245 0.012s} Kd7 28. Qg7+ {+M3/172 0.039s} Ke8
+29. Nf6# {+M1/245 0.014s, White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "3"]
+[White "RandomV0"]
+[Black "Stockfish-1500"]
+[Result "0-1"]
+[ECO "A00"]
+[GameDuration "00:00:01"]
+[GameEndTime "2026-08-06T13:28:08.127 EDT"]
+[GameStartTime "2026-08-06T13:28:06.849 EDT"]
+[Opening "Ware (Meadow Hay) Opening"]
+[PlyCount "16"]
+[Termination "illegal move"]
+[TimeControl "1+0.1"]
+
+1. a4 e5 {+0.39/12 0.18s} 2. f3 Nf6 {+1.23/11 0.11s} 3. h3 d5 {+4.66/12 0.088s}
+4. h4 Be7 {+2.65/13 0.22s} 5. g3 Nh5 {+3.12/12 0.13s} 6. Rh2
+Nc6 {+4.33/12 0.069s} 7. Nh3 Nxg3 {+4.43/13 0.086s} 8. c3
+O-O {+4.96/15 0.38s, White makes an illegal move: d8d7} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "4"]
+[White "Stockfish-1500"]
+[Black "RandomV0"]
+[Result "1-0"]
+[ECO "B10"]
+[GameDuration "00:00:01"]
+[GameEndTime "2026-08-06T13:28:08.328 EDT"]
+[GameStartTime "2026-08-06T13:28:06.855 EDT"]
+[Opening "Caro-Kann defense"]
+[PlyCount "19"]
+[Termination "illegal move"]
+[TimeControl "1+0.1"]
+
+1. e4 {+0.48/13 0.24s} c6 2. Nc3 {+0.64/10 0.066s} a5 3. Be2 {+0.95/11 0.18s} d6
+4. h3 {+0.81/12 0.23s} Bg4 5. Bxg4 {+6.11/13 0.046s} e5 6. Be2 {+5.02/15 0.28s}
+Be7 7. a3 {+5.28/14 0.054s} Qc7 8. Nf3 {+5.05/13 0.067s} Nh6
+9. d4 {+5.57/14 0.094s} a4
+10. O-O {+5.59/14 0.20s, Black makes an illegal move: e2c4} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "5"]
+[White "RandomV0"]
+[Black "Stockfish-1500"]
+[Result "0-1"]
+[ECO "A00"]
+[GameDuration "00:00:01"]
+[GameEndTime "2026-08-06T13:28:10.007 EDT"]
+[GameStartTime "2026-08-06T13:28:08.127 EDT"]
+[Opening "Mieses Opening"]
+[PlyCount "28"]
+[TimeControl "1+0.1"]
+
+1. d3 e5 {+0.26/12 0.25s} 2. f3 d5 {+1.26/14 0.23s} 3. Bh6
+Nxh6 {+5.99/12 0.064s} 4. g4 Be6 {+6.29/16 0.26s} 5. Kd2 Bc5 {+6.22/14 0.21s}
+6. b3 Nc6 {+7.74/13 0.049s} 7. f4 Qe7 {+8.36/15 0.076s} 8. g5
+Nf5 {+7.72/16 0.22s} 9. d4 Bb6 {+7.94/14 0.054s} 10. dxe5 Qb4+ {+8.05/15 0.22s}
+11. c3 Qe4 {+8.37/14 0.070s} 12. h3 Be3+ {+10.38/12 0.051s} 13. Ke1
+Qxf4 {+10.90/14 0.092s} 14. Nd2 Qh4# {+M1/245 0.008s, Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "6"]
+[White "Stockfish-1500"]
+[Black "RandomV0"]
+[Result "1-0"]
+[ECO "B20"]
+[GameDuration "00:00:03"]
+[GameEndTime "2026-08-06T13:28:11.537 EDT"]
+[GameStartTime "2026-08-06T13:28:08.329 EDT"]
+[Opening "Sicilian defense"]
+[PlyCount "47"]
+[TimeControl "1+0.1"]
+
+1. e4 {+0.40/14 0.23s} c5 2. Be2 {+0.43/11 0.15s} Nc6 3. Nf3 {+0.11/11 0.16s}
+Ne5 4. Nxe5 {+5.09/13 0.041s} b5 5. Na3 {+5.08/15 0.30s} e6
+6. b3 {+4.89/14 0.23s} Nh6 7. c4 {+4.77/14 0.18s} d5 8. cxd5 {+4.75/15 0.16s}
+Qc7 9. Ng4 {+6.34/14 0.070s} Rb8 10. Nxh6 {+5.31/15 0.20s} Rb6
+11. Bb2 {+6.04/14 0.093s} Rb8 12. Nc2 {+6.83/16 0.096s} Qf4
+13. Nxf7 {+6.49/15 0.12s} Kd7 14. Bxb5+ {+8.58/14 0.053s} Ke7
+15. Nd6 {+8.15/16 0.22s} a5 16. Qe2 {+8.95/14 0.043s} exd5
+17. Nf5+ {+8.97/14 0.044s} Bxf5 18. exf5+ {+8.49/14 0.092s} Kd6
+19. Qe6+ {+M5/14 0.037s} Kc7 20. Be5+ {+M3/17 0.12s} Qxe5+
+21. Qxe5+ {+10.13/14 0.23s} Kc8 22. Qe8+ {+M5/16 0.025s} Kb7
+23. Qc6+ {+M3/20 0.20s} Ka7 24. Qa6# {+M1/14 0.080s, White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "7"]
+[White "RandomV0"]
+[Black "Stockfish-1500"]
+[Result "0-1"]
+[ECO "A00"]
+[GameDuration "00:00:02"]
+[GameEndTime "2026-08-06T13:28:11.449 EDT"]
+[GameStartTime "2026-08-06T13:28:09.406 EDT"]
+[Opening "Anderssen's Opening"]
+[PlyCount "28"]
+[Termination "illegal move"]
+[TimeControl "1+0.1"]
+
+1. a3 e6 {+0.12/12 0.25s} 2. Ra2 e5 {+0.36/14 0.20s} 3. Nc3
+Nf6 {+0.95/11 0.091s} 4. f3 a6 {+1.57/13 0.17s} 5. b4 a5 {+1.84/12 0.087s}
+6. Nb5 d5 {+3.26/11 0.053s} 7. g4 d4 {+4.64/14 0.10s} 8. Nh3
+Be7 {+4.64/14 0.10s} 9. Nd6+ Qxd6 {+5.81/16 0.37s} 10. f4 Nd5 {+6.74/15 0.17s}
+11. Ra1 Bh4+ {+6.47/12 0.069s} 12. Nf2 Nxf4 {+6.31/15 0.25s} 13. a4
+d3 {+10.00/14 0.073s} 14. e4
+O-O {+8.54/12 0.035s, White makes an illegal move: e8d8} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "8"]
+[White "Stockfish-1500"]
+[Black "RandomV0"]
+[Result "1-0"]
+[ECO "A00"]
+[GameDuration "00:00:01"]
+[GameEndTime "2026-08-06T13:28:11.578 EDT"]
+[GameStartTime "2026-08-06T13:28:10.008 EDT"]
+[Opening "Van't Kruijs Opening"]
+[PlyCount "19"]
+[Termination "illegal move"]
+[TimeControl "1+0.1"]
+
+1. e3 {+0.48/13 0.21s} Nc6 2. b3 {+0.37/10 0.070s} g6 3. Bb2 {+0.27/11 0.16s} f6
+4. Nf3 {+1.16/11 0.17s} Nh6 5. Be2 {+1.18/11 0.062s} Kf7 6. e4 {+1.78/14 0.27s}
+Na5 7. b4 {+2.30/12 0.053s} Nc4 8. Bc1 {+5.19/14 0.15s} e5
+9. Bxc4+ {+4.91/13 0.062s} Kg7
+10. O-O {+4.84/15 0.35s, Black makes an illegal move: c4a6} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "9"]
+[White "RandomV0"]
+[Black "Stockfish-1500"]
+[Result "0-1"]
+[ECO "A00"]
+[GameDuration "00:00:02"]
+[GameEndTime "2026-08-06T13:28:12.186 EDT"]
+[GameStartTime "2026-08-06T13:28:10.117 EDT"]
+[Opening "Amar (Paris) Opening"]
+[PlyCount "28"]
+[TimeControl "1+0.1"]
+
+1. Nh3 d5 {+0.70/13 0.25s} 2. e4 dxe4 {+1.10/13 0.25s} 3. a3
+Nc6 {+1.93/12 0.089s} 4. c3 e5 {+2.52/14 0.19s} 5. Bb5 Qd5 {+2.80/14 0.21s}
+6. Ba4 Nf6 {+3.01/12 0.055s} 7. Ra2 Bg4 {+5.49/16 0.21s} 8. Qc2
+b5 {+4.43/13 0.084s} 9. f4 e3 {+6.32/14 0.12s} 10. b4 exd2+ {+9.10/16 0.083s}
+11. Kf2 Be6 {+7.97/16 0.24s} 12. g3 Ng4+ {+10.88/16 0.17s} 13. Kg1
+bxa4 {+9.57/13 0.069s} 14. Qxh7 d1=Q# {+M1/245 0.009s, Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "10"]
+[White "Stockfish-1500"]
+[Black "RandomV0"]
+[Result "1-0"]
+[ECO "A00"]
+[GameDuration "00:00:01"]
+[GameEndTime "2026-08-06T13:28:12.970 EDT"]
+[GameStartTime "2026-08-06T13:28:11.449 EDT"]
+[Opening "Van't Kruijs Opening"]
+[PlyCount "19"]
+[TimeControl "1+0.1"]
+
+1. e3 {+0.41/14 0.24s} b5 2. a4 {+1.35/11 0.052s} h6 3. Qf3 {+1.52/12 0.088s} b4
+4. Qxa8 {+4.58/15 0.12s} Na6 5. Qf3 {+5.75/15 0.072s} Nb8 6. b3 {+4.91/16 0.38s}
+d6 7. d4 {+5.12/16 0.14s} Nd7 8. Nd2 {+4.86/15 0.27s} f6 9. Qh5+ {+M3/15 0.027s}
+g6 10. Qxg6# {+M1/15 0.13s, White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "11"]
+[White "RandomV0"]
+[Black "Stockfish-1500"]
+[Result "0-1"]
+[ECO "A00"]
+[GameDuration "00:00:02"]
+[GameEndTime "2026-08-06T13:28:14.531 EDT"]
+[GameStartTime "2026-08-06T13:28:11.538 EDT"]
+[Opening "Grob's attack"]
+[PlyCount "42"]
+[Termination "illegal move"]
+[TimeControl "1+0.1"]
+
+1. g4 d5 {+1.30/11 0.19s} 2. b3 e5 {+2.25/12 0.088s} 3. b4 a5 {+2.86/15 0.26s}
+4. Nh3 Bxg4 {+3.86/14 0.13s} 5. d3 Bxb4+ {+4.34/13 0.089s} 6. Nd2
+Qh4 {+3.96/14 0.29s} 7. Rb1 Bxh3 {+4.04/15 0.23s} 8. e3 Ra6 {+5.30/14 0.088s}
+9. Ba3 Be6 {+7.08/14 0.12s} 10. Rxb4 axb4 {+6.36/14 0.13s} 11. Be2
+bxa3 {+7.37/15 0.038s} 12. Bf1 h5 {+7.55/16 0.26s} 13. Be2 Nh6 {+7.90/14 0.068s}
+14. Qc1 Nc6 {+8.00/15 0.22s} 15. Qb1 Qb4 {+8.25/14 0.058s} 16. f3
+Qh4+ {+9.02/15 0.12s} 17. Kf1 Bh3+ {+M11/15 0.097s} 18. Kg1 Qg5+ {+M9/24 0.013s}
+19. Kf2 Bc8 {+M11/17 0.12s} 20. Qe1 Qd8 {+M19/13 0.030s} 21. Bd1
+O-O {+8.85/16 0.33s, White makes an illegal move: c6e7} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "12"]
+[White "Stockfish-1500"]
+[Black "RandomV0"]
+[Result "1-0"]
+[ECO "A00"]
+[GameDuration "00:00:02"]
+[GameEndTime "2026-08-06T13:28:14.483 EDT"]
+[GameStartTime "2026-08-06T13:28:11.579 EDT"]
+[Opening "Van't Kruijs Opening"]
+[PlyCount "47"]
+[TimeControl "1+0.1"]
+
+1. e3 {+0.48/13 0.22s} b6 2. c4 {+0.39/13 0.15s} a5 3. Nf3 {+0.65/11 0.10s} Na6
+4. a3 {+0.85/14 0.28s} b5 5. cxb5 {+2.75/12 0.036s} h5 6. bxa6 {+5.68/14 0.050s}
+Bb7 7. axb7 {+7.64/15 0.15s} e6 8. bxa8=B {+8.90/16 0.21s} Qh4
+9. g3 {+10.28/15 0.22s} Qe7 10. b4 {+9.63/16 0.25s} f6 11. d4 {+9.95/15 0.12s}
+c6 12. Bd3 {+9.79/14 0.077s} axb4 13. Bd2 {+9.52/15 0.21s} Kd8
+14. Rg1 {+10.37/15 0.13s} e5 15. Qc2 {+10.36/18 0.15s} e4
+16. Bxe4 {+10.05/13 0.055s} d5 17. Bg6 {+10.65/16 0.12s} Qc7
+18. axb4 {+10.20/15 0.082s} Qd6 19. Bxc6 {+11.79/13 0.016s} h4
+20. Bd3 {+M15/16 0.091s} Qxc6 21. Qxc6 {+M9/15 0.082s} Rh6
+22. Ke2 {+M3/90 0.021s} Ke7 23. Qc7+ {+M3/105 0.029s} Ke8
+24. Bb5# {+M1/140 0.034s, White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "13"]
+[White "RandomV0"]
+[Black "Stockfish-1500"]
+[Result "0-1"]
+[ECO "A00"]
+[GameDuration "00:00:01"]
+[GameEndTime "2026-08-06T13:28:14.029 EDT"]
+[GameStartTime "2026-08-06T13:28:12.187 EDT"]
+[Opening "Polish (Sokolsky) opening"]
+[PlyCount "24"]
+[Termination "illegal move"]
+[TimeControl "1+0.1"]
+
+1. b4 e5 {+0.26/15 0.25s} 2. d3 Bxb4+ {+1.73/12 0.046s} 3. Nd2
+Qe7 {+1.78/15 0.23s} 4. g4 Nf6 {+2.22/15 0.27s} 5. h3 Nd5 {+2.01/14 0.21s} 6. e3
+d6 {+1.87/13 0.12s} 7. Ke2 Bxg4+ {+6.20/12 0.074s} 8. Ke1 Bxd1 {+6.64/15 0.13s}
+9. Ne2 Nc6 {+8.44/14 0.032s} 10. Bb2 Bxc2 {+8.30/15 0.067s} 11. e4
+Nf6 {+9.15/17 0.26s} 12. Bc3
+O-O-O {+8.45/17 0.13s, White makes an illegal move: b4c3} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "14"]
+[White "Stockfish-1500"]
+[Black "RandomV0"]
+[Result "1-0"]
+[ECO "A00"]
+[GameDuration "00:00:03"]
+[GameEndTime "2026-08-06T13:28:16.212 EDT"]
+[GameStartTime "2026-08-06T13:28:12.971 EDT"]
+[Opening "Van't Kruijs Opening"]
+[PlyCount "51"]
+[TimeControl "1+0.1"]
+
+1. e3 {+0.40/14 0.24s} Nf6 2. d4 {+0.14/12 0.24s} Nc6 3. Nc3 {+0.54/11 0.057s}
+a6 4. e4 {+0.59/12 0.25s} h5 5. Nf3 {+1.95/10 0.049s} Na5
+6. b4 {+2.53/11 0.092s} b6 7. bxa5 {+5.06/12 0.043s} Rg8 8. Rb1 {+5.40/16 0.33s}
+Ra7 9. Bd3 {+6.01/15 0.23s} g6 10. Qd2 {+6.86/13 0.078s} b5
+11. a3 {+5.97/13 0.10s} Bh6 12. Qxh6 {+7.26/15 0.078s} e6
+13. Bg5 {+7.95/15 0.12s} Ke7 14. Bxf6+ {+9.95/14 0.033s} Kxf6
+15. e5+ {+8.24/14 0.19s} Ke7 16. Qe3 {+8.40/14 0.14s} b4
+17. Rxb4 {+8.44/14 0.10s} Bb7 18. Be4 {+8.42/13 0.037s} f6
+19. h3 {+9.42/15 0.10s} Ba8 20. g3 {+8.60/16 0.32s} Ke8 21. d5 {+7.99/15 0.14s}
+exd5 22. Nxd5 {+8.40/13 0.028s} c6 23. Nxf6+ {+10.02/15 0.091s} Qxf6
+24. exf6 {+M13/16 0.065s} Rg7 25. Ng5 {+M5/31 0.018s} Rf7
+26. Rb8# {+M1/113 0.024s, White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "15"]
+[White "RandomV0"]
+[Black "Stockfish-1500"]
+[Result "0-1"]
+[ECO "A00"]
+[GameDuration "00:00:03"]
+[GameEndTime "2026-08-06T13:28:17.134 EDT"]
+[GameStartTime "2026-08-06T13:28:14.030 EDT"]
+[Opening "Mieses Opening"]
+[PlyCount "50"]
+[TimeControl "1+0.1"]
+
+1. d3 d6 {+0.24/13 0.25s} 2. Nf3 a6 {-0.15/14 0.25s} 3. c4 g6 {-0.33/13 0.21s}
+4. a3 c5 {-0.14/11 0.12s} 5. Nd4 cxd4 {+4.63/13 0.032s} 6. c5
+Nf6 {+5.09/16 0.25s} 7. b4 Nc6 {+5.33/14 0.18s} 8. Bf4 Nh5 {+5.66/16 0.18s}
+9. Qa4 e5 {+6.30/13 0.037s} 10. Qb5 Bg7 {+8.98/14 0.031s} 11. g3
+axb5 {+8.76/15 0.14s} 12. h3 Nxf4 {+9.62/15 0.035s} 13. g4
+dxc5 {+10.24/16 0.18s} 14. e3 Ne6 {+10.77/16 0.12s} 15. h4
+Nxb4 {+10.16/15 0.26s} 16. Rh2 dxe3 {+10.81/14 0.15s} 17. Bh3
+Nc2+ {+12.09/15 0.11s} 18. Kf1 e2+ {+11.90/14 0.082s} 19. Kxe2
+Nxa1 {+11.54/15 0.17s} 20. Kf3 e4+ {+12.36/12 0.024s} 21. Kxe4
+Ra4+ {+13.70/14 0.040s} 22. d4 Ng5+ {+M7/17 0.027s} 23. hxg5
+Rxd4+ {+M7/21 0.039s} 24. Kf3 Qd5+ {+M9/20 0.14s} 25. Ke3
+Qe4# {+M1/94 0.019s, Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "16"]
+[White "Stockfish-1500"]
+[Black "RandomV0"]
+[Result "1-0"]
+[ECO "A00"]
+[GameDuration "00:00:02"]
+[GameEndTime "2026-08-06T13:28:16.954 EDT"]
+[GameStartTime "2026-08-06T13:28:14.484 EDT"]
+[Opening "Van't Kruijs Opening"]
+[PlyCount "43"]
+[TimeControl "1+0.1"]
+
+1. e3 {+0.40/14 0.24s} c5 2. c4 {+0.25/13 0.21s} d6 3. d4 {+0.36/12 0.082s} Qa5+
+4. Nd2 {+0.99/15 0.23s} f6 5. Be2 {+1.46/14 0.23s} Kf7 6. d5 {+2.05/12 0.061s}
+Na6 7. h4 {+1.89/11 0.039s} g5 8. Nh3 {+3.26/13 0.097s} Bh6
+9. b3 {+3.12/13 0.075s} Qb5 10. cxb5 {+8.05/16 0.069s} b6
+11. Bh5+ {+8.70/17 0.23s} Kf8 12. bxa6 {+8.71/16 0.16s} Bd7
+13. hxg5 {+8.78/17 0.21s} Kg7 14. Bb2 {+9.86/16 0.10s} e6
+15. dxe6 {+10.88/15 0.067s} Rb8 16. Bxf6+ {+13.40/15 0.065s} Nxf6
+17. gxf6+ {+M13/17 0.083s} Kf8 18. e7+ {+M7/26 0.040s} Kg8
+19. Qf3 {+M7/17 0.036s} d5 20. a4 {+M3/52 0.037s} Bg4 21. Qxd5+ {+M3/57 0.045s}
+Be6 22. Qxe6# {+M1/49 0.048s, White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "17"]
+[White "RandomV0"]
+[Black "Stockfish-1500"]
+[Result "0-1"]
+[ECO "A00"]
+[GameDuration "00:00:02"]
+[GameEndTime "2026-08-06T13:28:17.359 EDT"]
+[GameStartTime "2026-08-06T13:28:14.532 EDT"]
+[Opening "Durkin's attack"]
+[PlyCount "46"]
+[TimeControl "1+0.1"]
+
+1. Na3 d5 {+0.77/12 0.18s} 2. Nh3 e5 {+1.15/10 0.064s} 3. d3
+Nc6 {+1.31/12 0.31s} 4. Nf4 exf4 {+4.68/14 0.18s} 5. Rb1 g5 {+4.92/14 0.24s}
+6. g4 a6 {+5.17/13 0.16s} 7. Bh3 Bd6 {+5.51/13 0.14s} 8. Bd2 h5 {+5.83/13 0.11s}
+9. b3 Bxa3 {+6.40/14 0.20s} 10. e4 d4 {+6.81/15 0.093s} 11. Rf1
+Qe7 {+7.54/15 0.18s} 12. Bxf4 Bb4+ {+8.87/14 0.037s} 13. Ke2
+Bxg4+ {+9.01/15 0.087s} 14. Bxg4 gxf4 {+7.12/15 0.17s} 15. Rh1
+hxg4 {+9.34/13 0.027s} 16. f3 gxf3+ {+9.12/16 0.23s} 17. Kf2
+Bd6 {+10.28/13 0.024s} 18. c3 Nh6 {+10.58/15 0.14s} 19. Rg1
+Qh4+ {+10.69/14 0.037s} 20. Kxf3 Ne5+ {+12.19/15 0.10s} 21. Kg2
+Nhg4 {+15.32/11 0.050s} 22. Re1 Qf2+ {+M3/37 0.017s} 23. Kh1
+Qxh2# {+M1/245 0.013s, Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "18"]
+[White "Stockfish-1500"]
+[Black "RandomV0"]
+[Result "1-0"]
+[ECO "A40"]
+[GameDuration "00:00:03"]
+[GameEndTime "2026-08-06T13:28:19.570 EDT"]
+[GameStartTime "2026-08-06T13:28:16.214 EDT"]
+[Opening "Queen's pawn"]
+[PlyCount "59"]
+[TimeControl "1+0.1"]
+
+1. d4 {+0.40/14 0.23s} a5 2. c4 {+0.92/10 0.052s} Ra6 3. c5 {+1.40/16 0.28s} g5
+4. e4 {+2.35/12 0.053s} c6 5. Bxg5 {+3.82/14 0.071s} b5 6. Nf3 {+4.01/15 0.23s}
+Bh6 7. Nc3 {+3.82/15 0.26s} Qb6 8. Bxe7 {+8.20/14 0.039s} Bd2+
+9. Kxd2 {+7.38/17 0.27s} Nf6 10. Bxf6 {+9.50/16 0.13s} Rf8
+11. Be5 {+10.53/15 0.072s} Qd8 12. Rg1 {+8.85/16 0.24s} d6
+13. Bxd6 {+8.32/16 0.18s} Qf6 14. Ke1 {+8.75/17 0.14s} Kd8
+15. h3 {+9.25/16 0.12s} Rb6 16. Bc7+ {+9.50/15 0.12s} Ke8
+17. Bxb6 {+9.49/15 0.059s} Qxd4 18. Qc1 {+11.46/15 0.056s} Na6
+19. Nxd4 {+11.34/13 0.017s} Rh8 20. Bxa5 {+12.16/17 0.17s} Nc7
+21. f3 {+12.79/15 0.037s} b4 22. Bxb4 {+12.68/14 0.064s} Bb7
+23. a3 {+13.37/15 0.098s} Na6 24. Qe3 {+13.55/15 0.057s} Kd8
+25. Qh6 {+14.05/15 0.10s} Ke8 26. Rd1 {+M9/16 0.069s} Rf8
+27. Qf4 {+M7/22 0.031s} h6 28. Qb8+ {+M5/30 0.030s} Kd7
+29. Nb3+ {+M3/245 0.008s} Ke6 30. Qd6# {+M1/57 0.048s, White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "19"]
+[White "RandomV0"]
+[Black "Stockfish-1500"]
+[Result "0-1"]
+[ECO "A00"]
+[GameDuration "00:00:03"]
+[GameEndTime "2026-08-06T13:28:19.991 EDT"]
+[GameStartTime "2026-08-06T13:28:16.955 EDT"]
+[Opening "Saragossa Opening"]
+[PlyCount "48"]
+[TimeControl "1+0.1"]
+
+1. c3 e5 {+0.05/12 0.19s} 2. Qc2 d5 {+0.58/11 0.13s} 3. Na3 Nf6 {+1.22/12 0.20s}
+4. f4 e4 {+1.82/14 0.14s} 5. b4 c5 {+2.13/12 0.090s} 6. g3 Bg4 {+2.61/12 0.055s}
+7. Qb3 Nbd7 {+2.23/14 0.21s} 8. Qb2 Nb6 {+2.10/14 0.15s} 9. Rb1
+Bd7 {+2.12/13 0.16s} 10. d3 Na4 {+3.20/16 0.29s} 11. Qb3 Be7 {+3.21/14 0.13s}
+12. c4 cxb4 {+5.25/12 0.039s} 13. Bg2 Rc8 {+5.54/15 0.17s} 14. Bf1
+Nc3 {+6.71/14 0.080s} 15. cxd5 bxa3 {+7.05/14 0.045s} 16. Bd2
+Nfxd5 {+6.56/16 0.29s} 17. Rc1 h5 {+6.48/16 0.14s} 18. Be3 Ba4 {+7.32/14 0.061s}
+19. Bd2 e3 {+8.61/14 0.043s} 20. f5 Bxb3 {+10.90/14 0.038s} 21. h4
+Bb4 {+13.15/15 0.085s} 22. Nh3 Ba4 {+M7/14 0.079s} 23. Nf4 Nxa2 {+M7/15 0.060s}
+24. Nxd5 Bxd2# {+M1/17 0.12s, Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.08.06"]
+[Round "20"]
+[White "Stockfish-1500"]
+[Black "RandomV0"]
+[Result "1-0"]
+[ECO "A00"]
+[GameDuration "00:00:00"]
+[GameEndTime "2026-08-06T13:28:17.877 EDT"]
+[GameStartTime "2026-08-06T13:28:17.135 EDT"]
+[Opening "Van't Kruijs Opening"]
+[PlyCount "9"]
+[TimeControl "1+0.1"]
+
+1. e3 {+0.48/13 0.22s} a5 2. Nf3 {+0.47/15 0.21s} e5 3. Nxe5 {+1.53/13 0.11s} b6
+4. Qf3 {+4.16/13 0.055s} Na6 5. Qxf7# {+M1/14 0.15s, White mates} 1-0
+

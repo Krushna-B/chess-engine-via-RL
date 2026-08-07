@@ -203,7 +203,7 @@ void Position::set_starting_position() {
   fullmove_number = 1;
 
   side_to_move = Side::WHITE;
-  clear_castling_rights();
+  castling_rights = WHITE_KINGSIDE | WHITE_QUEENSIDE | BLACK_KINGSIDE | BLACK_QUEENSIDE;
   update_occupancies();
   set_en_passant_square(NO_SQUARE);
 }

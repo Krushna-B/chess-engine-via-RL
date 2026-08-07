@@ -1,0 +1,82 @@
+Warning: 2 opening repetitions vs 1 games per encounter
+Started game 1 of 20 (RandomA vs RandomB)
+Started game 2 of 20 (RandomB vs RandomA)
+Started game 3 of 20 (RandomA vs RandomB)
+Started game 4 of 20 (RandomB vs RandomA)
+Finished game 3 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 0 - 0 - 1  [0.500] 1
+Started game 5 of 20 (RandomA vs RandomB)
+Finished game 2 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 0 - 0 - 2  [0.500] 2
+Started game 6 of 20 (RandomB vs RandomA)
+Finished game 4 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 0 - 0 - 3  [0.500] 3
+Started game 7 of 20 (RandomA vs RandomB)
+Finished game 1 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 0 - 0 - 4  [0.500] 4
+Started game 8 of 20 (RandomB vs RandomA)
+Finished game 7 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 0 - 0 - 5  [0.500] 5
+Started game 9 of 20 (RandomA vs RandomB)
+Finished game 5 (RandomA vs RandomB): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 0 - 0 - 6  [0.500] 6
+Started game 10 of 20 (RandomB vs RandomA)
+Finished game 9 (RandomA vs RandomB): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 0 - 0 - 7  [0.500] 7
+Started game 11 of 20 (RandomA vs RandomB)
+Finished game 6 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 0 - 0 - 8  [0.500] 8
+Started game 12 of 20 (RandomB vs RandomA)
+Finished game 8 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 0 - 0 - 9  [0.500] 9
+Started game 13 of 20 (RandomA vs RandomB)
+Finished game 13 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 0 - 1 - 9  [0.450] 10
+Started game 14 of 20 (RandomB vs RandomA)
+Finished game 12 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 0 - 1 - 10  [0.455] 11
+Started game 15 of 20 (RandomA vs RandomB)
+Finished game 15 (RandomA vs RandomB): 1-0 {White mates}
+Score of RandomA vs RandomB: 1 - 1 - 10  [0.500] 12
+Started game 16 of 20 (RandomB vs RandomA)
+Finished game 11 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 1 - 1 - 11  [0.500] 13
+Started game 17 of 20 (RandomA vs RandomB)
+Finished game 10 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 1 - 1 - 12  [0.500] 14
+Started game 18 of 20 (RandomB vs RandomA)
+Finished game 14 (RandomB vs RandomA): 0-1 {Black mates}
+Score of RandomA vs RandomB: 2 - 1 - 12  [0.533] 15
+Started game 19 of 20 (RandomA vs RandomB)
+Finished game 19 (RandomA vs RandomB): 0-1 {Black mates}
+Score of RandomA vs RandomB: 2 - 2 - 12  [0.500] 16
+Started game 20 of 20 (RandomB vs RandomA)
+Finished game 18 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 2 - 2 - 13  [0.500] 17
+Finished game 16 (RandomB vs RandomA): 1/2-1/2 {Draw by insufficient mating material}
+Score of RandomA vs RandomB: 2 - 2 - 14  [0.500] 18
+Finished game 17 (RandomA vs RandomB): 1/2-1/2 {Draw by stalemate}
+Score of RandomA vs RandomB: 2 - 2 - 15  [0.500] 19
+Finished game 20 (RandomB vs RandomA): 1/2-1/2 {Draw by fifty moves rule}
+Score of RandomA vs RandomB: 2 - 2 - 16  [0.500] 20
+...      RandomA playing White: 1 - 2 - 7  [0.450] 10
+...      RandomA playing Black: 1 - 0 - 9  [0.550] 10
+...      White vs Black: 1 - 3 - 16  [0.450] 20
+Elo difference: 0.0 +/- 68.9, LOS: 50.0 %, DrawRatio: 80.0 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+
+Player: RandomA
+   "Draw by fifty moves rule": 7
+   "Draw by insufficient mating material": 6
+   "Draw by stalemate": 3
+   "Loss: Black mates": 2
+   "Win: Black mates": 1
+   "Win: White mates": 1
+Player: RandomB
+   "Draw by fifty moves rule": 7
+   "Draw by insufficient mating material": 6
+   "Draw by stalemate": 3
+   "Loss: Black mates": 1
+   "Loss: White mates": 1
+   "Win: Black mates": 2
+Finished match

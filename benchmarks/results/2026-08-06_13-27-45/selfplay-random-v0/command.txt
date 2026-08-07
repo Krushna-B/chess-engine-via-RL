@@ -1,0 +1,1 @@
+/Users/krushna/Documents/Workspace/chess-engine/build/cutechess/cutechess-cli -engine name=RandomA cmd=/Users/krushna/Documents/Workspace/chess-engine/build/engine proto=uci -engine name=RandomB cmd=/Users/krushna/Documents/Workspace/chess-engine/build/engine proto=uci 

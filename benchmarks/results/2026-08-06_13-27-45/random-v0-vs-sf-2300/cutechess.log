@@ -1,0 +1,78 @@
+Warning: 2 opening repetitions vs 1 games per encounter
+Started game 2 of 20 (Stockfish-2300 vs RandomV0)
+Started game 1 of 20 (RandomV0 vs Stockfish-2300)
+Started game 3 of 20 (RandomV0 vs Stockfish-2300)
+Started game 4 of 20 (Stockfish-2300 vs RandomV0)
+Finished game 4 (Stockfish-2300 vs RandomV0): 1-0 {Black makes an illegal move: b2b4}
+Score of RandomV0 vs Stockfish-2300: 0 - 1 - 0  [0.000] 1
+Started game 5 of 20 (RandomV0 vs Stockfish-2300)
+Finished game 1 (RandomV0 vs Stockfish-2300): 0-1 {Black mates}
+Score of RandomV0 vs Stockfish-2300: 0 - 2 - 0  [0.000] 2
+Started game 6 of 20 (Stockfish-2300 vs RandomV0)
+Finished game 3 (RandomV0 vs Stockfish-2300): 0-1 {Black mates}
+Score of RandomV0 vs Stockfish-2300: 0 - 3 - 0  [0.000] 3
+Started game 7 of 20 (RandomV0 vs Stockfish-2300)
+Finished game 2 (Stockfish-2300 vs RandomV0): 1-0 {White mates}
+Score of RandomV0 vs Stockfish-2300: 0 - 4 - 0  [0.000] 4
+Started game 8 of 20 (Stockfish-2300 vs RandomV0)
+Finished game 5 (RandomV0 vs Stockfish-2300): 0-1 {Black mates}
+Score of RandomV0 vs Stockfish-2300: 0 - 5 - 0  [0.000] 5
+Started game 9 of 20 (RandomV0 vs Stockfish-2300)
+Finished game 9 (RandomV0 vs Stockfish-2300): 0-1 {Black mates}
+Score of RandomV0 vs Stockfish-2300: 0 - 6 - 0  [0.000] 6
+Started game 10 of 20 (Stockfish-2300 vs RandomV0)
+Finished game 6 (Stockfish-2300 vs RandomV0): 1-0 {White mates}
+Score of RandomV0 vs Stockfish-2300: 0 - 7 - 0  [0.000] 7
+Started game 11 of 20 (RandomV0 vs Stockfish-2300)
+Finished game 8 (Stockfish-2300 vs RandomV0): 1-0 {Black makes an illegal move: b2b4}
+Score of RandomV0 vs Stockfish-2300: 0 - 8 - 0  [0.000] 8
+Started game 12 of 20 (Stockfish-2300 vs RandomV0)
+Finished game 7 (RandomV0 vs Stockfish-2300): 0-1 {Black mates}
+Score of RandomV0 vs Stockfish-2300: 0 - 9 - 0  [0.000] 9
+Started game 13 of 20 (RandomV0 vs Stockfish-2300)
+Finished game 10 (Stockfish-2300 vs RandomV0): 1-0 {White mates}
+Score of RandomV0 vs Stockfish-2300: 0 - 10 - 0  [0.000] 10
+Started game 14 of 20 (Stockfish-2300 vs RandomV0)
+Finished game 12 (Stockfish-2300 vs RandomV0): 1-0 {White mates}
+Score of RandomV0 vs Stockfish-2300: 0 - 11 - 0  [0.000] 11
+Started game 15 of 20 (RandomV0 vs Stockfish-2300)
+Finished game 14 (Stockfish-2300 vs RandomV0): 1-0 {White mates}
+Score of RandomV0 vs Stockfish-2300: 0 - 12 - 0  [0.000] 12
+Started game 16 of 20 (Stockfish-2300 vs RandomV0)
+Finished game 15 (RandomV0 vs Stockfish-2300): 0-1 {Black mates}
+Score of RandomV0 vs Stockfish-2300: 0 - 13 - 0  [0.000] 13
+Started game 17 of 20 (RandomV0 vs Stockfish-2300)
+Finished game 11 (RandomV0 vs Stockfish-2300): 0-1 {Black mates}
+Score of RandomV0 vs Stockfish-2300: 0 - 14 - 0  [0.000] 14
+Started game 18 of 20 (Stockfish-2300 vs RandomV0)
+Finished game 13 (RandomV0 vs Stockfish-2300): 0-1 {Black mates}
+Score of RandomV0 vs Stockfish-2300: 0 - 15 - 0  [0.000] 15
+Started game 19 of 20 (RandomV0 vs Stockfish-2300)
+Finished game 19 (RandomV0 vs Stockfish-2300): 0-1 {Black mates}
+Score of RandomV0 vs Stockfish-2300: 0 - 16 - 0  [0.000] 16
+Started game 20 of 20 (Stockfish-2300 vs RandomV0)
+Finished game 18 (Stockfish-2300 vs RandomV0): 1-0 {Black makes an illegal move: d1a4}
+Score of RandomV0 vs Stockfish-2300: 0 - 17 - 0  [0.000] 17
+Finished game 20 (Stockfish-2300 vs RandomV0): 1-0 {White mates}
+Score of RandomV0 vs Stockfish-2300: 0 - 18 - 0  [0.000] 18
+Finished game 17 (RandomV0 vs Stockfish-2300): 0-1 {Black mates}
+Score of RandomV0 vs Stockfish-2300: 0 - 19 - 0  [0.000] 19
+Finished game 16 (Stockfish-2300 vs RandomV0): 1-0 {White mates}
+Score of RandomV0 vs Stockfish-2300: 0 - 20 - 0  [0.000] 20
+...      RandomV0 playing White: 0 - 10 - 0  [0.000] 10
+...      RandomV0 playing Black: 0 - 10 - 0  [0.000] 10
+...      White vs Black: 10 - 10 - 0  [0.500] 20
+Elo difference: -inf +/- nan, LOS: 0.0 %, DrawRatio: 0.0 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+
+Player: RandomV0
+   "Loss: Black makes an illegal move: b2b4": 2
+   "Loss: Black makes an illegal move: d1a4": 1
+   "Loss: Black mates": 10
+   "Loss: White mates": 7
+Player: Stockfish-2300
+   "Win: Black makes an illegal move: b2b4": 2
+   "Win: Black makes an illegal move: d1a4": 1
+   "Win: Black mates": 10
+   "Win: White mates": 7
+Finished match

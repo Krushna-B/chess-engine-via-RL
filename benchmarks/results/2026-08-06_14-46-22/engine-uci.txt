@@ -1,0 +1,4 @@
+id name RandomMoveChessEngine
+id author Krushna Bhanushali
+uciok
+readyok

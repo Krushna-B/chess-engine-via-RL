@@ -1,0 +1,21 @@
+Benchmark timestamp: 2026-08-06_13-27-45
+Root directory: /Users/krushna/Documents/Workspace/chess-engine
+Engine: /Users/krushna/Documents/Workspace/chess-engine/build/engine
+Engine SHA-256: 0df7db798c51d15001ad3f8d4d64b51d7da25d8f1f045f57cbc418a0b769f0bc
+Stockfish: /opt/homebrew/bin/stockfish
+Stockfish SHA-256: ae4c93fa9676ca7750d0714342fd8a5b1d018000fc6e0f6cedf112067b5ef374
+Cute Chess: /Users/krushna/Documents/Workspace/chess-engine/build/cutechess/cutechess-cli
+Cute Chess SHA-256: 56e3cfe07eb061ba96a8ce993a2cf7e326274c12be1efc418673e4cb74c1e524
+Games per match: 20
+Time control: 1+0.1
+Time margin: 100 ms
+Concurrency: 4
+Stockfish levels: 1350 1500 1700 1900 2100 2300 2500
+Operating system: Darwin Krushnas-Laptop-1144.local 25.5.0 Darwin Kernel Version 25.5.0: Mon Apr 27 20:41:19 PDT 2026; root:xnu-12377.121.6~2/RELEASE_ARM64_T8122 arm64
+Git commit: 6ce72d2f489737238fc70912f1b63d2392b88368
+Git branch: main
+Git dirty:
+ M .gitignore
+?? benchmarks/
+?? results/
+?? scripts/

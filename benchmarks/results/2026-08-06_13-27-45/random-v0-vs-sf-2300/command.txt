@@ -1,0 +1,1 @@
+/Users/krushna/Documents/Workspace/chess-engine/build/cutechess/cutechess-cli -engine name=RandomV0 cmd=/Users/krushna/Documents/Workspace/chess-engine/build/engine proto=uci -engine name=Stockfish-2300 cmd=/opt/homebrew/bin/stockfish proto=uci option.UCI_LimitStrength=true option.UCI_Elo=2300 option.Threads=1 option.Hash=16 
