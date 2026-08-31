@@ -17,6 +17,8 @@ bool is_terminal(Position &position);
 
 struct Node {
   Position state{};
+  Move move_from_parent{};
+
   int number_of_visits{}; // N(a,s)
   float policy = 0.0f;    // P(s,a)
   float value_sum{};
@@ -25,7 +27,12 @@ struct Node {
   std::vector<std::unique_ptr<Node>> children;
 
   Node() = default;
-  Node(Position &starting_state) : state{starting_state} {};
+  explicit Node(const Position &starting_state) : state{starting_state} {}
+
+  Node(const Position &starting_state, const Move &move, Node *parent_node,
+       float prior)
+      : state(starting_state), move_from_parent(move), policy(prior),
+        parent(parent_node) {}
 
   /**
   Q(s,a)
@@ -81,7 +88,11 @@ float monte_carlo_tree_sim(Node &node, int depth = 0) {
       // Create that state
       Position child = node.state;
       child.make_move(move);
-      std::unique_ptr<Node> child_node = std::make_unique<Node>(child);
+      float prior = 1.0f / static_cast<float>(moves_array.size());
+
+      std::unique_ptr<Node> child_node =
+          std::make_unique<Node>(child, move, &node, prior);
+
       child_node->parent = &node;
 
       // TODO: Update this to policy from neural network
@@ -184,6 +195,61 @@ void print_root_stats(const Node &root) {
   std::cout << "Total child visits: " << total_child_visits << '\n';
 
   std::cout << "============================\n";
+}
+
+/***
+Run search MCTS on some root node
+*/
+void run_search(Node &root, int simimlations) {
+  for (int i{}; i < simimlations; i++) {
+    monte_carlo_tree_sim(root);
+  }
+}
+
+/**
+Policy for choosing next move with Temperature
+*/
+std::vector<float> root_visit_policy(const Node &root, float temperature) {
+  std::vector<float> probabilites(
+      root.children.size(),
+      0.0f); // Create vector 0.0f init size is number of children
+
+  // Exit if no children
+  if (root.children.empty()) {
+    return probabilites;
+  }
+
+  // Temperature below threshold select just the max visited one all the time
+  if (temperature <= 0.001f) {
+    u64 best_index = 0;
+    for (u64 i{}; i < root.children.size(); i++) {
+      if (root.children[i]->number_of_visits >
+          root.children[best_index]->number_of_visits) {
+        best_index = i;
+      }
+    }
+    probabilites[best_index] = 1.0f;
+    return probabilites;
+  }
+
+  float total_weight{};
+  //
+  for (u64 i{}; i < root.children.size(); i++) {
+    float visits = static_cast<float>(root.children[i]->number_of_visits);
+
+    probabilites[i] = std::pow(visits, 1.0f / temperature);
+    total_weight += probabilites[i];
+  }
+
+  if (total_weight == 0.0f) {
+    return probabilites;
+  }
+
+  for (auto &probability : probabilites) {
+    probability /= total_weight;
+  }
+
+  return probabilites;
 }
 
 int main() {
