@@ -1,14 +1,22 @@
 #include "board.hpp"
 #include "move_generator.hpp"
 #include "move_list.hpp"
+#include "neural_net.hpp"
 #include <cmath>
+#include <cstddef>
 #include <math.h>
 #include <memory>
 #include <random>
+#include <stdexcept>
 #include <utility>
 #include <vector>
 
 const float EXPLORATION_COFFICIENT = static_cast<float>(std::sqrt(2));
+
+// For now used in the MCTS, rng used also in select probability from policy
+static thread_local std::mt19937_64 rng{
+    42}; // statics variables surive function calls are not created every
+         // time anad thread_local agives each thread its own copy
 
 struct Node;
 float selection(const Node &child, float exploration_coefficient);
@@ -20,7 +28,7 @@ struct Node {
   Move move_from_parent{};
 
   int number_of_visits{}; // N(a,s)
-  float policy = 0.0f;    // P(s,a)
+  float prior = 0.0f;     // P(s,a)
   float value_sum{};
   bool expanded{};
   Node *parent{};
@@ -31,7 +39,7 @@ struct Node {
 
   Node(const Position &starting_state, const Move &move, Node *parent_node,
        float prior)
-      : state(starting_state), move_from_parent(move), policy(prior),
+      : state(starting_state), move_from_parent(move), prior(prior),
         parent(parent_node) {}
 
   /**
@@ -49,7 +57,7 @@ struct Node {
 Returns the V(s) = evaluation of this leaf state
 */
 float monte_carlo_tree_sim(Node &node, int depth = 0) {
-  std::string indent(depth * 2, ' ');
+  std::string indent(static_cast<std::size_t>(depth) * 2, ' ');
 
   // Base Case Reach a new node
   if (is_terminal(node.state)) {
@@ -71,11 +79,6 @@ float monte_carlo_tree_sim(Node &node, int depth = 0) {
     // NetworkOutput output = evaluate(node.state);
     // float value = output.value;
 
-    // For now
-    static thread_local std::mt19937 rng{
-        42}; // statics variables surive function calls are not created every
-             // time anad thread_local agives each thread its own copy
-
     std::uniform_real_distribution<float> real_dist(-1, 1.0);
     auto value = real_dist(rng);
     std::cout << indent << "V(s) = " << value << '\n';
@@ -93,10 +96,7 @@ float monte_carlo_tree_sim(Node &node, int depth = 0) {
       std::unique_ptr<Node> child_node =
           std::make_unique<Node>(child, move, &node, prior);
 
-      child_node->parent = &node;
-
       // TODO: Update this to policy from neural network
-      child_node->policy = 1.0f / static_cast<float>(moves_array.size());
 
       node.children.push_back(std::move(child_node));
     }
@@ -149,7 +149,7 @@ float selection(const Node &child, float exploration_coefficient) {
            ? 0.0f
            : -child.value_sum / static_cast<float>(child.number_of_visits));
 
-  return static_cast<float>(q + exploration_coefficient * child.policy *
+  return static_cast<float>(q + exploration_coefficient * child.prior *
                                     std::sqrt(child.parent->number_of_visits) /
                                     (1 + child.number_of_visits));
 }
@@ -189,7 +189,7 @@ void print_root_stats(const Node &root) {
             : -child.value_sum / static_cast<float>(child.number_of_visits);
 
     std::cout << "Child " << i << " | N = " << child.number_of_visits
-              << " | P = " << child.policy << " | Q = " << q << '\n';
+              << " | P = " << child.prior << " | Q = " << q << '\n';
   }
 
   std::cout << "Total child visits: " << total_child_visits << '\n';
@@ -252,18 +252,89 @@ std::vector<float> root_visit_policy(const Node &root, float temperature) {
   return probabilites;
 }
 
-int main() {
-  Position starting_position{};
-  starting_position.set_starting_position();
-  Node root{starting_position};
-  constexpr int NUM_SIMULATIONS = 100;
+// Sample move from the probabilites
+u64 sample_idx(const std::vector<float> &probabilites, std::mt19937_64 &p_rng) {
+  std::discrete_distribution<u64> ditribution(probabilites.begin(),
+                                              probabilites.end());
+  return ditribution(p_rng);
+}
 
-  for (int i = 0; i < NUM_SIMULATIONS; ++i) {
-    std::cout << "\n\n========== SIMULATION " << i + 1 << " ==========\n";
-    float result = monte_carlo_tree_sim(root);
+// Reuse the select subtree after a move is played
+std::unique_ptr<Node> advance_root(std::unique_ptr<Node> old_root,
+                                   u64 selected_idx) {
+  std::unique_ptr<Node> new_root = std::move(old_root->children[selected_idx]);
+  new_root->parent = nullptr;
+  return new_root;
+}
 
-    std::cout << "Simulation returned: " << result << '\n';
+/***
+Enocde the local_policy into the [4762] output to match neural_net output
+*/
+PolicyArray encode_policy_target(const Node &root,
+                                 const std::vector<float> &local_policy) {
 
-    print_root_stats(root);
+  PolicyArray output{};
+
+  if (local_policy.size() != root.children.size()) {
+    throw std::invalid_argument("Policy and child counts do not match up");
   }
-};
+  for (u64 child_idx{}; child_idx < root.children.size(); child_idx++) {
+    const auto &child = root.children[child_idx];
+    u64 action = encode_move(root.state, child->move_from_parent);
+
+    if (action >= POLICY_SIZE) {
+      std::out_of_range("Encoded action is exceeds the Policy Array's size");
+    }
+    output[action] = local_policy[child_idx];
+  }
+  return output;
+}
+
+// int main() {
+//   Position starting_position{};
+//   starting_position.set_starting_position();
+
+//   auto root = std::make_unique<Node>(starting_position);
+
+//   constexpr int NUM_SIMULATIONS = 100;
+//   constexpr float TEMPERATURE = 0.9f;
+//   constexpr int MAX_PLAYS = 512;
+//   int plays{};
+
+//   while (!is_terminal(root->state) && plays < MAX_PLAYS) {
+
+//     std::cout << "\n========== REAL MOVE " << plays + 1 << "
+//     ==========\n";
+
+//     // Run imaginary MCTS from the current position
+//     run_search(*root, NUM_SIMULATIONS);
+
+//     // Convert child nodes into probabilites
+//     std::vector<float> policy = root_visit_policy(*root, TEMPERATURE);
+
+//     // Randomly sample from one of these probabilites
+//     u64 selected_idx = sample_idx(policy, rng);
+
+//     // Get the move before destroying root
+//     Move played_move = root->children[selected_idx]->move_from_parent;
+//     std::cout << "Selected child: " << selected_idx << '\n';
+
+//     // New root position
+//     root = advance_root(std::move(root), selected_idx);
+
+//     ++plays;
+//   }
+//   std::cout << "\n========== GAME OVER ==========\n";
+//   std::cout << "Total plies: " << plays << '\n';
+
+//   if (root->state.is_checkmate()) {
+//     std::cout << "Game ended by checkmate.\n";
+//     std::cout << "The player whose turn it is has lost.\n";
+//   } else if (root->state.is_stalemate()) {
+//     std::cout << "Game ended by stalemate.\n";
+//   } else if (root->state.is_draw()) {
+//     std::cout << "Game ended in a draw.\n";
+//   } else if (plays >= MAX_PLAYS) {
+//     std::cout << "Maximum game length reached; treating as draw.\n";
+//   }
+// };

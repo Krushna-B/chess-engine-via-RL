@@ -1,22 +1,31 @@
 #pragma once
 
 #include "board.hpp"
+#include "move_list.hpp"
 #include <memory>
+#include <random>
 #include <vector>
 
 extern const float EXPLORATION_COFFICIENT;
 
 struct Node {
   Position state{};
+  Move move_from_parent{};
+
   int number_of_visits{}; // N(a,s)
-  float policy = 0.0f;    // P(s,a)
+  float prior = 0.0f;     // P(s,a)
   float value_sum{};
   bool expanded{};
   Node *parent{};
   std::vector<std::unique_ptr<Node>> children;
 
   Node() = default;
-  Node(Position &starting_state) : state{starting_state} {};
+  explicit Node(const Position &starting_state) : state{starting_state} {}
+
+  Node(const Position &starting_state, const Move &move, Node *parent_node,
+       float prior)
+      : state(starting_state), move_from_parent(move), prior(prior),
+        parent(parent_node) {}
 
   /**
   Q(s,a)
@@ -31,5 +40,10 @@ struct Node {
 
 float monte_carlo_tree_sim(Node &node, int depth = 0);
 float selection(const Node &child, float exploration_coefficient);
-bool is_terminal(const Position &position);
-float terminal_value(const Position &position);
+bool is_terminal(Position &position);
+float terminal_value(Position &position);
+void run_search(Node &root, int simimlations);
+std::vector<float> root_visit_policy(const Node &root, float temperature);
+u64 sample_idx(const std::vector<float> &probabilites, std::mt19937_64 &p_rng);
+std::unique_ptr<Node> advance_root(std::unique_ptr<Node> old_root,
+                                   u64 selected_idx);
