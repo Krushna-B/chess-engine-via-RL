@@ -1,6 +1,7 @@
 #include "board.hpp"
 #include "mcts.hpp"
 #include "move_list.hpp"
+#include "neural_net.hpp"
 #include <random>
 #include <vector>
 
@@ -37,10 +38,13 @@ int main() {
     run_search(*root, SIMULATIONS);
 
     // Convert child nodes into probabilites
-    std::vector<float> policy = root_visit_policy(*root, TEMPERATURE);
+    std::vector<float> local_policy = root_visit_policy(*root, TEMPERATURE);
+
+    PolicyArray fixed_policy = encode_policy_target(*root, local_policy);
+    validate_policy_target(fixed_policy);
 
     // Randomly sample from one of these probabilites
-    u64 selected_idx = sample_idx(policy, rng);
+    u64 selected_idx = sample_idx(local_policy, rng);
 
     // Get the move before destroying root
     Move played_move = root->children[selected_idx]->move_from_parent;
@@ -66,3 +70,14 @@ int main() {
   }
   return 0;
 }
+
+// int main() {
+//   Position position{};
+//   position.set_starting_position();
+//   position.set_from_fen("r3k2r/p1ppqpb1/bn2pnp1/2pP4/"
+//                         "1p2P3/2N2N2/PPQBBPPP/R3K2R "
+//                         "b KQkq - 0 1");
+//   validate_move_encoding(position);
+
+//   return 0;
+// }

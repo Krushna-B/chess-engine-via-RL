@@ -197,7 +197,7 @@ private:
                                BLACK_KINGSIDE | BLACK_QUEENSIDE};
 
   void update_occupancies();
-  Piece get_piece_on_square(Square square, Side side);
+
   void update_castling_rights_for_move(Piece moving_piece, Side moving_side,
                                        Square from, Piece captured_piece,
                                        Square captured_square);
@@ -211,6 +211,7 @@ public:
   Bitboard get_enimies(Side color) const;
   std::uint16_t get_halfmove_clock() const;
   std::uint16_t get_fullmove_number() const;
+  Piece get_piece_on_square(Square square, Side side);
 
   // Insufficent material
   bool has_insufficent_material();

@@ -2,6 +2,7 @@
 
 #include "board.hpp"
 #include "move_list.hpp"
+#include "neural_net.hpp"
 #include <memory>
 #include <random>
 #include <vector>
@@ -47,3 +48,7 @@ std::vector<float> root_visit_policy(const Node &root, float temperature);
 u64 sample_idx(const std::vector<float> &probabilites, std::mt19937_64 &p_rng);
 std::unique_ptr<Node> advance_root(std::unique_ptr<Node> old_root,
                                    u64 selected_idx);
+PolicyArray encode_policy_target(const Node &root,
+                                 const std::vector<float> &local_policy);
+
+void validate_policy_target(const PolicyArray &policy);

@@ -13,6 +13,7 @@ add_executable(main
     src/move_generator.cpp
     src/gui.cpp
     src/main.cpp
+    src/neural_net.cpp
     src/move_list.cpp
     src/game.cpp
     src/game_controller.cpp
@@ -23,6 +24,11 @@ add_executable(perft src/perft.cpp src/board.cpp
     src/move_generator.cpp  src/move_list.cpp)
 add_executable(engine src/uci.cpp src/board.cpp
     src/move_generator.cpp src/move_list.cpp src/random_engine.cpp)
+
+
+
+
+
 # add_executable(monte_carlo_tree_search
 #     src/mcts.cpp
 #     src/board.cpp
@@ -31,6 +37,7 @@ add_executable(engine src/uci.cpp src/board.cpp
 
 add_executable(self_play
     src/self_play.cpp
+    src/neural_net.cpp
     src/mcts.cpp
     src/board.cpp
     src/move_generator.cpp
@@ -44,6 +51,7 @@ target_include_directories(perft PRIVATE include)
 target_include_directories(engine PRIVATE include)
 # target_include_directories(monte_carlo_tree_search  PRIVATE include)
 target_include_directories(self_play  PRIVATE include)
+
 
 
 #Linked Libraries

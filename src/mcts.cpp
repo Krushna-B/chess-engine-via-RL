@@ -290,6 +290,39 @@ PolicyArray encode_policy_target(const Node &root,
   return output;
 }
 
+/**
+Validate all probabilites in our stochastic policy
+*/
+void validate_policy_target(const PolicyArray &policy) {
+  float sum = std::accumulate(policy.begin(), policy.end(), 0.0f);
+
+  std::size_t nonzero_actions = 0;
+
+  for (float probability : policy) {
+    if (!std::isfinite(probability)) {
+      throw std::runtime_error("Policy contains NaN or infinity");
+    }
+
+    if (probability < 0.0f) {
+      throw std::runtime_error("Policy contains a negative probability");
+    }
+
+    if (probability > 0.0f) {
+      ++nonzero_actions;
+    }
+  }
+
+  if (std::abs(sum - 1.0f) > 0.0001f) {
+    throw std::runtime_error("Policy probabilities do not sum to one");
+  }
+
+  std::cout << "Policy sum: " << sum << '\n';
+
+  std::cout << "Nonzero actions: " << nonzero_actions << '\n';
+
+  std::cout << "Policy target passed\n";
+}
+
 // int main() {
 //   Position starting_position{};
 //   starting_position.set_starting_position();

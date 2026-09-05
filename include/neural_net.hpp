@@ -21,3 +21,7 @@ struct NetworkOutput {
   PolicyArray policy_logits{};
   float value{};
 };
+
+u64 encode_move(const Position &position, const Move &move);
+void validate_move_encoding(Position &position);
+EncodedPosition encode_position(const Position &position);
