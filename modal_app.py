@@ -64,6 +64,7 @@ def train_loop(
     os.environ["SELFPLAY_GAMES"] = str(games)
     os.environ["SELFPLAY_SIMULATIONS"] = str(simulations)
 
+    run_loop.configure_run()
     run_loop.ensure_initial_model()
 
     generation = run_loop.next_generation_index()

@@ -42,6 +42,7 @@ const int BATCH_SIZE = env_int("SELFPLAY_BATCH", 256);
 const int BATCH_TIMEOUT_US = env_int("SELFPLAY_BATCH_TIMEOUT_US", 1000);
 
 const int GENERATION = env_int("SELFPLAY_GENERATION", 0);
+const std::string RUN_ID = env_str("RUN_ID", "adhoc");
 const std::string METRICS_PATH =
     env_str("METRICS_PATH", "artifacts/metrics/metrics.jsonl");
 
@@ -176,7 +177,8 @@ void write_metrics(const std::vector<GameResult> &results,
     return;
   }
 
-  out << "{\"type\":\"config\",\"generation\":" << GENERATION
+  out << "{\"type\":\"config\",\"run_id\":\"" << RUN_ID
+      << "\",\"generation\":" << GENERATION
       << ",\"games\":" << results.size() << ",\"simulations\":" << SIMULATIONS
       << ",\"max_plays\":" << MAX_PLAYS << ",\"concurrency\":" << CONCURRENCY
       << ",\"batch_size\":" << BATCH_SIZE
@@ -204,7 +206,8 @@ void write_metrics(const std::vector<GameResult> &results,
       ++draws;
     }
 
-    out << "{\"type\":\"game\",\"generation\":" << GENERATION
+    out << "{\"type\":\"game\",\"run_id\":\"" << RUN_ID
+        << "\",\"generation\":" << GENERATION
         << ",\"game_index\":" << i << ",\"plies\":" << game.plies
         << ",\"positions\":" << game.examples.size() << ",\"result\":\""
         << game.result << "\",\"cause\":\"" << game.cause
@@ -220,7 +223,8 @@ void write_metrics(const std::vector<GameResult> &results,
                                 : static_cast<double>(sum_plies) /
                                       static_cast<double>(results.size());
 
-  out << "{\"type\":\"selfplay\",\"generation\":" << GENERATION
+  out << "{\"type\":\"selfplay\",\"run_id\":\"" << RUN_ID
+      << "\",\"generation\":" << GENERATION
       << ",\"games\":" << results.size() << ",\"positions\":" << total_positions
       << ",\"white_wins\":" << white << ",\"black_wins\":" << black
       << ",\"draws\":" << draws << ",\"min_plies\":" << min_plies
@@ -232,7 +236,8 @@ void write_metrics(const std::vector<GameResult> &results,
           ? static_cast<double>(inf.eval_count) / (selfplay_ms / 1000.0)
           : 0.0;
 
-  out << "{\"type\":\"inference\",\"generation\":" << GENERATION
+  out << "{\"type\":\"inference\",\"run_id\":\"" << RUN_ID
+      << "\",\"generation\":" << GENERATION
       << ",\"device\":\"" << inf.device
       << "\",\"eval_count\":" << inf.eval_count
       << ",\"batch_count\":" << inf.batch_count

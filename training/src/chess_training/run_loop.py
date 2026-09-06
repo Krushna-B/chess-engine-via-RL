@@ -7,6 +7,7 @@ Each iteration (generation):
 Run:  uv run python -m chess_training.run_loop
 """
 
+import datetime
 import os
 import subprocess
 import sys
@@ -19,11 +20,26 @@ from chess_training.chess_model import ChessTransformer
 REPO_ROOT = Path(__file__).resolve().parents[3]
 SELF_PLAY_BIN = REPO_ROOT / "build" / "self_play"
 SELFPLAY_DIR = REPO_ROOT / "artifacts" / "selfplay"
+METRICS_DIR = REPO_ROOT / "artifacts" / "metrics"
 JIT_MODEL = REPO_ROOT / "artifacts" / "checkpoints" / "chess_model_jit.pt"
 
 ITERATIONS = int(os.environ.get("LOOP_ITERATIONS", "10"))
 # Keep at most this many shards on disk (matches train.py's replay window)
 REPLAY_WINDOW = int(os.environ.get("REPLAY_WINDOW", "20"))
+
+
+def configure_run() -> str:
+    """Give this run its own id + metrics file so runs stay separable.
+
+    RUN_ID can be set explicitly; otherwise it defaults to a timestamp. Both
+    self_play (C++) and train.py read RUN_ID + METRICS_PATH from the env.
+    """
+    run_id = os.environ.setdefault(
+        "RUN_ID", datetime.datetime.now().strftime("run_%Y%m%d_%H%M%S")
+    )
+    os.environ["METRICS_PATH"] = str(METRICS_DIR / f"{run_id}.jsonl")
+    print(f"[run] RUN_ID={run_id} -> {os.environ['METRICS_PATH']}", flush=True)
+    return run_id
 
 
 def ensure_initial_model() -> None:
@@ -93,6 +109,7 @@ def main() -> None:
             f"self_play binary not found: {SELF_PLAY_BIN} (build it first)"
         )
 
+    configure_run()
     ensure_initial_model()
 
     generation = next_generation_index()

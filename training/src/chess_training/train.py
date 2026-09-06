@@ -18,6 +18,7 @@ METRICS_PATH = Path(
     os.environ.get("METRICS_PATH", REPO_ROOT / "artifacts" / "metrics" / "metrics.jsonl")
 )
 GENERATION = int(os.environ.get("SELFPLAY_GENERATION", "0"))
+RUN_ID = os.environ.get("RUN_ID", "adhoc")
 
 # Train on the most recent REPLAY_WINDOW shards (one shard per generation),
 # and warm-start from the previous generation's weights unless disabled.
@@ -35,6 +36,7 @@ def replay_shards():
 
 
 def append_metric(record):
+    record["run_id"] = RUN_ID
     record["generation"] = GENERATION
     METRICS_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(METRICS_PATH, "a") as out:
