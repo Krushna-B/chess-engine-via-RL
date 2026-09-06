@@ -10,10 +10,10 @@ class ChessTransformer(nn.Module):
         square_features=18,
         policy_planes=73,
         num_of_squares=64,
-        model_dim=128,
+        model_dim=256,
         num_of_heads=8,
-        num_of_layers=4,
-        feedforward_dim=512,
+        num_of_layers=16,
+        feedforward_dim=1024,
         dropout=0.1,
     ) -> None:
         super().__init__()

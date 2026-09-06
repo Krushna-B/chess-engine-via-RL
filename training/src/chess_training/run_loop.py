@@ -9,6 +9,7 @@ Run:  uv run python -m chess_training.run_loop
 
 import datetime
 import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -21,7 +22,10 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 SELF_PLAY_BIN = REPO_ROOT / "build" / "self_play"
 SELFPLAY_DIR = REPO_ROOT / "artifacts" / "selfplay"
 METRICS_DIR = REPO_ROOT / "artifacts" / "metrics"
-JIT_MODEL = REPO_ROOT / "artifacts" / "checkpoints" / "chess_model_jit.pt"
+CHECKPOINT_DIR = REPO_ROOT / "artifacts" / "checkpoints"
+# Immutable per-generation snapshots -> the strength ladder for evaluation.
+MODELS_DIR = REPO_ROOT / "artifacts" / "models"
+JIT_MODEL = CHECKPOINT_DIR / "chess_model_jit.pt"
 
 ITERATIONS = int(os.environ.get("LOOP_ITERATIONS", "10"))
 # Keep at most this many shards on disk (matches train.py's replay window)
@@ -55,8 +59,9 @@ def ensure_initial_model() -> None:
     model = ChessTransformer().eval()
     example_input = torch.zeros(1, 64, 18)
 
+    # NOTE: no torch.jit.freeze -- frozen weights become CONSTANTS that don't
+    # move with module.to(cuda) in C++, causing a cpu/cuda device mismatch.
     traced = torch.jit.trace(model, example_input, check_trace=False)
-    traced = torch.jit.freeze(traced)
     traced.save(str(JIT_MODEL))
 
     print(f"[bootstrap] wrote random initial model -> {JIT_MODEL}")
@@ -99,7 +104,14 @@ def run_generation(generation: int) -> None:
     # 3. Re-export the trained model for the next self-play round
     run([sys.executable, "-m", "chess_training.export_libtorch"])
 
-    # 4. Bound disk to the replay window.
+    # 4. Archive this generation as an immutable snapshot (the strength ladder).
+    MODELS_DIR.mkdir(parents=True, exist_ok=True)
+    shutil.copy(JIT_MODEL, MODELS_DIR / f"gen_{generation:04d}_jit.pt")
+    weights = CHECKPOINT_DIR / "best_model.pt"
+    if weights.exists():
+        shutil.copy(weights, MODELS_DIR / f"gen_{generation:04d}.pt")
+
+    # 5. Bound the replay buffer's disk (snapshots in MODELS_DIR are kept).
     prune_old_shards()
 
 

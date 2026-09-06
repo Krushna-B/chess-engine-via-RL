@@ -19,8 +19,16 @@ set(COMMON_COMPILE_OPTIONS
     -Wpedantic
     -Wconversion
     -Wshadow
-    -fconstexpr-steps=100000000
 )
+
+# Raise the constexpr evaluation limit. The flag name differs by compiler:
+# Clang (local/macOS) uses -fconstexpr-steps, GCC (Linux/Modal) uses
+# -fconstexpr-ops-limit.
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    list(APPEND COMMON_COMPILE_OPTIONS -fconstexpr-steps=100000000)
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    list(APPEND COMMON_COMPILE_OPTIONS -fconstexpr-ops-limit=100000000)
+endif()
 
 if(BUILD_GUI)
     find_package(raylib CONFIG REQUIRED)

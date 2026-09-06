@@ -3,13 +3,30 @@
 #include <torch/script.h>
 #include <torch/torch.h>
 
+// CUDA graph support only exists in a real CUDA toolchain. The torch wheel
+// ships the ATen/cuda headers even on CPU-only platforms, so gate on the actual
+// CUDA SDK header (cuda_runtime_api.h) being present -- absent on macOS/CPU.
+#if defined(__has_include)
+#if __has_include(<cuda_runtime_api.h>) && __has_include(<ATen/cuda/CUDAGraph.h>)
+#include <ATen/cuda/CUDAContext.h>
+#include <ATen/cuda/CUDAGraph.h>
+#include <c10/cuda/CUDAStream.h>
+#define HAVE_CUDA_GRAPH 1
+#endif
+#endif
+
 #include <algorithm>
+#include <c10/cuda/CUDAGuard.h>
 #include <chrono>
 #include <condition_variable>
 #include <cstddef>
+#include <cstdlib>
 #include <future>
+#include <iostream>
+#include <memory>
 #include <mutex>
 #include <queue>
+#include <string>
 #include <thread>
 #include <vector>
 
@@ -36,13 +53,29 @@ std::size_t batch_bucket(std::size_t batch_size) {
   return bucket;
 }
 
+bool env_disabled(const char *name) {
+  const char *value = std::getenv(name);
+  return value != nullptr && std::string(value) == "0";
+}
+
 } // namespace
 
 struct NeuralNetwork::Impl {
   torch::jit::script::Module model;
   torch::Device device;
+  bool use_bf16 = false;
   std::size_t max_batch_size;
   std::chrono::microseconds batch_timeout;
+
+  // CUDA-graph inference: capture the fixed-shape forward once and replay it,
+  // collapsing ~dozens of kernel launches per forward into one graph launch.
+  bool use_graph = false;
+  torch::Tensor graph_input;
+  torch::Tensor graph_logits;
+  torch::Tensor graph_values;
+#ifdef HAVE_CUDA_GRAPH
+  std::unique_ptr<at::cuda::CUDAGraph> cuda_graph;
+#endif
 
   std::mutex mutex;
   std::condition_variable cv;
@@ -67,7 +100,29 @@ struct NeuralNetwork::Impl {
         max_batch_size(static_cast<std::size_t>(max_batch)),
         batch_timeout(timeout_us) {
     model.to(device);
+    // bf16 on GPU: big throughput win for a small model that is otherwise
+    // kernel-launch / overhead bound. CPU stays float32.
+    use_bf16 = device.is_cuda();
+    if (use_bf16) {
+      model.to(torch::kBFloat16);
+    }
     model.eval();
+
+#ifdef HAVE_CUDA_GRAPH
+    if (device.is_cuda() && !env_disabled("SELFPLAY_CUDA_GRAPH")) {
+      try {
+        setup_cuda_graph();
+        use_graph = true;
+        std::cerr << "[inference] CUDA graph enabled (batch=" << max_batch_size
+                  << ")\n";
+      } catch (const std::exception &error) {
+        use_graph = false;
+        std::cerr << "[inference] CUDA graph capture failed, using eager path: "
+                  << error.what() << "\n";
+      }
+    }
+#endif
+
     worker = std::thread([this] { run(); });
   }
 
@@ -81,6 +136,37 @@ struct NeuralNetwork::Impl {
       worker.join();
     }
   }
+
+#ifdef HAVE_CUDA_GRAPH
+  // Capture the forward at the fixed max batch size. Smaller batches pad up to
+  // this size and ignore the extra rows.
+  void setup_cuda_graph() {
+    const auto dtype = use_bf16 ? torch::kBFloat16 : torch::kFloat32;
+    graph_input =
+        torch::zeros({static_cast<long>(max_batch_size), 64, 18},
+                     torch::TensorOptions().device(device).dtype(dtype));
+
+    torch::NoGradGuard no_grad;
+    std::vector<torch::jit::IValue> inputs{graph_input};
+
+    // Warmup + capture must run on a non-default stream.
+    at::cuda::CUDAStream stream = at::cuda::getStreamFromPool();
+    c10::cuda::CUDAStreamGuard guard(stream);
+
+    for (int i = 0; i < 3; ++i) {
+      model.forward(inputs);
+    }
+    stream.synchronize();
+
+    cuda_graph = std::make_unique<at::cuda::CUDAGraph>();
+    cuda_graph->capture_begin();
+    const auto out = model.forward(inputs).toTuple();
+    graph_logits = out->elements()[0].toTensor();
+    graph_values = out->elements()[1].toTensor();
+    cuda_graph->capture_end();
+    stream.synchronize();
+  }
+#endif
 
   std::future<NetworkOutput> submit(const Position &position) {
     PendingRequest request;
@@ -100,7 +186,10 @@ struct NeuralNetwork::Impl {
   InferenceStats snapshot() {
     std::lock_guard<std::mutex> lock(stats_mutex);
     InferenceStats out;
-    out.device = device.is_cuda() ? "cuda" : "cpu";
+    out.device = device.is_cuda()
+                     ? (use_graph ? "cuda-bf16-graph"
+                                  : (use_bf16 ? "cuda-bf16" : "cuda"))
+                     : "cpu";
     out.eval_count = eval_count;
     out.batch_count = batch_count;
     out.max_batch = max_batch;
@@ -109,8 +198,7 @@ struct NeuralNetwork::Impl {
     out.mean_forward_ms =
         batch_count > 0 ? total_forward_ms / batch_count : 0.0;
     out.max_forward_ms = max_forward_ms;
-    out.mean_wait_ms =
-        eval_count > 0 ? total_wait_ms / eval_count : 0.0;
+    out.mean_wait_ms = eval_count > 0 ? total_wait_ms / eval_count : 0.0;
     out.max_wait_ms = max_wait_ms;
     out.batch_buckets = batch_buckets;
     return out;
@@ -161,33 +249,59 @@ struct NeuralNetwork::Impl {
                       static_cast<std::ptrdiff_t>(i * ENCODED_STATE_SIZE));
       }
 
-      torch::Tensor input =
-          torch::from_blob(buffer.data(),
-                           {static_cast<long>(batch_size), 64, 18},
-                           torch::TensorOptions().dtype(torch::kFloat32))
-              .to(device);
+      torch::Tensor host = torch::from_blob(
+          buffer.data(), {static_cast<long>(batch_size), 64, 18},
+          torch::TensorOptions().dtype(torch::kFloat32));
 
-      c10::InferenceMode inference_mode;
+      torch::Tensor logits;
+      torch::Tensor values;
 
-      std::vector<torch::jit::IValue> inputs;
-      inputs.emplace_back(input);
+#ifdef HAVE_CUDA_GRAPH
+      if (use_graph) {
+        const auto dtype = use_bf16 ? torch::kBFloat16 : torch::kFloat32;
+        // Copy inputs into the captured static buffer in place, then replay.
+        graph_input.slice(0, 0, static_cast<long>(batch_size))
+            .copy_(host.to(device).to(dtype));
+        cuda_graph->replay();
+        at::cuda::getCurrentCUDAStream().synchronize();
 
-      const auto tuple = model.forward(inputs).toTuple();
-      const auto &elements = tuple->elements();
-      if (elements.size() != 2) {
-        throw std::runtime_error("Expected policy and value outputs");
+        logits = graph_logits.slice(0, 0, static_cast<long>(batch_size))
+                     .to(torch::kCPU)
+                     .to(torch::kFloat32)
+                     .contiguous();
+        values = graph_values.slice(0, 0, static_cast<long>(batch_size))
+                     .to(torch::kCPU)
+                     .to(torch::kFloat32)
+                     .contiguous();
+      } else
+#endif
+      {
+        torch::Tensor input = host.to(device);
+        if (use_bf16) {
+          input = input.to(torch::kBFloat16);
+        }
+
+        c10::InferenceMode inference_mode;
+        std::vector<torch::jit::IValue> inputs;
+        inputs.emplace_back(input);
+
+        const auto tuple = model.forward(inputs).toTuple();
+        const auto &elements = tuple->elements();
+        if (elements.size() != 2) {
+          throw std::runtime_error("Expected policy and value outputs");
+        }
+
+        logits = elements[0]
+                     .toTensor()
+                     .to(torch::kCPU)
+                     .to(torch::kFloat32)
+                     .contiguous();
+        values = elements[1]
+                     .toTensor()
+                     .to(torch::kCPU)
+                     .to(torch::kFloat32)
+                     .contiguous();
       }
-
-      torch::Tensor logits = elements[0]
-                                 .toTensor()
-                                 .to(torch::kCPU)
-                                 .to(torch::kFloat32)
-                                 .contiguous();
-      torch::Tensor values = elements[1]
-                                 .toTensor()
-                                 .to(torch::kCPU)
-                                 .to(torch::kFloat32)
-                                 .contiguous();
 
       const float *logits_ptr = logits.data_ptr<float>();
       const float *values_ptr = values.data_ptr<float>();

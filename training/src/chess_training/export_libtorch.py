@@ -130,14 +130,13 @@ def main():
     example_input = example_state.unsqueeze(0).contiguous()
 
     # Record the model's tensor operations.
+    # NOTE: do NOT torch.jit.freeze -- frozen weights become CONSTANTS that
+    # don't move with module.to(cuda) in C++, causing a cpu/cuda mismatch.
     traced_model = torch.jit.trace(
         original_model,
         example_input,
         check_trace=False,
     )
-
-    # Remove training-only parts and fold constants where possible.
-    traced_model = torch.jit.freeze(traced_model)
 
     # Save architecture, operations, and parameters together.
     traced_model.save(str(OUTPUT_PATH))

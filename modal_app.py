@@ -13,9 +13,18 @@ PACKAGE_SRC = f"{REPO}/training/src"
 ARTIFACTS = f"{REPO}/artifacts"
 
 image = (
-    modal.Image.debian_slim(python_version="3.12")
-    .apt_install("build-essential", "cmake", "git")
-    .pip_install("torch", "numpy")
+    # CUDA *devel* base so the CUDA toolkit (nvcc + libs) is present at build
+    # time -- required for find_package(Torch) to configure the C++ engine.
+    # torch is pinned to the matching CUDA (cu124) so versions line up.
+    modal.Image.from_registry(
+        "nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04", add_python="3.12"
+    )
+    .apt_install("build-essential", "git")
+    # Modern CMake via pip -- the base image's apt cmake is 3.22, project needs >=3.23.
+    .pip_install("numpy", "cmake")
+    .pip_install(
+        "torch==2.5.1", index_url="https://download.pytorch.org/whl/cu124"
+    )
     .env({"PYTHONPATH": PACKAGE_SRC})
     .add_local_dir(
         ".",
@@ -49,6 +58,8 @@ artifacts_volume = modal.Volume.from_name("chess-artifacts", create_if_missing=T
 @app.function(
     image=image,
     gpu="A100",
+    cpu=16.0,  # self-play MCTS is CPU-bound; give the worker threads real cores
+    memory=32768,
     volumes={ARTIFACTS: artifacts_volume},
     timeout=24 * 60 * 60,
 )
@@ -56,13 +67,20 @@ def train_loop(
     iterations: int = 10,
     games: int = 2000,
     simulations: int = 800,
+    max_plays: int = 512,
+    concurrency: int = 512,
+    run_id: str = "",
 ):
     import os
 
     from chess_training import run_loop
 
+    if run_id:
+        os.environ["RUN_ID"] = run_id
     os.environ["SELFPLAY_GAMES"] = str(games)
     os.environ["SELFPLAY_SIMULATIONS"] = str(simulations)
+    os.environ["SELFPLAY_MAX_PLAYS"] = str(max_plays)
+    os.environ["SELFPLAY_CONCURRENCY"] = str(concurrency)
 
     run_loop.configure_run()
     run_loop.ensure_initial_model()
@@ -78,9 +96,19 @@ def train_loop(
 
 
 @app.local_entrypoint()
-def main(iterations: int = 10, games: int = 2000, simulations: int = 800):
+def main(
+    iterations: int = 10,
+    games: int = 2000,
+    simulations: int = 800,
+    max_plays: int = 512,
+    concurrency: int = 512,
+    run_id: str = "",
+):
     train_loop.remote(
         iterations=iterations,
         games=games,
         simulations=simulations,
+        max_plays=max_plays,
+        concurrency=concurrency,
+        run_id=run_id,
     )

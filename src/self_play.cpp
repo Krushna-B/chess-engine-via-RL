@@ -13,6 +13,7 @@
 #include <limits>
 #include <mutex>
 #include <random>
+#include <sstream>
 #include <stdexcept>
 #include <string>
 #include <thread>
@@ -48,6 +49,10 @@ const std::string METRICS_PATH =
 
 // Temperature schedule (mirrors temperature_for_play), logged in config.
 constexpr int TEMP_EXPLORATION_PLIES = 30;
+
+// Emit an inference/throughput snapshot every this many completed games so
+// long runs report progress incrementally instead of only at the end.
+const int PROGRESS_EVERY = env_int("METRICS_PROGRESS_EVERY", 50);
 
 static thread_local std::mt19937_64 rng{std::random_device{}()};
 
@@ -166,34 +171,79 @@ GameResult play_self_play_game(NeuralNetwork &network) {
   return game;
 }
 
-// Append the full telemetry for this generation as JSONL records.
-void write_metrics(const std::vector<GameResult> &results,
-                   const InferenceStats &inf, long selfplay_ms) {
+// JSONL metrics are appended incrementally (per game + periodic snapshots),
+// guarded so worker threads can write concurrently.
+std::mutex g_metrics_mutex;
+
+void append_metric_line(const std::string &line) {
+  std::lock_guard<std::mutex> lock(g_metrics_mutex);
   std::filesystem::create_directories(
       std::filesystem::path(METRICS_PATH).parent_path());
-
   std::ofstream out(METRICS_PATH, std::ios::app);
-  if (!out) {
-    return;
+  if (out) {
+    out << line << "\n";
   }
+}
 
-  out << "{\"type\":\"config\",\"run_id\":\"" << RUN_ID
-      << "\",\"generation\":" << GENERATION
-      << ",\"games\":" << results.size() << ",\"simulations\":" << SIMULATIONS
-      << ",\"max_plays\":" << MAX_PLAYS << ",\"concurrency\":" << CONCURRENCY
-      << ",\"batch_size\":" << BATCH_SIZE
-      << ",\"batch_timeout_us\":" << BATCH_TIMEOUT_US
-      << ",\"temp_exploration_plies\":" << TEMP_EXPLORATION_PLIES
-      << ",\"temp_high\":1.0,\"temp_low\":0.0}\n";
+std::string config_record(int games) {
+  std::ostringstream o;
+  o << "{\"type\":\"config\",\"run_id\":\"" << RUN_ID
+    << "\",\"generation\":" << GENERATION << ",\"games\":" << games
+    << ",\"simulations\":" << SIMULATIONS << ",\"max_plays\":" << MAX_PLAYS
+    << ",\"concurrency\":" << CONCURRENCY << ",\"batch_size\":" << BATCH_SIZE
+    << ",\"batch_timeout_us\":" << BATCH_TIMEOUT_US
+    << ",\"temp_exploration_plies\":" << TEMP_EXPLORATION_PLIES
+    << ",\"temp_high\":1.0,\"temp_low\":0.0}";
+  return o.str();
+}
 
+std::string game_record(int game_index, const GameResult &game) {
+  std::ostringstream o;
+  o << "{\"type\":\"game\",\"run_id\":\"" << RUN_ID
+    << "\",\"generation\":" << GENERATION << ",\"game_index\":" << game_index
+    << ",\"plies\":" << game.plies << ",\"positions\":" << game.examples.size()
+    << ",\"result\":\"" << game.result << "\",\"cause\":\"" << game.cause
+    << "\",\"duration_ms\":" << game.duration_ms << "}";
+  return o.str();
+}
+
+// type is "inference" (final) or "inference_progress" (periodic snapshot).
+std::string inference_record(const char *type, const InferenceStats &inf,
+                             long elapsed_ms) {
+  const double throughput =
+      elapsed_ms > 0
+          ? static_cast<double>(inf.eval_count) / (elapsed_ms / 1000.0)
+          : 0.0;
+  std::ostringstream o;
+  o << "{\"type\":\"" << type << "\",\"run_id\":\"" << RUN_ID
+    << "\",\"generation\":" << GENERATION << ",\"device\":\"" << inf.device
+    << "\",\"eval_count\":" << inf.eval_count
+    << ",\"batch_count\":" << inf.batch_count
+    << ",\"mean_batch\":" << inf.mean_batch << ",\"max_batch\":" << inf.max_batch
+    << ",\"mean_forward_ms\":" << inf.mean_forward_ms
+    << ",\"max_forward_ms\":" << inf.max_forward_ms
+    << ",\"mean_wait_ms\":" << inf.mean_wait_ms
+    << ",\"max_wait_ms\":" << inf.max_wait_ms
+    << ",\"throughput_evals_per_sec\":" << throughput << ",\"batch_buckets\":[";
+  for (std::size_t i = 0; i < inf.batch_buckets.size(); ++i) {
+    o << inf.batch_buckets[i];
+    if (i + 1 < inf.batch_buckets.size()) {
+      o << ",";
+    }
+  }
+  o << "]}";
+  return o.str();
+}
+
+std::string selfplay_record(const std::vector<GameResult> &results,
+                            long selfplay_ms) {
   long total_positions = 0;
   long sum_plies = 0;
   int white = 0, black = 0, draws = 0;
   int min_plies = std::numeric_limits<int>::max();
   int max_plies = 0;
 
-  for (std::size_t i = 0; i < results.size(); ++i) {
-    const GameResult &game = results[i];
+  for (const GameResult &game : results) {
     total_positions += static_cast<long>(game.examples.size());
     sum_plies += game.plies;
     min_plies = std::min(min_plies, game.plies);
@@ -205,13 +255,6 @@ void write_metrics(const std::vector<GameResult> &results,
     } else {
       ++draws;
     }
-
-    out << "{\"type\":\"game\",\"run_id\":\"" << RUN_ID
-        << "\",\"generation\":" << GENERATION
-        << ",\"game_index\":" << i << ",\"plies\":" << game.plies
-        << ",\"positions\":" << game.examples.size() << ",\"result\":\""
-        << game.result << "\",\"cause\":\"" << game.cause
-        << "\",\"duration_ms\":" << game.duration_ms << "}\n";
   }
 
   if (results.empty()) {
@@ -223,39 +266,15 @@ void write_metrics(const std::vector<GameResult> &results,
                                 : static_cast<double>(sum_plies) /
                                       static_cast<double>(results.size());
 
-  out << "{\"type\":\"selfplay\",\"run_id\":\"" << RUN_ID
-      << "\",\"generation\":" << GENERATION
-      << ",\"games\":" << results.size() << ",\"positions\":" << total_positions
-      << ",\"white_wins\":" << white << ",\"black_wins\":" << black
-      << ",\"draws\":" << draws << ",\"min_plies\":" << min_plies
-      << ",\"max_plies\":" << max_plies << ",\"mean_plies\":" << mean_plies
-      << ",\"duration_ms\":" << selfplay_ms << "}\n";
-
-  const double throughput =
-      selfplay_ms > 0
-          ? static_cast<double>(inf.eval_count) / (selfplay_ms / 1000.0)
-          : 0.0;
-
-  out << "{\"type\":\"inference\",\"run_id\":\"" << RUN_ID
-      << "\",\"generation\":" << GENERATION
-      << ",\"device\":\"" << inf.device
-      << "\",\"eval_count\":" << inf.eval_count
-      << ",\"batch_count\":" << inf.batch_count
-      << ",\"mean_batch\":" << inf.mean_batch
-      << ",\"max_batch\":" << inf.max_batch
-      << ",\"mean_forward_ms\":" << inf.mean_forward_ms
-      << ",\"max_forward_ms\":" << inf.max_forward_ms
-      << ",\"mean_wait_ms\":" << inf.mean_wait_ms
-      << ",\"max_wait_ms\":" << inf.max_wait_ms
-      << ",\"throughput_evals_per_sec\":" << throughput
-      << ",\"batch_buckets\":[";
-  for (std::size_t i = 0; i < inf.batch_buckets.size(); ++i) {
-    out << inf.batch_buckets[i];
-    if (i + 1 < inf.batch_buckets.size()) {
-      out << ",";
-    }
-  }
-  out << "]}\n";
+  std::ostringstream o;
+  o << "{\"type\":\"selfplay\",\"run_id\":\"" << RUN_ID
+    << "\",\"generation\":" << GENERATION << ",\"games\":" << results.size()
+    << ",\"positions\":" << total_positions << ",\"white_wins\":" << white
+    << ",\"black_wins\":" << black << ",\"draws\":" << draws
+    << ",\"min_plies\":" << min_plies << ",\"max_plies\":" << max_plies
+    << ",\"mean_plies\":" << mean_plies << ",\"duration_ms\":" << selfplay_ms
+    << "}";
+  return o.str();
 }
 
 void profile(std::function<void()> func) {
@@ -285,11 +304,17 @@ int main(int argc, char **argv) {
 
     const int GAMES_PER_SHARD = env_int("SELFPLAY_GAMES", 2000);
 
+    // Config record up front so a partial/interrupted run is still described.
+    append_metric_line(config_record(GAMES_PER_SHARD));
+
     // Worker threads pull the next game index until the shard is full; the
-    // concurrency is what keeps the inference queue full enough to batch.
+    // concurrency is what keeps the inference queue full enough to batch. Each
+    // game's record is streamed to disk as it finishes, with a periodic
+    // inference/throughput snapshot, so metrics accrue incrementally.
     std::vector<GameResult> results;
     std::atomic<int> next_game{0};
     std::mutex results_mutex;
+    const auto selfplay_start = std::chrono::steady_clock::now();
 
     auto worker = [&]() {
       while (true) {
@@ -299,13 +324,28 @@ int main(int argc, char **argv) {
         }
 
         GameResult game = play_self_play_game(network);
+        const std::string line = game_record(game_index, game);
 
-        std::lock_guard<std::mutex> lock(results_mutex);
-        results.push_back(std::move(game));
+        int completed;
+        {
+          std::lock_guard<std::mutex> lock(results_mutex);
+          results.push_back(std::move(game));
+          completed = static_cast<int>(results.size());
+        }
+
+        append_metric_line(line);
+
+        if (completed % PROGRESS_EVERY == 0) {
+          const long elapsed =
+              std::chrono::duration_cast<std::chrono::milliseconds>(
+                  std::chrono::steady_clock::now() - selfplay_start)
+                  .count();
+          append_metric_line(
+              inference_record("inference_progress", network.stats(), elapsed));
+        }
       }
     };
 
-    const auto selfplay_start = std::chrono::steady_clock::now();
     {
       const int num_threads = std::min(CONCURRENCY, GAMES_PER_SHARD);
 
@@ -323,8 +363,9 @@ int main(int argc, char **argv) {
             std::chrono::steady_clock::now() - selfplay_start)
             .count();
 
-    // Capture all telemetry first (reads per-game example counts), then merge.
-    write_metrics(results, network.stats(), selfplay_ms);
+    // Final aggregates.
+    append_metric_line(selfplay_record(results, selfplay_ms));
+    append_metric_line(inference_record("inference", network.stats(), selfplay_ms));
 
     std::vector<TrainingExample> shard;
     shard.reserve(static_cast<std::size_t>(GAMES_PER_SHARD) * 200);
