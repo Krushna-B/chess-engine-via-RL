@@ -54,8 +54,8 @@ artifacts_volume = modal.Volume.from_name("chess-artifacts", create_if_missing=T
 )
 def train_loop(
     iterations: int = 10,
-    games: int = 50,
-    simulations: int = 300,
+    games: int = 2000,
+    simulations: int = 800,
 ):
     import os
 
@@ -77,7 +77,7 @@ def train_loop(
 
 
 @app.local_entrypoint()
-def main(iterations: int = 10, games: int = 50, simulations: int = 800):
+def main(iterations: int = 10, games: int = 2000, simulations: int = 800):
     train_loop.remote(
         iterations=iterations,
         games=games,

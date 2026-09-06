@@ -16,10 +16,14 @@ void profile(std::function<void()> func);
 std::uint64_t nodes = 0;
 
 int main() {
+  // Reads a FEN line then a depth from stdin, e.g.:
+  //   printf '<fen>\n<depth>\n' | ./perft
+  std::string fen;
+  std::getline(std::cin, fen);
+
   Position position{};
-  if (!position.set_from_fen(
-          "r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1")) {
-    std::cout << "Could not parse Kiwipete FEN\n";
+  if (!position.set_from_fen(fen)) {
+    std::cout << "Could not parse FEN\n";
     return 1;
   }
 

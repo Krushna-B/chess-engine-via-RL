@@ -13,6 +13,7 @@
 #include <stdexcept>
 #include <string>
 #include <thread>
+#include <unordered_map>
 #include <vector>
 
 static int env_int(const char *name, int fallback) {
@@ -61,6 +62,11 @@ std::vector<TrainingExample> play_self_play_game(NeuralNetwork &network) {
 
   std::vector<PendingExample> history{};
 
+  // Real-game position hashes for threefold-repetition detection.
+  std::unordered_map<u64, int> position_counts;
+  position_counts[root->state.hash()] = 1;
+  bool repetition_draw = false;
+
   while (!is_terminal(root->state) && plays < MAX_PLAYS) {
 
     // std::cout << "\n========== REAL MOVE " << plays + 1 << " ==========\n";
@@ -92,15 +98,21 @@ std::vector<TrainingExample> play_self_play_game(NeuralNetwork &network) {
     root = advance_root(std::move(root), selected_idx);
 
     ++plays;
+
+    // Threefold repetition ends the game as a draw.
+    if (++position_counts[root->state.hash()] >= 3) {
+      repetition_draw = true;
+      break;
+    }
   }
   bool checkmate = root->state.is_checkmate();
 
   bool stalemate = root->state.is_stalemate();
   bool rule_draw = root->state.is_draw();
-  bool reached_limit =
-      plays >= MAX_PLAYS && !checkmate && !stalemate && !rule_draw;
+  bool reached_limit = plays >= MAX_PLAYS && !checkmate && !stalemate &&
+                       !rule_draw && !repetition_draw;
 
-  bool draw = stalemate || rule_draw || reached_limit;
+  bool draw = stalemate || rule_draw || reached_limit || repetition_draw;
   Side losing_side = root->state.get_side_to_move();
 
   Side winning_side = opposite_side(losing_side);
