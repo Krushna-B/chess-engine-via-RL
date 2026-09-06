@@ -2,6 +2,7 @@
 #include "mcts.hpp"
 #include "move_list.hpp"
 #include "neural_net.hpp"
+#include "training_data.hpp"
 #include <chrono>
 #include <random>
 #include <stdexcept>
@@ -13,29 +14,11 @@ constexpr int MAX_PLAYS = 512;
 
 static thread_local std::mt19937_64 rng{42};
 
-struct PendingExample {
-  EncodedPosition position;
-  PolicyArray policy_target;
-
-  /*
-    +1 = this positions player eventually won the game
-    0 = draw
-    -1 = this positions player eventually lost the game
-  */
-  Side player_to_move;
-};
-
-struct TraingingExample {
-  EncodedPosition position;
-  PolicyArray policy_target;
-  float value_target;
-};
-
 Side opposite_side(Side side) {
   return side == Side::WHITE ? Side::BLACK : Side::WHITE;
 }
 
-std::vector<TraingingExample> play_self_play_game() {
+std::vector<TrainingExample> play_self_play_game() {
   Position starting_position{};
   starting_position.set_starting_position();
 
@@ -87,7 +70,7 @@ std::vector<TraingingExample> play_self_play_game() {
 
   Side winning_side = opposite_side(losing_side);
 
-  std::vector<TraingingExample> examples{};
+  std::vector<TrainingExample> examples{};
   examples.reserve(history.size());
 
   for (const PendingExample &pending : history) {
@@ -118,14 +101,35 @@ void profile(std::function<void()> func) {
 
 int main() {
   profile([]() {
-    std::vector<TraingingExample> examples = play_self_play_game();
-    std::cout << "Returned examples: " << examples.size() << '\n';
+    std::vector<TrainingExample> examples = play_self_play_game();
+    save_training_examples("selfplay_test.bin", examples);
 
-    for (std::size_t i = 0; i < std::min<std::size_t>(examples.size(), 10);
-         ++i) {
-      std::cout << "Example " << i
-                << " value target = " << examples[i].value_target << '\n';
+    std::vector<TrainingExample> loaded =
+        load_training_examples("selfplay_test.bin");
+
+    std::cout << "Original examples: " << examples.size() << '\n';
+
+    std::cout << "Loaded examples: " << loaded.size() << '\n';
+
+    if (examples.size() != loaded.size()) {
+      throw std::runtime_error("Save/load example counts do not match");
     }
+
+    for (std::size_t i = 0; i < examples.size(); ++i) {
+      if (examples[i].encoded_position != loaded[i].encoded_position) {
+        throw std::runtime_error("Encoded position mismatch");
+      }
+
+      if (examples[i].policy_target != loaded[i].policy_target) {
+        throw std::runtime_error("Policy target mismatch");
+      }
+
+      if (examples[i].value_target != loaded[i].value_target) {
+        throw std::runtime_error("Value target mismatch");
+      }
+    }
+
+    std::cout << "Binary save/load test passed\n";
   });
 
   return 0;

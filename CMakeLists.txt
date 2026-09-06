@@ -39,6 +39,7 @@ add_executable(self_play
     src/self_play.cpp
     src/neural_net.cpp
     src/mcts.cpp
+    src/training_data.cpp
     src/board.cpp
     src/move_generator.cpp
     src/move_list.cpp
