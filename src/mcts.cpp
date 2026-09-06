@@ -72,8 +72,8 @@ float monte_carlo_tree_sim(Node &node, int depth = 0) {
   // Expansion Step
   //  Make nodes for all possible moves from this state
   if (!node.expanded) {
-    std::cout << indent << "[EXPAND] depth=" << depth
-              << " visits=" << node.number_of_visits << '\n';
+    // std::cout << indent << "[EXPAND] depth=" << depth
+    //           << " visits=" << node.number_of_visits << '\n';
 
     // Run Neural Net Inferende
     // NetworkOutput output = evaluate(node.state);
@@ -81,7 +81,7 @@ float monte_carlo_tree_sim(Node &node, int depth = 0) {
 
     std::uniform_real_distribution<float> real_dist(-1, 1.0);
     auto value = real_dist(rng);
-    std::cout << indent << "V(s) = " << value << '\n';
+    // std::cout << indent << "V(s) = " << value << '\n';
 
     MoveList moves{};
     generate_legal_moves(moves, node.state);
@@ -100,7 +100,7 @@ float monte_carlo_tree_sim(Node &node, int depth = 0) {
 
       node.children.push_back(std::move(child_node));
     }
-    std::cout << indent << "Created " << moves_array.size() << " children\n";
+    // std::cout << indent << "Created " << moves_array.size() << " children\n";
     node.expanded = true;
     node.number_of_visits++;
     node.value_sum += value;
@@ -118,8 +118,8 @@ float monte_carlo_tree_sim(Node &node, int depth = 0) {
       best_idx = i;
     }
   }
-  std::cout << indent << "[SELECT] child " << best_idx
-            << " score=" << best_score << '\n';
+  // std::cout << indent << "[SELECT] child " << best_idx
+  //           << " score=" << best_score << '\n';
 
   // Search this subtree and Explore Moves
   float child_value = monte_carlo_tree_sim(*node.children[best_idx], depth + 1);
@@ -131,10 +131,10 @@ float monte_carlo_tree_sim(Node &node, int depth = 0) {
   node.number_of_visits++;
   node.value_sum += value;
 
-  std::cout << indent << "[BACKPROP]"
-            << " child_value=" << child_value << " -> parent_value=" << value
-            << " N=" << node.number_of_visits << " W=" << node.value_sum
-            << " Q=" << node.average_reward() << '\n';
+  // std::cout << indent << "[BACKPROP]"
+  //           << " child_value=" << child_value << " -> parent_value=" << value
+  //           << " N=" << node.number_of_visits << " W=" << node.value_sum
+  //           << " Q=" << node.average_reward() << '\n';
   return value;
 }
 
@@ -172,9 +172,9 @@ float terminal_value(Position &position) {
 }
 
 void print_root_stats(const Node &root) {
-  std::cout << "\n============================\n";
-  std::cout << "ROOT MCTS RESULTS\n";
-  std::cout << "Root visits: " << root.number_of_visits << '\n';
+  // std::cout << "\n============================\n";
+  // std::cout << "ROOT MCTS RESULTS\n";
+  // std::cout << "Root visits: " << root.number_of_visits << '\n';
 
   int total_child_visits = 0;
 
@@ -188,13 +188,13 @@ void print_root_stats(const Node &root) {
             ? 0.0f
             : -child.value_sum / static_cast<float>(child.number_of_visits);
 
-    std::cout << "Child " << i << " | N = " << child.number_of_visits
-              << " | P = " << child.prior << " | Q = " << q << '\n';
+    // std::cout << "Child " << i << " | N = " << child.number_of_visits
+    //           << " | P = " << child.prior << " | Q = " << q << '\n';
   }
 
-  std::cout << "Total child visits: " << total_child_visits << '\n';
+  // std::cout << "Total child visits: " << total_child_visits << '\n';
 
-  std::cout << "============================\n";
+  // std::cout << "============================\n";
 }
 
 /***
@@ -316,11 +316,11 @@ void validate_policy_target(const PolicyArray &policy) {
     throw std::runtime_error("Policy probabilities do not sum to one");
   }
 
-  std::cout << "Policy sum: " << sum << '\n';
+  // std::cout << "Policy sum: " << sum << '\n';
 
-  std::cout << "Nonzero actions: " << nonzero_actions << '\n';
+  // std::cout << "Nonzero actions: " << nonzero_actions << '\n';
 
-  std::cout << "Policy target passed\n";
+  // std::cout << "Policy target passed\n";
 }
 
 // int main() {
