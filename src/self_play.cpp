@@ -1,14 +1,18 @@
 #include "board.hpp"
 #include "mcts.hpp"
 #include "move_list.hpp"
+#include "network_inference.hpp"
 #include "neural_net.hpp"
 #include "training_data.hpp"
+#include <atomic>
 #include <chrono>
 #include <cstdlib>
 #include <filesystem>
+#include <mutex>
 #include <random>
 #include <stdexcept>
 #include <string>
+#include <thread>
 #include <vector>
 
 static int env_int(const char *name, int fallback) {
@@ -26,6 +30,12 @@ const std::string SHARD_PATH = env_str(
 
 const int SIMULATIONS = env_int("SELFPLAY_SIMULATIONS", 300);
 const int MAX_PLAYS = env_int("SELFPLAY_MAX_PLAYS", 512);
+
+// How many games run at once, This is what fills the inference batch with N
+// games
+const int CONCURRENCY = env_int("SELFPLAY_CONCURRENCY", 512);
+const int BATCH_SIZE = env_int("SELFPLAY_BATCH", 256);
+const int BATCH_TIMEOUT_US = env_int("SELFPLAY_BATCH_TIMEOUT_US", 1000);
 
 static thread_local std::mt19937_64 rng{std::random_device{}()};
 
@@ -135,26 +145,46 @@ int main(int argc, char **argv) {
   try {
     const std::string model_path = argv[1];
 
-    // Load the model exactly once.
-    NeuralNetwork network(model_path);
+    // Load the model exactly once. The batching server owns it
+    NeuralNetwork network(model_path, BATCH_SIZE, BATCH_TIMEOUT_US);
 
     std::cout << "Model loaded successfully\n";
 
-    const int GAMES_PER_SHARD = env_int("SELFPLAY_GAMES", 50);
+    const int GAMES_PER_SHARD = env_int("SELFPLAY_GAMES", 2000);
 
     std::vector<TrainingExample> shard;
-    shard.reserve(GAMES_PER_SHARD * 200);
+    shard.reserve(static_cast<std::size_t>(GAMES_PER_SHARD) * 200);
 
-    profile([&]() {
-      for (int game_num = 0; game_num < GAMES_PER_SHARD; ++game_num) {
-        // Every game uses the same frozen model.
+    // Worker threads pull the next game index until the shard is full the
+    // concurrency is what keeps the inference queue full enough to batch
+    std::atomic<int> next_game{0};
+    std::mutex shard_mutex;
+
+    auto worker = [&]() {
+      while (true) {
+        int game_index = next_game.fetch_add(1);
+        if (game_index >= GAMES_PER_SHARD) {
+          break;
+        }
+
         std::vector<TrainingExample> game = play_self_play_game(network);
 
-        std::cout << "Game " << game_num + 1 << " generated " << game.size()
-                  << " examples\n";
-
+        std::lock_guard<std::mutex> lock(shard_mutex);
         shard.insert(shard.end(), std::make_move_iterator(game.begin()),
                      std::make_move_iterator(game.end()));
+      }
+    };
+
+    profile([&]() {
+      const int num_threads = std::min(CONCURRENCY, GAMES_PER_SHARD);
+
+      std::vector<std::thread> threads;
+      threads.reserve(static_cast<std::size_t>(num_threads));
+      for (int i = 0; i < num_threads; ++i) {
+        threads.emplace_back(worker);
+      }
+      for (std::thread &thread : threads) {
+        thread.join();
       }
 
       std::filesystem::create_directories(

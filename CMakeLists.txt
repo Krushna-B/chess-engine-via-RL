@@ -10,6 +10,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 option(BUILD_GUI "Build the raylib GUI (main) target" ON)
 
 find_package(Torch REQUIRED)
+find_package(Threads REQUIRED)
 
 #Compiler Flags
 set(COMMON_COMPILE_OPTIONS
@@ -120,6 +121,7 @@ target_link_libraries(
     self_play
     PRIVATE
     "${TORCH_LIBRARIES}"
+    Threads::Threads
 )
 
 target_compile_options(
