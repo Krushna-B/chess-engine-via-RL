@@ -45,6 +45,7 @@ add_executable(self_play
     src/mcts.cpp
     src/training_data.cpp
     src/board.cpp
+    src/network_inference.cpp
     src/move_generator.cpp
     src/move_list.cpp
 )
@@ -55,7 +56,6 @@ target_include_directories(generate_magic PRIVATE include)
 target_include_directories(perft PRIVATE include)
 target_include_directories(engine PRIVATE include)
 # target_include_directories(monte_carlo_tree_search  PRIVATE include)
-target_include_directories(self_play  PRIVATE include)
 target_include_directories(
     torch_model_test
     SYSTEM PRIVATE
@@ -95,6 +95,30 @@ target_compile_options(engine PRIVATE ${COMMON_COMPILE_OPTIONS})
 target_compile_options(self_play PRIVATE ${COMMON_COMPILE_OPTIONS})
 target_compile_options(
     torch_model_test
+    PRIVATE
+    ${TORCH_CXX_FLAGS}
+)
+
+target_include_directories(
+    self_play
+    PRIVATE
+    include
+)
+
+target_include_directories(
+    self_play
+    SYSTEM PRIVATE
+    ${TORCH_INCLUDE_DIRS}
+)
+
+target_link_libraries(
+    self_play
+    PRIVATE
+    "${TORCH_LIBRARIES}"
+)
+
+target_compile_options(
+    self_play
     PRIVATE
     ${TORCH_CXX_FLAGS}
 )

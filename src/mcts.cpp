@@ -1,6 +1,7 @@
 #include "board.hpp"
 #include "move_generator.hpp"
 #include "move_list.hpp"
+#include "network_inference.hpp"
 #include "neural_net.hpp"
 #include <cmath>
 #include <cstddef>
@@ -56,7 +57,7 @@ struct Node {
 /***
 Returns the V(s) = evaluation of this leaf state
 */
-float monte_carlo_tree_sim(Node &node, int depth = 0) {
+float monte_carlo_tree_sim(Node &node, NeuralNetwork &network, int depth = 0) {
   std::string indent(static_cast<std::size_t>(depth) * 2, ' ');
 
   // Base Case Reach a new node
@@ -72,6 +73,7 @@ float monte_carlo_tree_sim(Node &node, int depth = 0) {
   // Expansion Step
   //  Make nodes for all possible moves from this state
   if (!node.expanded) {
+
     // std::cout << indent << "[EXPAND] depth=" << depth
     //           << " visits=" << node.number_of_visits << '\n';
 
@@ -79,31 +81,73 @@ float monte_carlo_tree_sim(Node &node, int depth = 0) {
     // NetworkOutput output = evaluate(node.state);
     // float value = output.value;
 
-    std::uniform_real_distribution<float> real_dist(-1, 1.0);
-    auto value = real_dist(rng);
-    // std::cout << indent << "V(s) = " << value << '\n';
-
+    NetworkOutput network_output = network.evaluate(node.state);
+    float value = network_output.value;
     MoveList moves{};
     generate_legal_moves(moves, node.state);
     auto moves_array = moves.get_moves();
+    node.children.reserve(moves_array.size());
+    std::vector<float> legal_logits(moves_array.size());
+    float maximum_logit = -std::numeric_limits<float>::infinity();
 
-    for (auto &move : moves_array) {
-      // Create that state
-      Position child = node.state;
-      child.make_move(move);
-      float prior = 1.0f / static_cast<float>(moves_array.size());
+    // First pass get all of the logits for every legal move
+    for (std::size_t i = 0; i < moves_array.size(); ++i) {
+      const Move &move = moves_array[i];
 
-      std::unique_ptr<Node> child_node =
-          std::make_unique<Node>(child, move, &node, prior);
+      // Convert this legal move to its index from 0 to 4671
+      u64 action = encode_move(node.state, move);
 
-      // TODO: Update this to policy from neural network
+      if (action >= POLICY_SIZE) {
+        throw std::runtime_error("Encoded move exceeds policy size");
+      }
+
+      // Get the raw neural-network score for this move
+      float logit = network_output.policy_logits[action];
+
+      legal_logits[i] = logit;
+
+      maximum_logit = std::max(maximum_logit, logit);
+    }
+
+    // Pass 2 get softmax over legal moves
+    std::vector<float> legal_priors(moves_array.size());
+
+    float prior_sum = 0.0f;
+
+    for (std::size_t i = 0; i < legal_logits.size(); ++i) {
+      legal_priors[i] = std::exp(legal_logits[i] - maximum_logit);
+
+      prior_sum += legal_priors[i];
+    }
+
+    if (!std::isfinite(prior_sum) || prior_sum <= 0.0f) {
+      throw std::runtime_error("Invalid neural-network policy normalization");
+    }
+
+    for (float &prior : legal_priors) {
+      prior /= prior_sum;
+    }
+
+    // Pass 3 create child for legal moves with model's prior
+    for (std::size_t i = 0; i < moves_array.size(); ++i) {
+      const Move &move = moves_array[i];
+      float prior = legal_priors[i];
+
+      Position child_state = node.state;
+
+      if (!child_state.make_move(move)) {
+        throw std::runtime_error("Generated legal move could not be made");
+      }
+
+      auto child_node = std::make_unique<Node>(child_state, move, &node, prior);
 
       node.children.push_back(std::move(child_node));
     }
-    // std::cout << indent << "Created " << moves_array.size() << " children\n";
+
     node.expanded = true;
     node.number_of_visits++;
     node.value_sum += value;
+
     return value;
   }
 
@@ -122,7 +166,8 @@ float monte_carlo_tree_sim(Node &node, int depth = 0) {
   //           << " score=" << best_score << '\n';
 
   // Search this subtree and Explore Moves
-  float child_value = monte_carlo_tree_sim(*node.children[best_idx], depth + 1);
+  float child_value =
+      monte_carlo_tree_sim(*node.children[best_idx], network, depth + 1);
 
   // Flip value's due to side change
   float value = -child_value;
@@ -200,9 +245,9 @@ void print_root_stats(const Node &root) {
 /***
 Run search MCTS on some root node
 */
-void run_search(Node &root, int simimlations) {
+void run_search(Node &root, NeuralNetwork &network, int simimlations) {
   for (int i{}; i < simimlations; i++) {
-    monte_carlo_tree_sim(root);
+    monte_carlo_tree_sim(root, network);
   }
 }
 
@@ -313,7 +358,9 @@ void validate_policy_target(const PolicyArray &policy) {
   }
 
   if (std::abs(sum - 1.0f) > 0.0001f) {
-    throw std::runtime_error("Policy probabilities do not sum to one");
+    throw std::runtime_error("Policy probabilities do not sum to one (sum=" +
+                             std::to_string(sum) + ", nonzero=" +
+                             std::to_string(nonzero_actions) + ")");
   }
 
   // std::cout << "Policy sum: " << sum << '\n';

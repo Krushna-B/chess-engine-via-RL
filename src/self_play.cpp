@@ -8,7 +8,7 @@
 #include <stdexcept>
 #include <vector>
 
-constexpr int SIMULATIONS = 800;
+constexpr int SIMULATIONS = 300;
 constexpr float TEMPERATURE = 0.9f;
 constexpr int MAX_PLAYS = 512;
 
@@ -18,7 +18,7 @@ Side opposite_side(Side side) {
   return side == Side::WHITE ? Side::BLACK : Side::WHITE;
 }
 
-std::vector<TrainingExample> play_self_play_game() {
+std::vector<TrainingExample> play_self_play_game(NeuralNetwork &network) {
   Position starting_position{};
   starting_position.set_starting_position();
 
@@ -32,7 +32,7 @@ std::vector<TrainingExample> play_self_play_game() {
     // std::cout << "\n========== REAL MOVE " << plays + 1 << " ==========\n";
 
     // Run imaginary MCTS from the current position
-    run_search(*root, SIMULATIONS);
+    run_search(*root, network, SIMULATIONS);
 
     // Convert child nodes into probabilites
     std::vector<float> local_policy = root_visit_policy(*root, TEMPERATURE);
@@ -99,35 +99,60 @@ void profile(std::function<void()> func) {
   std::cout << "Time taken: " << duration.count() << " ms\n";
 }
 
-int main() {
-  constexpr int GAMES_PER_SHARD = 5;
-  std::vector<TrainingExample> shard;
-  shard.reserve(GAMES_PER_SHARD * 200);
+int main(int argc, char **argv) {
 
-  profile([&]() {
-    for (int game_num{}; game_num < GAMES_PER_SHARD; game_num++) {
-      std::vector<TrainingExample> game = play_self_play_game();
+  if (argc != 2) {
+    std::cerr << "Usage: self_play <model-path>\n";
 
-      std::cout << "Game " << game_num + 1 << " generated " << game.size()
-                << " examples\n";
-      shard.insert(shard.end(), std::make_move_iterator(game.begin()),
-                   std::make_move_iterator(game.end()));
-    }
-    save_training_examples("selfplay_shard_0001.bin", shard);
-  });
-  std::vector<TrainingExample> loaded =
-      load_training_examples("selfplay_shard_0001.bin");
-
-  std::cout << "Original shard examples: " << shard.size() << '\n';
-
-  std::cout << "Loaded shard examples: " << loaded.size() << '\n';
-
-  if (loaded.size() != shard.size()) {
-    throw std::runtime_error("Shard example count mismatch");
+    return 1;
   }
 
-  std::cout << "Shard save/load test passed\n";
+  try {
+    const std::string model_path = argv[1];
 
+    // Load the model exactly once.
+    NeuralNetwork network(model_path);
+
+    std::cout << "Model loaded successfully\n";
+
+    constexpr int GAMES_PER_SHARD = 1;
+
+    std::vector<TrainingExample> shard;
+    shard.reserve(GAMES_PER_SHARD * 200);
+
+    profile([&]() {
+      for (int game_num = 0; game_num < GAMES_PER_SHARD; ++game_num) {
+        // Every game uses the same frozen model.
+        std::vector<TrainingExample> game = play_self_play_game(network);
+
+        std::cout << "Game " << game_num + 1 << " generated " << game.size()
+                  << " examples\n";
+
+        shard.insert(shard.end(), std::make_move_iterator(game.begin()),
+                     std::make_move_iterator(game.end()));
+      }
+
+      save_training_examples("neural_selfplay_shard_0001.bin", shard);
+    });
+
+    std::vector<TrainingExample> loaded =
+        load_training_examples("neural_selfplay_shard_0001.bin");
+
+    std::cout << "Original shard examples: " << shard.size() << '\n';
+
+    std::cout << "Loaded shard examples: " << loaded.size() << '\n';
+
+    if (loaded.size() != shard.size()) {
+      throw std::runtime_error("Shard example count mismatch");
+    }
+
+    std::cout << "Neural shard save/load test passed\n";
+
+  } catch (const std::exception &error) {
+    std::cerr << "Error: " << error.what() << '\n';
+
+    return 1;
+  }
   return 0;
 }
 

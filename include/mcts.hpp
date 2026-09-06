@@ -2,12 +2,14 @@
 
 #include "board.hpp"
 #include "move_list.hpp"
+#include "network_inference.hpp"
 #include "neural_net.hpp"
 #include <memory>
 #include <random>
 #include <vector>
 
 extern const float EXPLORATION_COFFICIENT;
+class NeuralNetwork;
 
 struct Node {
   Position state{};
@@ -39,11 +41,11 @@ struct Node {
   }
 };
 
-float monte_carlo_tree_sim(Node &node, int depth = 0);
+float monte_carlo_tree_sim(Node &node, NeuralNetwork &network, int depth = 0);
 float selection(const Node &child, float exploration_coefficient);
 bool is_terminal(Position &position);
 float terminal_value(Position &position);
-void run_search(Node &root, int simimlations);
+void run_search(Node &root, NeuralNetwork &network, int simimlations);
 std::vector<float> root_visit_policy(const Node &root, float temperature);
 u64 sample_idx(const std::vector<float> &probabilites, std::mt19937_64 &p_rng);
 std::unique_ptr<Node> advance_root(std::unique_ptr<Node> old_root,
