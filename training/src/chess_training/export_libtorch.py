@@ -6,10 +6,10 @@ from chess_training.chess_dataset import ChessDataset
 from chess_training.chess_model import ChessTransformer
 
 
-CHECKPOINT_PATH = Path("checkpoints/best_model.pt")
-OUTPUT_PATH = Path("checkpoints/chess_model_jit.pt")
 REPO_ROOT = Path(__file__).resolve().parents[3]
-DATASET_PATH = REPO_ROOT / "selfplay_shard_0001.bin"
+CHECKPOINT_PATH = REPO_ROOT / "artifacts/checkpoints/best_model.pt"
+OUTPUT_PATH = REPO_ROOT / "artifacts/checkpoints/chess_model_jit.pt"
+DATASET_PATH = REPO_ROOT / "artifacts/selfplay/neural_selfplay_shard_0001.bin"
 
 NUMBER_OF_TEST_POSITIONS = 5
 

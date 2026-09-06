@@ -4,18 +4,30 @@
 #include "neural_net.hpp"
 #include "training_data.hpp"
 #include <chrono>
+#include <filesystem>
 #include <random>
 #include <stdexcept>
 #include <vector>
 
+constexpr const char *SHARD_PATH =
+    "artifacts/selfplay/neural_selfplay_shard_0001.bin";
+
 constexpr int SIMULATIONS = 25;
-constexpr float TEMPERATURE = 0.9f;
 constexpr int MAX_PLAYS = 10;
 
 static thread_local std::mt19937_64 rng{std::random_device{}()};
 
 Side opposite_side(Side side) {
   return side == Side::WHITE ? Side::BLACK : Side::WHITE;
+}
+float temperature_for_play(int play) {
+  constexpr int EXPLORATION_PLIES = 30;
+
+  if (play < EXPLORATION_PLIES) {
+    return 1.0f;
+  }
+
+  return 0.0f;
 }
 
 std::vector<TrainingExample> play_self_play_game(NeuralNetwork &network) {
@@ -35,9 +47,9 @@ std::vector<TrainingExample> play_self_play_game(NeuralNetwork &network) {
     run_self_play_search(*root, network, SIMULATIONS, rng);
 
     // Convert child nodes into probabilites
-    std::vector<float> local_policy = root_visit_policy(*root, TEMPERATURE);
+    std::vector<float> training_policy = root_visit_policy(*root, 1.0f);
 
-    PolicyArray fixed_policy = encode_policy_target(*root, local_policy);
+    PolicyArray fixed_policy = encode_policy_target(*root, training_policy);
     validate_policy_target(fixed_policy);
 
     EncodedPosition enocded_position = encode_position(root->state);
@@ -46,11 +58,12 @@ std::vector<TrainingExample> play_self_play_game(NeuralNetwork &network) {
     // Save the position and MCTS policy before playing selected move
     history.push_back({enocded_position, fixed_policy, player});
 
-    // Randomly sample from one of these probabilites
-    u64 selected_idx = sample_idx(local_policy, rng);
+    float move_temperature = temperature_for_play(plays);
+    std::vector<float> move_policy = root_visit_policy(*root, move_temperature);
 
-    // Get the move before destroying root
-    Move played_move = root->children[selected_idx]->move_from_parent;
+    // Randomly sample from one of these probabilites
+    u64 selected_idx = sample_idx(move_policy, rng);
+
     // std::cout << "Selected child: " << selected_idx << '\n';
 
     // New root position
@@ -132,11 +145,12 @@ int main(int argc, char **argv) {
                      std::make_move_iterator(game.end()));
       }
 
-      save_training_examples("neural_selfplay_shard_0001.bin", shard);
+      std::filesystem::create_directories(
+          std::filesystem::path(SHARD_PATH).parent_path());
+      save_training_examples(SHARD_PATH, shard);
     });
 
-    std::vector<TrainingExample> loaded =
-        load_training_examples("neural_selfplay_shard_0001.bin");
+    std::vector<TrainingExample> loaded = load_training_examples(SHARD_PATH);
 
     std::cout << "Original shard examples: " << shard.size() << '\n';
 

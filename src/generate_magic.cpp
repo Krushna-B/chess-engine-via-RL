@@ -7,8 +7,8 @@ int main() {
   const auto [bishop_magics, rook_magics] = generate_all_magics();
   //   const auto rook_magics = generate_all_rook_magics();
 
-  std::ofstream bishop_output("magic_bishop_nums.txt");
-  std::ofstream rook_output("magic_rook_nums.txt");
+  std::ofstream bishop_output("data/magic_bishop_nums.txt");
+  std::ofstream rook_output("data/magic_rook_nums.txt");
 
   if (!bishop_output.is_open()) {
     std::cerr << "Could not open bishop output file";

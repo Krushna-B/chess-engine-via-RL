@@ -23,4 +23,7 @@ __pycache__/
 artifacts/
 *.bin
 
+# Old / superseded artifacts
+archive/
+
 

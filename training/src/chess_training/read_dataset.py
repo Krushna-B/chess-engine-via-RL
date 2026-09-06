@@ -1,4 +1,6 @@
 import struct
+from pathlib import Path
+
 import numpy as np
 
 DATASET_MAGIC = 0x43485A31
@@ -6,6 +8,8 @@ DATASET_VERSION = 1
 
 EXPECTED_STATE_SIZE = 64 * 18
 EXPECTED_POLICY_SIZE = 64 * 73
+
+REPO_ROOT = Path(__file__).resolve().parents[3]
 
 
 def load_shard(filename: str):
@@ -62,7 +66,9 @@ def load_shard(filename: str):
 
 
 if __name__ == "__main__":
-    states, policies, values = load_shard("selfplay_shard_0001.bin")
+    states, policies, values = load_shard(
+        REPO_ROOT / "artifacts/selfplay/neural_selfplay_shard_0001.bin"
+    )
 
     print("States:", states.shape)
     print("Policies:", policies.shape)

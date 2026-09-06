@@ -88,7 +88,7 @@ def main():
     device = choose_device()
     print("Device:", device)
 
-    dataset = ChessDataset(REPO_ROOT / "selfplay_shard_0001.bin")
+    dataset = ChessDataset(REPO_ROOT / "artifacts/selfplay/neural_selfplay_shard_0001.bin")
 
     train_size = int(0.9 * len(dataset))
     validation_size = len(dataset) - train_size
@@ -121,8 +121,8 @@ def main():
         weight_decay=1e-4,
     )
 
-    checkpoint_directory = Path("checkpoints")
-    checkpoint_directory.mkdir(exist_ok=True)
+    checkpoint_directory = REPO_ROOT / "artifacts/checkpoints"
+    checkpoint_directory.mkdir(parents=True, exist_ok=True)
 
     best_validation_loss = float("inf")
     number_of_epochs = 5

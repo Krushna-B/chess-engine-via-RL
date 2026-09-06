@@ -48,7 +48,7 @@ def main():
     device = choose_device()
     print("Device:", device)
 
-    dataset = ChessDataset(REPO_ROOT / "selfplay_shard_0001.bin")
+    dataset = ChessDataset(REPO_ROOT / "artifacts/selfplay/neural_selfplay_shard_0001.bin")
 
     loader = DataLoader(
         dataset,

@@ -3,7 +3,7 @@ from pathlib import Path
 import torch
 from torch.utils.data import DataLoader, Dataset
 
-from read_dataset import load_shard
+from chess_training.read_dataset import load_shard
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 
@@ -33,7 +33,7 @@ class ChessDataset(Dataset):
 
 
 def main():
-    dataset = ChessDataset(REPO_ROOT / "selfplay_shard_0001.bin")
+    dataset = ChessDataset(REPO_ROOT / "artifacts/selfplay/neural_selfplay_shard_0001.bin")
     loader = DataLoader(dataset, batch_size=64, shuffle=True)
     states, policies, values = next(iter(loader))
 

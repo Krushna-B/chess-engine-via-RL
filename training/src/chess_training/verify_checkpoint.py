@@ -1,9 +1,13 @@
+from pathlib import Path
+
 import torch
 
 from torch.utils.data import DataLoader
 
 from chess_training.chess_dataset import ChessDataset
 from chess_training.chess_model import ChessTransformer
+
+REPO_ROOT = Path(__file__).resolve().parents[3]
 
 
 def choose_device():
@@ -20,7 +24,7 @@ def main():
     device = choose_device()
     print("Device:", device)
 
-    dataset = ChessDataset("selfplay_shard_0001.bin")
+    dataset = ChessDataset(REPO_ROOT / "artifacts/selfplay/neural_selfplay_shard_0001.bin")
 
     loader = DataLoader(
         dataset,
@@ -34,7 +38,7 @@ def main():
     model = ChessTransformer().to(device)
 
     state_dict = torch.load(
-        "checkpoints/best_model.pt",
+        REPO_ROOT / "artifacts/checkpoints/best_model.pt",
         map_location=device,
         weights_only=True,
     )
