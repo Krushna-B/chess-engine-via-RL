@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 import torch
@@ -9,6 +10,20 @@ from chess_training.chess_dataset import ChessDataset
 from chess_training.chess_model import ChessTransformer
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
+SELFPLAY_DIR = REPO_ROOT / "artifacts" / "selfplay"
+CHECKPOINT_DIR = REPO_ROOT / "artifacts" / "checkpoints"
+
+# Train on the most recent REPLAY_WINDOW shards (one shard per generation),
+# and warm-start from the previous generation's weights unless disabled.
+REPLAY_WINDOW = int(os.environ.get("REPLAY_WINDOW", "20"))
+WARM_START = os.environ.get("WARM_START", "1") == "1"
+
+
+def replay_shards():
+    shards = sorted(SELFPLAY_DIR.glob("*.bin"))
+    if not shards:
+        raise FileNotFoundError(f"No self-play shards in {SELFPLAY_DIR}")
+    return shards[-REPLAY_WINDOW:]
 
 
 def calculate_loss(logits, values, target_policies, target_values):
@@ -88,7 +103,10 @@ def main():
     device = choose_device()
     print("Device:", device)
 
-    dataset = ChessDataset(REPO_ROOT / "artifacts/selfplay/neural_selfplay_shard_0001.bin")
+    shards = replay_shards()
+    print(f"Replay buffer: {len(shards)} shard(s)")
+    dataset = ChessDataset(shards)
+    print("Training positions:", len(dataset))
 
     train_size = int(0.9 * len(dataset))
     validation_size = len(dataset) - train_size
@@ -114,6 +132,14 @@ def main():
     )
 
     model = ChessTransformer().to(device)
+
+    # Warm-start from the previous generation so learning compounds.
+    warm_start_path = CHECKPOINT_DIR / "best_model.pt"
+    if WARM_START and warm_start_path.exists():
+        model.load_state_dict(
+            torch.load(warm_start_path, map_location=device, weights_only=True)
+        )
+        print(f"Warm-started from {warm_start_path}")
 
     optimizer = torch.optim.AdamW(
         model.parameters(),

@@ -1,8 +1,8 @@
 """
-Each iteration:
-  1. C++ self_play generates a shard using the current frozen model
-  2. train.py trains the best ckeckpoint PyTorch model on that shard
-  3. export_libtorch.py re-exports best_model.pt for next round of self play and training
+Each iteration (generation):
+  1. C++ self_play generates a new shard using the current frozen model
+  2. train.py trains on the replay buffer (recent shards), warm-started from best_model.pt
+  3. export_libtorch.py re-exports best_model.pt for the next round of self play
 
 Run:  uv run python -m chess_training.run_loop
 """
@@ -18,13 +18,16 @@ from chess_training.chess_model import ChessTransformer
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 SELF_PLAY_BIN = REPO_ROOT / "build" / "self_play"
+SELFPLAY_DIR = REPO_ROOT / "artifacts" / "selfplay"
 JIT_MODEL = REPO_ROOT / "artifacts" / "checkpoints" / "chess_model_jit.pt"
 
 ITERATIONS = int(os.environ.get("LOOP_ITERATIONS", "10"))
+# Keep at most this many shards on disk (matches train.py's replay window)
+REPLAY_WINDOW = int(os.environ.get("REPLAY_WINDOW", "20"))
 
 
 def ensure_initial_model() -> None:
-    """Cold start: trace a randomly-initialized net so iteration 1 has a model"""
+    """Cold start: trace a randomly-initialized net so generation 1 has a model"""
     if JIT_MODEL.exists():
         return
 
@@ -43,10 +46,43 @@ def ensure_initial_model() -> None:
     print(f"[bootstrap] wrote random initial model -> {JIT_MODEL}")
 
 
+def next_generation_index() -> int:
+    """Continue numbering from existing shards so a resumed Volume keeps goin."""
+    existing = sorted(SELFPLAY_DIR.glob("neural_selfplay_shard_*.bin"))
+    if not existing:
+        return 1
+    return int(existing[-1].stem.split("_")[-1]) + 1
+
+
+def prune_old_shards() -> None:
+    shards = sorted(SELFPLAY_DIR.glob("neural_selfplay_shard_*.bin"))
+    for stale in shards[:-REPLAY_WINDOW]:
+        stale.unlink()
+
+
 def run(cmd: list) -> None:
     printable = " ".join(str(part) for part in cmd)
     print(f"[run] {printable}", flush=True)
     subprocess.run(cmd, cwd=REPO_ROOT, check=True)
+
+
+def run_generation(generation: int) -> None:
+    shard_path = SELFPLAY_DIR / f"neural_selfplay_shard_{generation:04d}.bin"
+
+    # Self-play writes this generation's shard (env-configured, absolute path)
+    os.environ["SELFPLAY_SHARD_PATH"] = str(shard_path)
+
+    # 1. Generate self-play data with the current frozen model
+    run([str(SELF_PLAY_BIN), str(JIT_MODEL)])
+
+    # 2. Train on the replay buffer, warm-started from the previous generation
+    run([sys.executable, "-m", "chess_training.train"])
+
+    # 3. Re-export the trained model for the next self-play round
+    run([sys.executable, "-m", "chess_training.export_libtorch"])
+
+    # 4. Bound disk to the replay window.
+    prune_old_shards()
 
 
 def main() -> None:
@@ -57,17 +93,11 @@ def main() -> None:
 
     ensure_initial_model()
 
-    for iteration in range(1, ITERATIONS + 1):
-        print(f"\n===== iteration {iteration}/{ITERATIONS} =====", flush=True)
-
-        # 1. Generate self-play data with the current frozen model
-        run([str(SELF_PLAY_BIN), str(JIT_MODEL)])
-
-        # 2. Train on the freshly generated shard
-        run([sys.executable, "-m", "chess_training.train"])
-
-        # 3. Re-export the trained model for the next self-play round
-        run([sys.executable, "-m", "chess_training.export_libtorch"])
+    generation = next_generation_index()
+    for _ in range(ITERATIONS):
+        print(f"\n===== generation {generation} =====", flush=True)
+        run_generation(generation)
+        generation += 1
 
 
 if __name__ == "__main__":

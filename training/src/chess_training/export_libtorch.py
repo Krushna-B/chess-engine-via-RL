@@ -9,9 +9,16 @@ from chess_training.chess_model import ChessTransformer
 REPO_ROOT = Path(__file__).resolve().parents[3]
 CHECKPOINT_PATH = REPO_ROOT / "artifacts/checkpoints/best_model.pt"
 OUTPUT_PATH = REPO_ROOT / "artifacts/checkpoints/chess_model_jit.pt"
-DATASET_PATH = REPO_ROOT / "artifacts/selfplay/neural_selfplay_shard_0001.bin"
+SELFPLAY_DIR = REPO_ROOT / "artifacts/selfplay"
 
 NUMBER_OF_TEST_POSITIONS = 5
+
+
+def latest_shard():
+    shards = sorted(SELFPLAY_DIR.glob("*.bin"))
+    if not shards:
+        raise FileNotFoundError(f"No self-play shards in {SELFPLAY_DIR}")
+    return shards[-1]
 
 
 def compare_outputs(
@@ -87,8 +94,7 @@ def main():
     if not CHECKPOINT_PATH.exists():
         raise FileNotFoundError(f"Checkpoint not found: {CHECKPOINT_PATH}")
 
-    if not DATASET_PATH.exists():
-        raise FileNotFoundError(f"Dataset not found: {DATASET_PATH}")
+    dataset_path = latest_shard()
 
     OUTPUT_PATH.parent.mkdir(
         parents=True,
@@ -112,7 +118,7 @@ def main():
     # attention paths, causing TorchScript's graph checker to fail.
     torch.backends.mha.set_fastpath_enabled(False)
 
-    dataset = ChessDataset(str(DATASET_PATH))
+    dataset = ChessDataset(dataset_path)
 
     if len(dataset) == 0:
         raise RuntimeError("Dataset is empty")

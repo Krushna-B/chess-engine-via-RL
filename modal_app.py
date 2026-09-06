@@ -6,8 +6,6 @@ Generated shards and chekcpoint checkpoints live on a persistent Volume mounted 
 every iteration
 """
 
-import sys
-
 import modal
 
 REPO = "/root/chess-engine"
@@ -68,14 +66,13 @@ def train_loop(
 
     run_loop.ensure_initial_model()
 
-    for iteration in range(1, iterations + 1):
-        print(f"\n===== iteration {iteration}/{iterations} =====", flush=True)
+    generation = run_loop.next_generation_index()
+    for _ in range(iterations):
+        print(f"\n===== generation {generation} =====", flush=True)
+        run_loop.run_generation(generation)
+        generation += 1
 
-        run_loop.run([str(run_loop.SELF_PLAY_BIN), str(run_loop.JIT_MODEL)])
-        run_loop.run([sys.executable, "-m", "chess_training.train"])
-        run_loop.run([sys.executable, "-m", "chess_training.export_libtorch"])
-
-        # Persist this iteration's shard + checkpoints before the next one
+        # Persist this generation's shard + checkpoints before the next one
         artifacts_volume.commit()
 
 
