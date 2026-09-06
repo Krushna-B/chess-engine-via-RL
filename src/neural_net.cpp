@@ -83,7 +83,7 @@ void validate_move_encoding(Position &position) {
   std::cout << "Legal Moves " << legal_moves.size() << "\n";
   for (const Move &move : legal_moves) {
     u64 action = encode_move(position, move);
-    if (action > POLICY_SIZE) {
+    if (action >= POLICY_SIZE) {
       throw std::runtime_error("Encoded action exceeds the policy array size");
     }
     if (used[action]) {
