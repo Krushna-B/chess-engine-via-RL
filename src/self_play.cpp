@@ -4,16 +4,28 @@
 #include "neural_net.hpp"
 #include "training_data.hpp"
 #include <chrono>
+#include <cstdlib>
 #include <filesystem>
 #include <random>
 #include <stdexcept>
+#include <string>
 #include <vector>
 
-constexpr const char *SHARD_PATH =
-    "artifacts/selfplay/neural_selfplay_shard_0001.bin";
+static int env_int(const char *name, int fallback) {
+  const char *value = std::getenv(name);
+  return value != nullptr ? std::atoi(value) : fallback;
+}
 
-constexpr int SIMULATIONS = 25;
-constexpr int MAX_PLAYS = 10;
+static std::string env_str(const char *name, const char *fallback) {
+  const char *value = std::getenv(name);
+  return value != nullptr ? std::string(value) : std::string(fallback);
+}
+
+const std::string SHARD_PATH = env_str(
+    "SELFPLAY_SHARD_PATH", "artifacts/selfplay/neural_selfplay_shard_0001.bin");
+
+const int SIMULATIONS = env_int("SELFPLAY_SIMULATIONS", 300);
+const int MAX_PLAYS = env_int("SELFPLAY_MAX_PLAYS", 512);
 
 static thread_local std::mt19937_64 rng{std::random_device{}()};
 
@@ -128,7 +140,7 @@ int main(int argc, char **argv) {
 
     std::cout << "Model loaded successfully\n";
 
-    constexpr int GAMES_PER_SHARD = 1;
+    const int GAMES_PER_SHARD = env_int("SELFPLAY_GAMES", 50);
 
     std::vector<TrainingExample> shard;
     shard.reserve(GAMES_PER_SHARD * 200);
