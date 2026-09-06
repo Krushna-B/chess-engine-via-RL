@@ -4,10 +4,13 @@
 #include "network_inference.hpp"
 #include "neural_net.hpp"
 #include "training_data.hpp"
+#include <algorithm>
 #include <atomic>
 #include <chrono>
 #include <cstdlib>
 #include <filesystem>
+#include <fstream>
+#include <limits>
 #include <mutex>
 #include <random>
 #include <stdexcept>
@@ -38,22 +41,38 @@ const int CONCURRENCY = env_int("SELFPLAY_CONCURRENCY", 512);
 const int BATCH_SIZE = env_int("SELFPLAY_BATCH", 256);
 const int BATCH_TIMEOUT_US = env_int("SELFPLAY_BATCH_TIMEOUT_US", 1000);
 
+const int GENERATION = env_int("SELFPLAY_GENERATION", 0);
+const std::string METRICS_PATH =
+    env_str("METRICS_PATH", "artifacts/metrics/metrics.jsonl");
+
+// Temperature schedule (mirrors temperature_for_play), logged in config.
+constexpr int TEMP_EXPLORATION_PLIES = 30;
+
 static thread_local std::mt19937_64 rng{std::random_device{}()};
 
 Side opposite_side(Side side) {
   return side == Side::WHITE ? Side::BLACK : Side::WHITE;
 }
 float temperature_for_play(int play) {
-  constexpr int EXPLORATION_PLIES = 30;
-
-  if (play < EXPLORATION_PLIES) {
+  if (play < TEMP_EXPLORATION_PLIES) {
     return 1.0f;
   }
 
   return 0.0f;
 }
 
-std::vector<TrainingExample> play_self_play_game(NeuralNetwork &network) {
+struct GameResult {
+  std::vector<TrainingExample> examples;
+  int plies = 0;
+  std::string result; // "white_win" | "black_win" | "draw"
+  std::string cause;  // checkmate | stalemate | fifty_move | insufficient |
+                      // threefold | limit
+  long duration_ms = 0;
+};
+
+GameResult play_self_play_game(NeuralNetwork &network) {
+  const auto game_start = std::chrono::steady_clock::now();
+
   Position starting_position{};
   starting_position.set_starting_position();
 
@@ -106,35 +125,132 @@ std::vector<TrainingExample> play_self_play_game(NeuralNetwork &network) {
     }
   }
   bool checkmate = root->state.is_checkmate();
-
   bool stalemate = root->state.is_stalemate();
-  bool rule_draw = root->state.is_draw();
+  bool fifty_move = root->state.get_halfmove_clock() >= 100;
+  bool insufficient = root->state.has_insufficent_material();
   bool reached_limit = plays >= MAX_PLAYS && !checkmate && !stalemate &&
-                       !rule_draw && !repetition_draw;
+                       !fifty_move && !insufficient && !repetition_draw;
 
-  bool draw = stalemate || rule_draw || reached_limit || repetition_draw;
   Side losing_side = root->state.get_side_to_move();
-
   Side winning_side = opposite_side(losing_side);
 
-  std::vector<TrainingExample> examples{};
-  examples.reserve(history.size());
+  GameResult game{};
+  game.plies = plays;
+  if (checkmate) {
+    game.result = winning_side == Side::WHITE ? "white_win" : "black_win";
+    game.cause = "checkmate";
+  } else {
+    game.result = "draw";
+    game.cause = repetition_draw ? "threefold"
+                 : stalemate     ? "stalemate"
+                 : fifty_move    ? "fifty_move"
+                 : insufficient  ? "insufficient"
+                                 : "limit";
+  }
 
+  game.examples.reserve(history.size());
   for (const PendingExample &pending : history) {
     float value_target = 0.0f;
     if (checkmate) {
       value_target = pending.player_to_move == winning_side ? 1.0f : -1.0f;
-    } else if (draw) {
-      value_target = 0.0f;
-    } else {
-      throw std::runtime_error("Game ended without a recognized result");
     }
-    examples.push_back({pending.position, pending.policy_target, value_target});
+    game.examples.push_back(
+        {pending.position, pending.policy_target, value_target});
   }
 
-  std::cout << "\nGame generated " << examples.size() << " training examples\n";
+  game.duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+                         std::chrono::steady_clock::now() - game_start)
+                         .count();
 
-  return examples;
+  return game;
+}
+
+// Append the full telemetry for this generation as JSONL records.
+void write_metrics(const std::vector<GameResult> &results,
+                   const InferenceStats &inf, long selfplay_ms) {
+  std::filesystem::create_directories(
+      std::filesystem::path(METRICS_PATH).parent_path());
+
+  std::ofstream out(METRICS_PATH, std::ios::app);
+  if (!out) {
+    return;
+  }
+
+  out << "{\"type\":\"config\",\"generation\":" << GENERATION
+      << ",\"games\":" << results.size() << ",\"simulations\":" << SIMULATIONS
+      << ",\"max_plays\":" << MAX_PLAYS << ",\"concurrency\":" << CONCURRENCY
+      << ",\"batch_size\":" << BATCH_SIZE
+      << ",\"batch_timeout_us\":" << BATCH_TIMEOUT_US
+      << ",\"temp_exploration_plies\":" << TEMP_EXPLORATION_PLIES
+      << ",\"temp_high\":1.0,\"temp_low\":0.0}\n";
+
+  long total_positions = 0;
+  long sum_plies = 0;
+  int white = 0, black = 0, draws = 0;
+  int min_plies = std::numeric_limits<int>::max();
+  int max_plies = 0;
+
+  for (std::size_t i = 0; i < results.size(); ++i) {
+    const GameResult &game = results[i];
+    total_positions += static_cast<long>(game.examples.size());
+    sum_plies += game.plies;
+    min_plies = std::min(min_plies, game.plies);
+    max_plies = std::max(max_plies, game.plies);
+    if (game.result == "white_win") {
+      ++white;
+    } else if (game.result == "black_win") {
+      ++black;
+    } else {
+      ++draws;
+    }
+
+    out << "{\"type\":\"game\",\"generation\":" << GENERATION
+        << ",\"game_index\":" << i << ",\"plies\":" << game.plies
+        << ",\"positions\":" << game.examples.size() << ",\"result\":\""
+        << game.result << "\",\"cause\":\"" << game.cause
+        << "\",\"duration_ms\":" << game.duration_ms << "}\n";
+  }
+
+  if (results.empty()) {
+    min_plies = 0;
+  }
+
+  const double mean_plies = results.empty()
+                                ? 0.0
+                                : static_cast<double>(sum_plies) /
+                                      static_cast<double>(results.size());
+
+  out << "{\"type\":\"selfplay\",\"generation\":" << GENERATION
+      << ",\"games\":" << results.size() << ",\"positions\":" << total_positions
+      << ",\"white_wins\":" << white << ",\"black_wins\":" << black
+      << ",\"draws\":" << draws << ",\"min_plies\":" << min_plies
+      << ",\"max_plies\":" << max_plies << ",\"mean_plies\":" << mean_plies
+      << ",\"duration_ms\":" << selfplay_ms << "}\n";
+
+  const double throughput =
+      selfplay_ms > 0
+          ? static_cast<double>(inf.eval_count) / (selfplay_ms / 1000.0)
+          : 0.0;
+
+  out << "{\"type\":\"inference\",\"generation\":" << GENERATION
+      << ",\"device\":\"" << inf.device
+      << "\",\"eval_count\":" << inf.eval_count
+      << ",\"batch_count\":" << inf.batch_count
+      << ",\"mean_batch\":" << inf.mean_batch
+      << ",\"max_batch\":" << inf.max_batch
+      << ",\"mean_forward_ms\":" << inf.mean_forward_ms
+      << ",\"max_forward_ms\":" << inf.max_forward_ms
+      << ",\"mean_wait_ms\":" << inf.mean_wait_ms
+      << ",\"max_wait_ms\":" << inf.max_wait_ms
+      << ",\"throughput_evals_per_sec\":" << throughput
+      << ",\"batch_buckets\":[";
+  for (std::size_t i = 0; i < inf.batch_buckets.size(); ++i) {
+    out << inf.batch_buckets[i];
+    if (i + 1 < inf.batch_buckets.size()) {
+      out << ",";
+    }
+  }
+  out << "]}\n";
 }
 
 void profile(std::function<void()> func) {
@@ -164,13 +280,11 @@ int main(int argc, char **argv) {
 
     const int GAMES_PER_SHARD = env_int("SELFPLAY_GAMES", 2000);
 
-    std::vector<TrainingExample> shard;
-    shard.reserve(static_cast<std::size_t>(GAMES_PER_SHARD) * 200);
-
-    // Worker threads pull the next game index until the shard is full the
-    // concurrency is what keeps the inference queue full enough to batch
+    // Worker threads pull the next game index until the shard is full; the
+    // concurrency is what keeps the inference queue full enough to batch.
+    std::vector<GameResult> results;
     std::atomic<int> next_game{0};
-    std::mutex shard_mutex;
+    std::mutex results_mutex;
 
     auto worker = [&]() {
       while (true) {
@@ -179,15 +293,15 @@ int main(int argc, char **argv) {
           break;
         }
 
-        std::vector<TrainingExample> game = play_self_play_game(network);
+        GameResult game = play_self_play_game(network);
 
-        std::lock_guard<std::mutex> lock(shard_mutex);
-        shard.insert(shard.end(), std::make_move_iterator(game.begin()),
-                     std::make_move_iterator(game.end()));
+        std::lock_guard<std::mutex> lock(results_mutex);
+        results.push_back(std::move(game));
       }
     };
 
-    profile([&]() {
+    const auto selfplay_start = std::chrono::steady_clock::now();
+    {
       const int num_threads = std::min(CONCURRENCY, GAMES_PER_SHARD);
 
       std::vector<std::thread> threads;
@@ -198,11 +312,28 @@ int main(int argc, char **argv) {
       for (std::thread &thread : threads) {
         thread.join();
       }
+    }
+    const long selfplay_ms =
+        std::chrono::duration_cast<std::chrono::milliseconds>(
+            std::chrono::steady_clock::now() - selfplay_start)
+            .count();
 
-      std::filesystem::create_directories(
-          std::filesystem::path(SHARD_PATH).parent_path());
-      save_training_examples(SHARD_PATH, shard);
-    });
+    // Capture all telemetry first (reads per-game example counts), then merge.
+    write_metrics(results, network.stats(), selfplay_ms);
+
+    std::vector<TrainingExample> shard;
+    shard.reserve(static_cast<std::size_t>(GAMES_PER_SHARD) * 200);
+    for (GameResult &game : results) {
+      shard.insert(shard.end(), std::make_move_iterator(game.examples.begin()),
+                   std::make_move_iterator(game.examples.end()));
+    }
+
+    std::filesystem::create_directories(
+        std::filesystem::path(SHARD_PATH).parent_path());
+    save_training_examples(SHARD_PATH, shard);
+
+    std::cout << "Self-play: " << results.size() << " games, " << shard.size()
+              << " positions in " << selfplay_ms << " ms\n";
 
     std::vector<TrainingExample> loaded = load_training_examples(SHARD_PATH);
 

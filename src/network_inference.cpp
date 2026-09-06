@@ -15,10 +15,26 @@
 
 namespace {
 
+using Clock = std::chrono::steady_clock;
+
 struct PendingRequest {
   EncodedPosition input;
   std::promise<NetworkOutput> result;
+  Clock::time_point enqueue_time;
 };
+
+double ms_between(Clock::time_point a, Clock::time_point b) {
+  return std::chrono::duration<double, std::milli>(b - a).count();
+}
+
+std::size_t batch_bucket(std::size_t batch_size) {
+  std::size_t bucket = 0;
+  while (batch_size > 1 && bucket < 8) {
+    batch_size >>= 1;
+    ++bucket;
+  }
+  return bucket;
+}
 
 } // namespace
 
@@ -33,6 +49,17 @@ struct NeuralNetwork::Impl {
   std::queue<PendingRequest> pending;
   bool shutdown = false;
   std::thread worker;
+
+  // Telemetry. Written only by the worker thread; guarded so stats() can read.
+  std::mutex stats_mutex;
+  long long eval_count = 0;
+  long long batch_count = 0;
+  long long max_batch = 0;
+  double total_forward_ms = 0.0;
+  double max_forward_ms = 0.0;
+  double total_wait_ms = 0.0;
+  double max_wait_ms = 0.0;
+  std::array<long long, 9> batch_buckets{};
 
   Impl(const std::string &model_path, int max_batch, int timeout_us)
       : model(torch::jit::load(model_path, torch::kCPU)),
@@ -58,6 +85,7 @@ struct NeuralNetwork::Impl {
   std::future<NetworkOutput> submit(const Position &position) {
     PendingRequest request;
     request.input = encode_position(position);
+    request.enqueue_time = Clock::now();
     std::future<NetworkOutput> future = request.result.get_future();
 
     {
@@ -69,7 +97,26 @@ struct NeuralNetwork::Impl {
     return future;
   }
 
-  // Background thread: collect a batch, run one forward pass, fulfil promises
+  InferenceStats snapshot() {
+    std::lock_guard<std::mutex> lock(stats_mutex);
+    InferenceStats out;
+    out.device = device.is_cuda() ? "cuda" : "cpu";
+    out.eval_count = eval_count;
+    out.batch_count = batch_count;
+    out.max_batch = max_batch;
+    out.mean_batch =
+        batch_count > 0 ? static_cast<double>(eval_count) / batch_count : 0.0;
+    out.mean_forward_ms =
+        batch_count > 0 ? total_forward_ms / batch_count : 0.0;
+    out.max_forward_ms = max_forward_ms;
+    out.mean_wait_ms =
+        eval_count > 0 ? total_wait_ms / eval_count : 0.0;
+    out.max_wait_ms = max_wait_ms;
+    out.batch_buckets = batch_buckets;
+    return out;
+  }
+
+  // Background thread: collect a batch, run one forward pass, fulfil promises.
   void run() {
     while (true) {
       std::vector<PendingRequest> batch;
@@ -104,6 +151,7 @@ struct NeuralNetwork::Impl {
 
   void run_batch(std::vector<PendingRequest> &batch) {
     const std::size_t batch_size = batch.size();
+    const Clock::time_point batch_start = Clock::now();
 
     try {
       std::vector<float> buffer(batch_size * ENCODED_STATE_SIZE);
@@ -157,6 +205,29 @@ struct NeuralNetwork::Impl {
         request.result.set_exception(std::current_exception());
       }
     }
+
+    const Clock::time_point batch_end = Clock::now();
+    record_batch(batch, batch_start, batch_end);
+  }
+
+  void record_batch(const std::vector<PendingRequest> &batch,
+                    Clock::time_point start, Clock::time_point end) {
+    const std::size_t batch_size = batch.size();
+    const double forward_ms = ms_between(start, end);
+
+    std::lock_guard<std::mutex> lock(stats_mutex);
+    eval_count += static_cast<long long>(batch_size);
+    ++batch_count;
+    max_batch = std::max(max_batch, static_cast<long long>(batch_size));
+    total_forward_ms += forward_ms;
+    max_forward_ms = std::max(max_forward_ms, forward_ms);
+    ++batch_buckets[batch_bucket(batch_size)];
+
+    for (const PendingRequest &request : batch) {
+      const double wait_ms = ms_between(request.enqueue_time, start);
+      total_wait_ms += wait_ms;
+      max_wait_ms = std::max(max_wait_ms, wait_ms);
+    }
   }
 };
 
@@ -170,3 +241,5 @@ NeuralNetwork::~NeuralNetwork() = default;
 NetworkOutput NeuralNetwork::evaluate(const Position &position) {
   return impl_->submit(position).get();
 }
+
+InferenceStats NeuralNetwork::stats() { return impl_->snapshot(); }

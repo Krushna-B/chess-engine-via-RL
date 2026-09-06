@@ -69,8 +69,10 @@ def run(cmd: list) -> None:
 def run_generation(generation: int) -> None:
     shard_path = SELFPLAY_DIR / f"neural_selfplay_shard_{generation:04d}.bin"
 
-    # Self-play writes this generation's shard (env-configured, absolute path)
+    # Self-play writes this generation's shard (env-configured, absolute path);
+    # the generation tag flows into every metrics record.
     os.environ["SELFPLAY_SHARD_PATH"] = str(shard_path)
+    os.environ["SELFPLAY_GENERATION"] = str(generation)
 
     # 1. Generate self-play data with the current frozen model
     run([str(SELF_PLAY_BIN), str(JIT_MODEL)])

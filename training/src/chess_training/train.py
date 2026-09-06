@@ -1,4 +1,6 @@
+import json
 import os
+import time
 from pathlib import Path
 
 import torch
@@ -12,11 +14,17 @@ from chess_training.chess_model import ChessTransformer
 REPO_ROOT = Path(__file__).resolve().parents[3]
 SELFPLAY_DIR = REPO_ROOT / "artifacts" / "selfplay"
 CHECKPOINT_DIR = REPO_ROOT / "artifacts" / "checkpoints"
+METRICS_PATH = Path(
+    os.environ.get("METRICS_PATH", REPO_ROOT / "artifacts" / "metrics" / "metrics.jsonl")
+)
+GENERATION = int(os.environ.get("SELFPLAY_GENERATION", "0"))
 
 # Train on the most recent REPLAY_WINDOW shards (one shard per generation),
 # and warm-start from the previous generation's weights unless disabled.
 REPLAY_WINDOW = int(os.environ.get("REPLAY_WINDOW", "20"))
 WARM_START = os.environ.get("WARM_START", "1") == "1"
+NUMBER_OF_EPOCHS = int(os.environ.get("TRAIN_EPOCHS", "5"))
+LEARNING_RATE = float(os.environ.get("TRAIN_LR", "3e-4"))
 
 
 def replay_shards():
@@ -24,6 +32,13 @@ def replay_shards():
     if not shards:
         raise FileNotFoundError(f"No self-play shards in {SELFPLAY_DIR}")
     return shards[-REPLAY_WINDOW:]
+
+
+def append_metric(record):
+    record["generation"] = GENERATION
+    METRICS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with open(METRICS_PATH, "a") as out:
+        out.write(json.dumps(record) + "\n")
 
 
 def calculate_loss(logits, values, target_policies, target_values):
@@ -135,7 +150,8 @@ def main():
 
     # Warm-start from the previous generation so learning compounds.
     warm_start_path = CHECKPOINT_DIR / "best_model.pt"
-    if WARM_START and warm_start_path.exists():
+    warm_started = WARM_START and warm_start_path.exists()
+    if warm_started:
         model.load_state_dict(
             torch.load(warm_start_path, map_location=device, weights_only=True)
         )
@@ -143,7 +159,7 @@ def main():
 
     optimizer = torch.optim.AdamW(
         model.parameters(),
-        lr=3e-4,
+        lr=LEARNING_RATE,
         weight_decay=1e-4,
     )
 
@@ -151,9 +167,9 @@ def main():
     checkpoint_directory.mkdir(parents=True, exist_ok=True)
 
     best_validation_loss = float("inf")
-    number_of_epochs = 5
+    train_start = time.time()
 
-    for epoch in range(1, number_of_epochs + 1):
+    for epoch in range(1, NUMBER_OF_EPOCHS + 1):
         train_metrics = run_epoch(
             model,
             train_loader,
@@ -177,6 +193,20 @@ def main():
             f"value={validation_metrics['value']:.4f})"
         )
 
+        append_metric(
+            {
+                "type": "train_epoch",
+                "epoch": epoch,
+                "learning_rate": LEARNING_RATE,
+                "train_total": train_metrics["total"],
+                "train_policy": train_metrics["policy"],
+                "train_value": train_metrics["value"],
+                "val_total": validation_metrics["total"],
+                "val_policy": validation_metrics["policy"],
+                "val_value": validation_metrics["value"],
+            }
+        )
+
         torch.save(
             {
                 "epoch": epoch,
@@ -195,6 +225,21 @@ def main():
                 model.state_dict(),
                 checkpoint_directory / "best_model.pt",
             )
+
+    append_metric(
+        {
+            "type": "train",
+            "device": str(device),
+            "shards": len(shards),
+            "positions": len(dataset),
+            "epochs": NUMBER_OF_EPOCHS,
+            "learning_rate": LEARNING_RATE,
+            "warm_started": warm_started,
+            "best_val_total": best_validation_loss,
+            "parameters": model.count_parameters(),
+            "duration_ms": int((time.time() - train_start) * 1000),
+        }
+    )
 
 
 if __name__ == "__main__":
