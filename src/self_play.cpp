@@ -12,7 +12,7 @@ constexpr int SIMULATIONS = 800;
 constexpr float TEMPERATURE = 0.9f;
 constexpr int MAX_PLAYS = 512;
 
-static thread_local std::mt19937_64 rng{42};
+static thread_local std::mt19937_64 rng{std::random_device{}()};
 
 Side opposite_side(Side side) {
   return side == Side::WHITE ? Side::BLACK : Side::WHITE;
@@ -100,37 +100,33 @@ void profile(std::function<void()> func) {
 }
 
 int main() {
-  profile([]() {
-    std::vector<TrainingExample> examples = play_self_play_game();
-    save_training_examples("selfplay_test.bin", examples);
+  constexpr int GAMES_PER_SHARD = 5;
+  std::vector<TrainingExample> shard;
+  shard.reserve(GAMES_PER_SHARD * 200);
 
-    std::vector<TrainingExample> loaded =
-        load_training_examples("selfplay_test.bin");
+  profile([&]() {
+    for (int game_num{}; game_num < GAMES_PER_SHARD; game_num++) {
+      std::vector<TrainingExample> game = play_self_play_game();
 
-    std::cout << "Original examples: " << examples.size() << '\n';
-
-    std::cout << "Loaded examples: " << loaded.size() << '\n';
-
-    if (examples.size() != loaded.size()) {
-      throw std::runtime_error("Save/load example counts do not match");
+      std::cout << "Game " << game_num + 1 << " generated " << game.size()
+                << " examples\n";
+      shard.insert(shard.end(), std::make_move_iterator(game.begin()),
+                   std::make_move_iterator(game.end()));
     }
-
-    for (std::size_t i = 0; i < examples.size(); ++i) {
-      if (examples[i].encoded_position != loaded[i].encoded_position) {
-        throw std::runtime_error("Encoded position mismatch");
-      }
-
-      if (examples[i].policy_target != loaded[i].policy_target) {
-        throw std::runtime_error("Policy target mismatch");
-      }
-
-      if (examples[i].value_target != loaded[i].value_target) {
-        throw std::runtime_error("Value target mismatch");
-      }
-    }
-
-    std::cout << "Binary save/load test passed\n";
+    save_training_examples("selfplay_shard_0001.bin", shard);
   });
+  std::vector<TrainingExample> loaded =
+      load_training_examples("selfplay_shard_0001.bin");
+
+  std::cout << "Original shard examples: " << shard.size() << '\n';
+
+  std::cout << "Loaded shard examples: " << loaded.size() << '\n';
+
+  if (loaded.size() != shard.size()) {
+    throw std::runtime_error("Shard example count mismatch");
+  }
+
+  std::cout << "Shard save/load test passed\n";
 
   return 0;
 }

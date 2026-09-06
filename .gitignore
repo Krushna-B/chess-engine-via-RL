@@ -13,3 +13,14 @@ scripts/fetch_assets.sh
 .DS_Store
 
 
+# Python
+.venv
+__pycache__/
+*.pyc
+
+
+# Generated training data / weights
+artifacts/
+*.bin
+
+
