@@ -8,6 +8,8 @@ from torch.utils.data import DataLoader, random_split
 from chess_training.chess_dataset import ChessDataset
 from chess_training.chess_model import ChessTransformer
 
+REPO_ROOT = Path(__file__).resolve().parents[3]
+
 
 def calculate_loss(logits, values, target_policies, target_values):
     log_policy = F.log_softmax(logits, dim=1)
@@ -86,7 +88,7 @@ def main():
     device = choose_device()
     print("Device:", device)
 
-    dataset = ChessDataset("selfplay_shard_0001.bin")
+    dataset = ChessDataset(REPO_ROOT / "selfplay_shard_0001.bin")
 
     train_size = int(0.9 * len(dataset))
     validation_size = len(dataset) - train_size

@@ -36,7 +36,10 @@ class ChessTransformer(nn.Module):
             norm_first=True,
         )
         self.transformer = nn.TransformerEncoder(
-            encoder_layer, num_layers=num_of_layers, norm=nn.LayerNorm(model_dim)
+            encoder_layer,
+            num_layers=num_of_layers,
+            norm=nn.LayerNorm(model_dim),
+            enable_nested_tensor=False,
         )
 
         # Produces 73 move type logits

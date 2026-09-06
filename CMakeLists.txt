@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(raylib CONFIG REQUIRED)
+find_package(Torch REQUIRED)
 
 add_executable(main
     src/board.cpp
@@ -26,7 +27,10 @@ add_executable(engine src/uci.cpp src/board.cpp
     src/move_generator.cpp src/move_list.cpp src/random_engine.cpp)
 
 
-
+add_executable(
+    torch_model_test
+    src/torch_model_test.cpp
+)
 
 
 # add_executable(monte_carlo_tree_search
@@ -52,11 +56,22 @@ target_include_directories(perft PRIVATE include)
 target_include_directories(engine PRIVATE include)
 # target_include_directories(monte_carlo_tree_search  PRIVATE include)
 target_include_directories(self_play  PRIVATE include)
+target_include_directories(
+    torch_model_test
+    SYSTEM PRIVATE
+    ${TORCH_INCLUDE_DIRS}
+)
 
 
 
 #Linked Libraries
 target_link_libraries(main PRIVATE raylib)
+target_link_libraries(
+    torch_model_test
+    PRIVATE
+    "${TORCH_LIBRARIES}"
+)
+
 
 
 #Asset path (pieces/fonts) baked in so it resolves regardless of cwd
@@ -78,3 +93,8 @@ target_compile_options(perft PRIVATE ${COMMON_COMPILE_OPTIONS})
 target_compile_options(engine PRIVATE ${COMMON_COMPILE_OPTIONS})
 # target_compile_options(monte_carlo_tree_search PRIVATE ${COMMON_COMPILE_OPTIONS})
 target_compile_options(self_play PRIVATE ${COMMON_COMPILE_OPTIONS})
+target_compile_options(
+    torch_model_test
+    PRIVATE
+    ${TORCH_CXX_FLAGS}
+)
