@@ -1,0 +1,415 @@
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "1"]
+[White "NeuralNet"]
+[Black "Random"]
+[Result "1/2-1/2"]
+[ECO "A00"]
+[GameDuration "00:00:24"]
+[GameEndTime "2026-09-06T15:23:17.750 EDT"]
+[GameStartTime "2026-09-06T15:22:53.657 EDT"]
+[Opening "Anderssen's Opening"]
+[PlyCount "348"]
+[TimeControl "5+0.1"]
+
+1. a3 d6 2. Nh3 h5 3. Nc3 e6 4. Nb5 Bd7 5. Ng5 f6 6. Nh7 a5 7. Rg1 Ke7 8. f3 g5
+9. Nxc7 b6 10. Nxa8 Bb5 11. Ra2 Nc6 12. b3 Bxe2 13. Qxe2 Kd7 14. Qd3 Qxa8
+15. Be2 d5 16. Bb2 Rxh7 17. Kf2 Rg7 18. Re1 Nd8 19. Rh1 Qa6 20. Be5 Ne7 21. Rf1
+fxe5 22. Rd1 Nf7 23. Rg1 Ke8 24. Re1 Rg8 25. Rc1 Nc6 26. Rf1 Bc5+ 27. Ke1 Ncd8
+28. Rh1 Qc4 29. bxc4 Ke7 30. Rf1 Kf6 31. Rh1 Bd6 32. Rf1 Bf8 33. Kf2 Bg7 34. Rd1
+Bh6 35. Rg1 Nd6 36. Re1 Rg6 37. Rh1 h4 38. Rf1 N6b7 39. Rd1 Ke7 40. Rg1 dxc4
+41. Re1 Nd6 42. Rh1 N8b7 43. Rf1 Kf6 44. Rd1 Ne8 45. Rg1 Rg7 46. Re1 Ke7
+47. Qxc4 h3 48. Rh1 Kf8 49. Rf1 Kf7 50. Rd1 Rg6 51. Rg1 Bg7 52. Re1 e4 53. Rh1
+Bh6 54. Rf1 Kf8 55. Rd1 Ned6 56. Rg1 Nf7 57. Re1 e5 58. Rh1 Nbd8 59. d3 Rg7
+60. Rf1 Kg8 61. Rd1 e3+ 62. Kxe3 Rh7 63. Rg1 Kh8 64. gxh3 b5 65. Qxb5 Kg7
+66. Re1 a4 67. Rh1 e4 68. fxe4 Kf8 69. Rf1 Bg7 70. Rd1 Nb7 71. Rg1 Ba1 72. Qb3
+Ne5 73. Qxa4 Rg7 74. Re1 Nxd3 75. Rh1 Kf7 76. Bxd3 Kf6 77. Rf1+ Ke7 78. Rd1 Rg6
+79. Rg1 Ke6 80. Re1 g4 81. Rh1 Ke5 82. Qd4+ Ke6 83. Rf1 Nd6 84. Rd1 Nxe4 85. Rg1
+Nc3 86. Re1 Rg8 87. Rh1 g3 88. Rf1 Nb5 89. Rd1 Rc8 90. Rg1 Bc3 91. Re1 Bb4
+92. Rh1 g2 93. axb4 gxh1=B 94. Qg4+ Ke5 95. Qg2 Rc7 96. Bc4 Kf6 97. Bxb5 Rc5
+98. Ba6 Ke6 99. Ra3 Rc3+ 100. Rxc3 Kd6 101. Bb7 Kd7 102. Ba8 Kd6 103. Rc4 Ke5
+104. Rc5+ Kd6 105. Rf5 Kd7 106. Rf6 Bxg2 107. c3 Kc8 108. Rf4 Bd5 109. Rf5 Bc6
+110. c4 Kb8 111. Rd5 Kc8 112. c5 Ba4 113. b5 Bc2 114. b6 Bd1 115. c6 Bg4 116. h4
+Bd1 117. h5 Kb8 118. Rd3 Bf3 119. Rb3 Kc8 120. h6 Bh5 121. b7+ Kd8 122. b8=Q+
+Ke7 123. Rb4 Bd1 124. Qe8+ Kd6 125. Qc8 Be2 126. Ke4 Bb5 127. Rb2 Bf1 128. Re2
+Bg2+ 129. Kf5 Be4+ 130. Kf6 Bf3 131. Rc2 Bd1 132. Rf2 Bb3 133. Rd2+ Bd5 134. Rb2
+Be4 135. Re2 Kd5 136. Rc2 Bh1 137. Rf2 Be4 138. Rd2+ Kc5 139. Rb2 Bf5 140. Re2
+Kd5 141. Rc2 Bxc8 142. Kf7 Bb7 143. cxb7 Ke5 144. b8=Q+ Kd4 145. Rf2 Kc4
+146. Rd2 Kc3 147. Rb2 Kd4 148. Re2 Kc3 149. Kf8 Kd4 150. Qe5+ Kc4 151. Rc2+ Kb4
+152. Rf2 Kb3 153. Rd2 Ka3 154. Rb2 Ka4 155. Re2 Ka3 156. Rc2 Ka4 157. Rf2 Ka3
+158. Rd2 Ka4 159. Rb2 Ka3 160. Re2 Ka4 161. Rc2 Ka3 162. Rf2 Kb4 163. Rd2 Kb3
+164. Rb2+ Kc4 165. Re2 Kb4 166. Rc2 Kb3 167. Rf2 Kb4 168. Rd2 Kb3 169. Rb2+ Ka3
+170. Re2 Kb4 171. Rc2 Kb3 172. Rf2 Ka3 173. Rd2 Ka4 174. Rb2
+Ka3 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "2"]
+[White "Random"]
+[Black "NeuralNet"]
+[Result "1/2-1/2"]
+[ECO "A00"]
+[GameDuration "00:00:12"]
+[GameEndTime "2026-09-06T15:23:06.207 EDT"]
+[GameStartTime "2026-09-06T15:22:53.657 EDT"]
+[Opening "Amar (Paris) Opening"]
+[PlyCount "155"]
+[TimeControl "5+0.1"]
+
+1. Nh3 c5 2. g3 Nh6 3. e3 g6 4. d3 Rg8 5. a3 Ng4 6. Bd2 Nxf2 7. Bb4 Nc6 8. Nxf2
+Nxb4 9. Rg1 Na2 10. Qc1 a5 11. e4 d5 12. g4 Kd7 13. Bh3 Kc7 14. Qe3 Bg7 15. b4
+axb4 16. c4 bxa3 17. Nd1 Rb8 18. e5 Bh6 19. Qf2 Qe8 20. e6 Qf8 21. Rxa2 Qg7
+22. Nd2 Rd8 23. Qe2 fxe6 24. Qg2 Bd7 25. Nb2 axb2 26. Rh1 Rf8 27. Qe2 Rfc8
+28. Nf1 Re8 29. Qxb2 Rg8 30. Ke2 Rgd8 31. Qxg7 Bg5 32. Qf6 exf6 33. Ra6 Bf4
+34. Kf3 Rf8 35. Rxe6 Bxe6 36. Ng3 Rbd8 37. Nh5 Ra8 38. Ng7 Rac8 39. Re1 Rce8
+40. Nh5 Rb8 41. d4 Rbd8 42. Ke2 Ra8 43. Kd1 Rac8 44. Nxf6 Bd2 45. cxd5 Bf5
+46. d6+ Kxd6 47. Re4 Be1 48. Ne8+ Kd5 49. Ke2 Bxe4 50. dxc5 Bf3+ 51. Kxe1 Rxc5
+52. Kd2 g5 53. Kd3 Rc4 54. Nc7+ Kd6 55. Kd2 Kc5 56. Ke3 Rc3+ 57. Kf2 Kb4 58. Kf1
+Rc8 59. Nd5+ Ka3 60. Nxc3 Rc4 61. Ne2 Ka2 62. Bg2 Bxg2+ 63. Kf2 Ka1 64. Kg1 Bh1
+65. Kf2 Rc6 66. Nf4 Re6 67. Nxe6 Ka2 68. Ke1 Ka1 69. Kd2 Ka2 70. Nxg5 Ka1 71. h3
+Ka2 72. Ne4 Ka1 73. Nf2 Ka2 74. Nxh1 Ka1 75. Nf2 Ka2 76. Nh1 Ka1 77. Kd1 Ka2
+78. Kd2 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "3"]
+[White "NeuralNet"]
+[Black "Random"]
+[Result "1/2-1/2"]
+[ECO "A00"]
+[GameDuration "00:00:16"]
+[GameEndTime "2026-09-06T15:23:22.738 EDT"]
+[GameStartTime "2026-09-06T15:23:06.211 EDT"]
+[Opening "Amar (Paris) Opening"]
+[PlyCount "222"]
+[TimeControl "5+0.1"]
+
+1. Nh3 e5 2. a3 g6 3. Nc3 Qf6 4. Nb5 Na6 5. Nxa7 Ne7 6. Rg1 Qd6 7. Ng5 c6
+8. Nxc6 Nf5 9. Nxf7 Nc5 10. Ncd8 Nh4 11. Nxe5 g5 12. Nef7 Qb8 13. Ne5 Nb3
+14. Nef7 Nf3+ 15. exf3 Bg7 16. Nc6 Rxa3 17. Nxb8 Bh6 18. Ra2 Ra5 19. Ne5 Bf8
+20. cxb3 d5 21. Ng6 h5 22. Qe2+ Be7 23. Na6 Rc5 24. Nc7+ Kf7 25. Ne8 Rh7
+26. Nd6+ Kg8 27. Nf7 Rxc1+ 28. Qd1 Be6 29. Nfe5 Bg4 30. Qxc1 Bh3 31. Be2 Ba3
+32. Rxa3 Bd7 33. Nf4 Bh3 34. Neg6 gxf4 35. Nxf4 Kf8 36. Nxh5 Rg7 37. Ra1 Be6
+38. h3 d4 39. Nxg7 d3 40. Nf5 b6 41. Nh6 Bf5 42. Bxd3 Bxh3 43. Bc4 Bf5 44. Bb5
+Kg7 45. Bc6 Bb1 46. Bb7 Be4 47. Ba8 Kxh6 48. Ke2 Bd3+ 49. Kxd3 b5 50. Re1 Kg7
+51. Rh1 Kf8 52. Qf1 Ke7 53. Rd1 Kd8 54. Rb1 Ke8 55. Re1+ Kd8 56. Rc1 b4 57. Qe2
+Kd7 58. Rcf1 Kc8 59. Rd1 Kb8 60. Rdg1 Ka7 61. Re1 Kxa8 62. Rhf1 Kb7 63. Rc1 Ka6
+64. Rfd1 Kb7 65. Rg1 Ka7 66. Rge1 Kb8 67. Rh1 Kb7 68. Rcf1 Kc8 69. Rd1 Kd7
+70. Rdg1 Kc8 71. Re1 Kd8 72. Rhf1 Kc7 73. Rc1+ Kd7 74. Rfd1 Kd6 75. Rg1 Kd5
+76. Rge1 Kd6 77. Rh1 Kd5 78. Rcf1 Kd6 79. Rd1 Kc6 80. Rdg1 Kd6 81. Re1 Kc5
+82. Rhf1 Kb5 83. Rc1 Ka5 84. Rfd1 Kb5 85. Rg1 Kb6 86. Rcf1 Kc7 87. Rd1 Kb7
+88. Rb1 Ka7 89. Rbe1 Kb6 90. Rc1 Kb7 91. Rcf1 Kb8 92. Rd1 Ka7 93. Rb1 Kb7
+94. Rbe1 Kc6 95. Rc1+ Kb5 96. Rcf1 Kc5 97. Rd1 Kb6 98. Rb1 Kb5 99. Rbe1 Kc5
+100. Rc1+ Kd6 101. Rge1 Kd7 102. Rh1 Kd6 103. Rcf1 Kc5 104. Rd1 Kb6 105. Rdg1
+Ka7 106. Re1 Kb8 107. Rc1 Ka8 108. Rcf1 Ka7 109. Rd1 Kb7 110. Rdg1 Kc6 111. Re1
+Kb5 {Draw by fifty moves rule} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "4"]
+[White "Random"]
+[Black "NeuralNet"]
+[Result "1/2-1/2"]
+[ECO "A00"]
+[GameDuration "00:00:23"]
+[GameEndTime "2026-09-06T15:23:40.839 EDT"]
+[GameStartTime "2026-09-06T15:23:17.761 EDT"]
+[Opening "Polish"]
+[PlyCount "337"]
+[TimeControl "5+0.1"]
+[Variation "Tuebingen variation"]
+
+1. b4 Nh6 2. h3 Na6 3. c3 g5 4. e3 Rb8 5. Bb2 Ng4 6. d4 Nxb4 7. Bc4 Na6 8. f4
+Nf2 9. Bb3 Nxh1 10. Bc4 Bh6 11. Kd2 Kf8 12. Bc1 d6 13. Bb3 Bd7 14. Kd3 Nb4+
+15. Kc4 Nxa2 16. g4 a6 17. h4 gxh4 18. Qd2 f6 19. Nf3 a5 20. Ne1 a4 21. Qf2 axb3
+22. Nc2 bxc2 23. Kd5 c6+ 24. Ke4 Bg5 25. Qg1 Bxf4 26. Qd1 cxd1=Q 27. exf4 Qf1
+28. Ke3 h6 29. Bd2 Kg7 30. f5 Re8 31. d5 Rg8 32. dxc6 Be6 33. fxe6 Nb4 34. Bc1
+Nxc6 35. Bd2 Na5 36. g5 fxg5 37. Bc1 Nb3 38. Ke4 Nc5+ 39. Kd5 Na4 40. Ra3 Nb6+
+41. Ke4 Nc8 42. c4 Qf3+ 43. Kxf3 h3 44. Nd2 Na7 45. Kg4 h2 46. Rxa7 Kg6 47. Ra2
+Qd7 48. Kh3 Rgd8 49. Nb1 Qxe6+ 50. Kg2 Rf8 51. Kxh2 Rbd8 52. Rb2 Ra8 53. Nd2
+Rac8 54. Rb3 Rce8 55. Ra3 Rb8 56. Nb3 Rbd8 57. Ra2 Ra8 58. Ra3 Rfc8 59. Bb2 Re8
+60. Bh8 Reb8 61. Ra6 Rd8 62. Nc5 Rac8 63. Ra2 Qf5 64. Ra6 Rf8 65. Kg1 Rce8
+66. Ra1 Rb8 67. Ne6 Rbd8 68. Ng7 Ra8 69. Ne6 Rfc8 70. Bf6 Re8 71. Bxe7 Reb8
+72. Nf8+ Kg7 73. Re1 Rd8 74. Ng6 Rac8 75. Re4 Rf8 76. Bxg5 hxg5 77. Rh4 Rce8
+78. Nf4 Rb8 79. Kxh1 Rbd8 80. Ng2 Ra8 81. c5 Rac8 82. Re4 Rce8 83. Rxe8 Rh8+
+84. Nh4 Rxe8 85. Ng2 Rb8 86. Kh2 Rd8 87. c6 Ra8 88. Ne1 Rc8 89. Nd3 Re8 90. Ne1
+Rb8 91. Kg2 Rd8 92. cxb7 Ra8 93. Kh2 Rc8 94. Kg2 Re8 95. Kg3 Rb8 96. Ng2 Rd8
+97. Nh4 Ra8 98. Kg2 Rc8 99. Kh1 Re8 100. Kh2 Rb8 101. Kg1 Rd8 102. Ng2 Ra8
+103. bxa8=N Kg8 104. Nf4 Kg7 105. Nd3 Kg8 106. Nf2 Kg7 107. Nd1 Kg8 108. Nb2 Kg7
+109. Na4 Kg8 110. N4b6 Kg7 111. Nc7 Kg8 112. Ne6 d5 113. Nxg5 d4 114. Kh1 d3
+115. Kg1 Kg7 116. Na8 Kg8 117. Nf7 Qc5+ 118. Kh1 Qc7 119. Kg2 Qd6 120. Nxd6 d2
+121. Kf2 d1=Q 122. Nf5 Qa1 123. Nh4 Kg7 124. Ng6 Kxg6 125. Ke3 Kg5 126. Nb6 Kg4
+127. Na4 Kg3 128. Nc3 Kg2 129. Nd5 Kf1 130. Ne7 Kg1 131. Kf4 Kg2 132. Kg5 Kf1
+133. Nf5 Ke2 134. Kh4 Kd1 135. Nh6 Kd2 136. Ng4 Kd1 137. Kg3 Kd2 138. Kh3 Kd1
+139. Kh2 Kd2 140. Ne3 Kd3 141. Ng2 Kd4 142. Ne3 Kc3 143. Ng2 Kc4 144. Kh3 Kc3
+145. Ne1 Kc4 146. Nc2 Kc3 147. Kg3 Kxc2 148. Kf4 Kc1 149. Kf3 Kc2 150. Ke2 Kc3
+151. Kf3 Kc4 152. Ke2 Kc3 153. Ke3 Kc4 154. Ke2 Kc5 155. Kd3 Kc6 156. Ke2 Kc5
+157. Kf3 Kc6 158. Kf2 Kc5 159. Kg2 Kc6 160. Kf2 Kc5 161. Kg3 Kc4 162. Kh3 Kc5
+163. Kh2 Kc6 164. Kh3 Kc5 165. Kh2 Kc6 166. Kg2 Kc5 167. Kf3 Kc6 168. Kg2 Kc5
+169. Kf3 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "5"]
+[White "NeuralNet"]
+[Black "Random"]
+[Result "1/2-1/2"]
+[ECO "A04"]
+[GameDuration "00:00:22"]
+[GameEndTime "2026-09-06T15:23:44.902 EDT"]
+[GameStartTime "2026-09-06T15:23:22.744 EDT"]
+[Opening "Reti Opening"]
+[PlyCount "322"]
+[TimeControl "5+0.1"]
+
+1. Nf3 a5 2. a3 Ra7 3. Ra2 d5 4. b3 b5 5. Rg1 h6 6. Ne5 Ra6 7. Ng6 f6 8. Nxf8 f5
+9. Ne6 Ra7 10. Nxg7+ Kf7 11. Nxf5 h5 12. Nh6+ Ke8 13. c3 d4 14. Qc2 Rxh6 15. Qd3
+Bb7 16. Kd1 Bc8 17. Bb2 Ra8 18. Ra1 Kf8 19. Kc2 Nc6 20. h3 Ba6 21. cxd4 Rf6
+22. e3 Na7 23. Be2 Qc8 24. Re1 Qb8 25. Rh1 h4 26. Rf1 Nh6 27. Rh1 Qb7 28. Rf1
+Rf4 29. exf4 c5 30. Rd1 Qc6 31. Rg1 Qe4 32. Qxe4 Ke8 33. Re1 Nc6 34. Rh1 Bc8
+35. Rf1 Ne5 36. Rd1 Bg4 37. Rg1 Ra6 38. Re1 Bh5 39. Rh1 Nc4 40. Rf1 b4 41. Rd1
+Nf7 42. Rg1 Kd7 43. Re1 Kc8 44. Rh1 e6 45. axb4 Bg6 46. bxc4 a4 47. Rf1 Nd8
+48. Rd1 Bh5 49. Rg1 Kc7 50. Re1 Nf7 51. Rh1 Kd6 52. Rxa4 Ra7 53. dxc5+ Kc7
+54. Rf1 Kd8 55. Rd1 Kd7 56. Rg1 Ra5 57. Re1 Nh8 58. Rh1 Rxc5 59. Rf1 Bf3 60. Rd1
+Bxg2 61. Rg1 Kc7 62. Qd5 exd5 63. bxc5 Kc8 64. Re1 Kb7 65. Rh1 Kc8 66. Rf1 Bxf1
+67. d3 Kc7 68. Kc1 Kc6 69. Kc2 Kb7 70. Kc1 Bxh3 71. Ra2 Kc6 72. Ra3 Ng6 73. Ra1
+Bg4 74. Nd2 Bh3 75. Nf3 Nf8 76. Ne1 Bg2 77. Kc2 Be4 78. Rd1 Nh7 79. Rb1 Bxd3+
+80. Kc1 Ng5 81. Bxd3 dxc4 82. Bxc4 Kd7 83. Bd5 h3 84. Be6+ Nxe6 85. c6+ Kc7
+86. Ba3 Nd8 87. Bb4 Kb8 88. Bc5+ Ka8 89. Bd6 Nf7 90. Rb2 Nxd6 91. Rb3 Nf5
+92. Re3 Ka7 93. Rc3 Nd6 94. Rc4 Ne8 95. c7 Ka6 96. c8=Q+ Ka5 97. Qa8+ Kb5
+98. Rc5+ Kxc5 99. Kc2 Nf6 100. Qd8 h2 101. Qg8 Ng4 102. Kc1 Ne5 103. Kc2 h1=B
+104. Nd3+ Kc6 105. Kc1 Nxd3+ 106. Kd1 Nc5 107. Kd2 Be4 108. Kd1 Bf3+ 109. Kd2
+Kd6 110. Ke3 Kc6 111. Qe8+ Kb7 112. Qc8+ Ka7 113. Qa8+ Bxa8 114. f5 Kb7 115. f6
+Na4 116. f7 Ka7 117. f8=Q Bh1 118. Qd8 Nb2 119. Qg8 Nd3 120. Kxd3 Bb7 121. Kd4
+Bf3 122. Kd3 Bd5 123. Kd4 Bc6 124. Kd3 Bh1 125. Kd4 Bg2 126. Kd3 Bf1+ 127. Kd4
+Bh3 128. Kd3 Bf5+ 129. Kd4 Ka6 130. Kd5 Kb7 131. Kd4 Bh7 132. Kd5 Bxg8+ 133. Kd4
+Kc6 134. Kd3 Bf7 135. f3 Kb6 136. f4 Bc4+ 137. Kd2 Kb5 138. f5 Be2 139. f6 Ka5
+140. f7 Ka4 141. f8=Q Kb3 142. Qd8 Kc4 143. Qg8+ Kd4 144. Kc1 Ba6 145. Qc8 Ke5
+146. Qa8 Bb5 147. Kc2 Be2 148. Kc3 Bf3 149. Qd8 Ba8 150. Qg8 Kd6 151. Kc2 Bg2
+152. Kc1 Bb7 153. Kb1 Ke5 154. Kb2 Kf4 155. Kb1 Ke3 156. Ka1 Bf3 157. Qc8 Kf4
+158. Qa8 Bd5 159. Qxd5 Kg3 160. Qd4 Kh3 161. Qg4+
+Kxg4 {Draw by insufficient mating material} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "6"]
+[White "Random"]
+[Black "NeuralNet"]
+[Result "1/2-1/2"]
+[ECO "B00"]
+[GameDuration "00:00:20"]
+[GameEndTime "2026-09-06T15:24:01.453 EDT"]
+[GameStartTime "2026-09-06T15:23:40.848 EDT"]
+[Opening "King's pawn"]
+[PlyCount "297"]
+[TimeControl "5+0.1"]
+[Variation "Nimzowitsch defense"]
+
+1. e4 Nc6 2. Bc4 Rb8 3. Be6 dxe6 4. d3 Nf6 5. Kf1 Bd7 6. Ke2 Ng4 7. g3 Nd4+
+8. Ke1 g6 9. b4 Bh6 10. Bd2 Kf8 11. Qxg4 Nb3 12. Na3 Nc5 13. bxc5 Bg5 14. Qh4
+Bf4 15. d4 Kg7 16. h3 Qf8 17. Qg5 Rd8 18. Bxf4 Ra8 19. Bd6 cxd6 20. h4 Qc8
+21. c3 Kf8 22. Rd1 a6 23. Ne2 h6 24. Rb1 dxc5 25. c4 hxg5 26. Rd1 Rh7 27. Ng1
+Rh6 28. f4 Rh8 29. Kf1 Rh7 30. Ra1 Rh6 31. Re1 Rh8 32. dxc5 Rh7 33. hxg5 Rh6
+34. Rxh6 a5 35. Rh2 a4 36. Rh8+ Kg7 37. c6 Rb8 38. Rd1 f6 39. cxd7 Qxd7 40. Nh3
+Rd8 41. Ra1 Ra8 42. Rh5 Rc8 43. Rh7+ Kxh7 44. Rb1 Re8 45. Nb5 Rb8 46. Ng1 Rd8
+47. g4 a3 48. Rc1 Ra8 49. gxf6 Rc8 50. Kf2 Re8 51. fxe7 Rb8 52. Nd6 e5 53. Nh3
+Rd8 54. g5 Rf8 55. Rb1 Qxd6 56. Ke3 Qd8 57. Rh1 Qxe7 58. Kf3 Rc8 59. Ke2 Re8
+60. Nf2+ Kg7 61. Nd3 Rb8 62. Kf1 Rd8 63. Ke2 Ra8 64. f5 Rc8 65. Nb2 Re8 66. fxg6
+Rb8 67. c5 Rd8 68. Rh7+ Kxg6 69. Rh3 Ra8 70. Nd1 Rc8 71. Rf3 Re8 72. Rf2 Rb8
+73. Rf7 Rd8 74. Nf2 Ra8 75. Ke3 Qf6 76. gxf6 Kh5 77. Re7 Rc8 78. Rxe5+ Kh4
+79. Rd5 Rxc5 80. Kf3 Rc1 81. Re5 Re1 82. Kg2 Re2 83. Re6 Rb2 84. Rd6 Kh5 85. Re6
+Rd2 86. Re5+ Kh4 87. Rd5 Rxf2+ 88. Kg1 Rc2 89. Re5 Rg2+ 90. Kh1 Rd2 91. Re6 Rf2
+92. Rc6 Rc2 93. Rd6 Re2 94. Re6 Rb2 95. Rc6 Rd2 96. Ra6 Rf2 97. Re6 Rc2 98. Rb6
+Re2 99. e5 Rb2 100. Rb4+ Kh3 101. Rg4 Rd2 102. f7 Rxa2 103. Rg2 Rc2 104. Rg8 Rc4
+105. f8=B Re4 106. Bc5 Rb4 107. Rg7 Rd4 108. Bxa3 Rd6 109. Bb4 Kh4 110. Rh7+ Kg5
+111. Rh3 Rd2 112. Bxd2+ Kf5 113. Rf3+ Kxe5 114. Rf7 Ke6 115. Rf5 Kxf5 116. Bf4
+Kxf4 117. Kg2 Kf5 118. Kf1 Ke4 119. Kg1 Ke3 120. Kg2 Ke4 121. Kf2 Ke5 122. Ke1
+Ke4 123. Kd2 Ke5 124. Kd3 b6 125. Ke2 b5 126. Ke3 b4 127. Kd2 b3 128. Ke1 Ke6
+129. Ke2 Ke5 130. Kd2 Kd4 131. Ke1 Kd3 132. Kf1 Kd2 133. Kg2 Kd1 134. Kh3 Kd2
+135. Kg4 Kd1 136. Kg3 b2 137. Kf3 b1=Q 138. Kg2 Kd2 139. Kg3 Kd1 140. Kh2 Kd2
+141. Kg3 Kd1 142. Kf3 Kd2 143. Kg2 Kd1 144. Kf2 Kd2 145. Kf3 Kd1 146. Kg3 Kd2
+147. Kh3 Kd1 148. Kh2 Kd2 149. Kg3 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "7"]
+[White "NeuralNet"]
+[Black "Random"]
+[Result "1/2-1/2"]
+[ECO "A00"]
+[GameDuration "00:00:23"]
+[GameEndTime "2026-09-06T15:24:08.478 EDT"]
+[GameStartTime "2026-09-06T15:23:44.910 EDT"]
+[Opening "Durkin's attack"]
+[PlyCount "340"]
+[TimeControl "5+0.1"]
+
+1. Na3 c6 2. Nf3 d5 3. Rg1 c5 4. Nb5 Bh3 5. a3 Qd7 6. Nc7+ Qxc7 7. Ng5 a5
+8. Nxh7 Na6 9. e3 f5 10. Bxa6 Qd6 11. Kf1 Rxh7 12. Qe2 O-O-O 13. b3 Qe5 14. Bb2
+Qb8 15. Bxb7+ Kc7 16. Ba8 Qb5 17. Rd1 e6 18. Ke1 Kb8 19. Qd3 Qb7 20. Rb1 Bg4
+21. Bc3 Qc6 22. Bb4 Bh3 23. Bxc5 Qb5 24. Kd1 Rh8 25. Re1 Bg4+ 26. Kc1 g6 27. Rh1
+Bd6 28. Bxd6+ Rxd6 29. Rf1 Rd7 30. Rd1 Kc7 31. Rg1 a4 32. Re1 Ne7 33. Rh1 Rc8
+34. Rf1 e5 35. Rd1 Kb8 36. Rg1 Ka7 37. Re1 Bf3 38. Rh1 Be4 39. Rf1 Rf8 40. Rd1
+Qb6 41. Rg1 axb3 42. cxb3 Kxa8 43. Re1 g5 44. Rh1 Qd4 45. Rf1 Qc3+ 46. dxc3 Rh8
+47. Rd1 f4 48. Rg1 Bh7 49. Re1 e4 50. Rh1 Rb8 51. Rf1 Rd6 52. Rd1 fxe3 53. Rg1
+Ng6 54. Re1 Rc8 55. Rh1 d4 56. Rf1 Nf4 57. Rd1 Nd5 58. Rg1 Rd7 59. Re1 Rdd8
+60. Rh1 Bg8 61. Rf1 Rf8 62. Rd1 Rc6 63. Rg1 Nb4 64. Re1 Rb8 65. Rh1 Na2+ 66. Kb2
+Nb4 67. Rbe1 g4 68. Rhf1 Rbb6 69. fxe3 Bd5 70. Rc1 Re6 71. Rfd1 Nc6 72. Rg1 g3
+73. Rge1 Re5 74. Rh1 Re7 75. Rhf1 Ra6 76. Rfd1 dxe3 77. Rg1 Rg7 78. Rge1 Re7
+79. Rh1 Nb8 80. Rcf1 exd3 81. hxg3 Rf6 82. Rd1 Re4 83. Rhf1 Rfe6 84. Rb1 Rg4
+85. Rfd1 Rf6 86. Rg1 Rh4 87. Rbe1 Rh3 88. Rc1 Rf5 89. Rge1 Be4 90. Rh1 Rxg3
+91. Rhf1 Rg4 92. Rfd1 Rf2+ 93. Rd2 Rg3 94. Rf1 Rf7 95. Rfd1 Rf2 96. Rg1 Rg7
+97. Re1 Rf8 98. Rc1 Rgf7 99. Rxd3 Bxg2 100. Rf1 Rg7 101. Rfd1 Nd7 102. Rg1 Rf5
+103. Re1 Nc5 104. Rc1 Rf4 105. Rf1 Rf5 106. Rfd1 Bd5 107. Rg1 Be6 108. Re1 Na4+
+109. bxa4 Kb7 110. Rh1 Rd5 111. Rf1 Bh3 112. Rfd1 Kb6 113. Rg1 Rf5 114. Re1 Kc6
+115. Rh1 Rf8 116. Rf1 Bg4 117. Rfd1 Rg6 118. Rg1 Kb6 119. Re1 Bf3 120. Rc1 Rg4
+121. Rf1 Rb4+ 122. axb4 Bd1 123. Rfxd1 Ka6 124. Rg1 Kb7 125. Re1 e2 126. Rh1 Rf5
+127. Rf1 Rf6 128. Rdd1 e1=R 129. Rc1 Kb6 130. Rfxe1 Rf8 131. Rh1 Rc8 132. Rhf1
+Rh8 133. Rfd1 Re8 134. Rg1 Rg8 135. Rge1 Re8 136. Rh1 Rf8 137. Rhf1 Rd8
+138. Rfd1 Rd3 139. Rg1 Rd5 140. Rge1 Rd7 141. Rh1 Re7 142. Rhf1 Kb7 143. Rfd1
+Kb6 144. Rg1 Rg7 145. Rge1 Kc7 146. Rh1 Rh7 147. Rhf1 Rd7 148. Rfd1 Kd8 149. Rg1
+Ra7 150. Rge1 Re7 151. Rh1 Re6 152. Rhf1 Kd7 153. Rfd1+ Ke8 154. Rg1 Re7
+155. Rge1 Re2+ 156. Rxe2+ Kd7 157. Rh2 Kd8 158. Re2 Kc7 159. Rh2 Kc6 160. Re2
+Kd6 161. Rh2 Ke6 162. Re2+ Kd5 163. Rh2 Kc6 164. Re2 Kd7 165. Rh2 Ke7 166. Re2+
+Kf6 167. Rh2 Ke6 168. Re2+ Kf6 169. Rh2 Kg5 170. Re2
+Kf6 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "8"]
+[White "Random"]
+[Black "NeuralNet"]
+[Result "1-0"]
+[ECO "A00"]
+[GameDuration "00:00:29"]
+[GameEndTime "2026-09-06T15:24:30.812 EDT"]
+[GameStartTime "2026-09-06T15:24:01.462 EDT"]
+[Opening "Saragossa Opening"]
+[PlyCount "271"]
+[Termination "time forfeit"]
+[TimeControl "5+0.1"]
+
+1. c3 Nc6 2. Qa4 Rb8 3. d3 Nd4 4. Qxa7 g5 5. e4 Nc2+ 6. Kd2 b6 7. g4 Nxa1
+8. Qxc7 Qxc7 9. d4 Kd8 10. Ke1 Bg7 11. Bd2 Qd6 12. b3 b5 13. Kd1 Kc7 14. Na3
+Nxb3 15. e5 Qxe5 16. Nxb5+ Qxb5 17. Bc1 Nc5 18. f4 Na4 19. Nf3 Bh6 20. Ke1 Bb7
+21. Be3 Ba6 22. Bg1 Nb6 23. Bg2 Nc8 24. Ne5 f6 25. Nc4 Qxc4 26. Kd2 Qd3+ 27. Kc1
+Qe2 28. d5 Qf1+ 29. Bxf1 Nd6 30. c4 Ne8 31. h3 e6 32. Bg2 Ne7 33. Be3 Nc6
+34. Rh2 Rd8 35. a3 Ra8 36. Bh1 Rc8 37. dxc6 Ra8 38. Rd2 Rc8 39. Rd6 Ra8 40. Kd1
+Rc8 41. Bd4 Ra8 42. Ba1 Rc8 43. Rxd7+ Kb6 44. Rc7 Ra8 45. Rc8 Rxc8 46. Be5 Ra8
+47. Bc7+ Nxc7 48. Bd5 Rhe8 49. f5 Rac8 50. Ke2 Rg8 51. fxe6 Rce8 52. Ke1 Rb8
+53. Kf1 Rgd8 54. Bg2 Rf8 55. Bf3 Rbd8 56. Kg1 Ra8 57. e7 Rac8 58. exf8=R Re8
+59. Kg2 Rb8 60. Be2 Ka5 61. Rxb8 Ka4 62. Rb1 Kxa3 63. Ra1+ Kb2 64. Kg3 Kb3
+65. Rg1 Ka2 66. Rf1 Ka3 67. Rb1 Ka4 68. Rb8 Ka3 69. Bd3 Ka2 70. Rf8 Ka1 71. Be4
+Ka2 72. Rc8 Ka1 73. Bh1 Ka2 74. Bg2 Ka1 75. c5 Ka2 76. Bf3 Ka1 77. Be4 Ka2
+78. Bg2 Ka1 79. Rb8 Ka2 80. Rb7 Ka1 81. Rb2 Nd5 82. Rb8 Ka2 83. Bf3 Ka1 84. Rb3
+Ka2 85. Ra3+ Kb1 86. Bh1 Ne7 87. Rf3 Ng8 88. Ra3 Ne7 89. Rxa6 Ng8 90. Ra2 Ne7
+91. Rh2 Nxc6 92. Rg2 Nd8 93. Rf2 Kc1 94. Rf1+ Kc2 95. Bb7 Kc3 96. Bg2 Kb2
+97. Rb1+ Kxb1 98. Kh2 Nc6 99. Be4+ Ka1 100. Bg6 Nd8 101. Be8 Ka2 102. c6 Ka1
+103. h4 Ka2 104. Bd7 Ka1 105. Bc8 Ka2 106. Kg1 Ka1 107. Kf2 Ka2 108. Kg2 Ka1
+109. Be6 Kb1 110. Kh3 Nxc6 111. Bf7 Nd8 112. Bg8 Nb7 113. Kg3 Kb2 114. Bxh7 Ka1
+115. Be4 Ka2 116. Bd3 gxh4+ 117. Kh2 Ka1 118. Bb1 Bg5 119. Kh3 Bf4 120. Bg6 Ka2
+121. Kxh4 Ka1 122. Bh7 Ka2 123. Bg6 Ka1 124. Be4 Ka2 125. Kh3 Ka1 126. Bd5 Nc5
+127. Bc4 Nd7 128. g5 fxg5 129. Bd5 g4+ 130. Kg2 g3 131. Be4 Ka2 132. Kg1 Nb6
+133. Bc2 Nc8 134. Bg6 Ka1 135. Bf5 Ka2 136. Bh7 {Black loses on time} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "9"]
+[White "NeuralNet"]
+[Black "Random"]
+[Result "1/2-1/2"]
+[ECO "A04"]
+[GameDuration "00:00:25"]
+[GameEndTime "2026-09-06T15:24:34.202 EDT"]
+[GameStartTime "2026-09-06T15:24:08.489 EDT"]
+[Opening "Reti Opening"]
+[PlyCount "373"]
+[TimeControl "5+0.1"]
+
+1. Nf3 b5 2. a3 Nc6 3. Rg1 Ne5 4. Nxe5 d5 5. Ng6 h6 6. b3 Qd6 7. Nc3 Rb8 8. Nxb5
+Bh3 9. Nxa7 Qxh2 10. Nc8 Qxg2 11. Bxg2 Nf6 12. Bxh3 Ra8 13. Kf1 Rxa3 14. Nf4 Ra4
+15. Nb6 e6 16. Nd7 c5 17. Nxc5 d4 18. Bb2 Nh7 19. Nh5 Be7 20. Nxe6 Ba3
+21. Nexg7+ Ke7 22. Nf5+ Ke6 23. Nxh6+ Ke5 24. Bxa3 Ra5 25. Qc1 Raa8 26. Qb2 Rhd8
+27. Rd1 Rh8 28. Rb1 Rxa3 29. Qxa3 Re8 30. Ng7 Ng5 31. Ngf5 Rb8 32. Ke1 Rxb3
+33. Kd1 Kf4 34. Ke1 Rd3 35. Kd1 Nf3 36. Kc1 Rxd2 37. exf3 Rxc2+ 38. Kxc2 Ke5
+39. Rbe1+ Kd5 40. Qa1 Kc4 41. Qd1 Kb5 42. Ne3 Kc5 43. Neg4 d3+ 44. Kb3 f6
+45. Qc2+ dxc2 46. Rc1 Kb6 47. Rge1 Kb7 48. Rh1 Kc6 49. Rcf1 c1=R 50. Rd1 Rc2
+51. Kb4 Rb2+ 52. Kc3 Kb7 53. Rdg1 Re2 54. f4 Ra2 55. f3 Ra7 56. Re1 f5 57. Rhf1
+Ka6 58. Rc1 Kb6 59. Rfd1 Ka5 60. Rg1 Rf7 61. Rge1 Rd7 62. Rh1 Rd8 63. Rcf1 Rg8
+64. Rd1 Rg5 65. Rdg1 Ka4 66. fxg5 Kb5 67. Re1 Kb6 68. Rhf1 Kc5 69. Rc1 f4
+70. Rfd1 Kb6 71. Rg1 Ka6 72. Rge1 Kb7 73. Rh1 Ka6 74. Rcf1 Kb5 75. Rd1 Ka6
+76. Rdg1 Ka5 77. Re1 Ka6 78. Rhf1 Kb7 79. Rc1 Ka8 80. Rfd1 Kb7 81. Rg1 Ka8
+82. Rge1 Ka7 83. Rh1 Ka6 84. Rcf1 Kb5 85. Rd1 Kc5 86. Rdg1 Kb6 87. Re1 Ka6
+88. Rhf1 Kb5 89. Rc1 Ka5 90. Rfd1 Kb5 91. Rg1 Kc5 92. Rge1 Kc6 93. Rh1 Kc5
+94. Rcf1 Kc6 95. Rd1 Kc5 96. Rdg1 Kc6 97. Re1 Kd7 98. Rhf1 Kc8 99. Rc1 Kd8
+100. Rfd1+ Ke8 101. Rg1 Kf8 102. Rge1 Kg7 103. Rh1 Kf8 104. Rcf1 Kg7 105. Rd1
+Kh8 106. Rdg1 Kh7 107. Re1 Kg6 108. Rc1 Kxg5 109. Rcf1 Kg6 110. Rd1 Kg7
+111. Rdg1 Kh8 112. Re1 Kh7 113. Rhf1 Kg7 114. Rc1 Kh8 115. Rfd1 Kg7 116. Rg1 Kh7
+117. Nf2 Kxh6 118. Rge1 Kg7 119. Rh1 Kg8 120. Rcf1 Kh7 121. Rd1 Kh6 122. Rdg1
+Kh7 123. Re1 Kg7 124. Rhf1 Kh6 125. Rh1 Kg5 126. Rhf1 Kh5 127. Rc1 Kg5 128. Rh1
+Kf6 129. Rcf1 Kg7 130. Rd1 Kf8 131. Rdg1 Ke7 132. Kc2 Kf7 133. Re1 Kg6 134. Rhf1
+Kg7 135. Rc1 Kh6 136. Rh1 Kh5 137. Rcf1 Kg5 138. Rd1 Kh5 139. Rdg1 Kh6 140. Re1
+Kg5 141. Rc1 Kh4 142. Ne4 Kh5 143. Ng5 Kh6 144. Rcf1 Kg7 145. Rd1 Kf6 146. Rdg1
+Kg6 147. Re1 Kg7 148. Rc1 Kh8 149. Rcf1 Kg8 150. Rd1 Kg7 151. Rdg1 Kg8 152. Re1
+Kg7 153. Rc1 Kf6 154. Rcf1 Kg6 155. Rd1 Kxg5 156. Rdg1+ Kf6 157. Re1 Kg5
+158. Rhf1 Kg6 159. Rc1 Kh7 160. Rh1 Kg8 161. Rcf1 Kh8 162. Rd1 Kg7 163. Rdg1+
+Kh8 164. Re1 Kg7 165. Rc1 Kh6 166. Rcf1 Kg6 167. Rd1 Kh6 168. Rdg1 Kh7 169. Re1
+Kg8 170. Rhf1 Kh7 171. Rc1 Kg6 172. Rh1 Kh6 173. Rcf1 Kh5 174. Kc1 Kh4 175. Kb2
+Kg5 176. Rd1 Kh6 177. Rdg1 Kh7 178. Re1 Kg7 179. Rc1 Kf8 180. Rcf1 Ke8 181. Rd1
+Ke7 182. Rdg1 Kf8 183. Re1 Kg8 184. Rhf1 Kf8 185. Rh1 Kg8 186. Rhf1 Kf8
+187. Rh1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "10"]
+[White "Random"]
+[Black "NeuralNet"]
+[Result "1/2-1/2"]
+[ECO "A10"]
+[GameDuration "00:00:22"]
+[GameEndTime "2026-09-06T15:24:53.526 EDT"]
+[GameStartTime "2026-09-06T15:24:30.828 EDT"]
+[Opening "English Opening"]
+[PlyCount "341"]
+[TimeControl "5+0.1"]
+
+1. c4 Nc6 2. d3 Rb8 3. Qb3 Nf6 4. Qb4 Ne4 5. Nd2 Nxd2 6. Qa5 Ne4 7. Nf3 Nd2
+8. Qf5 Nxf3+ 9. gxf3 Nd4 10. Qh3 Nc2+ 11. Kd2 g6 12. Qg4 Nxa1 13. Rg1 Bh6+
+14. Kd1 Nb3 15. Qd4 Nxc1 16. Bh3 Nb3 17. Qd6 cxd6 18. Bf5 Kf8 19. Rf1 a6 20. h4
+Nc5 21. Bh3 Na4 22. Rg1 f6 23. Rh1 Kg7 24. Bf1 Re8 25. Kc2 Rg8 26. Rh3 Nb6
+27. a4 Na8 28. e4 Qc7 29. b3 Rd8 30. a5 Rf8 31. c5 Bg5 32. Kd1 Bxh4 33. Rxh4 h6
+34. Kc1 Qc6 35. Rh2 Qd5 36. Kc2 Qxe4 37. Kc1 Qxf3 38. b4 Qg2 39. Rh3 Qh1
+40. Rxh1 b6 41. Be2 Bb7 42. Kc2 Rbd8 43. Kd2 Rb8 44. Rc1 Rbd8 45. Bf1 Rb8
+46. Rc4 Rbd8 47. d4 Rb8 48. Rc3 Rbd8 49. Be2 Rb8 50. Kc1 Rbd8 51. Bf3 Rb8
+52. Bg2 Rbd8 53. Bh1 Rb8 54. Kb1 Rbd8 55. cxb6 Rb8 56. f3 Rbd8 57. Re3 Rb8
+58. Re1 Rbd8 59. Kc2 Rb8 60. Re5 Rbd8 61. Rc5 dxc5 62. Kd1 e6 63. Ke1 Rb8
+64. Kf1 Rbd8 65. d5 Rb8 66. dxe6 Rbd8 67. exd7 Rb8 68. Kf2 Rbd8 69. Kg1 Rb8
+70. d8=N Rbxd8 71. Bg2 Rd7 72. Bf1 Rc8 73. Kh1 Re8 74. Bxa6 Rg8 75. Bb5 Rgd8
+76. Kh2 Rf8 77. f4 Rc8 78. Kg3 Re8 79. f5 Rg8 80. bxc5 Rgd8 81. Ba4 Rf8 82. Bxd7
+Rc8 83. fxg6 Re8 84. Kg4 Rg8 85. a6 Rd8 86. Ba4 Rf8 87. Be8 h5+ 88. Kg3 Bxa6
+89. Kf2 Bb5 90. Ke1 Bc4 91. b7 Bd3 92. b8=N Be2 93. Nc6 h4 94. Nd4 Bd1 95. Ne2
+Rh8 96. Nc3 Rxe8+ 97. Kxd1 h3 98. Ne2 Rg8 99. Nf4 Rd8+ 100. Ke1 Rf8 101. Kd1
+Rd8+ 102. Kc2 Rf8 103. Kd3 Rc8 104. Ne6+ Kg8 105. Kc2 Re8 106. Nf4 Kg7 107. Kc3
+Rg8 108. Kd3 Re8 109. Nxh3 Rg8 110. Kd4 Rd8+ 111. Ke3 Rf8 112. Kd2 Kxg6 113. Kd3
+Rc8 114. Ke4 Re8+ 115. Kd5 Rb8 116. Nf2 Rd8+ 117. Kc4 Rf8 118. Kc3 Rc8 119. Kd2
+Re8 120. Nd3 Kg5 121. Nc1 Rg8 122. Kd1 Rd8+ 123. Kc2 Rf8 124. Nb3 Kg4 125. Kb1
+Kg3 126. Ka1 Rc8 127. Nd4 Kg4 128. Nf3 Re8 129. Nd4 Rf8 130. Kb1 Rc8 131. Nf5
+Rd8 132. Kb2 Rf8 133. Nd6 Kg5 134. Ne4+ Kg6 135. c6 Kg7 136. Ng5 fxg5 137. Ka2
+Rd8 138. Kb1 Rf8 139. Kc1 Nb6 140. Kb2 Nc8 141. c7 Nb6 142. Ka2 Nc8 143. Kb1 Nd6
+144. Ka1 Ne8 145. c8=R Rh8 146. Rxe8 Rxe8 147. Ka2 Rb8 148. Ka1 Rd8 149. Ka2 Rf8
+150. Ka3 Rc8 151. Kb2 Re8 152. Ka2 Rb8 153. Ka1 Rd8 154. Kb2 Ra8 155. Kc3 Ra2
+156. Kd4 Rd2+ 157. Ke4 Ra2 158. Ke3 Rd2 159. Kxd2 Kg8 160. Kd1 Kf7 161. Ke2 Kf8
+162. Kd3 Kf7 163. Ke3 Kf8 164. Kf2 Kg8 165. Ke3 Kg7 166. Ke2 Kg8 167. Kf2 Kg7
+168. Kf3 Kg8 169. Ke4 Kf7 170. Kf5 Kf8
+171. Kxg5 {Draw by insufficient mating material} 1/2-1/2
+

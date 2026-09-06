@@ -1,0 +1,36 @@
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "1"]
+[White "NeuralNet"]
+[Black "Stockfish-1500"]
+[Result "*"]
+[ECO "A00"]
+[GameDuration "00:00:01"]
+[GameEndTime "2026-09-06T15:21:52.272 EDT"]
+[GameStartTime "2026-09-06T15:21:50.734 EDT"]
+[Opening "Amar (Paris) Opening"]
+[PlyCount "4"]
+[Termination "unterminated"]
+[TimeControl "5+0.1"]
+
+1. Nh3 c6 {+0.69/15 0.80s} 2. a3 Nf6 {+0.73/11 0.092s, No result} *
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "2"]
+[White "Stockfish-1500"]
+[Black "NeuralNet"]
+[Result "*"]
+[ECO "A00"]
+[GameDuration "00:00:01"]
+[GameEndTime "2026-09-06T15:21:52.273 EDT"]
+[GameStartTime "2026-09-06T15:21:50.734 EDT"]
+[Opening "Saragossa Opening"]
+[PlyCount "4"]
+[Termination "unterminated"]
+[TimeControl "5+0.1"]
+
+1. c3 {+0.41/14 0.47s} Nc6 2. d4 {+0.18/12 0.25s} Rb8 {No result} *
+

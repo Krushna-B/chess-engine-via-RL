@@ -1,0 +1,20 @@
+Warning: 2 opening repetitions vs 1 games per encounter
+Started game 1 of 2 (NeuralNet vs Stockfish-1900)
+Finished game 1 (NeuralNet vs Stockfish-1900): 0-1 {Black mates}
+Score of NeuralNet vs Stockfish-1900: 0 - 1 - 0  [0.000] 1
+Started game 2 of 2 (Stockfish-1900 vs NeuralNet)
+Finished game 2 (Stockfish-1900 vs NeuralNet): 1-0 {White mates}
+Score of NeuralNet vs Stockfish-1900: 0 - 2 - 0  [0.000] 2
+...      NeuralNet playing White: 0 - 1 - 0  [0.000] 1
+...      NeuralNet playing Black: 0 - 1 - 0  [0.000] 1
+...      White vs Black: 1 - 1 - 0  [0.500] 2
+Elo difference: -inf +/- nan, LOS: 7.9 %, DrawRatio: 0.0 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+
+Player: NeuralNet
+   "Loss: Black mates": 1
+   "Loss: White mates": 1
+Player: Stockfish-1900
+   "Win: Black mates": 1
+   "Win: White mates": 1
+Finished match

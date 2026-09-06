@@ -1,0 +1,201 @@
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "1"]
+[White "NeuralNet"]
+[Black "Stockfish-1700"]
+[Result "0-1"]
+[ECO "A00"]
+[GameDuration "00:00:10"]
+[GameEndTime "2026-09-06T15:22:03.270 EDT"]
+[GameStartTime "2026-09-06T15:21:52.641 EDT"]
+[Opening "Amar (Paris) Opening"]
+[PlyCount "38"]
+[TimeControl "5+0.1"]
+
+1. Nh3 e5 {+0.69/15 0.80s} 2. a3 Nc6 {+1.13/12 0.23s} 3. Nc3 d6 {+1.29/12 0.28s}
+4. Rg1 d5 {+1.57/14 0.38s} 5. Nb5 a6 {+2.60/13 0.20s} 6. Nxc7+
+Qxc7 {+5.33/16 0.28s} 7. Ng5 Bd7 {+5.72/17 0.95s} 8. Nxh7 Rxh7 {+6.57/13 0.079s}
+9. e3 g6 {+6.33/16 0.89s} 10. Qe2 Rxh2 {+6.36/16 0.76s} 11. c3
+Be6 {+7.00/15 0.26s} 12. Rh1 Rh6 {+8.44/15 0.17s} 13. Kd1 e4 {+8.75/15 0.074s}
+14. Rh4 Ne5 {+8.75/18 0.20s} 15. Ke1 Nd3+ {+9.10/14 0.088s} 16. Kd1
+Rxh4 {+9.09/16 0.11s} 17. Qxd3 exd3 {+9.47/18 0.72s} 18. Be2
+Rh1+ {+M3/12 0.022s} 19. Bf1 Rxf1# {+M1/81 0.021s, Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "2"]
+[White "Stockfish-1700"]
+[Black "NeuralNet"]
+[Result "1-0"]
+[ECO "A00"]
+[GameDuration "00:00:11"]
+[GameEndTime "2026-09-06T15:22:03.930 EDT"]
+[GameStartTime "2026-09-06T15:21:52.642 EDT"]
+[Opening "Saragossa Opening"]
+[PlyCount "45"]
+[TimeControl "5+0.1"]
+
+1. c3 {+0.41/14 0.46s} Nc6 2. a3 {+0.18/12 0.24s} h6 3. d4 {+0.20/11 0.12s} Nf6
+4. d5 {+0.44/12 0.26s} Rh7 5. dxc6 {+3.75/13 0.10s} bxc6 6. Nf3 {+4.10/16 0.55s}
+Ng4 7. h3 {+4.68/16 0.46s} Nxf2 8. Kxf2 {+4.77/15 0.38s} Ba6
+9. e4 {+5.72/14 0.20s} g6 10. h4 {+7.14/14 0.29s} e6 11. Bxa6 {+6.37/15 0.38s}
+Ke7 12. Bd3 {+7.68/16 0.46s} Rc8 13. Ke2 {+8.09/17 0.64s} Bg7
+14. e5 {+7.85/17 0.88s} Qf8 15. Rh3 {+8.23/16 0.31s} d6
+16. exd6+ {+8.13/14 0.20s} Kxd6 17. Bf4+ {+9.17/14 0.097s} e5
+18. Bc4+ {+M11/16 0.24s} Kc5 19. b4+ {+M9/15 0.050s} Kxc4
+20. Be3 {+M5/15 0.096s} Rh8 21. Qd3+ {+M5/19 0.10s} Kb3 22. c4+ {+M3/19 0.045s}
+Ka4 23. Qc2# {+M1/245 0.021s, White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "3"]
+[White "NeuralNet"]
+[Black "Stockfish-1700"]
+[Result "0-1"]
+[ECO "A00"]
+[GameDuration "00:00:05"]
+[GameEndTime "2026-09-06T15:22:09.207 EDT"]
+[GameStartTime "2026-09-06T15:22:03.272 EDT"]
+[Opening "Amar (Paris) Opening"]
+[PlyCount "18"]
+[TimeControl "5+0.1"]
+
+1. Nh3 c6 {+0.75/15 0.80s} 2. a3 a5 {+0.71/12 0.15s} 3. Nc3 d5 {+0.66/13 0.29s}
+4. Rg1 d4 {+1.19/15 0.88s} 5. Nd5 Bxh3 {+5.26/14 0.21s} 6. Nc7+
+Qxc7 {+5.51/15 0.19s} 7. a4 Bd7 {+7.11/16 0.89s} 8. f3 Qxh2 {+7.32/15 0.25s}
+9. c3 Qg3# {+M1/14 0.13s, Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "4"]
+[White "Stockfish-1700"]
+[Black "NeuralNet"]
+[Result "1-0"]
+[ECO "A00"]
+[GameDuration "00:00:14"]
+[GameEndTime "2026-09-06T15:22:18.760 EDT"]
+[GameStartTime "2026-09-06T15:22:03.931 EDT"]
+[Opening "Saragossa Opening"]
+[PlyCount "69"]
+[TimeControl "5+0.1"]
+
+1. c3 {+0.48/13 0.59s} Na6 2. e3 {+0.85/11 0.19s} Nh6 3. e4 {+1.03/13 0.28s} Ng4
+4. Bxa6 {+4.34/14 0.14s} bxa6 5. Qxg4 {+4.55/15 0.21s} g6
+6. Qe2 {+4.85/14 0.25s} Bh6 7. Nf3 {+4.74/16 0.99s} Kf8 8. a4 {+5.65/15 0.29s}
+Bb7 9. O-O {+5.66/16 0.57s} Rc8 10. d3 {+5.73/15 0.60s} f6
+11. Bd2 {+6.53/13 0.095s} e6 12. Bxh6+ {+6.51/13 0.092s} Ke7
+13. Nbd2 {+7.02/14 0.38s} Re8 14. Rfd1 {+7.79/15 0.10s} d6
+15. Rac1 {+6.93/16 0.89s} Rg8 16. Be3 {+6.89/16 0.64s} a5
+17. Bxa7 {+6.97/16 0.24s} Ba6 18. Qe1 {+6.76/15 0.15s} d5
+19. d4 {+7.51/13 0.095s} Ra8 20. Bc5+ {+6.97/14 0.12s} Kf7
+21. h4 {+6.99/14 0.11s} Qe7 22. Bxe7 {+9.65/12 0.011s} Rgd8
+23. Ng5+ {+10.33/14 0.090s} fxg5 24. Bxg5 {+9.55/16 0.20s} Rf8
+25. Rb1 {+9.63/14 0.054s} Rac8 26. exd5 {+10.06/14 0.095s} Kg7
+27. f3 {+10.54/14 0.069s} e5 28. dxe5 {+11.11/14 0.052s} c6
+29. Bf6+ {+11.00/16 0.19s} Kf7 30. Ne4 {+11.34/14 0.094s} cxd5
+31. Rxd5 {+11.67/14 0.055s} Rc4 32. Rd7+ {+M17/14 0.037s} Ke6
+33. Nc5+ {+M7/21 0.020s} Rxc5 34. Re7+ {+M3/15 0.17s} Kf5
+35. Qe4# {+M1/226 0.020s, White mates} 1-0
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "5"]
+[White "NeuralNet"]
+[Black "Stockfish-1700"]
+[Result "0-1"]
+[ECO "A00"]
+[GameDuration "00:00:11"]
+[GameEndTime "2026-09-06T15:22:21.087 EDT"]
+[GameStartTime "2026-09-06T15:22:09.208 EDT"]
+[Opening "Amar (Paris) Opening"]
+[PlyCount "46"]
+[TimeControl "5+0.1"]
+
+1. Nh3 e5 {+0.69/15 0.80s} 2. a3 Nc6 {+1.09/13 0.25s} 3. Nc3 d5 {+1.24/11 0.15s}
+4. Rg1 h5 {+2.06/15 0.38s} 5. Nb5 Be7 {+2.91/14 0.21s} 6. Nxc7+
+Qxc7 {+5.30/16 0.30s} 7. d3 Nh6 {+5.25/16 0.97s} 8. Rb1 Nf5 {+5.35/15 0.51s}
+9. Qd2 Ncd4 {+5.49/15 0.81s} 10. Kd1 Bd7 {+6.04/16 0.70s} 11. Ke1
+f6 {+7.04/12 0.14s} 12. Kd1 Rc8 {+6.50/15 0.56s} 13. b3 Nd6 {+6.48/15 0.29s}
+14. c3 Ne6 {+6.59/16 0.19s} 15. Ng5 fxg5 {+7.49/13 0.070s} 16. Bb2
+e4 {+7.09/14 0.16s} 17. Kc1 d4 {+7.59/14 0.10s} 18. dxe4 dxc3 {+9.57/11 0.021s}
+19. Ra1 Nxe4 {+M17/17 0.058s} 20. Bxc3 Bf6 {+M11/13 0.070s} 21. e3
+Nxd2 {+11.86/15 0.21s} 22. Kb2 Qxc3+ {+M3/13 0.073s} 23. Ka2
+Qb2# {+M1/245 0.014s, Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "6"]
+[White "Stockfish-1700"]
+[Black "NeuralNet"]
+[Result "*"]
+[ECO "A00"]
+[GameDuration "00:00:13"]
+[GameEndTime "2026-09-06T15:22:32.636 EDT"]
+[GameStartTime "2026-09-06T15:22:18.763 EDT"]
+[Opening "Saragossa Opening"]
+[PlyCount "62"]
+[Termination "unterminated"]
+[TimeControl "5+0.1"]
+
+1. c3 {+0.41/14 0.54s} Na6 2. d4 {+0.86/11 0.099s} Nf6 3. g3 {+0.63/11 0.16s}
+Rb8 4. b4 {+0.68/12 0.18s} Ne4 5. f3 {+3.49/12 0.097s} Nd2
+6. Nxd2 {+4.89/16 0.42s} h6 7. e3 {+5.27/15 0.43s} Nxb4 8. cxb4 {+5.65/14 0.26s}
+e5 9. Qb3 {+5.52/18 1.1s} exd4 10. Be2 {+5.38/14 0.23s} Qe7
+11. e4 {+5.25/16 0.59s} Kd8 12. a3 {+5.87/13 0.099s} Ke8
+13. Qa2 {+5.98/17 0.55s} Kd8 14. Qc2 {+6.08/16 0.79s} Ke8
+15. Nb3 {+6.54/14 0.14s} d6 16. Nxd4 {+6.91/14 0.18s} Bf5
+17. Nxf5 {+8.86/17 0.15s} Rd8 18. Nxe7 {+9.81/16 0.37s} c6
+19. Nf5 {+10.72/15 0.13s} Kd7 20. Ra2 {+11.02/16 0.24s} Ke8
+21. Qc3 {+11.18/15 0.26s} g6 22. Ng7+ {+10.97/14 0.096s} Kd7
+23. b5 {+10.55/15 0.17s} Bxg7 24. Qxg7 {+10.80/15 0.11s} Kc7
+25. Qc3 {+11.78/14 0.053s} Rdf8 26. bxc6 {+11.83/13 0.045s} bxc6
+27. h3 {+13.09/13 0.038s} Kc8 28. a4 {+M5/13 0.034s} g5 29. Rc2 {+M5/15 0.092s}
+g4 30. hxg4 {+M5/14 0.037s} f6 31. Qxc6+ {+M5/17 0.031s} Kd8 {No result} *
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "7"]
+[White "NeuralNet"]
+[Black "Stockfish-1700"]
+[Result "0-1"]
+[ECO "A00"]
+[GameDuration "00:00:07"]
+[GameEndTime "2026-09-06T15:22:28.257 EDT"]
+[GameStartTime "2026-09-06T15:22:21.089 EDT"]
+[Opening "Amar (Paris) Opening"]
+[PlyCount "22"]
+[TimeControl "5+0.1"]
+
+1. Nh3 c6 {+0.69/15 0.80s} 2. a3 Nf6 {+0.65/11 0.17s} 3. Rg1 e5 {+1.29/12 0.15s}
+4. Nc3 d5 {+1.63/11 0.098s} 5. Nxd5 cxd5 {+4.88/16 0.31s} 6. Ra2
+Be7 {+5.62/16 0.66s} 7. b3 O-O {+5.46/16 0.95s} 8. Bb2 Qd6 {+5.30/16 0.83s}
+9. Qc1 d4 {+5.75/15 0.47s} 10. Bc3 dxc3 {+7.77/13 0.068s} 11. Qb2
+Qxd2# {+M1/16 0.13s, Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "8"]
+[White "Stockfish-1700"]
+[Black "NeuralNet"]
+[Result "*"]
+[ECO "A00"]
+[GameDuration "00:00:04"]
+[GameEndTime "2026-09-06T15:22:32.636 EDT"]
+[GameStartTime "2026-09-06T15:22:28.258 EDT"]
+[Opening "Saragossa Opening"]
+[PlyCount "14"]
+[Termination "unterminated"]
+[TimeControl "5+0.1"]
+
+1. c3 {+0.41/14 0.48s} Na6 2. e4 {+0.89/10 0.11s} Nh6 3. Nf3 {+1.21/14 0.41s}
+Ng4 4. h3 {+1.55/13 0.37s} Rb8 5. Bxa6 {+5.53/13 0.087s} Nxf2
+6. Kxf2 {+3.94/15 0.33s} e6 7. Be2 {+5.26/16 0.37s} Be7 {No result} *
+

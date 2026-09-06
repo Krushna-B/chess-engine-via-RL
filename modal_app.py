@@ -104,7 +104,10 @@ def main(
     concurrency: int = 512,
     run_id: str = "",
 ):
-    train_loop.remote(
+    # spawn (not remote) so the entrypoint returns immediately -- there's no
+    # blocking client to cancel on Ctrl-C. Requires --detach, otherwise the
+    # ephemeral app tears down and cancels the call when the entrypoint returns.
+    call = train_loop.spawn(
         iterations=iterations,
         games=games,
         simulations=simulations,
@@ -112,3 +115,46 @@ def main(
         concurrency=concurrency,
         run_id=run_id,
     )
+    print(f"Spawned train_loop -> call {call.object_id}")
+    print("Follow logs: modal app logs chess-engine-training")
+
+
+# Pulling a checkpoint off the Volume doesn't need the CUDA/C++ build image.
+download_image = modal.Image.debian_slim(python_version="3.12")
+
+
+@app.function(image=download_image, volumes={ARTIFACTS: artifacts_volume})
+def _read_artifact(rel_path: str) -> bytes:
+    from pathlib import Path
+
+    return (Path(ARTIFACTS) / rel_path).read_bytes()
+
+
+@app.function(image=download_image, volumes={ARTIFACTS: artifacts_volume})
+def _list_models() -> list:
+    from pathlib import Path
+
+    models = Path(ARTIFACTS) / "models"
+    return sorted(p.name for p in models.glob("*.pt")) if models.exists() else []
+
+
+@app.local_entrypoint()
+def list_checkpoints():
+    for name in _list_models.remote():
+        print(name)
+
+
+@app.local_entrypoint()
+def download(model: str = "models/gen_0001_jit.pt", dest: str = "artifacts/eval"):
+    """Copy one checkpoint from the chess-artifacts Volume to this machine.
+
+    `model` is a path under artifacts/ on the Volume (a traced *_jit.pt is what
+    engine_neural loads). Point the eval script at the file this writes.
+    """
+    from pathlib import Path
+
+    data = _read_artifact.remote(model)
+    out = Path(dest) / Path(model).name
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_bytes(data)
+    print(f"Wrote {len(data)} bytes -> {out}")

@@ -24,11 +24,14 @@ set(COMMON_COMPILE_OPTIONS
 # Raise the constexpr evaluation limit. The flag name differs by compiler:
 # Clang (local/macOS) uses -fconstexpr-steps, GCC (Linux/Modal) uses
 # -fconstexpr-ops-limit.
+# Pulled out on its own so Torch targets (which don't take the warning flags)
+# can still raise the limit without inheriting the rest of COMMON_COMPILE_OPTIONS.
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    list(APPEND COMMON_COMPILE_OPTIONS -fconstexpr-steps=100000000)
+    set(CONSTEXPR_STEPS_OPTION -fconstexpr-steps=100000000)
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    list(APPEND COMMON_COMPILE_OPTIONS -fconstexpr-ops-limit=100000000)
+    set(CONSTEXPR_STEPS_OPTION -fconstexpr-ops-limit=100000000)
 endif()
+list(APPEND COMMON_COMPILE_OPTIONS ${CONSTEXPR_STEPS_OPTION})
 
 if(BUILD_GUI)
     find_package(raylib CONFIG REQUIRED)
@@ -136,4 +139,38 @@ target_compile_options(
     self_play
     PRIVATE
     ${TORCH_CXX_FLAGS}
+)
+
+# Neural UCI engine: the trained net as a cutechess opponent. Shares the MCTS +
+# inference code with self_play; no training_data (it never writes shards).
+add_executable(engine_neural
+    src/uci_neural.cpp
+    src/neural_net.cpp
+    src/mcts.cpp
+    src/board.cpp
+    src/network_inference.cpp
+    src/move_generator.cpp
+    src/move_list.cpp
+)
+
+target_include_directories(engine_neural PRIVATE include)
+
+target_include_directories(
+    engine_neural
+    SYSTEM PRIVATE
+    ${TORCH_INCLUDE_DIRS}
+)
+
+target_link_libraries(
+    engine_neural
+    PRIVATE
+    "${TORCH_LIBRARIES}"
+    Threads::Threads
+)
+
+target_compile_options(
+    engine_neural
+    PRIVATE
+    ${TORCH_CXX_FLAGS}
+    ${CONSTEXPR_STEPS_OPTION}  # attacks.hpp LUTs blow the default constexpr limit
 )

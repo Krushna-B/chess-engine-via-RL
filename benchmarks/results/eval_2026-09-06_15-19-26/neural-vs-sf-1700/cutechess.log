@@ -1,0 +1,21 @@
+Warning: 2 opening repetitions vs 1 games per encounter
+Started game 1 of 10 (NeuralNet vs Stockfish-1700)
+Started game 2 of 10 (Stockfish-1700 vs NeuralNet)
+Finished game 1 (NeuralNet vs Stockfish-1700): 0-1 {Black mates}
+Score of NeuralNet vs Stockfish-1700: 0 - 1 - 0  [0.000] 1
+Started game 3 of 10 (NeuralNet vs Stockfish-1700)
+Finished game 2 (Stockfish-1700 vs NeuralNet): 1-0 {White mates}
+Score of NeuralNet vs Stockfish-1700: 0 - 2 - 0  [0.000] 2
+Started game 4 of 10 (Stockfish-1700 vs NeuralNet)
+Finished game 3 (NeuralNet vs Stockfish-1700): 0-1 {Black mates}
+Score of NeuralNet vs Stockfish-1700: 0 - 3 - 0  [0.000] 3
+Started game 5 of 10 (NeuralNet vs Stockfish-1700)
+Finished game 4 (Stockfish-1700 vs NeuralNet): 1-0 {White mates}
+Score of NeuralNet vs Stockfish-1700: 0 - 4 - 0  [0.000] 4
+Started game 6 of 10 (Stockfish-1700 vs NeuralNet)
+Finished game 5 (NeuralNet vs Stockfish-1700): 0-1 {Black mates}
+Score of NeuralNet vs Stockfish-1700: 0 - 5 - 0  [0.000] 5
+Started game 7 of 10 (NeuralNet vs Stockfish-1700)
+Finished game 7 (NeuralNet vs Stockfish-1700): 0-1 {Black mates}
+Score of NeuralNet vs Stockfish-1700: 0 - 6 - 0  [0.000] 6
+Started game 8 of 10 (Stockfish-1700 vs NeuralNet)

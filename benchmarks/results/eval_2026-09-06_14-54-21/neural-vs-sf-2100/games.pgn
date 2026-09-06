@@ -1,0 +1,46 @@
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "1"]
+[White "NeuralNet"]
+[Black "Stockfish-2100"]
+[Result "0-1"]
+[ECO "A00"]
+[GameDuration "00:00:04"]
+[GameEndTime "2026-09-06T14:55:19.439 EDT"]
+[GameStartTime "2026-09-06T14:55:14.956 EDT"]
+[Opening "Anderssen's Opening"]
+[PlyCount "42"]
+[TimeControl "4+0.05"]
+
+1. a3 e6 {+0.12/12 0.38s} 2. b3 Nf6 {+0.08/14 0.26s} 3. c3 d5 {+0.47/11 0.16s}
+4. d3 e5 {+0.65/13 0.34s} 5. e3 c5 {+0.84/11 0.13s} 6. f3 a5 {+1.49/14 0.31s}
+7. g3 a4 {+1.37/14 0.31s} 8. h3 Be7 {+2.08/13 0.18s} 9. c4 O-O {+2.14/14 0.44s}
+10. b4 cxb4 {+3.39/12 0.079s} 11. d4 Nc6 {+4.89/13 0.089s} 12. Rh2
+exd4 {+6.02/14 0.066s} 13. Qd2 dxe3 {+7.51/15 0.31s} 14. Qd3
+Qc7 {+7.76/16 0.46s} 15. Qd4 Qxg3+ {+10.20/14 0.085s} 16. Ke2
+Nxd4+ {+12.17/15 0.063s} 17. Kxe3 Qxg1+ {+13.97/14 0.066s} 18. Kd3
+dxc4+ {+M9/15 0.062s} 19. Kd2 Qxh2+ {+M9/19 0.059s} 20. Kd1 Qc2+ {+M3/15 0.065s}
+21. Ke1 Nxf3# {+M1/100 0.031s, Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "2"]
+[White "Stockfish-2100"]
+[Black "NeuralNet"]
+[Result "1-0"]
+[ECO "B00"]
+[GameDuration "00:00:02"]
+[GameEndTime "2026-09-06T14:55:22.118 EDT"]
+[GameStartTime "2026-09-06T14:55:19.441 EDT"]
+[Opening "St. George (Baker) defense"]
+[PlyCount "25"]
+[TimeControl "4+0.05"]
+
+1. e4 {+0.48/13 0.26s} a6 2. d4 {+0.71/12 0.23s} a5 3. Nf3 {+1.28/12 0.099s} a4
+4. c4 {+1.62/12 0.10s} a3 5. b4 {+1.90/14 0.29s} b6 6. Nc3 {+2.31/13 0.14s} b5
+7. Qb3 {+3.48/14 0.17s} c6 8. cxb5 {+3.61/14 0.15s} c5 9. dxc5 {+5.62/14 0.17s}
+d6 10. Be3 {+5.59/15 0.32s} d5 11. Rd1 {+7.18/16 0.30s} g6
+12. Qxd5 {+7.57/14 0.14s} g5 13. Qxd8# {+M1/14 0.043s, White mates} 1-0
+

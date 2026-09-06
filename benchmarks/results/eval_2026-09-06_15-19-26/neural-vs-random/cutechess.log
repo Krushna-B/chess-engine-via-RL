@@ -1,0 +1,46 @@
+Warning: 2 opening repetitions vs 1 games per encounter
+Started game 1 of 10 (NeuralNet vs Random)
+Started game 2 of 10 (Random vs NeuralNet)
+Finished game 2 (Random vs NeuralNet): 1/2-1/2 {Draw by 3-fold repetition}
+Score of NeuralNet vs Random: 0 - 0 - 1  [0.500] 1
+Started game 3 of 10 (NeuralNet vs Random)
+Finished game 1 (NeuralNet vs Random): 1/2-1/2 {Draw by 3-fold repetition}
+Score of NeuralNet vs Random: 0 - 0 - 2  [0.500] 2
+Started game 4 of 10 (Random vs NeuralNet)
+Finished game 4 (Random vs NeuralNet): 1/2-1/2 {Draw by fifty moves rule}
+Score of NeuralNet vs Random: 0 - 0 - 3  [0.500] 3
+Started game 5 of 10 (NeuralNet vs Random)
+Finished game 3 (NeuralNet vs Random): 1/2-1/2 {Draw by 3-fold repetition}
+Score of NeuralNet vs Random: 0 - 0 - 4  [0.500] 4
+Started game 6 of 10 (Random vs NeuralNet)
+Finished game 5 (NeuralNet vs Random): 1/2-1/2 {Draw by 3-fold repetition}
+Score of NeuralNet vs Random: 0 - 0 - 5  [0.500] 5
+Started game 7 of 10 (NeuralNet vs Random)
+Finished game 6 (Random vs NeuralNet): 1/2-1/2 {Draw by fifty moves rule}
+Score of NeuralNet vs Random: 0 - 0 - 6  [0.500] 6
+Started game 8 of 10 (Random vs NeuralNet)
+Finished game 8 (Random vs NeuralNet): 1/2-1/2 {Draw by stalemate}
+Score of NeuralNet vs Random: 0 - 0 - 7  [0.500] 7
+Started game 9 of 10 (NeuralNet vs Random)
+Finished game 7 (NeuralNet vs Random): 1/2-1/2 {Draw by fifty moves rule}
+Score of NeuralNet vs Random: 0 - 0 - 8  [0.500] 8
+Started game 10 of 10 (Random vs NeuralNet)
+Finished game 9 (NeuralNet vs Random): 1/2-1/2 {Draw by 3-fold repetition}
+Score of NeuralNet vs Random: 0 - 0 - 9  [0.500] 9
+Finished game 10 (Random vs NeuralNet): 1/2-1/2 {Draw by fifty moves rule}
+Score of NeuralNet vs Random: 0 - 0 - 10  [0.500] 10
+...      NeuralNet playing White: 0 - 0 - 5  [0.500] 5
+...      NeuralNet playing Black: 0 - 0 - 5  [0.500] 5
+...      White vs Black: 0 - 0 - 10  [0.500] 10
+Elo difference: 0.0 +/- 0.0, LOS: nan %, DrawRatio: 100.0 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+
+Player: NeuralNet
+   "Draw by 3-fold repetition": 5
+   "Draw by fifty moves rule": 4
+   "Draw by stalemate": 1
+Player: Random
+   "Draw by 3-fold repetition": 5
+   "Draw by fifty moves rule": 4
+   "Draw by stalemate": 1
+Finished match

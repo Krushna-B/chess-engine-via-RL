@@ -10,13 +10,13 @@
 #if __has_include(<cuda_runtime_api.h>) && __has_include(<ATen/cuda/CUDAGraph.h>)
 #include <ATen/cuda/CUDAContext.h>
 #include <ATen/cuda/CUDAGraph.h>
+#include <c10/cuda/CUDAGuard.h>
 #include <c10/cuda/CUDAStream.h>
 #define HAVE_CUDA_GRAPH 1
 #endif
 #endif
 
 #include <algorithm>
-#include <c10/cuda/CUDAGuard.h>
 #include <chrono>
 #include <condition_variable>
 #include <cstddef>

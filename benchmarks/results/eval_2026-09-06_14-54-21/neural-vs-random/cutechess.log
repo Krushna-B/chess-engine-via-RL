@@ -1,0 +1,20 @@
+Warning: 2 opening repetitions vs 1 games per encounter
+Started game 1 of 2 (NeuralNet vs Random)
+Finished game 1 (NeuralNet vs Random): 0-1 {Black mates}
+Score of NeuralNet vs Random: 0 - 1 - 0  [0.000] 1
+Started game 2 of 2 (Random vs NeuralNet)
+Finished game 2 (Random vs NeuralNet): 1/2-1/2 {Draw by 3-fold repetition}
+Score of NeuralNet vs Random: 0 - 1 - 1  [0.250] 2
+...      NeuralNet playing White: 0 - 1 - 0  [0.000] 1
+...      NeuralNet playing Black: 0 - 0 - 1  [0.500] 1
+...      White vs Black: 0 - 1 - 1  [0.250] 2
+Elo difference: -190.8 +/- nan, LOS: 15.9 %, DrawRatio: 50.0 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+
+Player: NeuralNet
+   "Draw by 3-fold repetition": 1
+   "Loss: Black mates": 1
+Player: Random
+   "Draw by 3-fold repetition": 1
+   "Win: Black mates": 1
+Finished match

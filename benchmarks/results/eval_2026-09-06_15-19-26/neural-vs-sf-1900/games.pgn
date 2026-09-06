@@ -1,0 +1,22 @@
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "1"]
+[White "NeuralNet"]
+[Black "Stockfish-1900"]
+[Result "*"]
+[Termination "unterminated"]
+[TimeControl "5+0.1"]
+ *
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "2"]
+[White "Stockfish-1900"]
+[Black "NeuralNet"]
+[Result "*"]
+[Termination "unterminated"]
+[TimeControl "5+0.1"]
+ *
+

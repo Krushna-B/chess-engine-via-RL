@@ -1,0 +1,10 @@
+Timestamp: 2026-09-06_14-20-29
+Neural engine: /Users/krushna/Documents/Workspace/chess-engine/build/engine_neural
+Checkpoint: artifacts/checkpoints/chess_model_jit.pt
+Simulations: 20
+Random engine: /Users/krushna/Documents/Workspace/chess-engine/build/engine
+Stockfish: /opt/homebrew/bin/stockfish
+Games per match: 2
+Time control: 4+0.05 (margin 500 ms)
+Stockfish levels: 1350 1500 1700 1900 2100
+Git commit: 9b672151639d16513e834da65406fa26bc72990b

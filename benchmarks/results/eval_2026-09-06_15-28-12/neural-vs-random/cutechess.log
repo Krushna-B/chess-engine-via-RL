@@ -1,0 +1,20 @@
+Warning: 2 opening repetitions vs 1 games per encounter
+Started game 1 of 10 (NeuralNet vs Random)
+Finished game 1 (NeuralNet vs Random): 1/2-1/2 {Draw by 3-fold repetition}
+Score of NeuralNet vs Random: 0 - 0 - 1  [0.500] 1
+Started game 2 of 10 (Random vs NeuralNet)
+Finished game 2 (Random vs NeuralNet): 0-1 {Black mates}
+Score of NeuralNet vs Random: 1 - 0 - 1  [0.750] 2
+Started game 3 of 10 (NeuralNet vs Random)
+Finished game 3 (NeuralNet vs Random): 1/2-1/2 {Draw by 3-fold repetition}
+Score of NeuralNet vs Random: 1 - 0 - 2  [0.667] 3
+Started game 4 of 10 (Random vs NeuralNet)
+Finished game 4 (Random vs NeuralNet): 1/2-1/2 {Draw by 3-fold repetition}
+Score of NeuralNet vs Random: 1 - 0 - 3  [0.625] 4
+Started game 5 of 10 (NeuralNet vs Random)
+Finished game 5 (NeuralNet vs Random): 1-0 {White mates}
+Score of NeuralNet vs Random: 2 - 0 - 3  [0.700] 5
+Started game 6 of 10 (Random vs NeuralNet)
+Finished game 6 (Random vs NeuralNet): 1/2-1/2 {Draw by 3-fold repetition}
+Score of NeuralNet vs Random: 2 - 0 - 4  [0.667] 6
+Started game 7 of 10 (NeuralNet vs Random)

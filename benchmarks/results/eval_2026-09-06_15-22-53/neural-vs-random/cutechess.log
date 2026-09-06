@@ -1,0 +1,48 @@
+Warning: 2 opening repetitions vs 1 games per encounter
+Started game 2 of 10 (Random vs NeuralNet)
+Started game 1 of 10 (NeuralNet vs Random)
+Finished game 2 (Random vs NeuralNet): 1/2-1/2 {Draw by 3-fold repetition}
+Score of NeuralNet vs Random: 0 - 0 - 1  [0.500] 1
+Started game 3 of 10 (NeuralNet vs Random)
+Finished game 1 (NeuralNet vs Random): 1/2-1/2 {Draw by 3-fold repetition}
+Score of NeuralNet vs Random: 0 - 0 - 2  [0.500] 2
+Started game 4 of 10 (Random vs NeuralNet)
+Finished game 3 (NeuralNet vs Random): 1/2-1/2 {Draw by fifty moves rule}
+Score of NeuralNet vs Random: 0 - 0 - 3  [0.500] 3
+Started game 5 of 10 (NeuralNet vs Random)
+Finished game 4 (Random vs NeuralNet): 1/2-1/2 {Draw by 3-fold repetition}
+Score of NeuralNet vs Random: 0 - 0 - 4  [0.500] 4
+Started game 6 of 10 (Random vs NeuralNet)
+Finished game 5 (NeuralNet vs Random): 1/2-1/2 {Draw by insufficient mating material}
+Score of NeuralNet vs Random: 0 - 0 - 5  [0.500] 5
+Started game 7 of 10 (NeuralNet vs Random)
+Finished game 6 (Random vs NeuralNet): 1/2-1/2 {Draw by 3-fold repetition}
+Score of NeuralNet vs Random: 0 - 0 - 6  [0.500] 6
+Started game 8 of 10 (Random vs NeuralNet)
+Finished game 7 (NeuralNet vs Random): 1/2-1/2 {Draw by 3-fold repetition}
+Score of NeuralNet vs Random: 0 - 0 - 7  [0.500] 7
+Started game 9 of 10 (NeuralNet vs Random)
+Finished game 8 (Random vs NeuralNet): 1-0 {Black loses on time}
+Score of NeuralNet vs Random: 0 - 1 - 7  [0.438] 8
+Started game 10 of 10 (Random vs NeuralNet)
+Finished game 9 (NeuralNet vs Random): 1/2-1/2 {Draw by 3-fold repetition}
+Score of NeuralNet vs Random: 0 - 1 - 8  [0.444] 9
+Finished game 10 (Random vs NeuralNet): 1/2-1/2 {Draw by insufficient mating material}
+Score of NeuralNet vs Random: 0 - 1 - 9  [0.450] 10
+...      NeuralNet playing White: 0 - 0 - 5  [0.500] 5
+...      NeuralNet playing Black: 0 - 1 - 4  [0.400] 5
+...      White vs Black: 1 - 0 - 9  [0.550] 10
+Elo difference: -34.9 +/- 66.0, LOS: 15.9 %, DrawRatio: 90.0 %
+SPRT: llr 0 (0.0%), lbound -inf, ubound inf
+
+Player: NeuralNet
+   "Draw by 3-fold repetition": 6
+   "Draw by fifty moves rule": 1
+   "Draw by insufficient mating material": 2
+   "Loss: Black loses on time": 1
+Player: Random
+   "Draw by 3-fold repetition": 6
+   "Draw by fifty moves rule": 1
+   "Draw by insufficient mating material": 2
+   "Win: Black loses on time": 1
+Finished match

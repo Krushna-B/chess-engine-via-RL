@@ -1,0 +1,32 @@
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "1"]
+[White "NeuralNet"]
+[Black "Stockfish-2100"]
+[Result "*"]
+[GameDuration "00:00:00"]
+[GameEndTime "2026-09-06T15:22:33.424 EDT"]
+[GameStartTime "2026-09-06T15:22:33.377 EDT"]
+[PlyCount "0"]
+[Termination "unterminated"]
+[TimeControl "5+0.1"]
+
+{No result} *
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "2"]
+[White "Stockfish-2100"]
+[Black "NeuralNet"]
+[Result "*"]
+[GameDuration "00:00:00"]
+[GameEndTime "2026-09-06T15:22:33.424 EDT"]
+[GameStartTime "2026-09-06T15:22:33.378 EDT"]
+[PlyCount "0"]
+[Termination "unterminated"]
+[TimeControl "5+0.1"]
+
+{No result} *
+
