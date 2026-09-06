@@ -54,3 +54,7 @@ PolicyArray encode_policy_target(const Node &root,
                                  const std::vector<float> &local_policy);
 
 void validate_policy_target(const PolicyArray &policy);
+void add_root_dirichlet_noise(Node &root, float alpha, float epsilon,
+                              std::mt19937_64 &rng);
+void run_self_play_search(Node &root, NeuralNetwork &network, int simulations,
+                          std::mt19937_64 &rng);

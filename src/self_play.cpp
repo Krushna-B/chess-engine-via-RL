@@ -8,9 +8,9 @@
 #include <stdexcept>
 #include <vector>
 
-constexpr int SIMULATIONS = 300;
+constexpr int SIMULATIONS = 25;
 constexpr float TEMPERATURE = 0.9f;
-constexpr int MAX_PLAYS = 512;
+constexpr int MAX_PLAYS = 10;
 
 static thread_local std::mt19937_64 rng{std::random_device{}()};
 
@@ -32,7 +32,7 @@ std::vector<TrainingExample> play_self_play_game(NeuralNetwork &network) {
     // std::cout << "\n========== REAL MOVE " << plays + 1 << " ==========\n";
 
     // Run imaginary MCTS from the current position
-    run_search(*root, network, SIMULATIONS);
+    run_self_play_search(*root, network, SIMULATIONS, rng);
 
     // Convert child nodes into probabilites
     std::vector<float> local_policy = root_visit_policy(*root, TEMPERATURE);
