@@ -47,6 +47,7 @@ if(BUILD_GUI)
         src/gui.cpp
         src/main.cpp
         src/neural_net.cpp
+        src/policy_encoder.cpp
         src/move_list.cpp
         src/game.cpp
         src/game_controller.cpp
@@ -120,6 +121,7 @@ if(BUILD_ML)
         tests/mcts_repetition_test.cpp
         src/mcts.cpp
         src/neural_net.cpp
+        src/policy_encoder.cpp
         src/board.cpp
         src/network_inference.cpp
         src/move_generator.cpp
@@ -137,6 +139,7 @@ if(BUILD_ML)
         src/position_encoder.cpp
         src/mcts.cpp
         src/training_data_v2.cpp
+        src/policy_encoder.cpp
         src/board.cpp
         src/network_inference.cpp
         src/move_generator.cpp
@@ -153,6 +156,7 @@ if(BUILD_ML)
         src/uci_neural.cpp
         src/neural_net.cpp
         src/mcts.cpp
+        src/policy_encoder.cpp
         src/board.cpp
         src/network_inference.cpp
         src/move_generator.cpp

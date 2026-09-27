@@ -2,6 +2,7 @@
 #include "board.hpp"
 #include "move_generator.hpp"
 #include "move_list.hpp"
+#include "policy_encoder.hpp"
 #include <array>
 #include <cmath>
 #include <cstdlib>
@@ -26,53 +27,7 @@ Takes a move generator from our mcts and then turns into index action index
 which is the move matching the neural net's ouput in order to get its logit
 */
 u64 encode_move(const Position &position, const Move &move) {
-  int physical_from = static_cast<int>(move.from);
-  int physical_to = static_cast<int>(move.to);
-
-  Side side_to_move = position.get_side_to_move();
-
-  int from = canonicalize_square(physical_from, side_to_move);
-  int to = canonicalize_square(physical_to, side_to_move);
-
-  int from_rank = from / 8;
-  int from_file = from % 8;
-
-  int to_rank = to / 8;
-  int to_file = to % 8;
-
-  int rank_change = to_rank - from_rank;
-  int file_change = to_file - from_file;
-
-  u64 move_type{};
-
-  bool underpromotion =
-      move.promotion_piece != QUEEN && move.promotion_piece != NO_PIECE;
-
-  if (underpromotion) {
-    move_type = encode_underpromotion_piece(move, rank_change, file_change);
-  } else {
-    bool knight_movement =
-        (std::abs(rank_change) == 2 && std::abs(file_change) == 1) ||
-        (std::abs(rank_change) == 1 && std::abs(file_change) == 2);
-
-    if (knight_movement) {
-      move_type = encode_knight_type(rank_change, file_change);
-    } else {
-      bool straight = rank_change == 0 || file_change == 0;
-      bool diagonal = std::abs(rank_change) == std::abs(file_change);
-
-      if (!straight && !diagonal) {
-        throw std::invalid_argument("Move is not straight or diagonal");
-      }
-
-      int distance = std::max(std::abs(rank_change), std::abs(file_change));
-
-      int direction = find_direction(rank_change, file_change);
-      move_type = static_cast<u64>(direction * 7 + distance - 1);
-    }
-  }
-  u64 action = move_type * 64 + static_cast<u64>(from);
-  return action;
+  return static_cast<u64>(encode_lc0_policy_move(position, move));
 }
 
 void validate_move_encoding(Position &position) {
