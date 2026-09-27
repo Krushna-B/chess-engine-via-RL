@@ -7,24 +7,21 @@ import torch.nn as nn
 class ChessTransformer(nn.Module):
     def __init__(
         self,
-        square_features=18,
-        policy_planes=73,
-        num_of_squares=64,
-        model_dim=256,
+        input_planes=112,
+        policy_size=1858,
+        model_dim=640,
         num_of_heads=8,
-        num_of_layers=16,
-        feedforward_dim=1024,
+        num_of_layers=20,
+        feedforward_dim=2560,
         dropout=0.1,
     ) -> None:
         super().__init__()
-        self.number_of_squares = num_of_squares
-        self.policy_planes = policy_planes
+        self.input_planes = input_planes
+        self.policy_size = policy_size
 
         # Turn the squares 18 features into a 128 dim token
-        self.input_projection = nn.Linear(square_features, model_dim)
-        self.square_embeddings = nn.Parameter(
-            torch.randn(1, self.number_of_squares, model_dim) * 0.02
-        )
+        self.input_projection = nn.Linear(input_planes, model_dim)
+        self.square_embeddings = nn.Parameter(torch.randn(1, 64, model_dim) * 0.02)
 
         encoder_layer = nn.TransformerEncoderLayer(
             d_model=model_dim,
@@ -43,30 +40,31 @@ class ChessTransformer(nn.Module):
         )
 
         # Produces 73 move type logits
-        self.policy_head = nn.Linear(model_dim, policy_planes)
+        self.policy_head = nn.Linear(model_dim, policy_size)
 
         self.value_head = nn.Sequential(
             nn.Linear(model_dim, model_dim),
             nn.GELU(),
-            nn.Linear(model_dim, 1),
-            nn.Tanh(),
+            nn.Linear(model_dim, 3),
         )
 
     def forward(self, states):
         """
-        states: [B, 64, 18]
+        states: [B, 112, 8, 8]
 
         returns:
-            policy: [B, 4762]
-            value: [B]
+            policy: [B, 1858]
+            value: [B, 3]
         """
-        if states.ndim != 3:
-            raise ValueError(f"Expected 3 dimensions, received {states.shape}")
-        if states.shape[1] != self.number_of_squares:
-            raise ValueError(f"Expected 64 squares, received {states.shape[1]}")
+        if states.ndim != 4:
+            raise ValueError(f"Expected 4 dimensions, received {states.shape}")
+        if states.shape[1:] != (self.input_planes, 8, 8):
+            raise ValueError(
+                f"Expected [{self.input_planes}, 8, 8], received {states.shape[1:]}"
+            )
 
-        # [B, 64, 18] -> [B, 64, 128]
-        tokens = self.input_projection(states)
+        tokens = states.flatten(2).transpose(1, 2)
+        tokens = self.input_projection(tokens)
 
         # Position embeddings let model learn which token represents which square
         tokens = tokens + self.square_embeddings
@@ -76,24 +74,12 @@ class ChessTransformer(nn.Module):
         encoded = self.transformer(tokens)
 
         # Policy logits
-        # [B, 64, 128] -> [B, 64, 73]
-        square_policy_logits = self.policy_head(encoded)
-
-        # move_type * 64 + original_square
-        #
-        # [B, 64, 73] -> [B, 73, 64]
-        policy_logits = square_policy_logits.transpose(1, 2)
-
-        # [B, 73, 64] -> [B, 4672]
-        policy_logits = policy_logits.contiguous().reshape(
-            states.shape[0],
-            self.policy_planes * self.number_of_squares,
-        )
+        policy_logits = self.policy_head(encoded.mean(dim=1))
 
         # [B, 64, 128] -> [B, 128]
         board_representation = encoded.mean(dim=1)
 
-        values = self.value_head(board_representation).squeeze(-1)
+        values = self.value_head(board_representation)
 
         return policy_logits, values
 
@@ -109,7 +95,7 @@ class ChessTransformer(nn.Module):
 if __name__ == "__main__":
     model = ChessTransformer()
 
-    test_states = torch.randn(64, 64, 18)
+    test_states = torch.randn(64, 112, 8, 8)
 
     policy_logits, values = model(test_states)
 
@@ -129,9 +115,7 @@ if __name__ == "__main__":
 
     print("Parameters:", model.count_parameters())
 
-    assert policy_logits.shape == (64, 4672)
-    assert values.shape == (64,)
-    assert torch.all(values >= -1.0)
-    assert torch.all(values <= 1.0)
+    assert policy_logits.shape == (64, 1858)
+    assert values.shape == (64, 3)
 
     print("Transformer forward-pass test passed")

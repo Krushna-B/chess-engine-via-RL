@@ -8,7 +8,7 @@ import torch.nn.functional as F
 
 from torch.utils.data import DataLoader, random_split
 
-from chess_training.chess_dataset import ChessDataset
+from chess_training.compact_dataset import CompactChessDataset
 from chess_training.chess_model import ChessTransformer
 from chess_training.wandb_logging import WandbLogger
 
@@ -45,12 +45,12 @@ def append_metric(record):
         out.write(json.dumps(record) + "\n")
 
 
-def calculate_loss(logits, values, target_policies, target_values):
+def calculate_loss(logits, wdl_logits, target_policies, target_wdl):
     log_policy = F.log_softmax(logits, dim=1)
 
     policy_loss = -(target_policies * log_policy).sum(dim=1).mean()
 
-    value_loss = F.mse_loss(values, target_values)
+    value_loss = -(target_wdl * F.log_softmax(wdl_logits, dim=1)).sum(dim=1).mean()
 
     return policy_loss + value_loss, policy_loss, value_loss
 
@@ -64,22 +64,22 @@ def run_epoch(model, loader, device, optimizer=None):
     policy_loss_sum = 0.0
     value_loss_sum = 0.0
 
-    for states, target_policies, target_values in loader:
+    for states, target_policies, target_wdl in loader:
         states = states.to(device)
         target_policies = target_policies.to(device)
-        target_values = target_values.to(device)
+        target_wdl = target_wdl.to(device)
 
         if training:
             optimizer.zero_grad(set_to_none=True)
 
         with torch.set_grad_enabled(training):
-            logits, values = model(states)
+            logits, wdl_logits = model(states)
 
             loss, policy_loss, value_loss = calculate_loss(
                 logits,
-                values,
+                wdl_logits,
                 target_policies,
-                target_values,
+                target_wdl,
             )
 
             if training:
@@ -136,7 +136,7 @@ def main():
 
         shards = replay_shards()
         print(f"Replay buffer: {len(shards)} shard(s)")
-        dataset = ChessDataset(shards)
+        dataset = CompactChessDataset(shards)
         print("Training positions:", len(dataset))
         wandb_logger.log(
             {"replay/shards": len(shards), "replay/positions": len(dataset)},
