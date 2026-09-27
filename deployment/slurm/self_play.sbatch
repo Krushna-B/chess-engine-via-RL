@@ -11,6 +11,7 @@ set -euo pipefail
 
 CONFIG_FILE=${CONFIG_FILE:?Set CONFIG_FILE to a Longleaf environment file}
 source "${CONFIG_FILE}"
+module load cuda/13.0
 
 CUDA_ROOT=${CUDA_ROOT:-/nas/longleaf/rhel9/apps/cuda/13.0}
 SELF_PLAY_BIN=${SELF_PLAY_BIN:-${REPO_ROOT}/build-longleaf-cuda13/self_play}
