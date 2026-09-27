@@ -7,7 +7,8 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-from torch.utils.data import DataLoader, random_split
+from torch.nn.parallel import DistributedDataParallel
+from torch.utils.data import DataLoader, DistributedSampler, random_split
 
 from chess_training.compact_dataset import CompactChessDataset
 from chess_training.chess_model import ChessTransformer
@@ -67,7 +68,7 @@ def calculate_loss(logits, wdl_logits, target_policies, target_wdl):
     return policy_loss + value_loss, policy_loss, value_loss
 
 
-def run_epoch(model, loader, device, optimizer=None):
+def run_epoch(model, loader, device, optimizer=None, distributed=False):
     training = optimizer is not None
     model.train(training)
 
@@ -84,7 +85,15 @@ def run_epoch(model, loader, device, optimizer=None):
         if training:
             optimizer.zero_grad(set_to_none=True)
 
-        with torch.set_grad_enabled(training):
+        autocast_enabled = device.type == "cuda" and torch.cuda.is_bf16_supported()
+        with (
+            torch.set_grad_enabled(training),
+            torch.autocast(
+                device_type=device.type,
+                dtype=torch.bfloat16,
+                enabled=autocast_enabled,
+            ),
+        ):
             logits, wdl_logits = model(states)
 
             loss, policy_loss, value_loss = calculate_loss(
@@ -111,10 +120,19 @@ def run_epoch(model, loader, device, optimizer=None):
         policy_loss_sum += policy_loss.item() * batch_size
         value_loss_sum += value_loss.item() * batch_size
 
+    metrics = torch.tensor(
+        [total_examples, total_loss_sum, policy_loss_sum, value_loss_sum],
+        device=device,
+        dtype=torch.float64,
+    )
+    if distributed:
+        torch.distributed.all_reduce(metrics, op=torch.distributed.ReduceOp.SUM)
+
+    count = metrics[0].item()
     return {
-        "total": total_loss_sum / total_examples,
-        "policy": policy_loss_sum / total_examples,
-        "value": value_loss_sum / total_examples,
+        "total": metrics[1].item() / count,
+        "policy": metrics[2].item() / count,
+        "value": metrics[3].item() / count,
     }
 
 
@@ -128,11 +146,25 @@ def choose_device():
     return torch.device("cpu")
 
 
+def setup_distributed():
+    if not torch.distributed.is_available() or "RANK" not in os.environ:
+        return 0, False, choose_device()
+
+    rank = int(os.environ["RANK"])
+    local_rank = int(os.environ["LOCAL_RANK"])
+    torch.distributed.init_process_group(backend="nccl")
+    torch.cuda.set_device(local_rank)
+    return rank, True, torch.device("cuda", local_rank)
+
+
 def main():
     torch.manual_seed(42)
 
+    rank, distributed, device = setup_distributed()
+    is_primary = rank == 0
+
     wandb_logger = WandbLogger(
-        WANDB_ENABLED,
+        WANDB_ENABLED and is_primary,
         {
             "generation": GENERATION,
             "replay_window": REPLAY_WINDOW,
@@ -143,7 +175,6 @@ def main():
     )
 
     try:
-        device = choose_device()
         print("Device:", device)
 
         shards = replay_shards()
@@ -185,9 +216,10 @@ def main():
         dataset = CompactChessDataset(examples)
         print("Training positions:", len(dataset))
         composition = summarize_examples(examples)
-        append_metric(
-            {"type": "dataset", **composition, "lc0_fraction_target": LC0_FRACTION}
-        )
+        if is_primary:
+            append_metric(
+                {"type": "dataset", **composition, "lc0_fraction_target": LC0_FRACTION}
+            )
         wandb_logger.log(
             {
                 "replay/shards": len(shards),
@@ -207,10 +239,20 @@ def main():
             generator=torch.Generator().manual_seed(42),
         )
 
+        train_sampler = (
+            DistributedSampler(train_dataset, shuffle=True) if distributed else None
+        )
+        validation_sampler = (
+            DistributedSampler(validation_dataset, shuffle=False)
+            if distributed
+            else None
+        )
+
         train_loader = DataLoader(
             train_dataset,
             batch_size=64,
-            shuffle=True,
+            shuffle=train_sampler is None,
+            sampler=train_sampler,
             num_workers=0,
         )
 
@@ -218,6 +260,7 @@ def main():
             validation_dataset,
             batch_size=64,
             shuffle=False,
+            sampler=validation_sampler,
             num_workers=0,
         )
 
@@ -232,21 +275,30 @@ def main():
             )
             print(f"Warm-started from {warm_start_path}")
 
+        if distributed:
+            model = DistributedDataParallel(model, device_ids=[device.index])
+
         optimizer = torch.optim.AdamW(
             model.parameters(),
             lr=LEARNING_RATE,
             weight_decay=1e-4,
         )
 
-        checkpoint_directory = REPO_ROOT / "artifacts/checkpoints"
+        checkpoint_directory = CHECKPOINT_DIR
         checkpoint_directory.mkdir(parents=True, exist_ok=True)
 
         best_validation_loss = float("inf")
         train_start = time.time()
 
         for epoch in range(1, NUMBER_OF_EPOCHS + 1):
-            train_metrics = run_epoch(model, train_loader, device, optimizer)
-            validation_metrics = run_epoch(model, validation_loader, device)
+            if train_sampler is not None:
+                train_sampler.set_epoch(epoch)
+            train_metrics = run_epoch(
+                model, train_loader, device, optimizer, distributed
+            )
+            validation_metrics = run_epoch(
+                model, validation_loader, device, None, distributed
+            )
 
             print(
                 f"Epoch {epoch:02d} | "
@@ -269,23 +321,30 @@ def main():
                 "val_policy": validation_metrics["policy"],
                 "val_value": validation_metrics["value"],
             }
-            append_metric(epoch_metrics)
+            if is_primary:
+                append_metric(epoch_metrics)
             wandb_logger.log(epoch_metrics, step=epoch)
 
-            torch.save(
-                {
-                    "epoch": epoch,
-                    "model_state_dict": model.state_dict(),
-                    "optimizer_state_dict": optimizer.state_dict(),
-                    "train_metrics": train_metrics,
-                    "validation_metrics": validation_metrics,
-                },
-                checkpoint_directory / "latest.pt",
-            )
+            if is_primary:
+                state_model = model.module if distributed else model
+                torch.save(
+                    {
+                        "epoch": epoch,
+                        "model_state_dict": state_model.state_dict(),
+                        "optimizer_state_dict": optimizer.state_dict(),
+                        "train_metrics": train_metrics,
+                        "validation_metrics": validation_metrics,
+                    },
+                    checkpoint_directory / "latest.pt",
+                )
 
             if validation_metrics["total"] < best_validation_loss:
                 best_validation_loss = validation_metrics["total"]
-                torch.save(model.state_dict(), checkpoint_directory / "best_model.pt")
+                if is_primary:
+                    state_model = model.module if distributed else model
+                    torch.save(
+                        state_model.state_dict(), checkpoint_directory / "best_model.pt"
+                    )
 
         final_metrics = {
             "type": "train",
@@ -296,13 +355,16 @@ def main():
             "learning_rate": LEARNING_RATE,
             "warm_started": warm_started,
             "best_val_total": best_validation_loss,
-            "parameters": model.count_parameters(),
+            "parameters": (model.module if distributed else model).count_parameters(),
             "duration_ms": int((time.time() - train_start) * 1000),
         }
-        append_metric(final_metrics)
+        if is_primary:
+            append_metric(final_metrics)
         wandb_logger.log(final_metrics, step=NUMBER_OF_EPOCHS)
     finally:
         wandb_logger.finish()
+        if distributed:
+            torch.distributed.destroy_process_group()
 
 
 if __name__ == "__main__":

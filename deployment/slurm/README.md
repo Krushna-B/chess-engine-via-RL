@@ -15,6 +15,24 @@ The generation job runs self-play, training, and TorchScript export in order.
 Use `self_play.sbatch` or `train.sbatch` when those stages need to be debugged
 independently.
 
+For one node with four GPUs and 64 CPU cores:
+
+```bash
+sbatch --export=ALL,CONFIG_FILE=$HOME/chess-engine-longleaf.env,GENERATION=1 \
+  deployment/slurm/multi_gpu_generation.sbatch
+```
+
+This launches four self-play workers. Each worker receives one GPU and 16 CPU
+cores, writes a unique shard, and records its own metrics file before the
+training and export stages start.
+
+Training uses one full model replica per GPU with DDP. To run training alone:
+
+```bash
+sbatch --export=ALL,CONFIG_FILE=$HOME/chess-engine-longleaf.env \
+  deployment/slurm/distributed_train.sbatch
+```
+
 Required cluster setup:
 
 1. Build the headless ML target with the cluster's LibTorch installation.

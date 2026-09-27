@@ -44,6 +44,7 @@ const int BATCH_SIZE = env_int("SELFPLAY_BATCH", 256);
 const int BATCH_TIMEOUT_US = env_int("SELFPLAY_BATCH_TIMEOUT_US", 1000);
 
 const int GENERATION = env_int("SELFPLAY_GENERATION", 0);
+const int WORKER_ID = env_int("SELFPLAY_WORKER_ID", 0);
 const std::string RUN_ID = env_str("RUN_ID", "adhoc");
 const std::string METRICS_PATH =
     env_str("METRICS_PATH", "artifacts/metrics/metrics.jsonl");
@@ -80,10 +81,14 @@ struct GameResult {
 
 std::uint8_t compact_castling_rights(const Position &position) {
   std::uint8_t rights = 0;
-  if (position.has_castling_rights(WHITE_QUEENSIDE)) rights |= 1;
-  if (position.has_castling_rights(WHITE_KINGSIDE)) rights |= 2;
-  if (position.has_castling_rights(BLACK_QUEENSIDE)) rights |= 4;
-  if (position.has_castling_rights(BLACK_KINGSIDE)) rights |= 8;
+  if (position.has_castling_rights(WHITE_QUEENSIDE))
+    rights |= 1;
+  if (position.has_castling_rights(WHITE_KINGSIDE))
+    rights |= 2;
+  if (position.has_castling_rights(BLACK_QUEENSIDE))
+    rights |= 4;
+  if (position.has_castling_rights(BLACK_KINGSIDE))
+    rights |= 8;
   return rights;
 }
 
@@ -100,13 +105,11 @@ compact_bitplanes(const EncodedPositionHistory &encoded) {
   return planes;
 }
 
-std::vector<CompactPolicyEntry>
-compact_policy(const PolicyArray &policy) {
+std::vector<CompactPolicyEntry> compact_policy(const PolicyArray &policy) {
   std::vector<CompactPolicyEntry> entries;
   for (std::size_t index = 0; index < policy.size(); ++index) {
     if (policy[index] > 0.0f) {
-      entries.push_back(
-          {static_cast<std::uint16_t>(index), policy[index]});
+      entries.push_back({static_cast<std::uint16_t>(index), policy[index]});
     }
   }
   return entries;
@@ -214,9 +217,9 @@ GameResult play_self_play_game(NeuralNetwork &network, int game_index) {
 
   game.examples.reserve(history.size());
   for (std::size_t ply = 0; ply < history.size(); ++ply) {
-    game.examples.push_back(make_training_example(
-        history[ply], game_index, static_cast<int>(ply), winning_side,
-        checkmate));
+    game.examples.push_back(make_training_example(history[ply], game_index,
+                                                  static_cast<int>(ply),
+                                                  winning_side, checkmate));
   }
 
   game.duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
@@ -244,9 +247,10 @@ void append_metric_line(const std::string &line) {
 std::string config_record(int games) {
   std::ostringstream o;
   o << "{\"type\":\"config\",\"run_id\":\"" << RUN_ID
-    << "\",\"generation\":" << GENERATION << ",\"games\":" << games
-    << ",\"simulations\":" << SIMULATIONS << ",\"max_plays\":" << MAX_PLAYS
-    << ",\"concurrency\":" << CONCURRENCY << ",\"batch_size\":" << BATCH_SIZE
+    << "\",\"generation\":" << GENERATION << ",\"worker_id\":" << WORKER_ID
+    << ",\"games\":" << games << ",\"simulations\":" << SIMULATIONS
+    << ",\"max_plays\":" << MAX_PLAYS << ",\"concurrency\":" << CONCURRENCY
+    << ",\"batch_size\":" << BATCH_SIZE
     << ",\"batch_timeout_us\":" << BATCH_TIMEOUT_US
     << ",\"temp_exploration_plies\":" << TEMP_EXPLORATION_PLIES
     << ",\"temp_high\":1.0,\"temp_low\":0.0}";
@@ -256,9 +260,10 @@ std::string config_record(int games) {
 std::string game_record(int game_index, const GameResult &game) {
   std::ostringstream o;
   o << "{\"type\":\"game\",\"run_id\":\"" << RUN_ID
-    << "\",\"generation\":" << GENERATION << ",\"game_index\":" << game_index
-    << ",\"plies\":" << game.plies << ",\"positions\":" << game.examples.size()
-    << ",\"result\":\"" << game.result << "\",\"cause\":\"" << game.cause
+    << "\",\"generation\":" << GENERATION << ",\"worker_id\":" << WORKER_ID
+    << ",\"game_index\":" << game_index << ",\"plies\":" << game.plies
+    << ",\"positions\":" << game.examples.size() << ",\"result\":\""
+    << game.result << "\",\"cause\":\"" << game.cause
     << "\",\"duration_ms\":" << game.duration_ms << "}";
   return o.str();
 }
@@ -341,9 +346,8 @@ std::string progress_record(int completed, int total, long elapsed_ms,
   std::ostringstream o;
   o << "{\"type\":\"selfplay_progress\",\"run_id\":\"" << RUN_ID
     << "\",\"generation\":" << GENERATION
-    << ",\"completed_games\":" << completed << ",\"total_games\":"
-    << total << ",\"positions\":" << positions
-    << ",\"games_per_sec\":" << games_per_sec
+    << ",\"completed_games\":" << completed << ",\"total_games\":" << total
+    << ",\"positions\":" << positions << ",\"games_per_sec\":" << games_per_sec
     << ",\"elapsed_ms\":" << elapsed_ms << "}";
   return o.str();
 }
@@ -405,7 +409,8 @@ int main(int argc, char **argv) {
           std::lock_guard<std::mutex> lock(shard_mutex);
           shard_writer.append(game.examples);
         }
-        completed_positions.fetch_add(static_cast<std::uint64_t>(game.positions));
+        completed_positions.fetch_add(
+            static_cast<std::uint64_t>(game.positions));
         game.examples.clear();
         const std::string line = game_record(game_index, game);
 
@@ -462,8 +467,8 @@ int main(int argc, char **argv) {
     shard_writer.close();
 
     std::cout << "Self-play: " << results.size() << " games, "
-              << shard_writer.example_count()
-              << " positions in " << selfplay_ms << " ms\n";
+              << shard_writer.example_count() << " positions in " << selfplay_ms
+              << " ms\n";
 
     std::vector<CompactTrainingExample> loaded =
         load_compact_training_examples(SHARD_PATH);
