@@ -1,4 +1,5 @@
 import os
+import warnings
 from pathlib import Path
 
 import torch
@@ -138,11 +139,13 @@ def main():
     # Record the model's tensor operations.
     # NOTE: do NOT torch.jit.freeze -- frozen weights become CONSTANTS that
     # don't move with module.to(cuda) in C++, causing a cpu/cuda mismatch.
-    traced_model = torch.jit.trace(
-        original_model,
-        example_input,
-        check_trace=False,
-    )
+    with warnings.catch_warnings():
+        warnings.filterwarnings("ignore", category=FutureWarning)
+        traced_model = torch.jit.trace(
+            original_model,
+            example_input,
+            check_trace=False,
+        )
 
     # Save architecture, operations, and parameters together.
     traced_model.save(str(OUTPUT_PATH))
@@ -150,10 +153,12 @@ def main():
     print(f"Saved LibTorch model: {OUTPUT_PATH}")
 
     # Load the artifact exactly as C++ will load it.
-    exported_model = torch.jit.load(
-        str(OUTPUT_PATH),
-        map_location="cpu",
-    )
+    with warnings.catch_warnings():
+        warnings.filterwarnings("ignore", category=FutureWarning)
+        exported_model = torch.jit.load(
+            str(OUTPUT_PATH),
+            map_location="cpu",
+        )
 
     exported_model.eval()
 

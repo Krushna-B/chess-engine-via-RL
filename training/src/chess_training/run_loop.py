@@ -12,6 +12,7 @@ import os
 import shutil
 import subprocess
 import sys
+import warnings
 from pathlib import Path
 
 import torch
@@ -72,7 +73,9 @@ def ensure_initial_model() -> None:
 
     # NOTE: no torch.jit.freeze -- frozen weights become CONSTANTS that don't
     # move with module.to(cuda) in C++, causing a cpu/cuda device mismatch.
-    traced = torch.jit.trace(model, example_input, check_trace=False)
+    with warnings.catch_warnings():
+        warnings.filterwarnings("ignore", category=FutureWarning)
+        traced = torch.jit.trace(model, example_input, check_trace=False)
     traced.save(str(JIT_MODEL))
 
     print(f"[bootstrap] wrote random initial model -> {JIT_MODEL}")

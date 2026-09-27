@@ -56,13 +56,6 @@ class ChessTransformer(nn.Module):
             policy: [B, 1858]
             value: [B, 3]
         """
-        if states.ndim != 4:
-            raise ValueError(f"Expected 4 dimensions, received {states.shape}")
-        if states.shape[1:] != (self.input_planes, 8, 8):
-            raise ValueError(
-                f"Expected [{self.input_planes}, 8, 8], received {states.shape[1:]}"
-            )
-
         tokens = states.flatten(2).transpose(1, 2)
         tokens = self.input_projection(tokens)
 
