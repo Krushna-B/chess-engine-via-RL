@@ -1,7 +1,7 @@
 [project]
 name = "chess-training"
 version = "0.1.0"
-description = "Add your description here"
+description = "Self-play data, training, and model export pipeline for the chess engine"
 readme = "README.md"
 authors = [
     { name = "Krushna-B", email = "Krushna.Bhanushali@unc.edu" }
@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.scripts]
-chess-training = "chess_training:main"
+chess-training = "chess_training.run_loop:main"
 
 [build-system]
 requires = ["uv_build>=0.10.10,<0.11.0"]

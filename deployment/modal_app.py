@@ -6,11 +6,14 @@ Generated shards and chekcpoint checkpoints live on a persistent Volume mounted 
 every iteration
 """
 
+from pathlib import Path
+
 import modal
 
 REPO = "/root/chess-engine"
 PACKAGE_SRC = f"{REPO}/training/src"
 ARTIFACTS = f"{REPO}/artifacts"
+LOCAL_REPO = str(Path(__file__).resolve().parents[1])
 
 image = (
     # CUDA *devel* base so the CUDA toolkit (nvcc + libs) is present at build
@@ -22,12 +25,10 @@ image = (
     .apt_install("build-essential", "git")
     # Modern CMake via pip -- the base image's apt cmake is 3.22, project needs >=3.23.
     .pip_install("numpy", "cmake")
-    .pip_install(
-        "torch==2.5.1", index_url="https://download.pytorch.org/whl/cu124"
-    )
+    .pip_install("torch==2.5.1", index_url="https://download.pytorch.org/whl/cu124")
     .env({"PYTHONPATH": PACKAGE_SRC})
     .add_local_dir(
-        ".",
+        LOCAL_REPO,
         remote_path=REPO,
         copy=True,
         ignore=[

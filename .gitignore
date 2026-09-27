@@ -1,9 +1,10 @@
-#Build Directories
-build
+# Build directories
+build/
+build-*/
 
 
-#Caches
-.cache
+# Caches
+.cache/
 
 #Data Aqusition Scripts
 scripts/fetch_assets.sh
@@ -14,16 +15,28 @@ scripts/fetch_assets.sh
 
 
 # Python
-.venv
+.venv/
 __pycache__/
 *.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
 
 # Generated training data / weights
 artifacts/
 *.bin
+*.pt
 
 # Old / superseded artifacts
 archive/
 
+# Generated evaluations and local run outputs
+benchmarks/results/
+results/
+*.pgn
+*.log
 
+# Local configuration (checked-in examples remain visible)
+.env
+.env.*

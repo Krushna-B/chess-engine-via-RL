@@ -1,0 +1,31 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "core",
+      "displayName": "Core engine (no GUI or LibTorch)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-core",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "BUILD_GUI": "OFF",
+        "BUILD_ML": "OFF"
+      }
+    },
+    {
+      "name": "headless-ml",
+      "displayName": "Headless engine with LibTorch",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-ml",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "BUILD_GUI": "OFF",
+        "BUILD_ML": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    { "name": "core", "configurePreset": "core" },
+    { "name": "headless-ml", "configurePreset": "headless-ml" }
+  ]
+}

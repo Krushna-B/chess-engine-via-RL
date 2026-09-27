@@ -2,9 +2,10 @@
 # Play the trained net (engine_neural + a JIT checkpoint) against the random
 # mover and then up a Stockfish Elo ladder, all through cutechess-cli.
 #
-#   MODEL=artifacts/eval/gen_0005_jit.pt scripts/run_eval.sh
+#   MODEL=artifacts/eval/gen_0005_jit.pt benchmarks/run_eval.sh
 #
-# Grab a checkpoint first with:  modal run modal_app.py::download --model ...
+# Grab a checkpoint first with:
+#   modal run deployment/modal_app.py::download --model ...
 set -uo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

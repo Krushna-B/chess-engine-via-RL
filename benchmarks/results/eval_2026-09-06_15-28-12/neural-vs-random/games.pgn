@@ -236,3 +236,205 @@ Ra8 {1.5s} 118. Kh1 Rc8 {1.5s} 119. Kg2 Re8 {1.5s} 120. Kh1 Rb8 {1.5s} 121. Kg2
 Rd8 {1.5s} 122. Kh2 Ra8 {1.5s} 123. Kg3 Rc8 {1.5s} 124. Kg4 Re8 {1.5s} 125. Kg3
 Rb8 {1.5s} 126. Kh2 Rd8 {1.5s} 127. Kg2 {Draw by 3-fold repetition} 1/2-1/2
 
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "7"]
+[White "NeuralNet"]
+[Black "Random"]
+[Result "1/2-1/2"]
+[ECO "A00"]
+[GameDuration "00:02:00"]
+[GameEndTime "2026-09-06T15:44:12.527 EDT"]
+[GameStartTime "2026-09-06T15:42:11.884 EDT"]
+[Opening "Amar (Paris) Opening"]
+[PlyCount "160"]
+[TimeControl "1.5/move"]
+
+1. Nh3 {1.5s} Nf6 2. a3 {1.5s} h6 3. Rg1 {1.5s} e5 4. Nc3 {1.5s} b5
+5. Nxb5 {1.5s} Nh5 6. g4 {1.5s} Qe7 7. d4 {1.5s} f5 8. f3 {1.5s} Kd8
+9. Nxc7 {1.5s} Qf7 10. Ne8 {1.5s} Bb4+ 11. Bd2 {1.5s} Qa2 12. Rxa2 {1.5s} Bc3
+13. Qc1 {1.5s} Ba6 14. gxh5 {1.5s} Bb5 15. Nd6 {1.5s} Re8 16. Nf7+ {1.5s} Kc8
+17. Nxe5 {1.5s} Bc6 18. Qb1 {1.5s} f4 19. Bxc3 {1.5s} Bb7 20. Ng6 {1.5s} Kc7
+21. b3 {1.5s} Bc6 22. Kf2 {1.5s} Kd8 23. e3 {1.5s} a5 24. Qe1 {1.5s} d6
+25. Qd2 {1.5s} Bd7 26. exf4 {1.5s} Rg8 27. Bb4 {1.5s} Bc6 28. Bc5 {1.5s} Ba4
+29. Ne7 {1.5s} d5 30. bxa4 {1.5s} Kd7 31. Nxg8 {1.5s} Ke6 32. Ng5+ {1.5s} Kf5
+33. Qc3 {1.5s} Ra7 34. Bd6 {1.5s} g6 35. Be7 {1.5s} Rxe7 36. Bh3+ {1.5s} Kxf4
+37. Bg4 {1.5s} Rh7 38. Re1 {1.5s} Nd7 39. Rh1 {1.5s} Nf6 40. Raa1 {1.5s} Rb7
+41. Nxf6 {1.5s} Rd7 42. Rad1 {1.5s} Kxg5 43. Rhf1 {1.5s} Rd6 44. Nh7+ {1.5s} Kh4
+45. hxg6 {1.5s} Rb6 46. Rb1 {1.5s} h5 47. Rbe1 {1.5s} Rc6 48. Bxh5 {1.5s} Kxh5
+49. Ng5 {1.5s} Rxc3 50. Nh7 {1.5s} Rc6 51. Rc1 {1.5s} Kh4 52. Rfd1 {1.5s} Ra6
+53. Rg1 {1.5s} Kh5 54. Rge1 {1.5s} Rf6 55. Rh1 {1.5s} Kxg6 56. c4 {1.5s} Kf5
+57. Ke3 {1.5s} Rh6 58. Rce1 {1.5s} Re6+ 59. Kd2 {1.5s} Re5 60. Rhf1 {1.5s} dxc4
+61. h3 {1.5s} Rb5 62. Ng5 {1.5s} Rb1 63. Rc1 {1.5s} Rb6 64. Rfd1 {1.5s} Rb7
+65. Rg1 {1.5s} Rb1 66. Rce1 {1.5s} Rb5 67. Rc1 {1.5s} Rb6 68. Rce1 {1.5s} Kf6
+69. Nh7+ {1.5s} Kf5 70. Ng5 {1.5s} Rb4 71. axb4 {1.5s} axb4 72. Rc1 {1.5s} b3
+73. Nh7 {1.5s} c3+ 74. Kxc3 {1.5s} Kf4 75. Kb2 {1.5s} Kxf3 76. Rce1 {1.5s} Kf4
+77. Rc1 {1.5s} Kf5 78. Rce1 {1.5s} Kf4 79. Rb1 {1.5s} Kf5 80. Rbe1 {1.5s}
+Kf4 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "8"]
+[White "Random"]
+[Black "NeuralNet"]
+[Result "0-1"]
+[ECO "A00"]
+[GameDuration "00:03:10"]
+[GameEndTime "2026-09-06T15:47:22.896 EDT"]
+[GameStartTime "2026-09-06T15:44:12.537 EDT"]
+[Opening "Van't Kruijs Opening"]
+[PlyCount "252"]
+[TimeControl "1.5/move"]
+
+1. e3 Nc6 {1.5s} 2. d3 e5 {1.5s} 3. Na3 Nf6 {1.5s} 4. Be2 Rb8 {1.5s} 5. b4
+Ng4 {1.5s} 6. d4 Nxd4 {1.5s} 7. c3 Nc2+ {1.5s} 8. Kf1 Nxf2 {1.5s} 9. Kxf2
+Nxa1 {1.5s} 10. h4 Be7 {1.5s} 11. Qd4 Kf8 {1.5s} 12. Kf1 exd4 {1.5s} 13. Bd2
+Nb3 {1.5s} 14. Bd1 Nc1 {1.5s} 15. exd4 Nd3 {1.5s} 16. d5 Nb2 {1.5s} 17. Bh5
+Nc4 {1.5s} 18. Bf3 Nxa3 {1.5s} 19. Bc1 Nb1 {1.5s} 20. Kf2 d6 {1.5s} 21. Bb2
+Nxc3 {1.5s} 22. g3 Nb1 {1.5s} 23. Be4 g6 {1.5s} 24. Bxb1 f6 {1.5s} 25. Bc2
+a6 {1.5s} 26. Be4 a5 {1.5s} 27. Ke1 Bd7 {1.5s} 28. bxa5 Ba4 {1.5s} 29. Be5
+Bb3 {1.5s} 30. Bxd6 Bxd6 {1.5s} 31. Bf5 Be5 {1.5s} 32. Ne2 Bxa2 {1.5s} 33. Nc3
+Bd4 {1.5s} 34. Bg4 Bxc3+ {1.5s} 35. Kd1 Bd2 {1.5s} 36. a6 Kg7 {1.5s} 37. Bc8
+Be1 {1.5s} 38. g4 Qe7 {1.5s} 39. Bf5 Bb1 {1.5s} 40. Bxb1 Rbd8 {1.5s} 41. Bf5
+Ra8 {1.5s} 42. axb7 Rac8 {1.5s} 43. Bxg6 Rce8 {1.5s} 44. b8=B Bg3 {1.5s} 45. Ba7
+Rb8 {1.5s} 46. Bc2 Bf2 {1.5s} 47. Re1 Bxe1 {1.5s} 48. d6 Rbd8 {1.5s} 49. Ba4
+Rhe8 {1.5s} 50. Bd4 Ra8 {1.5s} 51. Bd7 Rab8 {1.5s} 52. Kc1 Rbd8 {1.5s} 53. Be5
+Ra8 {1.5s} 54. g5 Rab8 {1.5s} 55. Kd1 Rbd8 {1.5s} 56. Bg4 Rg8 {1.5s} 57. Ba1
+Ra8 {1.5s} 58. Bh3 Rab8 {1.5s} 59. dxc7 Rgd8+ {1.5s} 60. Kc2 Rf8 {1.5s} 61. Bg4
+Rbd8 {1.5s} 62. Be6 Ra8 {1.5s} 63. Bc4 Rac8 {1.5s} 64. Be2 Rxc7+ {1.5s} 65. Kd1
+Rfc8 {1.5s} 66. Bf3 Bg3 {1.5s} 67. Bc3 Re8 {1.5s} 68. Bxf6+ Kg6 {1.5s} 69. Bg4
+Rb8 {1.5s} 70. Bf3 Bh2 {1.5s} 71. Be4+ Qxe4 {1.5s} 72. Bh8 Bg1 {1.5s} 73. Bf6
+Qb4 {1.5s} 74. Bb2 Rd8+ {1.5s} 75. Ke2 Re7+ {1.5s} 76. Be5 Rb7 {1.5s} 77. Bf4
+Ra8 {1.5s} 78. Kf3 Rc8 {1.5s} 79. Bd6 Qc3+ {1.5s} 80. Kg4 Re8 {1.5s} 81. Bc5
+Reb8 {1.5s} 82. Ba3 Rd8 {1.5s} 83. Bb2 Qd2 {1.5s} 84. Bg7 Ra8 {1.5s} 85. Bd4
+Qa2 {1.5s} 86. Bh8 Rc8 {1.5s} 87. Bc3 Re8 {1.5s} 88. Bb4 Reb8 {1.5s} 89. Bf8
+Rd7 {1.5s} 90. Ba3 Ra7 {1.5s} 91. Be7 Rd7 {1.5s} 92. Kg3 Rbd8 {1.5s} 93. Kh3
+Ra8 {1.5s} 94. Bb4 Rda7 {1.5s} 95. Kg3 Rc7 {1.5s} 96. h5+ Kf5 {1.5s} 97. Kh4
+Rac8 {1.5s} 98. Bd6 Re8 {1.5s} 99. Ba3 Rb8 {1.5s} 100. Bb4 Re7 {1.5s} 101. Ba5
+Reb7 {1.5s} 102. Bc7 Rd8 {1.5s} 103. h6 Ra8 {1.5s} 104. Be5 Rd7 {1.5s} 105. g6
+Rda7 {1.5s} 106. Bb8 Rc7 {1.5s} 107. gxh7 Kf4 {1.5s} 108. Ba7 Re7 {1.5s}
+109. Be3+ Kf3 {1.5s} 110. Bf2 Rb7 {1.5s} 111. Kg5 Qa4 {1.5s} 112. Be1 Qa6 {1.5s}
+113. Kh5 Rd7 {1.5s} 114. h8=B Qb5+ {1.5s} 115. Kh4 Rda7 {1.5s} 116. Bg3
+Rxh8 {1.5s} 117. Be5 Kg2 {1.5s} 118. Bh2 Re8 {1.5s} 119. h7 Rb8 {1.5s} 120. Be5
+Rh8 {1.5s} 121. Bg7 Rc7 {1.5s} 122. Kg4 Re7 {1.5s} 123. Bb2 Rb7 {1.5s} 124. Bc3
+Rd7 {1.5s} 125. Bg7 Re8 {1.5s} 126. h8=R Re4# {1.4s, Black mates} 0-1
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "9"]
+[White "NeuralNet"]
+[Black "Random"]
+[Result "1/2-1/2"]
+[ECO "A00"]
+[GameDuration "00:06:14"]
+[GameEndTime "2026-09-06T15:53:37.671 EDT"]
+[GameStartTime "2026-09-06T15:47:22.911 EDT"]
+[Opening "Amar (Paris) Opening"]
+[PlyCount "494"]
+[TimeControl "1.5/move"]
+
+1. Nh3 {1.5s} h5 2. g3 {1.5s} a6 3. Ng5 {1.5s} h4 4. b4 {1.5s} d5 5. gxh4 {1.5s}
+c5 6. d3 {1.5s} g6 7. Rg1 {1.5s} Bh3 8. Nxf7 {1.5s} Nf6 9. Nxd8 {1.5s} Nh5
+10. b5 {1.5s} Bc8 11. Qd2 {1.5s} b6 12. Nf7 {1.5s} d4 13. Ne5 {1.6s} axb5
+14. Nf7 {1.5s} Bd7 15. Ne5 {1.5s} e6 16. Nc3 {1.5s} Nf6 17. Nd5 {1.5s} Ng4
+18. Ne7 {1.5s} Bg7 19. Nd5 {1.5s} O-O 20. Nf6+ {1.5s} Rxf6 21. h5 {1.5s} Bc6
+22. Nxg6 {1.5s} Nxh2 23. Nf4 {1.5s} Rxa2 24. Nd5 {1.5s} Nf3+ 25. exf3 {1.5s} Rb2
+26. Nxf6+ {1.5s} Kf8 27. Nh7+ {1.5s} Ke8 28. Rxg7 {1.5s} Bd7 29. Rg2 {1.5s} b4
+30. c3 {1.5s} Kd8 31. Ng5 {1.5s} Be8 32. Rg3 {1.5s} Kc7 33. f4 {1.5s} e5
+34. Qxb2 {1.5s} Kd8 35. Qb3 {1.5s} Bb5 36. Qb2 {1.5s} exf4 37. Nf3 {1.5s} Bc4
+38. Nh4 {1.5s} Bb5 39. Ng2 {1.5s} c4 40. Rg7 {1.5s} Nd7 41. Qb3 {1.5s} Ke8
+42. Rg5 {1.5s} bxc3 43. Re5+ {1.5s} Nxe5 44. f3 {1.5s} cxb3 45. h6 {1.5s} Kf7
+46. h7 {1.5s} Nc6 47. Ra7+ {1.5s} Ne7 48. h8=Q {1.5s} Ba4 49. Be2 {1.5s} Bd7
+50. Ra5 {1.5s} Bc8 51. Ra6 {1.5s} Bg4 52. Bd2 {1.5s} Nd5 53. Ra4 {1.5s} cxd2+
+54. Kf2 {1.5s} Nb4 55. Ra5 {1.5s} d1=Q 56. Ra3 {1.5s} Qb1 57. Ra1 {1.5s} b5
+58. Ra7+ {1.5s} Bd7 59. Ra5 {1.5s} Qg1+ 60. Kxg1 {1.5s} b2 61. Ra3 {1.5s} b1=Q+
+62. Kh2 {1.5s} Qa2 63. Kh1 {1.5s} Qc2 64. Ra1 {1.5s} Qc6 65. Rd1 {1.5s} Qe4
+66. dxe4 {1.5s} Kg6 67. Rg1 {1.5s} Nc6 68. e5 {1.5s} Nxe5 69. Qf8 {1.5s} Nd3
+70. Bxd3+ {1.5s} Kh5 71. Qd8 {1.5s} Bf5 72. Qb8 {1.5s} Bh7 73. Be4 {1.5s} Bg8
+74. Kh2 {1.5s} b4 75. Re1 {1.5s} Kh6 76. Rh1 {1.5s} Bc4 77. Qe8 {1.5s} Kg7
+78. Qc8 {1.5s} Bf7 79. Qa8 {1.5s} Kh6 80. Qd8 {1.5s} Kg7 81. Qb8 {1.5s} Be6
+82. Rf1 {1.5s} Bf5 83. Bxf5 {1.5s} Kf6 84. Rd1 {1.5s} Kf7 85. Rg1 {1.5s} b3
+86. Be6+ {1.5s} Kg6 87. Re1 {1.5s} Kh7 88. Rh1 {1.5s} d3 89. Bd7 {1.5s} Kg7
+90. Rf1 {1.5s} b2 91. Rd1 {1.5s} b1=N 92. Bc8 {1.5s} Kh6 93. Rg1 {1.5s} Kg5
+94. Re1 {1.5s} Kh6 95. Rh1 {1.5s} Kg7 96. Rf1 {1.5s} Kf7 97. Rd1 {1.5s} Kg6
+98. Rg1 {1.5s} Kg7 99. Re1 {1.5s} Kh7 100. Rh1 {1.5s} Kg6 101. Rf1 {1.5s} Kf6
+102. Rd1 {1.5s} Ke7 103. Rg1 {1.5s} d2 104. Ba6 {1.5s} Nc3 105. Bd3 {1.5s} d1=N
+106. Re1+ {1.5s} Kf7 107. Bc4+ {1.5s} Kg6 108. Rh1 {1.5s} Kf6 109. Bb5 {1.5s}
+Ke6 110. Rf1 {1.5s} Ne2 111. Kh3 {1.5s} Kf5 112. Qe8 {1.5s} Ng3 113. Qc8+ {1.5s}
+Kg6 114. Be2 {1.5s} Ne3 115. Rd1 {1.5s} Nh5 116. Rg1 {1.5s} Kf6 117. Bd3 {1.5s}
+Ke7 118. Re1 {1.5s} Kf7 119. Rh1 {1.5s} Nf1 120. Bc4+ {1.5s} Kg6 121. Bb5 {1.7s}
+Nh2 122. Ba6 {1.5s} Nf6 123. Bd3+ {1.5s} Kg5 124. Rf1 {1.5s} Nd7 125. Rd1 {1.5s}
+Kf6 126. Rg1 {1.5s} Nf1 127. Bc4 {1.5s} Nc5 128. Qa8 {1.5s} Ke7 129. Bb5 {1.5s}
+Nb3 130. Ba6 {1.5s} Nbd2 131. Bd3 {1.5s} Nxf3 132. Bc4 {1.5s} Ng5+
+133. Kh4 {1.6s} Ne4 134. Bb5 {1.5s} Ke6 135. Be2 {1.5s} Ned2 136. Qa6+ {1.5s}
+Kf5 137. Qa4 {1.5s} Nb1 138. Qa2 {1.6s} Ke5 139. Kh5 {1.5s} Kd4 140. Kh6 {1.5s}
+Ne3 141. Kh7 {1.5s} Na3 142. Re1 {1.5s} Nd1 143. Rh1 {1.5s} f3 144. Bxf3 {1.5s}
+Ke5 145. Rf1 {1.5s} Kd4 146. Rh1 {1.5s} Ke5 147. Rf1 {1.5s} Nc2 148. Rh1 {1.5s}
+Kf5 149. Qb3 {1.5s} Nc3 150. Rf1 {1.5s} Nb5 151. Qb1 {1.5s} Ke5 152. Qxc2 {1.5s}
+Ke6 153. Rd1 {1.5s} Kf7 154. Rg1 {1.5s} Na3 155. Qb3+ {1.5s} Nc4 156. Qa4 {1.5s}
+Nd2 157. Re1 {1.5s} Ne4 158. Rh1 {1.5s} Nd2 159. Kh8 {1.5s} Ke6 160. Kh7 {1.5s}
+Ne4 161. Rf1 {1.5s} Nd6 162. Rd1 {1.5s} Kf6 163. Rg1 {1.5s} Kg5 164. Re1 {1.5s}
+Nb7 165. Rh1 {1.5s} Nd6 166. Rf1 {1.5s} Nb5 167. Rd1 {1.5s} Kf6 168. Rg1 {1.5s}
+Nc3 169. Qd4+ {1.5s} Ke6 170. Qc5 {1.5s} Nd5 171. Re1+ {1.5s} Ne3
+172. Rh1 {1.5s} Nc2 173. Kh8 {1.5s} Kf6 174. Kh7 {1.5s} Nd4 175. Qc3 {1.5s} Ke7
+176. Qb4+ {1.5s} Ke8 177. Rf1 {1.5s} Nc2 178. Qb3 {1.5s} Kd8 179. Rh1 {1.5s} Nd4
+180. Qb4 {1.5s} Nc6 181. Rf1 {1.5s} Nb8 182. Rd1+ {1.5s} Kc8 183. Rb1 {1.5s} Nc6
+184. Re1 {1.5s} Ne7 185. Rc1+ {1.5s} Nc6 186. Rf1 {1.5s} Nxb4 187. Kh8 {1.5s}
+Kd8 188. Kh7 {1.5s} Nc6 189. Be4 {1.5s} Na5 190. Kh8 {1.5s} Nb3 191. Kh7 {1.5s}
+Ke8 192. Kh8 {1.5s} Nd2 193. Rh1 {1.5s} Nf3 194. Kh7 {1.5s} Ne5 195. Kh8 {1.5s}
+Kf7 196. Bf5 {1.5s} Nd7 197. Kh7 {1.5s} Kf6 198. Be6 {1.5s} Nb6 199. Bb3 {1.5s}
+Ke7 200. Rh2 {1.5s} Kf6 201. Kh6 {1.5s} Nc4 202. Kh7 {1.5s} Nd6 203. Kh6 {1.5s}
+Ke7 204. Kg6 {1.5s} Kd7 205. Rh8 {1.5s} Kc6 206. Kg5 {1.5s} Nc4 207. Kg6 {1.5s}
+Na3 208. Kg5 {1.5s} Kb6 209. Kg6 {1.5s} Kc7 210. Kg5 {1.5s} Nc4 211. Kg6 {1.5s}
+Na5 212. Rh5 {1.5s} Nc4 213. Kg5 {1.5s} Na5 214. Kg6 {1.5s} Kb6 215. Rh8 {1.5s}
+Nxb3 216. Kg7 {1.5s} Kb5 217. Kg6 {1.5s} Kc4 218. Kf7 {1.5s} Kd5 219. Kf8 {1.5s}
+Nc5 220. Kf7 {1.5s} Kd4 221. Kf8 {1.5s} Nb3 222. Kf7 {1.5s} Ke4 223. Ke8 {1.5s}
+Nd2 224. Rh6 {1.5s} Nb3 225. Rh4+ {1.5s} Kd3 226. Rh2 {1.5s} Nd2 227. Rh5 {1.5s}
+Kc4 228. Rh3 {1.5s} Nb1 229. Rh1 {1.5s} Kb4 230. Ke7 {1.5s} Kc3 231. Ke8 {1.5s}
+Kb3 232. Ke7 {1.5s} Kb2 233. Ke6 {1.5s} Nc3 234. Ke5 {1.5s} Ne2 235. Ke4 {1.5s}
+Ka2 236. Ke3 {1.5s} Nd4 237. Rf1 {1.5s} Nf5+ 238. Ke4 {1.5s} Nh6 239. Ke3 {1.5s}
+Nf5+ 240. Rxf5 {1.5s} Ka1 241. Rf3 {1.5s} Ka2 242. Rf8 {1.5s} Kb2
+243. Rh8 {1.5s} Ka1 244. Ke4 {1.5s} Ka2 245. Ke3 {1.5s} Ka1 246. Ke4 {1.5s} Kb2
+247. Ke3 {1.5s} Ka1 {Draw by 3-fold repetition} 1/2-1/2
+
+[Event "?"]
+[Site "?"]
+[Date "2026.09.06"]
+[Round "10"]
+[White "Random"]
+[Black "NeuralNet"]
+[Result "0-1"]
+[ECO "A00"]
+[GameDuration "00:02:11"]
+[GameEndTime "2026-09-06T15:55:49.097 EDT"]
+[GameStartTime "2026-09-06T15:53:37.713 EDT"]
+[Opening "Clemenz (Mead's, Basman's or de Klerk's) Opening"]
+[PlyCount "174"]
+[TimeControl "1.5/move"]
+
+1. h3 Nh6 {1.5s} 2. Na3 Na6 {1.5s} 3. d4 Nc5 {1.5s} 4. b4 Ng4 {1.5s} 5. c3
+d5 {1.5s} 6. g3 Nxf2 {1.5s} 7. g4 Nxg4 {1.5s} 8. Be3 Nf2 {1.5s} 9. Kxf2
+Bg4 {1.5s} 10. Qd2 Rb8 {1.5s} 11. Re1 Nd3+ {1.5s} 12. exd3 g6 {1.5s} 13. Kg2
+Bxh3+ {1.5s} 14. Kf3 Bg7 {1.5s} 15. Kf4 Bh6+ {1.5s} 16. Kf3 Qd7 {1.5s} 17. Rh2
+Qe6 {1.5s} 18. Ne2 Bxf1 {1.5s} 19. Qc2 Bf4 {1.5s} 20. Kxf4 Bxe2 {1.5s} 21. Rh4
+Bd1 {1.5s} 22. Rhh1 Bf3 {1.5s} 23. Qd1 Rd8 {1.5s} 24. Qd2 Ra8 {1.5s} 25. Rb1
+Rb8 {1.5s} 26. Bg1 Rd8 {1.5s} 27. Qg2 Ra8 {1.5s} 28. Qe2 Rc8 {1.5s} 29. Rh5
+Rd8 {1.5s} 30. Rb2 Ra8 {1.5s} 31. Kg3 Rb8 {1.5s} 32. Qxf3 gxh5 {1.5s} 33. Qf1
+Rd8 {1.5s} 34. Be3 Rb8 {1.5s} 35. Rb1 Rc8 {1.5s} 36. Nc4 dxc4 {1.5s} 37. Qf2
+cxd3 {1.5s} 38. Qb2 Rd8 {1.5s} 39. d5 Rxd5 {1.5s} 40. Bf2 Rd7 {1.5s} 41. Ra1
+Rd8 {1.5s} 42. Bc5 Ra8 {1.5s} 43. Rd1 Rb8 {1.5s} 44. a3 Rc8 {1.5s} 45. Bd4
+Rd8 {1.5s} 46. Qg2 Ra8 {1.5s} 47. Bb6 Qxb6 {1.5s} 48. Qf3 f5 {1.5s} 49. c4
+Qb5 {1.5s} 50. Kg2 e6 {1.5s} 51. Qxd3 Qd7 {1.5s} 52. Kf1 Qe7 {1.5s} 53. Qd4
+Kf8 {1.5s} 54. Qb2 h4 {1.5s} 55. Rd7 h5 {1.5s} 56. Qxh8+ Kf7 {1.5s} 57. Rd4
+Rc8 {1.5s} 58. Qe8+ Kxe8 {1.5s} 59. Rd2 Kf8 {1.5s} 60. Rg2 Re8 {1.5s} 61. Rg6
+Rb8 {1.5s} 62. c5 Rd8 {1.5s} 63. Rh6 Ra8 {1.5s} 64. b5 Rc8 {1.5s} 65. b6
+Re8 {1.5s} 66. bxa7 Rb8 {1.5s} 67. axb8=B Kf7 {1.5s} 68. Rh8 e5 {1.5s} 69. Bxc7
+Qxc5 {1.5s} 70. Rh6 Qc1+ {1.5s} 71. Kf2 Qe1+ {1.5s} 72. Kxe1 f4 {1.5s} 73. Bb6
+f3 {1.5s} 74. Bg1 b6 {1.5s} 75. Bf2 Ke8 {1.5s} 76. Rh7 Kd8 {1.5s} 77. Rg7
+b5 {1.5s} 78. Bb6+ Ke8 {1.5s} 79. Bc5 e4 {1.5s} 80. Rf7 e3 {1.5s} 81. Re7+
+Kd8 {1.5s} 82. a4 bxa4 {1.5s} 83. Ba3 f2+ {1.5s} 84. Kf1 e2+ {1.5s} 85. Kg2
+f1=Q+ {1.5s} 86. Kh2 e1=Q {1.5s} 87. Re5 Qh1# {1.5s, Black mates} 0-1
+

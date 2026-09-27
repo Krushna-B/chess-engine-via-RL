@@ -6,11 +6,15 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# The raylib GUI (main) target is desktop-only. Disable it for headless
+# The raylib GUI target is desktop-only. Disable it for headless builds
 option(BUILD_GUI "Build the raylib GUI (main) target" ON)
+# LibTorch is not needed for move generation, perft, or the random UCI engine
+option(BUILD_ML "Build LibTorch-based self-play and neural-engine targets" ON)
 
-find_package(Torch REQUIRED)
-find_package(Threads REQUIRED)
+if(BUILD_ML)
+    find_package(Torch REQUIRED)
+    find_package(Threads REQUIRED)
+endif()
 
 #Compiler Flags
 set(COMMON_COMPILE_OPTIONS
@@ -23,7 +27,7 @@ set(COMMON_COMPILE_OPTIONS
 
 # Raise the constexpr evaluation limit. The flag name differs by compiler:
 # Clang (local/macOS) uses -fconstexpr-steps, GCC (Linux/Modal) uses
-# -fconstexpr-ops-limit.
+# -fconstexpr-ops-limit
 # Pulled out on its own so Torch targets (which don't take the warning flags)
 # can still raise the limit without inheriting the rest of COMMON_COMPILE_OPTIONS.
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
@@ -55,17 +59,11 @@ if(BUILD_GUI)
     target_compile_options(main PRIVATE ${COMMON_COMPILE_OPTIONS})
 endif()
 
-add_executable(generate_magic src/generate_magic.cpp)
-add_executable(perft src/perft.cpp src/board.cpp
+add_executable(generate_magic tools/generate_magic.cpp)
+add_executable(perft tools/perft.cpp src/board.cpp
     src/move_generator.cpp  src/move_list.cpp)
 add_executable(engine src/uci.cpp src/board.cpp
     src/move_generator.cpp src/move_list.cpp src/random_engine.cpp)
-
-
-add_executable(
-    torch_model_test
-    src/torch_model_test.cpp
-)
 
 
 # add_executable(monte_carlo_tree_search
@@ -74,103 +72,50 @@ add_executable(
 #     src/move_generator.cpp
 #     src/move_list.cpp)
 
-add_executable(self_play
-    src/self_play.cpp
-    src/neural_net.cpp
-    src/mcts.cpp
-    src/training_data.cpp
-    src/board.cpp
-    src/network_inference.cpp
-    src/move_generator.cpp
-    src/move_list.cpp
-)
-
 #Header search path
 target_include_directories(generate_magic PRIVATE include)
 target_include_directories(perft PRIVATE include)
 target_include_directories(engine PRIVATE include)
 # target_include_directories(monte_carlo_tree_search  PRIVATE include)
-target_include_directories(
-    torch_model_test
-    SYSTEM PRIVATE
-    ${TORCH_INCLUDE_DIRS}
-)
-
-
-#Linked Libraries
-target_link_libraries(
-    torch_model_test
-    PRIVATE
-    "${TORCH_LIBRARIES}"
-)
-
-
 target_compile_options(generate_magic PRIVATE ${COMMON_COMPILE_OPTIONS})
 target_compile_options(perft PRIVATE ${COMMON_COMPILE_OPTIONS})
 target_compile_options(engine PRIVATE ${COMMON_COMPILE_OPTIONS})
 # target_compile_options(monte_carlo_tree_search PRIVATE ${COMMON_COMPILE_OPTIONS})
-target_compile_options(self_play PRIVATE ${COMMON_COMPILE_OPTIONS})
-target_compile_options(
-    torch_model_test
-    PRIVATE
-    ${TORCH_CXX_FLAGS}
-)
 
-target_include_directories(
-    self_play
-    PRIVATE
-    include
-)
+if(BUILD_ML)
+    add_executable(torch_model_test tests/torch_model_test.cpp)
+    target_include_directories(torch_model_test SYSTEM PRIVATE ${TORCH_INCLUDE_DIRS})
+    target_link_libraries(torch_model_test PRIVATE "${TORCH_LIBRARIES}")
+    target_compile_options(torch_model_test PRIVATE ${TORCH_CXX_FLAGS})
 
-target_include_directories(
-    self_play
-    SYSTEM PRIVATE
-    ${TORCH_INCLUDE_DIRS}
-)
+    add_executable(self_play
+        src/self_play.cpp
+        src/neural_net.cpp
+        src/mcts.cpp
+        src/training_data.cpp
+        src/board.cpp
+        src/network_inference.cpp
+        src/move_generator.cpp
+        src/move_list.cpp
+    )
+    target_include_directories(self_play PRIVATE include)
+    target_include_directories(self_play SYSTEM PRIVATE ${TORCH_INCLUDE_DIRS})
+    target_link_libraries(self_play PRIVATE "${TORCH_LIBRARIES}" Threads::Threads)
+    target_compile_options(self_play PRIVATE ${COMMON_COMPILE_OPTIONS} ${TORCH_CXX_FLAGS})
 
-target_link_libraries(
-    self_play
-    PRIVATE
-    "${TORCH_LIBRARIES}"
-    Threads::Threads
-)
-
-target_compile_options(
-    self_play
-    PRIVATE
-    ${TORCH_CXX_FLAGS}
-)
-
-# Neural UCI engine: the trained net as a cutechess opponent. Shares the MCTS +
-# inference code with self_play; no training_data (it never writes shards).
-add_executable(engine_neural
-    src/uci_neural.cpp
-    src/neural_net.cpp
-    src/mcts.cpp
-    src/board.cpp
-    src/network_inference.cpp
-    src/move_generator.cpp
-    src/move_list.cpp
-)
-
-target_include_directories(engine_neural PRIVATE include)
-
-target_include_directories(
-    engine_neural
-    SYSTEM PRIVATE
-    ${TORCH_INCLUDE_DIRS}
-)
-
-target_link_libraries(
-    engine_neural
-    PRIVATE
-    "${TORCH_LIBRARIES}"
-    Threads::Threads
-)
-
-target_compile_options(
-    engine_neural
-    PRIVATE
-    ${TORCH_CXX_FLAGS}
-    ${CONSTEXPR_STEPS_OPTION}  # attacks.hpp LUTs blow the default constexpr limit
-)
+    # The trained net as a UCI/cutechess opponent. It shares MCTS and inference
+    # with self_play but never writes training shards
+    add_executable(engine_neural
+        src/uci_neural.cpp
+        src/neural_net.cpp
+        src/mcts.cpp
+        src/board.cpp
+        src/network_inference.cpp
+        src/move_generator.cpp
+        src/move_list.cpp
+    )
+    target_include_directories(engine_neural PRIVATE include)
+    target_include_directories(engine_neural SYSTEM PRIVATE ${TORCH_INCLUDE_DIRS})
+    target_link_libraries(engine_neural PRIVATE "${TORCH_LIBRARIES}" Threads::Threads)
+    target_compile_options(engine_neural PRIVATE ${TORCH_CXX_FLAGS} ${CONSTEXPR_STEPS_OPTION})
+endif()

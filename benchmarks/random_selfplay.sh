@@ -1,4 +1,4 @@
-! usr/bin/env bash
+#!/usr/bin/env bash
 
 set -euo pipefail
 
@@ -6,7 +6,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 CUTECHESS="$ROOT_DIR/build/cutechess/cutechess-cli"
 ENGINE="$ROOT_DIR/build/engine"
-RESULTS_DIR="$ROOT_DIR/results"
+RESULTS_DIR="${RESULTS_DIR:-$ROOT_DIR/benchmarks/results/random-selfplay}"
 
 mkdir -p "$RESULTS_DIR"
 
