@@ -22,6 +22,7 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 SELF_PLAY_BIN = Path(
     os.environ.get("SELF_PLAY_BIN", REPO_ROOT / "build" / "self_play")
 )
+SELF_PLAY_LD_LIBRARY_PATH = os.environ.get("SELF_PLAY_LD_LIBRARY_PATH")
 SELFPLAY_DIR = Path(
     os.environ.get("SELFPLAY_DIR", REPO_ROOT / "artifacts" / "selfplay")
 )
@@ -91,10 +92,10 @@ def prune_old_shards() -> None:
         stale.unlink()
 
 
-def run(cmd: list) -> None:
+def run(cmd: list, env: dict | None = None) -> None:
     printable = " ".join(str(part) for part in cmd)
     print(f"[run] {printable}", flush=True)
-    subprocess.run(cmd, cwd=REPO_ROOT, check=True)
+    subprocess.run(cmd, cwd=REPO_ROOT, check=True, env=env)
 
 
 def run_generation(generation: int) -> None:
@@ -106,7 +107,10 @@ def run_generation(generation: int) -> None:
     os.environ["SELFPLAY_GENERATION"] = str(generation)
 
     # 1. Generate self-play data with the current frozen model
-    run([str(SELF_PLAY_BIN), str(JIT_MODEL)])
+    self_play_env = os.environ.copy()
+    if SELF_PLAY_LD_LIBRARY_PATH:
+        self_play_env["LD_LIBRARY_PATH"] = SELF_PLAY_LD_LIBRARY_PATH
+    run([str(SELF_PLAY_BIN), str(JIT_MODEL)], env=self_play_env)
 
     # 2. Train on the replay buffer, warm-started from the previous generation
     run([sys.executable, "-m", "chess_training.train"])
