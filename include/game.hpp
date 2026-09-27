@@ -2,6 +2,7 @@
 
 #include "board.hpp"
 #include "move_list.hpp"
+#include "position_history.hpp"
 #include <ostream>
 #include <vector>
 
@@ -64,12 +65,11 @@ class Game {
 private:
   Position position{};
   std::vector<Move> moves_history{};
-  std::vector<u64> position_history{};
+  PositionHistory position_history{};
   GameStatus status = GameStatus::ONGOING;
 
   // Update results checking for end of game and 50 mvoe rule
   void update_result();
-  bool is_threefold_repetition() const;
 
 public:
   Game();

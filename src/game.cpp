@@ -26,7 +26,7 @@ void Game::update_result() {
     return;
   }
   // Threefodl repititon
-  if (is_threefold_repetition()) {
+  if (position_history.is_threefold_repetition()) {
     status = GameStatus::DRAW_THREE_FOLD_REPITITION;
     return;
   }
@@ -41,19 +41,8 @@ void Game::update_result() {
 
 Game::Game() {
   position.set_starting_position();
-  position_history.push_back(position.hash());
+  position_history.add_position(position.hash());
   update_result();
-}
-
-bool Game::is_threefold_repetition() const {
-  if (position_history.empty())
-    return false;
-  u64 current = position_history.back();
-  int count = 0;
-  for (u64 h : position_history)
-    if (h == current)
-      ++count;
-  return count >= 3;
 }
 
 GameStatus Game::get_status() const { return status; }
@@ -69,7 +58,7 @@ void Game::reset() {
   position.set_starting_position();
   moves_history.clear();
   position_history.clear();
-  position_history.push_back(position.hash());
+  position_history.add_position(position.hash());
 
   status = GameStatus::ONGOING;
   update_result();
@@ -96,7 +85,7 @@ bool Game::play_move(const Move &move) {
 
   position.make_move(move);
   moves_history.push_back(move);
-  position_history.push_back(position.hash());
+  position_history.add_position(position.hash());
   update_result();
   return true;
 }
