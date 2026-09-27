@@ -15,6 +15,8 @@ option(BUILD_ML "Build LibTorch-based self-play and neural-engine targets" ON)
 if(BUILD_ML)
     find_package(Torch REQUIRED)
     find_package(Threads REQUIRED)
+    set(CUDA_INCLUDE_DIR "" CACHE PATH
+        "CUDA headers used by the LibTorch inference targets")
 endif()
 
 #Compiler Flags
@@ -128,6 +130,10 @@ if(BUILD_ML)
         src/move_list.cpp
     )
     target_include_directories(mcts_repetition_test PRIVATE include)
+    if(CUDA_INCLUDE_DIR)
+        target_include_directories(mcts_repetition_test PRIVATE
+            "${CUDA_INCLUDE_DIR}")
+    endif()
     target_include_directories(mcts_repetition_test SYSTEM PRIVATE ${TORCH_INCLUDE_DIRS})
     target_link_libraries(mcts_repetition_test PRIVATE "${TORCH_LIBRARIES}" Threads::Threads)
     target_compile_options(mcts_repetition_test PRIVATE ${COMMON_COMPILE_OPTIONS} ${TORCH_CXX_FLAGS})
@@ -146,6 +152,9 @@ if(BUILD_ML)
         src/move_list.cpp
     )
     target_include_directories(self_play PRIVATE include)
+    if(CUDA_INCLUDE_DIR)
+        target_include_directories(self_play PRIVATE "${CUDA_INCLUDE_DIR}")
+    endif()
     target_include_directories(self_play SYSTEM PRIVATE ${TORCH_INCLUDE_DIRS})
     target_link_libraries(self_play PRIVATE "${TORCH_LIBRARIES}" Threads::Threads)
     target_compile_options(self_play PRIVATE ${COMMON_COMPILE_OPTIONS} ${TORCH_CXX_FLAGS})
@@ -163,6 +172,10 @@ if(BUILD_ML)
         src/move_list.cpp
     )
     target_include_directories(engine_neural PRIVATE include)
+    if(CUDA_INCLUDE_DIR)
+        target_include_directories(engine_neural PRIVATE
+            "${CUDA_INCLUDE_DIR}")
+    endif()
     target_include_directories(engine_neural SYSTEM PRIVATE ${TORCH_INCLUDE_DIRS})
     target_link_libraries(engine_neural PRIVATE "${TORCH_LIBRARIES}" Threads::Threads)
     target_compile_options(engine_neural PRIVATE ${TORCH_CXX_FLAGS} ${CONSTEXPR_STEPS_OPTION})
