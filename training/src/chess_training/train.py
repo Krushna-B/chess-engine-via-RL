@@ -10,6 +10,7 @@ from torch.utils.data import DataLoader, random_split
 
 from chess_training.chess_dataset import ChessDataset
 from chess_training.chess_model import ChessTransformer
+from chess_training.wandb_logging import WandbLogger
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 SELFPLAY_DIR = REPO_ROOT / "artifacts" / "selfplay"
@@ -26,6 +27,7 @@ REPLAY_WINDOW = int(os.environ.get("REPLAY_WINDOW", "20"))
 WARM_START = os.environ.get("WARM_START", "1") == "1"
 NUMBER_OF_EPOCHS = int(os.environ.get("TRAIN_EPOCHS", "5"))
 LEARNING_RATE = float(os.environ.get("TRAIN_LR", "3e-4"))
+WANDB_ENABLED = os.environ.get("WANDB_ENABLED", "0") == "1"
 
 
 def replay_shards():
@@ -117,86 +119,91 @@ def choose_device():
 def main():
     torch.manual_seed(42)
 
-    device = choose_device()
-    print("Device:", device)
-
-    shards = replay_shards()
-    print(f"Replay buffer: {len(shards)} shard(s)")
-    dataset = ChessDataset(shards)
-    print("Training positions:", len(dataset))
-
-    train_size = int(0.9 * len(dataset))
-    validation_size = len(dataset) - train_size
-
-    train_dataset, validation_dataset = random_split(
-        dataset,
-        [train_size, validation_size],
-        generator=torch.Generator().manual_seed(42),
+    wandb_logger = WandbLogger(
+        WANDB_ENABLED,
+        {
+            "generation": GENERATION,
+            "replay_window": REPLAY_WINDOW,
+            "epochs": NUMBER_OF_EPOCHS,
+            "learning_rate": LEARNING_RATE,
+            "warm_start": WARM_START,
+        },
     )
 
-    train_loader = DataLoader(
-        train_dataset,
-        batch_size=64,
-        shuffle=True,
-        num_workers=0,
-    )
+    try:
+        device = choose_device()
+        print("Device:", device)
 
-    validation_loader = DataLoader(
-        validation_dataset,
-        batch_size=64,
-        shuffle=False,
-        num_workers=0,
-    )
+        shards = replay_shards()
+        print(f"Replay buffer: {len(shards)} shard(s)")
+        dataset = ChessDataset(shards)
+        print("Training positions:", len(dataset))
+        wandb_logger.log(
+            {"replay/shards": len(shards), "replay/positions": len(dataset)},
+            step=0,
+        )
 
-    model = ChessTransformer().to(device)
+        train_size = int(0.9 * len(dataset))
+        validation_size = len(dataset) - train_size
+
+        train_dataset, validation_dataset = random_split(
+            dataset,
+            [train_size, validation_size],
+            generator=torch.Generator().manual_seed(42),
+        )
+
+        train_loader = DataLoader(
+            train_dataset,
+            batch_size=64,
+            shuffle=True,
+            num_workers=0,
+        )
+
+        validation_loader = DataLoader(
+            validation_dataset,
+            batch_size=64,
+            shuffle=False,
+            num_workers=0,
+        )
+
+        model = ChessTransformer().to(device)
 
     # Warm-start from the previous generation so learning compounds.
-    warm_start_path = CHECKPOINT_DIR / "best_model.pt"
-    warm_started = WARM_START and warm_start_path.exists()
-    if warm_started:
-        model.load_state_dict(
-            torch.load(warm_start_path, map_location=device, weights_only=True)
-        )
-        print(f"Warm-started from {warm_start_path}")
+        warm_start_path = CHECKPOINT_DIR / "best_model.pt"
+        warm_started = WARM_START and warm_start_path.exists()
+        if warm_started:
+            model.load_state_dict(
+                torch.load(warm_start_path, map_location=device, weights_only=True)
+            )
+            print(f"Warm-started from {warm_start_path}")
 
-    optimizer = torch.optim.AdamW(
-        model.parameters(),
-        lr=LEARNING_RATE,
-        weight_decay=1e-4,
-    )
-
-    checkpoint_directory = REPO_ROOT / "artifacts/checkpoints"
-    checkpoint_directory.mkdir(parents=True, exist_ok=True)
-
-    best_validation_loss = float("inf")
-    train_start = time.time()
-
-    for epoch in range(1, NUMBER_OF_EPOCHS + 1):
-        train_metrics = run_epoch(
-            model,
-            train_loader,
-            device,
-            optimizer,
+        optimizer = torch.optim.AdamW(
+            model.parameters(),
+            lr=LEARNING_RATE,
+            weight_decay=1e-4,
         )
 
-        validation_metrics = run_epoch(
-            model,
-            validation_loader,
-            device,
-        )
+        checkpoint_directory = REPO_ROOT / "artifacts/checkpoints"
+        checkpoint_directory.mkdir(parents=True, exist_ok=True)
 
-        print(
-            f"Epoch {epoch:02d} | "
-            f"train={train_metrics['total']:.4f} "
-            f"(policy={train_metrics['policy']:.4f}, "
-            f"value={train_metrics['value']:.4f}) | "
-            f"validation={validation_metrics['total']:.4f} "
-            f"(policy={validation_metrics['policy']:.4f}, "
-            f"value={validation_metrics['value']:.4f})"
-        )
+        best_validation_loss = float("inf")
+        train_start = time.time()
 
-        append_metric(
-            {
+        for epoch in range(1, NUMBER_OF_EPOCHS + 1):
+            train_metrics = run_epoch(model, train_loader, device, optimizer)
+            validation_metrics = run_epoch(model, validation_loader, device)
+
+            print(
+                f"Epoch {epoch:02d} | "
+                f"train={train_metrics['total']:.4f} "
+                f"(policy={train_metrics['policy']:.4f}, "
+                f"value={train_metrics['value']:.4f}) | "
+                f"validation={validation_metrics['total']:.4f} "
+                f"(policy={validation_metrics['policy']:.4f}, "
+                f"value={validation_metrics['value']:.4f})"
+            )
+
+            epoch_metrics = {
                 "type": "train_epoch",
                 "epoch": epoch,
                 "learning_rate": LEARNING_RATE,
@@ -207,29 +214,25 @@ def main():
                 "val_policy": validation_metrics["policy"],
                 "val_value": validation_metrics["value"],
             }
-        )
-
-        torch.save(
-            {
-                "epoch": epoch,
-                "model_state_dict": model.state_dict(),
-                "optimizer_state_dict": optimizer.state_dict(),
-                "train_metrics": train_metrics,
-                "validation_metrics": validation_metrics,
-            },
-            checkpoint_directory / "latest.pt",
-        )
-
-        if validation_metrics["total"] < best_validation_loss:
-            best_validation_loss = validation_metrics["total"]
+            append_metric(epoch_metrics)
+            wandb_logger.log(epoch_metrics, step=epoch)
 
             torch.save(
-                model.state_dict(),
-                checkpoint_directory / "best_model.pt",
+                {
+                    "epoch": epoch,
+                    "model_state_dict": model.state_dict(),
+                    "optimizer_state_dict": optimizer.state_dict(),
+                    "train_metrics": train_metrics,
+                    "validation_metrics": validation_metrics,
+                },
+                checkpoint_directory / "latest.pt",
             )
 
-    append_metric(
-        {
+            if validation_metrics["total"] < best_validation_loss:
+                best_validation_loss = validation_metrics["total"]
+                torch.save(model.state_dict(), checkpoint_directory / "best_model.pt")
+
+        final_metrics = {
             "type": "train",
             "device": str(device),
             "shards": len(shards),
@@ -241,7 +244,10 @@ def main():
             "parameters": model.count_parameters(),
             "duration_ms": int((time.time() - train_start) * 1000),
         }
-    )
+        append_metric(final_metrics)
+        wandb_logger.log(final_metrics, step=NUMBER_OF_EPOCHS)
+    finally:
+        wandb_logger.finish()
 
 
 if __name__ == "__main__":

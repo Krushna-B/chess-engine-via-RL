@@ -13,6 +13,9 @@ dependencies = [
     "torch>=2.14.0",
 ]
 
+[project.optional-dependencies]
+tracking = ["wandb>=0.19.0"]
+
 [project.scripts]
 chess-training = "chess_training.run_loop:main"
 
