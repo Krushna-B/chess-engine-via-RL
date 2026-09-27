@@ -68,28 +68,10 @@ void validate_example(const CompactTrainingExample &example) {
   }
 }
 
-} // namespace
-
-void save_compact_training_examples(
-    const std::string &filename,
-    const std::vector<CompactTrainingExample> &examples) {
-  static_assert(sizeof(float) == 4);
-  static_assert(sizeof(std::uint64_t) == 8);
-
-  std::ofstream output(filename, std::ios::binary | std::ios::trunc);
-
-  if (!output.is_open()) {
-    throw std::runtime_error("Could not open output file: " + filename);
-  }
-
-  for (const CompactTrainingExample &example : examples) {
-    validate_example(example);
-  }
-
+void write_header(std::ofstream &output, std::uint64_t example_count) {
   std::uint32_t input_planes = COMPACT_INPUT_PLANES;
   std::uint32_t bitplanes = COMPACT_BITPLANES;
   std::uint32_t policy_size = COMPACT_POLICY_SIZE;
-  std::uint64_t example_count = examples.size();
 
   write_value(output, COMPACT_DATASET_MAGIC);
   write_value(output, COMPACT_DATASET_VERSION);
@@ -97,36 +79,103 @@ void save_compact_training_examples(
   write_value(output, bitplanes);
   write_value(output, policy_size);
   write_value(output, example_count);
+}
+
+void write_example(std::ofstream &output,
+                   const CompactTrainingExample &example) {
+  write_value(output, example.game_id);
+  write_value(output, example.ply);
+
+  std::uint8_t source = static_cast<std::uint8_t>(example.source);
+  std::uint8_t reserved = 0;
+  std::uint16_t policy_count =
+      static_cast<std::uint16_t>(example.policy.size());
+
+  write_value(output, source);
+  write_value(output, example.castling_rights);
+  write_value(output, example.side_to_move);
+  write_value(output, reserved);
+  write_value(output, example.rule50_count);
+  write_value(output, policy_count);
+
+  for (std::uint64_t plane : example.planes) {
+    write_value(output, plane);
+  }
+  for (float value : example.wdl) {
+    write_value(output, value);
+  }
+  write_value(output, example.moves_left);
+
+  for (const CompactPolicyEntry &entry : example.policy) {
+    write_value(output, entry.index);
+    write_value(output, entry.probability);
+  }
+}
+
+} // namespace
+
+struct CompactTrainingDataWriter::Impl {
+  std::ofstream output;
+  std::uint64_t count = 0;
+  bool closed = false;
+
+  explicit Impl(const std::string &filename)
+      : output(filename, std::ios::binary | std::ios::trunc) {
+    if (!output.is_open()) {
+      throw std::runtime_error("Could not open output file: " + filename);
+    }
+    write_header(output, 0);
+  }
+};
+
+CompactTrainingDataWriter::CompactTrainingDataWriter(
+    const std::string &filename)
+    : impl_(std::make_unique<Impl>(filename)) {}
+
+CompactTrainingDataWriter::~CompactTrainingDataWriter() {
+  try {
+    close();
+  } catch (...) {
+  }
+}
+
+void CompactTrainingDataWriter::append(
+    const std::vector<CompactTrainingExample> &examples) {
+  if (!impl_ || impl_->closed) {
+    throw std::runtime_error("Compact training-data writer is closed");
+  }
 
   for (const CompactTrainingExample &example : examples) {
-    write_value(output, example.game_id);
-    write_value(output, example.ply);
-
-    std::uint8_t source = static_cast<std::uint8_t>(example.source);
-    std::uint8_t reserved = 0;
-    std::uint16_t policy_count =
-        static_cast<std::uint16_t>(example.policy.size());
-
-    write_value(output, source);
-    write_value(output, example.castling_rights);
-    write_value(output, example.side_to_move);
-    write_value(output, reserved);
-    write_value(output, example.rule50_count);
-    write_value(output, policy_count);
-
-    for (std::uint64_t plane : example.planes) {
-      write_value(output, plane);
-    }
-    for (float value : example.wdl) {
-      write_value(output, value);
-    }
-    write_value(output, example.moves_left);
-
-    for (const CompactPolicyEntry &entry : example.policy) {
-      write_value(output, entry.index);
-      write_value(output, entry.probability);
-    }
+    validate_example(example);
+    write_example(impl_->output, example);
+    ++impl_->count;
   }
+}
+
+void CompactTrainingDataWriter::close() {
+  if (!impl_ || impl_->closed) {
+    return;
+  }
+
+  impl_->output.seekp(20);
+  write_value(impl_->output, impl_->count);
+  impl_->output.close();
+  impl_->closed = true;
+}
+
+std::uint64_t CompactTrainingDataWriter::example_count() const {
+  return impl_ ? impl_->count : 0;
+}
+
+void save_compact_training_examples(
+    const std::string &filename,
+    const std::vector<CompactTrainingExample> &examples) {
+  static_assert(sizeof(float) == 4);
+  static_assert(sizeof(std::uint64_t) == 8);
+
+  CompactTrainingDataWriter writer(filename);
+  writer.append(examples);
+  writer.close();
 }
 
 std::vector<CompactTrainingExample>
@@ -154,10 +203,9 @@ load_compact_training_examples(const std::string &filename) {
   read_value(input, policy_size);
   read_value(input, example_count);
 
-  if (magic != COMPACT_DATASET_MAGIC ||
-      version != COMPACT_DATASET_VERSION ||
-      input_planes != COMPACT_INPUT_PLANES ||
-      bitplanes != COMPACT_BITPLANES || policy_size != COMPACT_POLICY_SIZE) {
+  if (magic != COMPACT_DATASET_MAGIC || version != COMPACT_DATASET_VERSION ||
+      input_planes != COMPACT_INPUT_PLANES || bitplanes != COMPACT_BITPLANES ||
+      policy_size != COMPACT_POLICY_SIZE) {
     throw std::runtime_error("Unsupported compact training-data header");
   }
 

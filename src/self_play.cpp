@@ -70,6 +70,7 @@ float temperature_for_play(int play) {
 
 struct GameResult {
   std::vector<CompactTrainingExample> examples;
+  int positions = 0;
   int plies = 0;
   std::string result; // "white_win" | "black_win" | "draw"
   std::string cause;  // checkmate | stalemate | fifty_move | insufficient |
@@ -221,6 +222,7 @@ GameResult play_self_play_game(NeuralNetwork &network, int game_index) {
   game.duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
                          std::chrono::steady_clock::now() - game_start)
                          .count();
+  game.positions = static_cast<int>(game.examples.size());
 
   return game;
 }
@@ -299,7 +301,7 @@ std::string selfplay_record(const std::vector<GameResult> &results,
   int max_plies = 0;
 
   for (const GameResult &game : results) {
-    total_positions += static_cast<long>(game.examples.size());
+    total_positions += game.positions;
     sum_plies += game.plies;
     min_plies = std::min(min_plies, game.plies);
     max_plies = std::max(max_plies, game.plies);
@@ -329,6 +331,20 @@ std::string selfplay_record(const std::vector<GameResult> &results,
     << ",\"min_plies\":" << min_plies << ",\"max_plies\":" << max_plies
     << ",\"mean_plies\":" << mean_plies << ",\"duration_ms\":" << selfplay_ms
     << "}";
+  return o.str();
+}
+
+std::string progress_record(int completed, int total, long elapsed_ms,
+                            std::uint64_t positions) {
+  const double games_per_sec =
+      elapsed_ms > 0 ? completed / (elapsed_ms / 1000.0) : 0.0;
+  std::ostringstream o;
+  o << "{\"type\":\"selfplay_progress\",\"run_id\":\"" << RUN_ID
+    << "\",\"generation\":" << GENERATION
+    << ",\"completed_games\":" << completed << ",\"total_games\":"
+    << total << ",\"positions\":" << positions
+    << ",\"games_per_sec\":" << games_per_sec
+    << ",\"elapsed_ms\":" << elapsed_ms << "}";
   return o.str();
 }
 
@@ -368,8 +384,14 @@ int main(int argc, char **argv) {
     // inference/throughput snapshot, so metrics accrue incrementally.
     std::vector<GameResult> results;
     std::atomic<int> next_game{0};
+    std::atomic<int> completed_games{0};
+    std::atomic<std::uint64_t> completed_positions{0};
     std::mutex results_mutex;
+    std::mutex shard_mutex;
     const auto selfplay_start = std::chrono::steady_clock::now();
+    std::filesystem::create_directories(
+        std::filesystem::path(SHARD_PATH).parent_path());
+    CompactTrainingDataWriter shard_writer(SHARD_PATH);
 
     auto worker = [&]() {
       while (true) {
@@ -379,13 +401,19 @@ int main(int argc, char **argv) {
         }
 
         GameResult game = play_self_play_game(network, game_index);
+        {
+          std::lock_guard<std::mutex> lock(shard_mutex);
+          shard_writer.append(game.examples);
+        }
+        completed_positions.fetch_add(static_cast<std::uint64_t>(game.positions));
+        game.examples.clear();
         const std::string line = game_record(game_index, game);
 
         int completed;
         {
           std::lock_guard<std::mutex> lock(results_mutex);
           results.push_back(std::move(game));
-          completed = static_cast<int>(results.size());
+          completed = completed_games.fetch_add(1) + 1;
         }
 
         append_metric_line(line);
@@ -395,6 +423,14 @@ int main(int argc, char **argv) {
               std::chrono::duration_cast<std::chrono::milliseconds>(
                   std::chrono::steady_clock::now() - selfplay_start)
                   .count();
+          const double games_per_sec =
+              elapsed > 0 ? completed / (elapsed / 1000.0) : 0.0;
+          std::cout << "[self-play] " << completed << "/" << GAMES_PER_SHARD
+                    << " games, " << completed_positions.load()
+                    << " positions, " << games_per_sec << " games/s\n"
+                    << std::flush;
+          append_metric_line(progress_record(
+              completed, GAMES_PER_SHARD, elapsed, completed_positions.load()));
           append_metric_line(
               inference_record("inference_progress", network.stats(), elapsed));
         }
@@ -423,28 +459,21 @@ int main(int argc, char **argv) {
     append_metric_line(
         inference_record("inference", network.stats(), selfplay_ms));
 
-    std::vector<CompactTrainingExample> shard;
-    shard.reserve(static_cast<std::size_t>(GAMES_PER_SHARD) * 200);
-    for (GameResult &game : results) {
-      shard.insert(shard.end(), std::make_move_iterator(game.examples.begin()),
-                   std::make_move_iterator(game.examples.end()));
-    }
+    shard_writer.close();
 
-    std::filesystem::create_directories(
-        std::filesystem::path(SHARD_PATH).parent_path());
-    save_compact_training_examples(SHARD_PATH, shard);
-
-    std::cout << "Self-play: " << results.size() << " games, " << shard.size()
+    std::cout << "Self-play: " << results.size() << " games, "
+              << shard_writer.example_count()
               << " positions in " << selfplay_ms << " ms\n";
 
     std::vector<CompactTrainingExample> loaded =
         load_compact_training_examples(SHARD_PATH);
 
-    std::cout << "Original shard examples: " << shard.size() << '\n';
+    std::cout << "Original shard examples: " << shard_writer.example_count()
+              << '\n';
 
     std::cout << "Loaded shard examples: " << loaded.size() << '\n';
 
-    if (loaded.size() != shard.size()) {
+    if (loaded.size() != shard_writer.example_count()) {
       throw std::runtime_error("Shard example count mismatch");
     }
 

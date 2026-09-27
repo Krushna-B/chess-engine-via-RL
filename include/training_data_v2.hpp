@@ -3,6 +3,7 @@
 #include <array>
 #include <cstddef>
 #include <cstdint>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -33,6 +34,22 @@ struct CompactTrainingExample {
   std::uint64_t game_id{};
   std::uint32_t ply{};
   TrainingSource source{TrainingSource::SELF_PLAY};
+};
+
+class CompactTrainingDataWriter {
+public:
+  explicit CompactTrainingDataWriter(const std::string &filename);
+  ~CompactTrainingDataWriter();
+  CompactTrainingDataWriter(const CompactTrainingDataWriter &) = delete;
+  CompactTrainingDataWriter &operator=(const CompactTrainingDataWriter &) = delete;
+
+  void append(const std::vector<CompactTrainingExample> &examples);
+  void close();
+  std::uint64_t example_count() const;
+
+private:
+  struct Impl;
+  std::unique_ptr<Impl> impl_;
 };
 
 void save_compact_training_examples(
