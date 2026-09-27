@@ -41,5 +41,8 @@ Required cluster setup:
    checkpoints and metrics separately.
 4. Set `WANDB_API_KEY` in the job environment or use `WANDB_MODE=offline`.
 
+Set `APPTAINER_IMAGE` to the built `.sif` file to run jobs inside Apptainer.
+Leave it empty to use the host environment during initial debugging.
+
 The scripts write shards, checkpoints, immutable model snapshots, and JSONL
 metrics under `ARTIFACT_ROOT`.

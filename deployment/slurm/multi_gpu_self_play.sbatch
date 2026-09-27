@@ -15,7 +15,7 @@ source "${CONFIG_FILE}"
 
 cd "${REPO_ROOT}"
 mkdir -p "${ARTIFACT_ROOT}/slurm"
-export REPO_ROOT ARTIFACT_ROOT
+export REPO_ROOT ARTIFACT_ROOT APPTAINER_IMAGE
 
 export SELFPLAY_DIR="${ARTIFACT_ROOT}/selfplay"
 export GENERATION=${GENERATION:-0}
@@ -25,6 +25,13 @@ srun --cpu-bind=cores bash -c '
   export SELFPLAY_WORKER_ID="${worker_id}"
   export SELFPLAY_SHARD_PATH="${ARTIFACT_ROOT}/selfplay/gen_${GENERATION}_worker_${worker_id}.bin"
   export METRICS_PATH="${ARTIFACT_ROOT}/metrics/gen_${GENERATION}_worker_${worker_id}.jsonl"
-  exec "${REPO_ROOT}/build/self_play" \
-    "${ARTIFACT_ROOT}/checkpoints/chess_model_jit.pt"
+  if [[ -n "${APPTAINER_IMAGE:-}" ]]; then
+    exec apptainer exec --nv \
+      --bind "${REPO_ROOT}:${REPO_ROOT},${ARTIFACT_ROOT}:${ARTIFACT_ROOT}" \
+      "${APPTAINER_IMAGE}" "${REPO_ROOT}/build/self_play" \
+      "${ARTIFACT_ROOT}/checkpoints/chess_model_jit.pt"
+  else
+    exec "${REPO_ROOT}/build/self_play" \
+      "${ARTIFACT_ROOT}/checkpoints/chess_model_jit.pt"
+  fi
 '

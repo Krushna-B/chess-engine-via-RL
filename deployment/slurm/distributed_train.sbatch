@@ -19,7 +19,14 @@ export SELFPLAY_DIR="${ARTIFACT_ROOT}/selfplay"
 export METRICS_PATH="${ARTIFACT_ROOT}/metrics/train_${SLURM_JOB_ID}.jsonl"
 export CHECKPOINT_DIR="${ARTIFACT_ROOT}/checkpoints"
 
-uv run --project training torchrun \
-  --standalone \
-  --nproc_per_node="${SLURM_GPUS_ON_NODE:-4}" \
-  -m chess_training.train
+if [[ -n "${APPTAINER_IMAGE:-}" ]]; then
+  apptainer exec --nv \
+    --bind "${REPO_ROOT}:${REPO_ROOT},${ARTIFACT_ROOT}:${ARTIFACT_ROOT}" \
+    "${APPTAINER_IMAGE}" torchrun \
+    --standalone --nproc_per_node="${SLURM_GPUS_ON_NODE:-4}" \
+    -m chess_training.train
+else
+  uv run --project training torchrun \
+    --standalone --nproc_per_node="${SLURM_GPUS_ON_NODE:-4}" \
+    -m chess_training.train
+fi

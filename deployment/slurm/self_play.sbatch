@@ -17,4 +17,12 @@ mkdir -p "${ARTIFACT_ROOT}/slurm"
 export SELFPLAY_SHARD_PATH="${ARTIFACT_ROOT}/selfplay/neural_selfplay_shard_${SLURM_JOB_ID}.bin"
 export METRICS_PATH="${ARTIFACT_ROOT}/metrics/selfplay_${SLURM_JOB_ID}.jsonl"
 
-srun "${REPO_ROOT}/build/self_play" "${ARTIFACT_ROOT}/checkpoints/chess_model_jit.pt"
+if [[ -n "${APPTAINER_IMAGE:-}" ]]; then
+  srun apptainer exec --nv \
+    --bind "${REPO_ROOT}:${REPO_ROOT},${ARTIFACT_ROOT}:${ARTIFACT_ROOT}" \
+    "${APPTAINER_IMAGE}" "${REPO_ROOT}/build/self_play" \
+    "${ARTIFACT_ROOT}/checkpoints/chess_model_jit.pt"
+else
+  srun "${REPO_ROOT}/build/self_play" \
+    "${ARTIFACT_ROOT}/checkpoints/chess_model_jit.pt"
+fi

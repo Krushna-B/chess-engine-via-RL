@@ -15,7 +15,7 @@ source "${CONFIG_FILE}"
 
 cd "${REPO_ROOT}"
 mkdir -p "${ARTIFACT_ROOT}/slurm"
-export REPO_ROOT ARTIFACT_ROOT
+export REPO_ROOT ARTIFACT_ROOT APPTAINER_IMAGE
 
 export SELFPLAY_DIR="${ARTIFACT_ROOT}/selfplay"
 export METRICS_DIR="${ARTIFACT_ROOT}/metrics"
@@ -28,12 +28,30 @@ srun --cpu-bind=cores bash -c '
   export SELFPLAY_WORKER_ID="${worker_id}"
   export SELFPLAY_SHARD_PATH="${ARTIFACT_ROOT}/selfplay/gen_${GENERATION}_worker_${worker_id}.bin"
   export METRICS_PATH="${ARTIFACT_ROOT}/metrics/gen_${GENERATION}_worker_${worker_id}.jsonl"
-  exec "${REPO_ROOT}/build/self_play" \
-    "${ARTIFACT_ROOT}/checkpoints/chess_model_jit.pt"
+  if [[ -n "${APPTAINER_IMAGE:-}" ]]; then
+    exec apptainer exec --nv \
+      --bind "${REPO_ROOT}:${REPO_ROOT},${ARTIFACT_ROOT}:${ARTIFACT_ROOT}" \
+      "${APPTAINER_IMAGE}" "${REPO_ROOT}/build/self_play" \
+      "${ARTIFACT_ROOT}/checkpoints/chess_model_jit.pt"
+  else
+    exec "${REPO_ROOT}/build/self_play" \
+      "${ARTIFACT_ROOT}/checkpoints/chess_model_jit.pt"
+  fi
 '
 
-uv run --project training torchrun \
-  --standalone \
-  --nproc_per_node="${SLURM_GPUS_ON_NODE:-4}" \
-  -m chess_training.train
-uv run --project training python -m chess_training.export_libtorch
+if [[ -n "${APPTAINER_IMAGE:-}" ]]; then
+  apptainer exec --nv \
+    --bind "${REPO_ROOT}:${REPO_ROOT},${ARTIFACT_ROOT}:${ARTIFACT_ROOT}" \
+    "${APPTAINER_IMAGE}" torchrun \
+    --standalone --nproc_per_node="${SLURM_GPUS_ON_NODE:-4}" \
+    -m chess_training.train
+  apptainer exec --nv \
+    --bind "${REPO_ROOT}:${REPO_ROOT},${ARTIFACT_ROOT}:${ARTIFACT_ROOT}" \
+    "${APPTAINER_IMAGE}" uv run --project training \
+    python -m chess_training.export_libtorch
+else
+  uv run --project training torchrun \
+    --standalone --nproc_per_node="${SLURM_GPUS_ON_NODE:-4}" \
+    -m chess_training.train
+  uv run --project training python -m chess_training.export_libtorch
+fi

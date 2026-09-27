@@ -20,4 +20,10 @@ export METRICS_DIR="${ARTIFACT_ROOT}/metrics"
 export CHECKPOINT_DIR="${ARTIFACT_ROOT}/checkpoints"
 export MODELS_DIR="${ARTIFACT_ROOT}/models"
 
-srun uv run --project training python -m chess_training.run_loop
+if [[ -n "${APPTAINER_IMAGE:-}" ]]; then
+  srun apptainer exec --nv \
+    --bind "${REPO_ROOT}:${REPO_ROOT},${ARTIFACT_ROOT}:${ARTIFACT_ROOT}" \
+    "${APPTAINER_IMAGE}" uv run --project training python -m chess_training.run_loop
+else
+  srun uv run --project training python -m chess_training.run_loop
+fi
