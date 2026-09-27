@@ -86,14 +86,12 @@ EncodedPositionHistory encode_position_history(const PositionHistory &history) {
   }
 
   const Position &position = history.get_position(history.size() - 1);
-  CastlingRight own_queenside = current_side == WHITE
-                                    ? WHITE_QUEENSIDE
-                                    : BLACK_QUEENSIDE;
+  CastlingRight own_queenside =
+      current_side == WHITE ? WHITE_QUEENSIDE : BLACK_QUEENSIDE;
   CastlingRight own_kingside =
       current_side == WHITE ? WHITE_KINGSIDE : BLACK_KINGSIDE;
-  CastlingRight opponent_queenside = current_side == WHITE
-                                        ? BLACK_QUEENSIDE
-                                        : WHITE_QUEENSIDE;
+  CastlingRight opponent_queenside =
+      current_side == WHITE ? BLACK_QUEENSIDE : WHITE_QUEENSIDE;
   CastlingRight opponent_kingside =
       current_side == WHITE ? BLACK_KINGSIDE : WHITE_KINGSIDE;
 
