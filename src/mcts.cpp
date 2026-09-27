@@ -309,7 +309,7 @@ std::unique_ptr<Node> advance_root(std::unique_ptr<Node> old_root,
                                    u64 selected_idx) {
   PositionHistory position_history = old_root->position_history;
   std::unique_ptr<Node> new_root = std::move(old_root->children[selected_idx]);
-  position_history.add_position(new_root->state.hash());
+  position_history.add_position(new_root->state);
   new_root->position_history = std::move(position_history);
   new_root->parent = nullptr;
   return new_root;

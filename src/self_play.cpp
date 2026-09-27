@@ -17,7 +17,6 @@
 #include <stdexcept>
 #include <string>
 #include <thread>
-#include <unordered_map>
 #include <vector>
 
 static int env_int(const char *name, int fallback) {
@@ -87,9 +86,6 @@ GameResult play_self_play_game(NeuralNetwork &network) {
 
   std::vector<PendingExample> history{};
 
-  // Real-game position hashes for threefold-repetition detection.
-  std::unordered_map<u64, int> position_counts;
-  position_counts[root->state.hash()] = 1;
   bool repetition_draw = false;
 
   while (!is_terminal(root->state) && plays < MAX_PLAYS) {
@@ -124,8 +120,7 @@ GameResult play_self_play_game(NeuralNetwork &network) {
 
     ++plays;
 
-    // Threefold repetition ends the game as a draw.
-    if (++position_counts[root->state.hash()] >= 3) {
+    if (root->is_threefold_repetition()) {
       repetition_draw = true;
       break;
     }

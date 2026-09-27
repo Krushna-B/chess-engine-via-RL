@@ -43,5 +43,12 @@ int main() {
     return 1;
   }
 
+  Node restored_root{root->state, root->position_history};
+
+  if (!restored_root.is_threefold_repetition()) {
+    std::cerr << "Restored MCTS root lost its repetition history\n";
+    return 1;
+  }
+
   return 0;
 }

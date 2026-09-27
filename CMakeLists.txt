@@ -65,7 +65,8 @@ add_executable(perft tools/perft.cpp src/board.cpp
     src/move_generator.cpp  src/move_list.cpp)
 add_executable(engine src/uci.cpp src/board.cpp
     src/move_generator.cpp src/move_list.cpp src/random_engine.cpp)
-add_executable(position_history_test tests/position_history_test.cpp)
+add_executable(position_history_test tests/position_history_test.cpp src/board.cpp
+    src/move_generator.cpp src/move_list.cpp)
 add_executable(game_repetition_test tests/game_repetition_test.cpp src/game.cpp
     src/board.cpp src/move_generator.cpp src/move_list.cpp)
 

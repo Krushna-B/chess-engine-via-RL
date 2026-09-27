@@ -49,26 +49,33 @@ static std::optional<Move> uci_to_move(const std::string &uci, Position &pos) {
   return std::nullopt;
 }
 
-static void handle_position(Position &pos, std::istringstream &args) {
+static void handle_position(Position &pos, PositionHistory &position_history,
+                            std::istringstream &args) {
   std::string token;
   args >> token;
 
   if (token == "startpos") {
     pos.set_starting_position();
+    position_history.clear();
+    position_history.add_position(pos);
     args >> token; // possibly "moves"
   } else if (token == "fen") {
     std::string fen, part;
     for (int i = 0; i < 6 && args >> part; ++i)
       fen += (i ? " " : "") + part;
     pos.set_from_fen(fen);
+    position_history.clear();
+    position_history.add_position(pos);
     args >> token; // possibly "moves"
   }
 
   if (token == "moves") {
     std::string mv;
     while (args >> mv)
-      if (auto m = uci_to_move(mv, pos))
+      if (auto m = uci_to_move(mv, pos)) {
         pos.make_move(*m);
+        position_history.add_position(pos);
+      }
   }
 }
 
@@ -98,11 +105,12 @@ static std::optional<Move> pick_by_policy(Position &pos,
 // Run MCTS from pos, stopping at whichever comes first: the simulation cap or
 // the wall-clock budget. Play the most-visited child, the AlphaZero choice.
 static std::optional<Move> pick_by_search(Position &pos, NeuralNetwork &network,
+                                          const PositionHistory &position_history,
                                           int max_sims, long budget_ms) {
   if (is_terminal(pos))
     return std::nullopt;
 
-  Node root(pos);
+  Node root(pos, position_history);
   const auto start = std::chrono::steady_clock::now();
   for (int i = 0; i < max_sims; ++i) {
     monte_carlo_tree_sim(root, network);
@@ -151,6 +159,8 @@ int main(int argc, char **argv) {
 
   Position pos{};
   pos.set_starting_position();
+  PositionHistory position_history{};
+  position_history.add_position(pos);
   int simulations = 200;
 
   std::string line;
@@ -169,6 +179,8 @@ int main(int argc, char **argv) {
       std::cout << "readyok\n";
     } else if (cmd == "ucinewgame") {
       pos.set_starting_position();
+      position_history.clear();
+      position_history.add_position(pos);
     } else if (cmd == "setoption") {
       std::string token, name;
       long value = 0;
@@ -181,7 +193,7 @@ int main(int argc, char **argv) {
       if (name == "Simulations")
         simulations = static_cast<int>(value);
     } else if (cmd == "position") {
-      handle_position(pos, ss);
+      handle_position(pos, position_history, ss);
     } else if (cmd == "go") {
       long wtime = 0, btime = 0, winc = 0, binc = 0, movetime = 0;
       std::string token;
@@ -205,7 +217,8 @@ int main(int argc, char **argv) {
       std::optional<Move> best =
           simulations <= 0
               ? pick_by_policy(pos, network)
-              : pick_by_search(pos, network, simulations, budget);
+              : pick_by_search(pos, network, position_history, simulations,
+                               budget);
 
       std::cout << "bestmove " << (best ? move_to_uci(*best) : "0000") << "\n";
     } else if (cmd == "quit") {

@@ -41,7 +41,7 @@ void Game::update_result() {
 
 Game::Game() {
   position.set_starting_position();
-  position_history.add_position(position.hash());
+  position_history.add_position(position);
   update_result();
 }
 
@@ -58,7 +58,7 @@ void Game::reset() {
   position.set_starting_position();
   moves_history.clear();
   position_history.clear();
-  position_history.add_position(position.hash());
+  position_history.add_position(position);
 
   status = GameStatus::ONGOING;
   update_result();
@@ -85,7 +85,7 @@ bool Game::play_move(const Move &move) {
 
   position.make_move(move);
   moves_history.push_back(move);
-  position_history.add_position(position.hash());
+  position_history.add_position(position);
   update_result();
   return true;
 }

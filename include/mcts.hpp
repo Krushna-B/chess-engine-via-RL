@@ -26,8 +26,11 @@ struct Node {
 
   Node() = default;
   explicit Node(const Position &starting_state) : state{starting_state} {
-    position_history.add_position(state.hash());
+    position_history.add_position(state);
   }
+
+  Node(const Position &starting_state, const PositionHistory &history)
+      : state{starting_state}, position_history{history} {}
 
   Node(const Position &starting_state, const Move &move, Node *parent_node,
        float prior)
