@@ -27,8 +27,8 @@ float monte_carlo_tree_sim(Node &node, NeuralNetwork &network, int depth) {
   std::string indent(static_cast<std::size_t>(depth) * 2, ' ');
 
   // Base Case Reach a new node
-  if (is_terminal(node.state)) {
-    float value = terminal_value(node.state);
+  if (is_terminal(node)) {
+    float value = terminal_value(node);
 
     node.number_of_visits++;
     node.value_sum += value;
@@ -149,6 +149,28 @@ float monte_carlo_tree_sim(Node &node, NeuralNetwork &network, int depth) {
   return value;
 }
 
+bool Node::is_threefold_repetition() const {
+  const Node *root = this;
+
+  while (root->parent != nullptr) {
+    root = root->parent;
+  }
+
+  u64 current_position = state.hash();
+  int repetitions = root->position_history.count_position(current_position);
+  const Node *node = this;
+
+  while (node != root) {
+    if (node->state.hash() == current_position) {
+      ++repetitions;
+    }
+
+    node = node->parent;
+  }
+
+  return repetitions >= 3;
+}
+
 /**
 MCTS Selection Algorithm
 argmax_a [ Q(a,s) + P(s,a)[ (sqrt(N(s)) / (1 + N(a,s))]]
@@ -180,6 +202,18 @@ float terminal_value(Position &position) {
     return 0.0f;
   }
   return 0.0f;
+}
+
+bool is_terminal(Node &node) {
+  return node.is_threefold_repetition() || is_terminal(node.state);
+}
+
+float terminal_value(Node &node) {
+  if (node.is_threefold_repetition()) {
+    return 0.0f;
+  }
+
+  return terminal_value(node.state);
 }
 
 void print_root_stats(const Node &root) {
@@ -273,7 +307,10 @@ u64 sample_idx(const std::vector<float> &probabilites, std::mt19937_64 &p_rng) {
 // Reuse the select subtree after a move is played
 std::unique_ptr<Node> advance_root(std::unique_ptr<Node> old_root,
                                    u64 selected_idx) {
+  PositionHistory position_history = old_root->position_history;
   std::unique_ptr<Node> new_root = std::move(old_root->children[selected_idx]);
+  position_history.add_position(new_root->state.hash());
+  new_root->position_history = std::move(position_history);
   new_root->parent = nullptr;
   return new_root;
 }

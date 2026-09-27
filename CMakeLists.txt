@@ -98,6 +98,21 @@ if(BUILD_ML)
     target_link_libraries(torch_model_test PRIVATE "${TORCH_LIBRARIES}")
     target_compile_options(torch_model_test PRIVATE ${TORCH_CXX_FLAGS})
 
+    add_executable(mcts_repetition_test
+        tests/mcts_repetition_test.cpp
+        src/mcts.cpp
+        src/neural_net.cpp
+        src/board.cpp
+        src/network_inference.cpp
+        src/move_generator.cpp
+        src/move_list.cpp
+    )
+    target_include_directories(mcts_repetition_test PRIVATE include)
+    target_include_directories(mcts_repetition_test SYSTEM PRIVATE ${TORCH_INCLUDE_DIRS})
+    target_link_libraries(mcts_repetition_test PRIVATE "${TORCH_LIBRARIES}" Threads::Threads)
+    target_compile_options(mcts_repetition_test PRIVATE ${COMMON_COMPILE_OPTIONS} ${TORCH_CXX_FLAGS})
+    add_test(NAME mcts_repetition COMMAND mcts_repetition_test)
+
     add_executable(self_play
         src/self_play.cpp
         src/neural_net.cpp

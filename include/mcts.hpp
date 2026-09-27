@@ -4,6 +4,7 @@
 #include "move_list.hpp"
 #include "network_inference.hpp"
 #include "neural_net.hpp"
+#include "position_history.hpp"
 #include <memory>
 #include <random>
 #include <vector>
@@ -21,14 +22,19 @@ struct Node {
   bool expanded{};
   Node *parent{};
   std::vector<std::unique_ptr<Node>> children;
+  PositionHistory position_history{};
 
   Node() = default;
-  explicit Node(const Position &starting_state) : state{starting_state} {}
+  explicit Node(const Position &starting_state) : state{starting_state} {
+    position_history.add_position(state.hash());
+  }
 
   Node(const Position &starting_state, const Move &move, Node *parent_node,
        float prior)
       : state(starting_state), move_from_parent(move), prior(prior),
         parent(parent_node) {}
+
+  bool is_threefold_repetition() const;
 
   /**
   Q(s,a)
@@ -45,6 +51,8 @@ float monte_carlo_tree_sim(Node &node, NeuralNetwork &network, int depth = 0);
 float selection(const Node &child, float exploration_coefficient);
 bool is_terminal(Position &position);
 float terminal_value(Position &position);
+bool is_terminal(Node &node);
+float terminal_value(Node &node);
 void run_search(Node &root, NeuralNetwork &network, int simimlations);
 std::vector<float> root_visit_policy(const Node &root, float temperature);
 u64 sample_idx(const std::vector<float> &probabilites, std::mt19937_64 &p_rng);
