@@ -3,6 +3,7 @@ import os
 import time
 from pathlib import Path
 
+import numpy as np
 import torch
 import torch.nn.functional as F
 
@@ -10,7 +11,7 @@ from torch.utils.data import DataLoader, random_split
 
 from chess_training.compact_dataset import CompactChessDataset
 from chess_training.chess_model import ChessTransformer
-from chess_training.dataset_mixture import load_examples, mix_examples
+from chess_training.dataset_mixture import load_examples, mix_examples, sample_examples
 from chess_training.training_metrics import summarize_examples
 from chess_training.wandb_logging import WandbLogger
 
@@ -147,19 +148,37 @@ def main():
 
         shards = replay_shards()
         print(f"Replay buffer: {len(shards)} shard(s)")
-        self_play_examples = load_examples(shards)
+        if EXAMPLES_PER_EPOCH > 0:
+            examples_per_epoch = EXAMPLES_PER_EPOCH
+            lc0_count = round(examples_per_epoch * LC0_FRACTION)
+            self_play_count = examples_per_epoch - lc0_count
+            self_play_examples = sample_examples(
+                shards, self_play_count, seed=GENERATION
+            )
+        else:
+            self_play_examples = load_examples(shards)
+            examples_per_epoch = len(self_play_examples)
+
         if LC0_FRACTION > 0.0:
             if not LC0_SOURCE:
                 raise ValueError("LC0_DATASET_DIR is required when LC0_FRACTION > 0")
-            lc0_examples = load_examples(LC0_SOURCE)
-            examples_per_epoch = EXAMPLES_PER_EPOCH or len(self_play_examples)
-            examples = mix_examples(
-                lc0_examples,
-                self_play_examples,
-                LC0_FRACTION,
-                examples_per_epoch,
-                seed=GENERATION,
-            )
+            if EXAMPLES_PER_EPOCH > 0:
+                lc0_count = round(examples_per_epoch * LC0_FRACTION)
+                lc0_examples = sample_examples(
+                    LC0_SOURCE, lc0_count, seed=GENERATION + 1
+                )
+                examples = list(lc0_examples)
+                examples.extend(self_play_examples)
+                np.random.default_rng(GENERATION).shuffle(examples)
+            else:
+                lc0_examples = load_examples(LC0_SOURCE)
+                examples = mix_examples(
+                    lc0_examples,
+                    self_play_examples,
+                    LC0_FRACTION,
+                    examples_per_epoch,
+                    seed=GENERATION,
+                )
         else:
             examples = self_play_examples
 

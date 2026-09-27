@@ -27,6 +27,32 @@ def load_examples(source) -> list[CompactTrainingExample]:
     return examples
 
 
+def sample_examples(source, count: int, seed: int) -> list[CompactTrainingExample]:
+    if count < 1:
+        return []
+
+    shards = _resolve_shards(source)
+    if not shards:
+        raise FileNotFoundError(f"No shards found for {source}")
+
+    generator = np.random.default_rng(seed)
+    reservoir = []
+    seen = 0
+    for shard in shards:
+        for example in load_compact_shard(shard):
+            seen += 1
+            if len(reservoir) < count:
+                reservoir.append(example)
+            else:
+                index = generator.integers(seen)
+                if index < count:
+                    reservoir[index] = example
+
+    if not reservoir:
+        raise FileNotFoundError(f"No examples found for {source}")
+    return reservoir
+
+
 def mix_examples(
     lc0_examples: list[CompactTrainingExample],
     self_play_examples: list[CompactTrainingExample],
