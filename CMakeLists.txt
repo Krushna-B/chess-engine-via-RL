@@ -134,8 +134,9 @@ if(BUILD_ML)
     add_executable(self_play
         src/self_play.cpp
         src/neural_net.cpp
+        src/position_encoder.cpp
         src/mcts.cpp
-        src/training_data.cpp
+        src/training_data_v2.cpp
         src/board.cpp
         src/network_inference.cpp
         src/move_generator.cpp

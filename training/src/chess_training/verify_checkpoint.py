@@ -4,7 +4,7 @@ import torch
 
 from torch.utils.data import DataLoader
 
-from chess_training.chess_dataset import ChessDataset
+from chess_training.compact_dataset import CompactChessDataset
 from chess_training.chess_model import ChessTransformer
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
@@ -24,7 +24,9 @@ def main():
     device = choose_device()
     print("Device:", device)
 
-    dataset = ChessDataset(REPO_ROOT / "artifacts/selfplay/neural_selfplay_shard_0001.bin")
+    dataset = CompactChessDataset(
+        REPO_ROOT / "artifacts/selfplay/neural_selfplay_shard_0001.bin"
+    )
 
     loader = DataLoader(
         dataset,
@@ -50,8 +52,8 @@ def main():
         logits_1, values_1 = model(states)
         logits_2, values_2 = model(states)
 
-    assert logits_1.shape == (1, 4672)
-    assert values_1.shape == (1,)
+    assert logits_1.shape == (1, 1858)
+    assert values_1.shape == (1, 3)
 
     assert torch.isfinite(logits_1).all()
     assert torch.isfinite(values_1).all()
@@ -66,7 +68,7 @@ def main():
     )
 
     print("Logits shape:", logits_1.shape)
-    print("Value:", values_1.item())
+    print("WDL logits:", values_1)
     print("Full policy sum:", probabilities.sum().item())
     print("Checkpoint verification passed")
 

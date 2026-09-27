@@ -57,7 +57,7 @@ def ensure_initial_model() -> None:
     torch.backends.mha.set_fastpath_enabled(False)
 
     model = ChessTransformer().eval()
-    example_input = torch.zeros(1, 64, 18)
+    example_input = torch.zeros(1, 112, 8, 8)
 
     # NOTE: no torch.jit.freeze -- frozen weights become CONSTANTS that don't
     # move with module.to(cuda) in C++, causing a cpu/cuda device mismatch.

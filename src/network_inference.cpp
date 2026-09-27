@@ -21,6 +21,7 @@
 #include <condition_variable>
 #include <cstddef>
 #include <cstdlib>
+#include <cmath>
 #include <future>
 #include <iostream>
 #include <memory>
@@ -143,7 +144,7 @@ struct NeuralNetwork::Impl {
   void setup_cuda_graph() {
     const auto dtype = use_bf16 ? torch::kBFloat16 : torch::kFloat32;
     graph_input =
-        torch::zeros({static_cast<long>(max_batch_size), 64, 18},
+        torch::zeros({static_cast<long>(max_batch_size), 112, 8, 8},
                      torch::TensorOptions().device(device).dtype(dtype));
 
     torch::NoGradGuard no_grad;
@@ -250,7 +251,7 @@ struct NeuralNetwork::Impl {
       }
 
       torch::Tensor host = torch::from_blob(
-          buffer.data(), {static_cast<long>(batch_size), 64, 18},
+          buffer.data(), {static_cast<long>(batch_size), 112, 8, 8},
           torch::TensorOptions().dtype(torch::kFloat32));
 
       torch::Tensor logits;
@@ -311,7 +312,17 @@ struct NeuralNetwork::Impl {
         std::copy_n(logits_ptr + i * POLICY_SIZE,
                     static_cast<std::size_t>(POLICY_SIZE),
                     output.policy_logits.begin());
-        output.value = values_ptr[i];
+        const float *wdl_ptr = values_ptr + i * WDL_SIZE;
+        float wdl_max = *std::max_element(wdl_ptr, wdl_ptr + WDL_SIZE);
+        float wdl_sum = 0.0f;
+        for (std::size_t index = 0; index < WDL_SIZE; ++index) {
+          output.wdl[index] = std::exp(wdl_ptr[index] - wdl_max);
+          wdl_sum += output.wdl[index];
+        }
+        for (float &probability : output.wdl) {
+          probability /= wdl_sum;
+        }
+        output.value = output.wdl[0] - output.wdl[2];
         batch[i].result.set_value(std::move(output));
       }
     } catch (...) {

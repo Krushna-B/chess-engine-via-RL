@@ -3,7 +3,9 @@
 #include "move_list.hpp"
 #include "network_inference.hpp"
 #include "neural_net.hpp"
+#include "position_encoder.hpp"
 #include "training_data.hpp"
+#include "training_data_v2.hpp"
 #include <algorithm>
 #include <atomic>
 #include <chrono>
@@ -67,7 +69,7 @@ float temperature_for_play(int play) {
 }
 
 struct GameResult {
-  std::vector<TrainingExample> examples;
+  std::vector<CompactTrainingExample> examples;
   int plies = 0;
   std::string result; // "white_win" | "black_win" | "draw"
   std::string cause;  // checkmate | stalemate | fifty_move | insufficient |
@@ -75,7 +77,68 @@ struct GameResult {
   long duration_ms = 0;
 };
 
-GameResult play_self_play_game(NeuralNetwork &network) {
+std::uint8_t compact_castling_rights(const Position &position) {
+  std::uint8_t rights = 0;
+  if (position.has_castling_rights(WHITE_QUEENSIDE)) rights |= 1;
+  if (position.has_castling_rights(WHITE_KINGSIDE)) rights |= 2;
+  if (position.has_castling_rights(BLACK_QUEENSIDE)) rights |= 4;
+  if (position.has_castling_rights(BLACK_KINGSIDE)) rights |= 8;
+  return rights;
+}
+
+std::array<std::uint64_t, COMPACT_BITPLANES>
+compact_bitplanes(const EncodedPositionHistory &encoded) {
+  std::array<std::uint64_t, COMPACT_BITPLANES> planes{};
+  for (std::size_t plane = 0; plane < COMPACT_BITPLANES; ++plane) {
+    for (std::size_t square = 0; square < POSITION_PLANE_SIZE; ++square) {
+      if (encoded[plane * POSITION_PLANE_SIZE + square] != 0.0f) {
+        planes[plane] |= std::uint64_t{1} << square;
+      }
+    }
+  }
+  return planes;
+}
+
+std::vector<CompactPolicyEntry>
+compact_policy(const PolicyArray &policy) {
+  std::vector<CompactPolicyEntry> entries;
+  for (std::size_t index = 0; index < policy.size(); ++index) {
+    if (policy[index] > 0.0f) {
+      entries.push_back(
+          {static_cast<std::uint16_t>(index), policy[index]});
+    }
+  }
+  return entries;
+}
+
+CompactTrainingExample make_training_example(const PendingExample &pending,
+                                             int game_index, int ply,
+                                             Side winning_side,
+                                             bool checkmate) {
+  const Position &position =
+      pending.history.get_position(pending.history.size() - 1);
+  CompactTrainingExample example{};
+  const EncodedPositionHistory encoded =
+      encode_position_history(pending.history);
+  example.planes = compact_bitplanes(encoded);
+  example.castling_rights = compact_castling_rights(position);
+  example.side_to_move = position.get_side_to_move() == BLACK ? 1 : 0;
+  example.rule50_count = position.get_halfmove_clock();
+  example.policy = compact_policy(pending.policy_target);
+  if (checkmate) {
+    example.wdl = pending.player_to_move == winning_side
+                      ? std::array<float, 3>{1.0f, 0.0f, 0.0f}
+                      : std::array<float, 3>{0.0f, 0.0f, 1.0f};
+  } else {
+    example.wdl = {0.0f, 1.0f, 0.0f};
+  }
+  example.game_id = static_cast<std::uint64_t>(game_index);
+  example.ply = static_cast<std::uint32_t>(ply);
+  example.source = TrainingSource::SELF_PLAY;
+  return example;
+}
+
+GameResult play_self_play_game(NeuralNetwork &network, int game_index) {
   const auto game_start = std::chrono::steady_clock::now();
 
   Position starting_position{};
@@ -101,11 +164,10 @@ GameResult play_self_play_game(NeuralNetwork &network) {
     PolicyArray fixed_policy = encode_policy_target(*root, training_policy);
     validate_policy_target(fixed_policy);
 
-    EncodedPosition enocded_position = encode_position(root->state);
     Side player = root->state.get_side_to_move();
 
     // Save the position and MCTS policy before playing selected move
-    history.push_back({enocded_position, fixed_policy, player});
+    history.push_back({root->position_history, fixed_policy, player});
 
     float move_temperature = temperature_for_play(plays);
     std::vector<float> move_policy = root_visit_policy(*root, move_temperature);
@@ -150,13 +212,10 @@ GameResult play_self_play_game(NeuralNetwork &network) {
   }
 
   game.examples.reserve(history.size());
-  for (const PendingExample &pending : history) {
-    float value_target = 0.0f;
-    if (checkmate) {
-      value_target = pending.player_to_move == winning_side ? 1.0f : -1.0f;
-    }
-    game.examples.push_back(
-        {pending.position, pending.policy_target, value_target});
+  for (std::size_t ply = 0; ply < history.size(); ++ply) {
+    game.examples.push_back(make_training_example(
+        history[ply], game_index, static_cast<int>(ply), winning_side,
+        checkmate));
   }
 
   game.duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
@@ -319,7 +378,7 @@ int main(int argc, char **argv) {
           break;
         }
 
-        GameResult game = play_self_play_game(network);
+        GameResult game = play_self_play_game(network, game_index);
         const std::string line = game_record(game_index, game);
 
         int completed;
@@ -364,7 +423,7 @@ int main(int argc, char **argv) {
     append_metric_line(
         inference_record("inference", network.stats(), selfplay_ms));
 
-    std::vector<TrainingExample> shard;
+    std::vector<CompactTrainingExample> shard;
     shard.reserve(static_cast<std::size_t>(GAMES_PER_SHARD) * 200);
     for (GameResult &game : results) {
       shard.insert(shard.end(), std::make_move_iterator(game.examples.begin()),
@@ -373,12 +432,13 @@ int main(int argc, char **argv) {
 
     std::filesystem::create_directories(
         std::filesystem::path(SHARD_PATH).parent_path());
-    save_training_examples(SHARD_PATH, shard);
+    save_compact_training_examples(SHARD_PATH, shard);
 
     std::cout << "Self-play: " << results.size() << " games, " << shard.size()
               << " positions in " << selfplay_ms << " ms\n";
 
-    std::vector<TrainingExample> loaded = load_training_examples(SHARD_PATH);
+    std::vector<CompactTrainingExample> loaded =
+        load_compact_training_examples(SHARD_PATH);
 
     std::cout << "Original shard examples: " << shard.size() << '\n';
 

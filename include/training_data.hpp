@@ -1,12 +1,13 @@
 #pragma once
 
 #include "neural_net.hpp"
+#include "position_history.hpp"
 
 #include <string>
 #include <vector>
 
 struct PendingExample {
-  EncodedPosition position;
+  PositionHistory history;
   PolicyArray policy_target;
 
   /*

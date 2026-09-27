@@ -2,7 +2,7 @@ from pathlib import Path
 
 import torch
 
-from chess_training.chess_dataset import ChessDataset
+from chess_training.compact_dataset import CompactChessDataset
 from chess_training.chess_model import ChessTransformer
 
 
@@ -27,7 +27,7 @@ def compare_outputs(
     state,
     index: int,
 ):
-    # [64, 18] -> [1, 64, 18]
+    # [112, 8, 8] -> [1, 112, 8, 8]
     model_input = state.unsqueeze(0).contiguous()
 
     with torch.inference_mode():
@@ -35,16 +35,16 @@ def compare_outputs(
 
         actual_logits, actual_value = exported_model(model_input)
 
-    if expected_logits.shape != (1, 4672):
+    if expected_logits.shape != (1, 1858):
         raise RuntimeError(f"Unexpected original policy shape: {expected_logits.shape}")
 
-    if actual_logits.shape != (1, 4672):
+    if actual_logits.shape != (1, 1858):
         raise RuntimeError(f"Unexpected exported policy shape: {actual_logits.shape}")
 
-    if expected_value.shape != (1,):
+    if expected_value.shape != (1, 3):
         raise RuntimeError(f"Unexpected original value shape: {expected_value.shape}")
 
-    if actual_value.shape != (1,):
+    if actual_value.shape != (1, 3):
         raise RuntimeError(f"Unexpected exported value shape: {actual_value.shape}")
 
     if not torch.isfinite(actual_logits).all():
@@ -118,7 +118,7 @@ def main():
     # attention paths, causing TorchScript's graph checker to fail.
     torch.backends.mha.set_fastpath_enabled(False)
 
-    dataset = ChessDataset(dataset_path)
+    dataset = CompactChessDataset(dataset_path)
 
     if len(dataset) == 0:
         raise RuntimeError("Dataset is empty")
@@ -126,7 +126,7 @@ def main():
     # Use one real position to trace the model.
     example_state, _, _ = dataset[0]
 
-    # [64, 18] -> [1, 64, 18]
+    # [112, 8, 8] -> [1, 112, 8, 8]
     example_input = example_state.unsqueeze(0).contiguous()
 
     # Record the model's tensor operations.
@@ -172,7 +172,7 @@ def main():
 
     print("Policy shape:", policy_logits.shape)
     print("Value shape:", value.shape)
-    print("Value:", value.item())
+    print("WDL logits:", value)
 
     print(f"{number_of_tests}-position LibTorch export test passed")
 

@@ -1,24 +1,26 @@
 #pragma once
 
 #include "board.hpp"
+#include "position_encoder.hpp"
 
 #include <array>
 #include <sys/resource.h>
 
 constexpr u64 BOARD_SIZE = 64;
-constexpr u64 MOVE_TYPES = 73;
 constexpr u64 SQUARE_FEATURES = 18;
+constexpr u64 WDL_SIZE = 3;
 
-constexpr u64 POLICY_SIZE = BOARD_SIZE * MOVE_TYPES;
-constexpr u64 ENCODED_STATE_SIZE = BOARD_SIZE * SQUARE_FEATURES;
+constexpr u64 POLICY_SIZE = 1858;
+constexpr u64 ENCODED_STATE_SIZE = POSITION_PLANES * POSITION_PLANE_SIZE;
 
-using PolicyArray = std::array<float, POLICY_SIZE>; //[64 18]
+using PolicyArray = std::array<float, POLICY_SIZE>;
+using WdlArray = std::array<float, WDL_SIZE>;
 
-using EncodedPosition =
-    std::array<float, ENCODED_STATE_SIZE>; //[73, 64] flatten to [4672]
+using EncodedPosition = EncodedPositionHistory;
 
 struct NetworkOutput {
   PolicyArray policy_logits{};
+  WdlArray wdl{};
   float value{};
 };
 

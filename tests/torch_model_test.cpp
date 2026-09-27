@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
     c10::InferenceMode inference_mode;
 
     torch::Tensor input = torch::zeros(
-        {1, 64, 18},
+        {1, 112, 8, 8},
         torch::TensorOptions().dtype(torch::kFloat32).device(torch::kCPU));
 
     std::vector<torch::jit::IValue> inputs;
@@ -51,14 +51,14 @@ int main(int argc, char **argv) {
 
     std::cout << "Value shape: " << value.sizes() << '\n';
 
-    std::cout << "Value: " << value.item<float>() << '\n';
+    std::cout << "WDL logits: " << value << '\n';
 
-    if (policy_logits.numel() != 4672) {
-      throw std::runtime_error("Expected 4672 policy logits");
+    if (policy_logits.numel() != 1858) {
+      throw std::runtime_error("Expected 1858 policy logits");
     }
 
-    if (value.numel() != 1) {
-      throw std::runtime_error("Expected one value output");
+    if (value.numel() != 3) {
+      throw std::runtime_error("Expected three WDL outputs");
     }
 
     std::cout << "C++ LibTorch inference passed\n";
