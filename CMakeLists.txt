@@ -67,6 +67,9 @@ add_executable(engine src/uci.cpp src/board.cpp
     src/move_generator.cpp src/move_list.cpp src/random_engine.cpp)
 add_executable(position_history_test tests/position_history_test.cpp src/board.cpp
     src/move_generator.cpp src/move_list.cpp)
+add_executable(position_encoder_test tests/position_encoder_test.cpp
+    src/position_encoder.cpp src/board.cpp src/move_generator.cpp
+    src/move_list.cpp)
 add_executable(game_repetition_test tests/game_repetition_test.cpp src/game.cpp
     src/board.cpp src/move_generator.cpp src/move_list.cpp)
 
@@ -82,14 +85,17 @@ target_include_directories(generate_magic PRIVATE include)
 target_include_directories(perft PRIVATE include)
 target_include_directories(engine PRIVATE include)
 target_include_directories(position_history_test PRIVATE include)
+target_include_directories(position_encoder_test PRIVATE include)
 target_include_directories(game_repetition_test PRIVATE include)
 # target_include_directories(monte_carlo_tree_search  PRIVATE include)
 target_compile_options(generate_magic PRIVATE ${COMMON_COMPILE_OPTIONS})
 target_compile_options(perft PRIVATE ${COMMON_COMPILE_OPTIONS})
 target_compile_options(engine PRIVATE ${COMMON_COMPILE_OPTIONS})
 target_compile_options(position_history_test PRIVATE ${COMMON_COMPILE_OPTIONS})
+target_compile_options(position_encoder_test PRIVATE ${COMMON_COMPILE_OPTIONS})
 target_compile_options(game_repetition_test PRIVATE ${COMMON_COMPILE_OPTIONS})
 add_test(NAME position_history COMMAND position_history_test)
+add_test(NAME position_encoder COMMAND position_encoder_test)
 add_test(NAME game_repetition COMMAND game_repetition_test)
 # target_compile_options(monte_carlo_tree_search PRIVATE ${COMMON_COMPILE_OPTIONS})
 

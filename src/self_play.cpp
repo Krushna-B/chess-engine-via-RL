@@ -214,7 +214,8 @@ std::string inference_record(const char *type, const InferenceStats &inf,
     << "\",\"generation\":" << GENERATION << ",\"device\":\"" << inf.device
     << "\",\"eval_count\":" << inf.eval_count
     << ",\"batch_count\":" << inf.batch_count
-    << ",\"mean_batch\":" << inf.mean_batch << ",\"max_batch\":" << inf.max_batch
+    << ",\"mean_batch\":" << inf.mean_batch
+    << ",\"max_batch\":" << inf.max_batch
     << ",\"mean_forward_ms\":" << inf.mean_forward_ms
     << ",\"max_forward_ms\":" << inf.max_forward_ms
     << ",\"mean_wait_ms\":" << inf.mean_wait_ms
@@ -360,7 +361,8 @@ int main(int argc, char **argv) {
 
     // Final aggregates.
     append_metric_line(selfplay_record(results, selfplay_ms));
-    append_metric_line(inference_record("inference", network.stats(), selfplay_ms));
+    append_metric_line(
+        inference_record("inference", network.stats(), selfplay_ms));
 
     std::vector<TrainingExample> shard;
     shard.reserve(static_cast<std::size_t>(GAMES_PER_SHARD) * 200);
