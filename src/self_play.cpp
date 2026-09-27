@@ -80,14 +80,23 @@ struct GameResult {
 };
 
 std::uint8_t compact_castling_rights(const Position &position) {
+  Side side = position.get_side_to_move();
+  CastlingRight own_queenside =
+      side == WHITE ? WHITE_QUEENSIDE : BLACK_QUEENSIDE;
+  CastlingRight own_kingside =
+      side == WHITE ? WHITE_KINGSIDE : BLACK_KINGSIDE;
+  CastlingRight opponent_queenside =
+      side == WHITE ? BLACK_QUEENSIDE : WHITE_QUEENSIDE;
+  CastlingRight opponent_kingside =
+      side == WHITE ? BLACK_KINGSIDE : WHITE_KINGSIDE;
   std::uint8_t rights = 0;
-  if (position.has_castling_rights(WHITE_QUEENSIDE))
+  if (position.has_castling_rights(own_queenside))
     rights |= 1;
-  if (position.has_castling_rights(WHITE_KINGSIDE))
+  if (position.has_castling_rights(own_kingside))
     rights |= 2;
-  if (position.has_castling_rights(BLACK_QUEENSIDE))
+  if (position.has_castling_rights(opponent_queenside))
     rights |= 4;
-  if (position.has_castling_rights(BLACK_KINGSIDE))
+  if (position.has_castling_rights(opponent_kingside))
     rights |= 8;
   return rights;
 }
