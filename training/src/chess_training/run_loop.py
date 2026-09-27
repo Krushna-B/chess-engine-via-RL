@@ -19,7 +19,9 @@ import torch
 from chess_training.chess_model import ChessTransformer
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
-SELF_PLAY_BIN = REPO_ROOT / "build" / "self_play"
+SELF_PLAY_BIN = Path(
+    os.environ.get("SELF_PLAY_BIN", REPO_ROOT / "build" / "self_play")
+)
 SELFPLAY_DIR = Path(
     os.environ.get("SELFPLAY_DIR", REPO_ROOT / "artifacts" / "selfplay")
 )
