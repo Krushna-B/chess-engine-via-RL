@@ -16,7 +16,7 @@ def _resolve_shards(source) -> list[Path]:
     return [path]
 
 
-def _load_examples(source) -> list[CompactTrainingExample]:
+def load_examples(source) -> list[CompactTrainingExample]:
     shards = _resolve_shards(source)
     if not shards:
         raise FileNotFoundError(f"No shards found for {source}")
@@ -69,8 +69,8 @@ def load_mixed_examples(
     seed: int,
 ) -> list[CompactTrainingExample]:
     return mix_examples(
-        _load_examples(lc0_source),
-        _load_examples(self_play_source),
+        load_examples(lc0_source),
+        load_examples(self_play_source),
         lc0_fraction,
         examples_per_epoch,
         seed,

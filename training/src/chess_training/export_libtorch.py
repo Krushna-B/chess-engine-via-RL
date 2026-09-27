@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 import torch
@@ -7,9 +8,14 @@ from chess_training.chess_model import ChessTransformer
 
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
-CHECKPOINT_PATH = REPO_ROOT / "artifacts/checkpoints/best_model.pt"
-OUTPUT_PATH = REPO_ROOT / "artifacts/checkpoints/chess_model_jit.pt"
-SELFPLAY_DIR = REPO_ROOT / "artifacts/selfplay"
+CHECKPOINT_DIR = Path(
+    os.environ.get("CHECKPOINT_DIR", REPO_ROOT / "artifacts" / "checkpoints")
+)
+SELFPLAY_DIR = Path(
+    os.environ.get("SELFPLAY_DIR", REPO_ROOT / "artifacts" / "selfplay")
+)
+CHECKPOINT_PATH = CHECKPOINT_DIR / "best_model.pt"
+OUTPUT_PATH = CHECKPOINT_DIR / "chess_model_jit.pt"
 
 NUMBER_OF_TEST_POSITIONS = 5
 

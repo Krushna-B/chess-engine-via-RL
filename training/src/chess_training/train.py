@@ -10,13 +10,21 @@ from torch.utils.data import DataLoader, random_split
 
 from chess_training.compact_dataset import CompactChessDataset
 from chess_training.chess_model import ChessTransformer
+from chess_training.dataset_mixture import load_examples, mix_examples
+from chess_training.training_metrics import summarize_examples
 from chess_training.wandb_logging import WandbLogger
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
-SELFPLAY_DIR = REPO_ROOT / "artifacts" / "selfplay"
-CHECKPOINT_DIR = REPO_ROOT / "artifacts" / "checkpoints"
+SELFPLAY_DIR = Path(
+    os.environ.get("SELFPLAY_DIR", REPO_ROOT / "artifacts" / "selfplay")
+)
+CHECKPOINT_DIR = Path(
+    os.environ.get("CHECKPOINT_DIR", REPO_ROOT / "artifacts" / "checkpoints")
+)
 METRICS_PATH = Path(
-    os.environ.get("METRICS_PATH", REPO_ROOT / "artifacts" / "metrics" / "metrics.jsonl")
+    os.environ.get(
+        "METRICS_PATH", REPO_ROOT / "artifacts" / "metrics" / "metrics.jsonl"
+    )
 )
 GENERATION = int(os.environ.get("SELFPLAY_GENERATION", "0"))
 RUN_ID = os.environ.get("RUN_ID", "adhoc")
@@ -28,6 +36,9 @@ WARM_START = os.environ.get("WARM_START", "1") == "1"
 NUMBER_OF_EPOCHS = int(os.environ.get("TRAIN_EPOCHS", "5"))
 LEARNING_RATE = float(os.environ.get("TRAIN_LR", "3e-4"))
 WANDB_ENABLED = os.environ.get("WANDB_ENABLED", "0") == "1"
+LC0_SOURCE = os.environ.get("LC0_DATASET_DIR")
+LC0_FRACTION = float(os.environ.get("LC0_FRACTION", "0.0"))
+EXAMPLES_PER_EPOCH = int(os.environ.get("TRAIN_EXAMPLES_PER_EPOCH", "0"))
 
 
 def replay_shards():
@@ -136,10 +147,35 @@ def main():
 
         shards = replay_shards()
         print(f"Replay buffer: {len(shards)} shard(s)")
-        dataset = CompactChessDataset(shards)
+        self_play_examples = load_examples(shards)
+        if LC0_FRACTION > 0.0:
+            if not LC0_SOURCE:
+                raise ValueError("LC0_DATASET_DIR is required when LC0_FRACTION > 0")
+            lc0_examples = load_examples(LC0_SOURCE)
+            examples_per_epoch = EXAMPLES_PER_EPOCH or len(self_play_examples)
+            examples = mix_examples(
+                lc0_examples,
+                self_play_examples,
+                LC0_FRACTION,
+                examples_per_epoch,
+                seed=GENERATION,
+            )
+        else:
+            examples = self_play_examples
+
+        dataset = CompactChessDataset(examples)
         print("Training positions:", len(dataset))
+        composition = summarize_examples(examples)
+        append_metric(
+            {"type": "dataset", **composition, "lc0_fraction_target": LC0_FRACTION}
+        )
         wandb_logger.log(
-            {"replay/shards": len(shards), "replay/positions": len(dataset)},
+            {
+                "replay/shards": len(shards),
+                "replay/positions": len(dataset),
+                **{f"dataset/{key}": value for key, value in composition.items()},
+                "dataset/lc0_fraction_target": LC0_FRACTION,
+            },
             step=0,
         )
 
@@ -168,7 +204,7 @@ def main():
 
         model = ChessTransformer().to(device)
 
-    # Warm-start from the previous generation so learning compounds.
+        # Warm-start from the previous generation so learning compounds.
         warm_start_path = CHECKPOINT_DIR / "best_model.pt"
         warm_started = WARM_START and warm_start_path.exists()
         if warm_started:

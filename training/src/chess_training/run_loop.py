@@ -20,11 +20,19 @@ from chess_training.chess_model import ChessTransformer
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 SELF_PLAY_BIN = REPO_ROOT / "build" / "self_play"
-SELFPLAY_DIR = REPO_ROOT / "artifacts" / "selfplay"
-METRICS_DIR = REPO_ROOT / "artifacts" / "metrics"
-CHECKPOINT_DIR = REPO_ROOT / "artifacts" / "checkpoints"
+SELFPLAY_DIR = Path(
+    os.environ.get("SELFPLAY_DIR", REPO_ROOT / "artifacts" / "selfplay")
+)
+METRICS_DIR = Path(
+    os.environ.get("METRICS_DIR", REPO_ROOT / "artifacts" / "metrics")
+)
+CHECKPOINT_DIR = Path(
+    os.environ.get("CHECKPOINT_DIR", REPO_ROOT / "artifacts" / "checkpoints")
+)
 # Immutable per-generation snapshots -> the strength ladder for evaluation.
-MODELS_DIR = REPO_ROOT / "artifacts" / "models"
+MODELS_DIR = Path(
+    os.environ.get("MODELS_DIR", REPO_ROOT / "artifacts" / "models")
+)
 JIT_MODEL = CHECKPOINT_DIR / "chess_model_jit.pt"
 
 ITERATIONS = int(os.environ.get("LOOP_ITERATIONS", "10"))
