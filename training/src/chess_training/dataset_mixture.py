@@ -2,7 +2,11 @@ from pathlib import Path
 
 import numpy as np
 
-from chess_training.read_dataset_v2 import CompactTrainingExample, load_compact_shard
+from chess_training.read_dataset_v2 import (
+    CompactTrainingExample,
+    iter_compact_shard,
+    load_compact_shard,
+)
 
 
 def _resolve_shards(source) -> list[Path]:
@@ -39,7 +43,7 @@ def sample_examples(source, count: int, seed: int) -> list[CompactTrainingExampl
     reservoir = []
     seen = 0
     for shard in shards:
-        for example in load_compact_shard(shard):
+        for example in iter_compact_shard(shard):
             seen += 1
             if len(reservoir) < count:
                 reservoir.append(example)

@@ -75,7 +75,7 @@ def _validate_example(example: CompactTrainingExample) -> None:
         raise RuntimeError("Invalid source in compact record")
 
 
-def load_compact_shard(filename: str | Path) -> list[CompactTrainingExample]:
+def iter_compact_shard(filename: str | Path):
     with open(filename, "rb") as file:
         header = _read_exact(file, struct.calcsize(HEADER_FORMAT))
         magic, version, input_planes, bitplanes, policy_size, example_count = (
@@ -91,7 +91,6 @@ def load_compact_shard(filename: str | Path) -> list[CompactTrainingExample]:
         ):
             raise RuntimeError("Unsupported compact training-data header")
 
-        examples = []
         for _ in range(example_count):
             record = _read_exact(file, struct.calcsize(RECORD_FORMAT))
             (
@@ -134,9 +133,12 @@ def load_compact_shard(filename: str | Path) -> list[CompactTrainingExample]:
                 source=training_source,
             )
             _validate_example(example)
-            examples.append(example)
+            yield example
 
         if file.read(1):
             raise RuntimeError("Unexpected trailing data in compact shard")
 
-    return examples
+
+
+def load_compact_shard(filename: str | Path) -> list[CompactTrainingExample]:
+    return list(iter_compact_shard(filename))

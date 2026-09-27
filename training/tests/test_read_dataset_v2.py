@@ -12,6 +12,7 @@ from chess_training.read_dataset_v2 import (
     INPUT_PLANES,
     POLICY_SIZE,
     TrainingSource,
+    iter_compact_shard,
     load_compact_shard,
 )
 
@@ -43,8 +44,10 @@ class CompactDatasetReaderTest(unittest.TestCase):
                 file.write(struct.pack("<Hf", 1840, 0.25))
 
             examples = load_compact_shard(filename)
+            streamed = list(iter_compact_shard(filename))
 
         self.assertEqual(len(examples), 1)
+        self.assertEqual(len(streamed), 1)
         example = examples[0]
         np.testing.assert_array_equal(example.planes, planes)
         np.testing.assert_allclose(example.wdl, wdl)
