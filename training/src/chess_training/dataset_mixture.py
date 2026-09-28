@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 import numpy as np
@@ -20,18 +21,37 @@ def _resolve_shards(source) -> list[Path]:
     return [path]
 
 
-def load_examples(source) -> list[CompactTrainingExample]:
+def _load_shard(shard: Path, report: list[dict] | None):
+    try:
+        return load_compact_shard(shard)
+    except (OSError, RuntimeError) as error:
+        if os.environ.get("STRICT_SHARDS", "0") == "1":
+            raise
+        failure = {"path": str(shard), "error": str(error)}
+        if report is not None:
+            report.append(failure)
+        print(f"[dataset] skipping shard {shard}: {error}")
+        return []
+
+
+def load_examples(
+    source, report: list[dict] | None = None
+) -> list[CompactTrainingExample]:
     shards = _resolve_shards(source)
     if not shards:
         raise FileNotFoundError(f"No shards found for {source}")
 
     examples = []
     for shard in shards:
-        examples.extend(load_compact_shard(shard))
+        examples.extend(_load_shard(shard, report))
+    if not examples:
+        raise FileNotFoundError(f"No valid examples found for {source}")
     return examples
 
 
-def sample_examples(source, count: int, seed: int) -> list[CompactTrainingExample]:
+def sample_examples(
+    source, count: int, seed: int, report: list[dict] | None = None
+) -> list[CompactTrainingExample]:
     if count < 1:
         return []
 
@@ -43,14 +63,23 @@ def sample_examples(source, count: int, seed: int) -> list[CompactTrainingExampl
     reservoir = []
     seen = 0
     for shard in shards:
-        for example in iter_compact_shard(shard):
-            seen += 1
-            if len(reservoir) < count:
-                reservoir.append(example)
-            else:
-                index = generator.integers(seen)
-                if index < count:
-                    reservoir[index] = example
+        try:
+            shard_examples = list(iter_compact_shard(shard))
+            for example in shard_examples:
+                seen += 1
+                if len(reservoir) < count:
+                    reservoir.append(example)
+                else:
+                    index = generator.integers(seen)
+                    if index < count:
+                        reservoir[index] = example
+        except (OSError, RuntimeError) as error:
+            if os.environ.get("STRICT_SHARDS", "0") == "1":
+                raise
+            failure = {"path": str(shard), "error": str(error)}
+            if report is not None:
+                report.append(failure)
+            print(f"[dataset] skipping shard {shard}: {error}")
 
     if not reservoir:
         raise FileNotFoundError(f"No examples found for {source}")
@@ -97,10 +126,11 @@ def load_mixed_examples(
     lc0_fraction: float,
     examples_per_epoch: int,
     seed: int,
+    report: list[dict] | None = None,
 ) -> list[CompactTrainingExample]:
     return mix_examples(
-        load_examples(lc0_source),
-        load_examples(self_play_source),
+        load_examples(lc0_source, report),
+        load_examples(self_play_source, report),
         lc0_fraction,
         examples_per_epoch,
         seed,

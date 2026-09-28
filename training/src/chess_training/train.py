@@ -179,15 +179,16 @@ def main():
 
         shards = replay_shards()
         print(f"Replay buffer: {len(shards)} shard(s)")
+        shard_errors = []
         if EXAMPLES_PER_EPOCH > 0:
             examples_per_epoch = EXAMPLES_PER_EPOCH
             lc0_count = round(examples_per_epoch * LC0_FRACTION)
             self_play_count = examples_per_epoch - lc0_count
             self_play_examples = sample_examples(
-                shards, self_play_count, seed=GENERATION
+                shards, self_play_count, seed=GENERATION, report=shard_errors
             )
         else:
-            self_play_examples = load_examples(shards)
+            self_play_examples = load_examples(shards, report=shard_errors)
             examples_per_epoch = len(self_play_examples)
 
         if LC0_FRACTION > 0.0:
@@ -196,13 +197,16 @@ def main():
             if EXAMPLES_PER_EPOCH > 0:
                 lc0_count = round(examples_per_epoch * LC0_FRACTION)
                 lc0_examples = sample_examples(
-                    LC0_SOURCE, lc0_count, seed=GENERATION + 1
+                    LC0_SOURCE,
+                    lc0_count,
+                    seed=GENERATION + 1,
+                    report=shard_errors,
                 )
                 examples = list(lc0_examples)
                 examples.extend(self_play_examples)
                 np.random.default_rng(GENERATION).shuffle(examples)
             else:
-                lc0_examples = load_examples(LC0_SOURCE)
+                lc0_examples = load_examples(LC0_SOURCE, report=shard_errors)
                 examples = mix_examples(
                     lc0_examples,
                     self_play_examples,
@@ -218,7 +222,13 @@ def main():
         composition = summarize_examples(examples)
         if is_primary:
             append_metric(
-                {"type": "dataset", **composition, "lc0_fraction_target": LC0_FRACTION}
+                {
+                    "type": "dataset",
+                    **composition,
+                    "lc0_fraction_target": LC0_FRACTION,
+                    "skipped_shards": len(shard_errors),
+                    "skipped_shard_errors": shard_errors,
+                }
             )
         wandb_logger.log(
             {
@@ -226,6 +236,7 @@ def main():
                 "replay/positions": len(dataset),
                 **{f"dataset/{key}": value for key, value in composition.items()},
                 "dataset/lc0_fraction_target": LC0_FRACTION,
+                "dataset/skipped_shards": len(shard_errors),
             },
             step=0,
         )
@@ -350,6 +361,8 @@ def main():
             "type": "train",
             "device": str(device),
             "shards": len(shards),
+            "skipped_shards": len(shard_errors),
+            "skipped_shard_errors": shard_errors,
             "positions": len(dataset),
             "epochs": NUMBER_OF_EPOCHS,
             "learning_rate": LEARNING_RATE,
