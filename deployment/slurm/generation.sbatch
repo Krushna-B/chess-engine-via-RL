@@ -17,7 +17,6 @@ module load cuda/13.0
 
 CUDA_ROOT=${CUDA_ROOT:-/nas/longleaf/rhel9/apps/cuda/13.0}
 SELF_PLAY_BIN=${SELF_PLAY_BIN:-${REPO_ROOT}/build-longleaf-cuda13/self_play}
-SELF_PLAY_LD_LIBRARY_PATH=${SELF_PLAY_LD_LIBRARY_PATH:-${CUDA_ROOT}/lib64}
 
 cd "${REPO_ROOT}"
 mkdir -p "${ARTIFACT_ROOT}/slurm"
@@ -32,7 +31,6 @@ if [[ -n "${APPTAINER_IMAGE:-}" ]]; then
     --bind "${REPO_ROOT}:${REPO_ROOT},${ARTIFACT_ROOT}:${ARTIFACT_ROOT},${CUDA_ROOT}:${CUDA_ROOT}" \
     "${APPTAINER_IMAGE}" env \
     SELF_PLAY_BIN="${SELF_PLAY_BIN}" \
-    SELF_PLAY_LD_LIBRARY_PATH="${SELF_PLAY_LD_LIBRARY_PATH}" \
     uv run --project training python -m chess_training.run_loop
 else
   srun uv run --project training python -m chess_training.run_loop
