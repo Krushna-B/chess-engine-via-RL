@@ -10,12 +10,17 @@
 set -euo pipefail
 
 CONFIG_FILE=${CONFIG_FILE:?Set CONFIG_FILE to a Longleaf environment file}
+set -a
 source "${CONFIG_FILE}"
+set +a
+
+module load cuda/13.0
 
 cd "${REPO_ROOT}"
 mkdir -p "${ARTIFACT_ROOT}/slurm"
-export SELFPLAY_DIR="${ARTIFACT_ROOT}/selfplay"
-export METRICS_PATH="${ARTIFACT_ROOT}/metrics/train_${SLURM_JOB_ID}.jsonl"
+export SELFPLAY_DIR="${SELFPLAY_DIR:-${ARTIFACT_ROOT}/selfplay}"
+export METRICS_PATH="${METRICS_PATH:-${ARTIFACT_ROOT}/metrics/train_${SLURM_JOB_ID}.jsonl}"
+export CHECKPOINT_DIR="${CHECKPOINT_DIR:-${ARTIFACT_ROOT}/checkpoints}"
 
 if [[ -n "${APPTAINER_IMAGE:-}" ]]; then
   srun apptainer exec --nv \

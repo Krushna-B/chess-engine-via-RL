@@ -23,6 +23,16 @@ class WandbLogger:
             init_kwargs["entity"] = entity
         if mode:
             init_kwargs["mode"] = mode
+        run_id = os.environ.get("WANDB_RUN_ID")
+        group = os.environ.get("WANDB_GROUP")
+        tags = os.environ.get("WANDB_TAGS")
+        if run_id:
+            init_kwargs["id"] = run_id
+            init_kwargs["resume"] = os.environ.get("WANDB_RESUME", "allow")
+        if group:
+            init_kwargs["group"] = group
+        if tags:
+            init_kwargs["tags"] = [tag.strip() for tag in tags.split(",") if tag.strip()]
         self._run = wandb.init(**init_kwargs)
 
     def log(self, metrics: dict, step: int | None = None) -> None:

@@ -11,17 +11,23 @@
 set -euo pipefail
 
 CONFIG_FILE=${CONFIG_FILE:?Set CONFIG_FILE to a Longleaf environment file}
+set -a
 source "${CONFIG_FILE}"
+set +a
+
+module load cuda/13.0
 
 cd "${REPO_ROOT}"
 mkdir -p "${ARTIFACT_ROOT}/slurm"
 export REPO_ROOT ARTIFACT_ROOT APPTAINER_IMAGE
 
-export SELFPLAY_DIR="${ARTIFACT_ROOT}/selfplay"
-export METRICS_DIR="${ARTIFACT_ROOT}/metrics"
-export CHECKPOINT_DIR="${ARTIFACT_ROOT}/checkpoints"
-export MODELS_DIR="${ARTIFACT_ROOT}/models"
+export SELFPLAY_DIR="${SELFPLAY_DIR:-${ARTIFACT_ROOT}/selfplay}"
+export METRICS_DIR="${METRICS_DIR:-${ARTIFACT_ROOT}/metrics}"
+export CHECKPOINT_DIR="${CHECKPOINT_DIR:-${ARTIFACT_ROOT}/checkpoints}"
+export MODELS_DIR="${MODELS_DIR:-${ARTIFACT_ROOT}/models}"
 export GENERATION=${GENERATION:-0}
+SELF_PLAY_BIN=${SELF_PLAY_BIN:-${REPO_ROOT}/build-longleaf-cuda13/self_play}
+export SELF_PLAY_BIN
 
 srun --cpu-bind=cores bash -c '
   worker_id=${SLURM_PROCID}
@@ -31,18 +37,18 @@ srun --cpu-bind=cores bash -c '
   if [[ -n "${APPTAINER_IMAGE:-}" ]]; then
     exec apptainer exec --nv \
       --bind "${REPO_ROOT}:${REPO_ROOT},${ARTIFACT_ROOT}:${ARTIFACT_ROOT}" \
-      "${APPTAINER_IMAGE}" "${REPO_ROOT}/build/self_play" \
-      "${ARTIFACT_ROOT}/checkpoints/chess_model_jit.pt"
+      "${APPTAINER_IMAGE}" "${SELF_PLAY_BIN}" \
+      "${CHECKPOINT_DIR}/chess_model_jit.pt"
   else
-    exec "${REPO_ROOT}/build/self_play" \
-      "${ARTIFACT_ROOT}/checkpoints/chess_model_jit.pt"
+    exec "${SELF_PLAY_BIN}" \
+      "${CHECKPOINT_DIR}/chess_model_jit.pt"
   fi
 '
 
 if [[ -n "${APPTAINER_IMAGE:-}" ]]; then
   apptainer exec --nv \
     --bind "${REPO_ROOT}:${REPO_ROOT},${ARTIFACT_ROOT}:${ARTIFACT_ROOT}" \
-    "${APPTAINER_IMAGE}" torchrun \
+    "${APPTAINER_IMAGE}" uv run --project training torchrun \
     --standalone --nproc_per_node="${SLURM_GPUS_ON_NODE:-4}" \
     -m chess_training.train
   apptainer exec --nv \

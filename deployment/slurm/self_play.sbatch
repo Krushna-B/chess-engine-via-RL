@@ -20,6 +20,7 @@ SELF_PLAY_BIN=${SELF_PLAY_BIN:-${REPO_ROOT}/build-longleaf-cuda13/self_play}
 
 cd "${REPO_ROOT}"
 mkdir -p "${ARTIFACT_ROOT}/slurm"
+CHECKPOINT_DIR=${CHECKPOINT_DIR:-${ARTIFACT_ROOT}/checkpoints}
 export SELFPLAY_SHARD_PATH="${ARTIFACT_ROOT}/selfplay/neural_selfplay_shard_${SLURM_JOB_ID}.bin"
 export METRICS_PATH="${ARTIFACT_ROOT}/metrics/selfplay_${SLURM_JOB_ID}.jsonl"
 
@@ -28,8 +29,8 @@ if [[ -n "${APPTAINER_IMAGE:-}" ]]; then
     --bind "${REPO_ROOT}:${REPO_ROOT},${ARTIFACT_ROOT}:${ARTIFACT_ROOT},${CUDA_ROOT}:${CUDA_ROOT}" \
     "${APPTAINER_IMAGE}" env \
     "${SELF_PLAY_BIN}" \
-    "${ARTIFACT_ROOT}/checkpoints/chess_model_jit.pt"
+    "${CHECKPOINT_DIR}/chess_model_jit.pt"
 else
   srun "${SELF_PLAY_BIN}" \
-    "${ARTIFACT_ROOT}/checkpoints/chess_model_jit.pt"
+    "${CHECKPOINT_DIR}/chess_model_jit.pt"
 fi

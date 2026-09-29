@@ -16,7 +16,7 @@ def _resolve_shards(source) -> list[Path]:
 
     path = Path(source)
     if path.is_dir():
-        return sorted(path.glob("*.bin"))
+        return sorted(path.rglob("*.bin"))
 
     return [path]
 
@@ -64,8 +64,7 @@ def sample_examples(
     seen = 0
     for shard in shards:
         try:
-            shard_examples = list(iter_compact_shard(shard))
-            for example in shard_examples:
+            for example in iter_compact_shard(shard):
                 seen += 1
                 if len(reservoir) < count:
                     reservoir.append(example)

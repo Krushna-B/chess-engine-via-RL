@@ -56,7 +56,7 @@ def _write_header(file, count: int) -> None:
     )
 
 
-def _write_example(file, record, game_id: int, ply: int) -> None:
+def write_example(file, record, game_id: int, ply: int) -> None:
     (
         version,
         input_format,
@@ -121,6 +121,25 @@ def _write_example(file, record, game_id: int, ply: int) -> None:
         file.write(struct.pack("<Hf", index, probability))
 
 
+def read_record(file):
+    """Read one Lc0 v6/v7 record, returning None at a clean EOF."""
+    prefix = file.read(8)
+    if not prefix:
+        return None
+    if len(prefix) != 8:
+        raise ValueError("Truncated Lc0 training record")
+
+    version = struct.unpack("<I", prefix[:4])[0]
+    if version not in (6, 7):
+        raise ValueError(f"Unsupported Lc0 record version: {version}")
+    record_size = LC0_RECORD_SIZE_V7 if version == 7 else LC0_RECORD_SIZE
+    data = prefix + file.read(record_size - 8)
+    if len(data) != record_size:
+        raise ValueError("Truncated Lc0 training record")
+    record_format = LC0_RECORD_FORMAT_V7 if version == 7 else LC0_RECORD_FORMAT
+    return struct.unpack(record_format, data)
+
+
 def convert_lc0_file(source: str | Path, destination: str | Path) -> int:
     source = Path(source)
     destination = Path(destination)
@@ -130,24 +149,8 @@ def convert_lc0_file(source: str | Path, destination: str | Path) -> int:
 
     with opener(source, "rb") as input_file, destination.open("wb") as output_file:
         _write_header(output_file, 0)
-        while True:
-            prefix = input_file.read(8)
-            if not prefix:
-                break
-            if len(prefix) != 8:
-                raise ValueError("Truncated Lc0 training record")
-            version = struct.unpack("<I", prefix[:4])[0]
-            record_size = LC0_RECORD_SIZE_V7 if version == 7 else LC0_RECORD_SIZE
-            data = prefix + input_file.read(record_size - 8)
-            if len(data) != record_size:
-                raise ValueError("Truncated Lc0 training record")
-            record_format = LC0_RECORD_FORMAT_V7 if version == 7 else LC0_RECORD_FORMAT
-            _write_example(
-                output_file,
-                struct.unpack(record_format, data),
-                game_id=count,
-                ply=0,
-            )
+        while (record := read_record(input_file)) is not None:
+            write_example(output_file, record, game_id=count, ply=0)
             count += 1
 
         output_file.seek(20)

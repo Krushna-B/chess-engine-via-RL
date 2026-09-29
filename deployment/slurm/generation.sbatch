@@ -21,10 +21,10 @@ SELF_PLAY_BIN=${SELF_PLAY_BIN:-${REPO_ROOT}/build-longleaf-cuda13/self_play}
 cd "${REPO_ROOT}"
 mkdir -p "${ARTIFACT_ROOT}/slurm"
 
-export SELFPLAY_DIR="${ARTIFACT_ROOT}/selfplay"
-export METRICS_DIR="${ARTIFACT_ROOT}/metrics"
-export CHECKPOINT_DIR="${ARTIFACT_ROOT}/checkpoints"
-export MODELS_DIR="${ARTIFACT_ROOT}/models"
+export SELFPLAY_DIR="${SELFPLAY_DIR:-${ARTIFACT_ROOT}/selfplay}"
+export METRICS_DIR="${METRICS_DIR:-${ARTIFACT_ROOT}/metrics}"
+export CHECKPOINT_DIR="${CHECKPOINT_DIR:-${ARTIFACT_ROOT}/checkpoints}"
+export MODELS_DIR="${MODELS_DIR:-${ARTIFACT_ROOT}/models}"
 
 if [[ -n "${APPTAINER_IMAGE:-}" ]]; then
   srun apptainer exec --nv \

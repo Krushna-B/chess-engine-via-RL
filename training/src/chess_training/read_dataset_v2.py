@@ -142,3 +142,46 @@ def iter_compact_shard(filename: str | Path):
 
 def load_compact_shard(filename: str | Path) -> list[CompactTrainingExample]:
     return list(iter_compact_shard(filename))
+
+
+def write_compact_shard(filename: str | Path, examples) -> int:
+    """Write materialized compact examples to one shard."""
+    filename = Path(filename)
+    filename.parent.mkdir(parents=True, exist_ok=True)
+    count = 0
+    with filename.open("wb") as file:
+        file.write(
+            struct.pack(
+                HEADER_FORMAT,
+                DATASET_MAGIC,
+                DATASET_VERSION,
+                INPUT_PLANES,
+                BITPLANES,
+                POLICY_SIZE,
+                0,
+            )
+        )
+        for example in examples:
+            _validate_example(example)
+            file.write(
+                struct.pack(
+                    RECORD_FORMAT,
+                    example.game_id,
+                    example.ply,
+                    int(example.source),
+                    example.castling_rights,
+                    example.side_to_move,
+                    0,
+                    example.rule50_count,
+                    len(example.policy),
+                )
+            )
+            file.write(np.asarray(example.planes, dtype="<u8").tobytes())
+            file.write(np.asarray(example.wdl, dtype="<f4").tobytes())
+            file.write(struct.pack("<f", example.moves_left))
+            for entry in example.policy:
+                file.write(struct.pack("<Hf", entry.index, entry.probability))
+            count += 1
+        file.seek(20)
+        file.write(struct.pack("<Q", count))
+    return count

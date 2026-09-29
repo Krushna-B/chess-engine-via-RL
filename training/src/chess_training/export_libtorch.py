@@ -23,8 +23,12 @@ NUMBER_OF_TEST_POSITIONS = 5
 
 def latest_shard():
     shards = sorted(SELFPLAY_DIR.glob("*.bin"))
+    if not shards and os.environ.get("LC0_DATASET_DIR"):
+        shards = sorted(Path(os.environ["LC0_DATASET_DIR"]).rglob("*.bin"))
     if not shards:
-        raise FileNotFoundError(f"No self-play shards in {SELFPLAY_DIR}")
+        raise FileNotFoundError(
+            f"No self-play shards in {SELFPLAY_DIR} and no Lc0 shard fallback"
+        )
     return shards[-1]
 
 

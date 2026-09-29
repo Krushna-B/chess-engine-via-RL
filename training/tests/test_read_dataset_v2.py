@@ -14,6 +14,7 @@ from chess_training.read_dataset_v2 import (
     TrainingSource,
     iter_compact_shard,
     load_compact_shard,
+    write_compact_shard,
 )
 
 
@@ -45,9 +46,14 @@ class CompactDatasetReaderTest(unittest.TestCase):
 
             examples = load_compact_shard(filename)
             streamed = list(iter_compact_shard(filename))
+            round_trip_path = Path(directory) / "round-trip.bin"
+            self.assertEqual(write_compact_shard(round_trip_path, examples), 1)
+            round_trip = load_compact_shard(round_trip_path)
 
         self.assertEqual(len(examples), 1)
         self.assertEqual(len(streamed), 1)
+        self.assertEqual(round_trip[0].game_id, 42)
+        self.assertEqual(round_trip[0].policy[0].index, 12)
         example = examples[0]
         np.testing.assert_array_equal(example.planes, planes)
         np.testing.assert_allclose(example.wdl, wdl)

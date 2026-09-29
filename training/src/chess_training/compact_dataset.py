@@ -1,3 +1,4 @@
+import numpy as np
 import torch
 from torch.utils.data import Dataset
 
@@ -9,12 +10,9 @@ from chess_training.read_dataset_v2 import (
 
 def _plane_tensor(example: CompactTrainingExample) -> torch.Tensor:
     planes = torch.zeros((112, 8, 8), dtype=torch.float32)
-    for index, bitplane in enumerate(example.planes):
-        for square in range(64):
-            if bitplane & (1 << square):
-                rank = square // 8
-                file = square % 8
-                planes[index, rank, file] = 1.0
+    packed = np.asarray(example.planes, dtype="<u8").view(np.uint8).reshape(104, 8)
+    bitplanes = np.unpackbits(packed, axis=1, bitorder="little").reshape(104, 8, 8)
+    planes[:104] = torch.from_numpy(bitplanes.astype(np.float32, copy=False))
 
     planes[104:108] = torch.tensor(
         [
